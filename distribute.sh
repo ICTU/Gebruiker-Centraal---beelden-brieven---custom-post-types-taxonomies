@@ -24,7 +24,7 @@ rm '/shared-paul-files/Webs/temp/LICENSE'
 # Vertalingen --------------------------------------------------------------------------------------------------------------------
 # --------------------------------------------------------------------------------------------------------------------------------
 # remove the .pot
-rm '/shared-paul-files/Webs/temp/languages/ictu-gc-posttypes.pot'
+rm '/shared-paul-files/Webs/temp/languages/ictu-gc-posttypes-brieven-beelden.pot'
 
 # copy files to /wp-content/languages/themes
 rsync -ah '/shared-paul-files/Webs/temp/languages/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/languages/plugins/'
