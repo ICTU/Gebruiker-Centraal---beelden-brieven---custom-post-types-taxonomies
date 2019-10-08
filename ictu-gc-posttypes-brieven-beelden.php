@@ -5,8 +5,8 @@
 * @package           ictu-gc-posttypes-brieven-beelden
  *
  * @wordpress-plugin
- * Plugin Name:       ICTU / Gebruiker Centraal Beelden en Brieven post types and taxonomies
- * Plugin URI:        https://github.com/ICTU/Gebruiker-Centraal---beelden-brieven---custom-post-types-taxonomies
+ * Plugin Name:       ICTU / Gebruiker Centraal / Beelden en Brieven post types and taxonomies
+ * Plugin URI:        https://github.com/ICTU/ICTU-Gebruiker-Centraal-Beelden-en-Brieven-CPTs-and-taxonomies
  * Description:       Plugin voor gebruikercentraal.nl voor het registeren van custom post types en taxonomieën
  * Version:           0.0.2
  * Author:            Paul van Buuren
@@ -38,10 +38,6 @@ if ( ! defined( 'GC_BRIEVENCONTEXT' ) ) {
 
 if ( ! defined( 'GC_BEELDENCONTEXT' ) ) {
   define( 'GC_BEELDENCONTEXT', 'beeldcpt' );
-}
-
-if ( ! defined( 'GC_KLANTCONTACT_BRIEF_CPT' ) ) {
-  define( 'GC_KLANTCONTACT_BRIEF_CPT', 'brief' );
 }
 
 if ( ! defined( 'GC_KLANTCONTACT_BRIEF_CPT' ) ) {
