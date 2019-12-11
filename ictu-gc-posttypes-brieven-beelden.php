@@ -52,6 +52,11 @@ if ( ! defined( 'GC_TAX_ORGANISATIE' ) ) {
   define( 'GC_TAX_ORGANISATIE', 'organisatie' );
 }
 
+// nieuwe CPTs
+if (!defined('ICTU_GC_CPT_STAP')) {
+    define('ICTU_GC_CPT_STAP', 'stap');   // slug for custom taxonomy 'document'
+}
+
 
 //========================================================================================================
 // constants for rewrite rules
@@ -94,7 +99,8 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
      */
     public function __construct() {
 
-      $this->setup_actions();
+		$this->setup_actions();
+		$this->includes();
 
     }
   
@@ -118,16 +124,32 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
       
       add_action( 'genesis_entry_content',  array( $this, 'append_content' ), 15 ); 				
 
+            $this->templates = [];
+            $this->template_home = 'home-inclusie.php';
+
+
     }
     
-    /** ----------------------------------------------------------------------------------------------------
-     * Initialise translations
-     */
-    public function load_plugin_textdomain() {
-
-      load_plugin_textdomain( "ictu-gc-posttypes-brieven-beelden", false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-
-    }
+	/** ----------------------------------------------------------------------------------------------------
+	* Initialise translations
+	*/
+	public function load_plugin_textdomain() {
+	
+		load_plugin_textdomain( "ictu-gc-posttypes-brieven-beelden", false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+	
+	}
+	
+	
+	/** ----------------------------------------------------------------------------------------------------
+	* Hook this plugins functions into WordPress
+	*/
+	private function includes() {
+	
+		require_once dirname(__FILE__) . '/includes/acffields-and-posttypes.php';
+	
+	}
+	
+	/** ----------------------------------------------------------------------------------------------------
 
     /** ----------------------------------------------------------------------------------------------------
      * Do actually register the post types we need
@@ -137,19 +159,19 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
       // ------------------------------------------------------
       // brieven
     	$labels = array(
-    		"name"                => "Brieven",
-    		"singular_name"       => "Brief",
-    		"menu_name"           => "Brieven",
-    		"all_items"           => "Alle brieven",
-    		"add_new"             => "Toevoegen",
-    		"add_new_item"        => "Brief toevoegen",
-    		"edit"                => "Brief bewerken",
-    		"edit_item"           => "Bewerk brief",
-    		"new_item"            => "Nieuwe brief",
-    		"view"                => "Bekijk",
-    		"view_item"           => "Bekijk brief",
-    		"search_items"        => "Tips zoeken",
-    		"not_found"           => "Geen brieven gevonden",
+    		"name"             		=> "Brieven",
+    		"singular_name"    		=> "Brief",
+    		"menu_name"        		=> "Brieven",
+    		"all_items"        		=> "Alle brieven",
+    		"add_new"          		=> "Toevoegen",
+    		"add_new_item"     		=> "Brief toevoegen",
+    		"edit"             		=> "Brief bewerken",
+    		"edit_item"        		=> "Bewerk brief",
+    		"new_item"         		=> "Nieuwe brief",
+    		"view"             		=> "Bekijk",
+    		"view_item"        		=> "Bekijk brief",
+    		"search_items"     		=> "Tips zoeken",
+    		"not_found"        		=> "Geen brieven gevonden",
     		"not_found_in_trash"  => "Geen brieven in de prullenbak",
     		);
     
@@ -165,41 +187,41 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
       }
         
     	$args = array(
-    		"labels"              => $labels,
-    		"description"         => "Hier voer je de brieven in.",
-    		"public"              => true,
-    		"show_ui"             => true,
-    		"has_archive"         => false,
-    		"show_in_menu"        => true,
+    		"labels"           		=> $labels,
+    		"description"      		=> "Hier voer je de brieven in.",
+    		"public"           		=> true,
+    		"show_ui"          		=> true,
+    		"has_archive"      		=> false,
+    		"show_in_menu"     		=> true,
     		"exclude_from_search" => false,
-    		"capability_type"     => "page",
-    		"map_meta_cap"        => true,
-    		"hierarchical"        => false,
-    		"rewrite"             => array( "slug" => $theslug, "with_front" => true ),
-    		"query_var"           => true,
-    		"menu_position"       => 6,		
-        "menu_icon"           => "dashicons-media-text",		
-    		"supports"            => array( "title", "editor", "excerpt", "revisions", "thumbnail", "author" ),		
+    		"capability_type"  		=> "page",
+    		"map_meta_cap"     		=> true,
+    		"hierarchical"     		=> false,
+    		"rewrite"          		=> array( "slug" => $theslug, "with_front" => true ),
+    		"query_var"        		=> true,
+    		"menu_position"    		=> 6,		
+        "menu_icon"        		=> "dashicons-media-text",		
+    		"supports"         		=> array( "title", "editor", "excerpt", "revisions", "thumbnail", "author" ),		
     	);
     	register_post_type( GC_KLANTCONTACT_BRIEF_CPT	, $args );
     
       // ------------------------------------------------------
       // beelden
     	$labels = array(
-    		"name"                => "Beelden",
-    		"singular_name"       => "Beeld",
-    		"menu_name"           => "Beelden",
-    		"all_items"           => "Alle beelden",
-    		"add_new"             => "Toevoegen",
-    		"add_new_item"        => "Beeld toevoegen",
-    		"edit"                => "Beeld bewerken",
-    		"edit_item"           => "Bewerk beeld",
-    		"new_item"            => "Nieuwe beeld",
-    		"view"                => "Bekijk",
-    		"view_item"           => "Bekijk beeld",
-    		"search_items"        => "Tips zoeken",
-    		"not_found"           => "Geen beelden gevonden",
-    		"not_found_in_trash"  => "Geen beelden in de prullenbak",
+    		"name"             		=> "Beelden",
+    		"singular_name"    		=> "Beeld",
+    		"menu_name"        		=> "Beelden",
+    		"all_items"        		=> "Alle beelden",
+    		"add_new"          		=> "Toevoegen",
+    		"add_new_item"     		=> "Beeld toevoegen",
+    		"edit"             		=> "Beeld bewerken",
+    		"edit_item"        		=> "Bewerk beeld",
+    		"new_item"         		=> "Nieuwe beeld",
+    		"view"             		=> "Bekijk",
+    		"view_item"        		=> "Bekijk beeld",
+    		"search_items"     		=> "Tips zoeken",
+    		"not_found"        		=> "Geen beelden gevonden",
+    		"not_found_in_trash"	=> "Geen beelden in de prullenbak",
     		);
     
       if ( function_exists( 'get_field' ) ) {
@@ -212,90 +234,132 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
       }
     
     	$args = array(
-    		"labels"              => $labels,
-    		"description"         => "Hier voer je de beelden in.",
-    		"public"              => true,
-    		"show_ui"             => true,
-    		"has_archive"         => false,
-    		"show_in_menu"        => true,
-    		"exclude_from_search" => false,
-    		"capability_type"     => "page",
-    		"map_meta_cap"        => true,
-    		"hierarchical"        => false,
-    		"rewrite"             => array( "slug" => $theslug, "with_front" => true ),
-    		"query_var"           => true,
-    		"menu_position"       => 7,		
-        "menu_icon"           => "dashicons-format-image",		
-    		"supports"            => array( "title", "editor", "excerpt", "revisions", "author" ),		
+			"labels"           		=> $labels,
+			"description"      		=> "Hier voer je de beelden in.",
+			"public"           		=> true,
+			"show_ui"          		=> true,
+			"has_archive"      		=> false,
+			"show_in_menu"     		=> true,
+			"exclude_from_search"	=> false,
+			"capability_type"  		=> "page",
+			"map_meta_cap"     		=> true,
+			"hierarchical"     		=> false,
+			"rewrite"          		=> array( "slug" => $theslug, "with_front" => true ),
+			"query_var"        		=> true,
+			"menu_position"    		=> 7,		
+			"menu_icon"        		=> "dashicons-format-image",		
+			"supports"         		=> array( "title", "editor", "excerpt", "revisions", "author" ),		
     	);
     	register_post_type( GC_KLANTCONTACT_BEELDEN_CPT	, $args );
     
     
     
     	$labels = array(
-    		"name"                => "Licentie",
-    		"label"               => "Licentie",
-    		"menu_name"           => "Licentie",
-    		"all_items"           => "Alle licenties",
-    		"edit_item"           => "Bewerk licentie",
-    		"view_item"           => "Bekijk licentie",
-    		"update_item"         => "Licentie bijwerken",
-    		"add_new_item"        => "Licentie toevoegen",
-    		"new_item_name"       => "Nieuwe licentie",
-    		"search_items"        => "Zoek licentie",
-    		"popular_items"       => "Meest gebruikte licenties",
-    		"separate_items_with_commas" => "Scheid met komma's",
-    		"add_or_remove_items" => "Licentie toevoegen of verwijderen",
-    		"choose_from_most_used" => "Kies uit de meest gebruikte",
-    		"not_found"           => "Niet gevonden",
+    		"name"             		=> _x("Licentie", 'stap type', "ictu-gc-posttypes-brieven-beelden"),
+    		"label"            		=> _x("Licentie", 'stap type', "ictu-gc-posttypes-brieven-beelden"),
+    		"menu_name"        		=> _x("Licentie", 'stap type', "ictu-gc-posttypes-brieven-beelden"),
+    		"all_items"        		=> _x("Alle licenties", 'stap type', "ictu-gc-posttypes-brieven-beelden"),
+    		"edit_item"        		=> _x("Bewerk licentie", 'stap type', "ictu-gc-posttypes-brieven-beelden"),
+    		"view_item"        		=> _x("Bekijk licentie", 'stap type', "ictu-gc-posttypes-brieven-beelden"),
+    		"update_item"      		=> _x("Licentie bijwerken", 'stap type', "ictu-gc-posttypes-brieven-beelden"),
+    		"add_new_item"     		=> _x("Licentie toevoegen", 'stap type', "ictu-gc-posttypes-brieven-beelden"),
+    		"new_item_name"    		=> _x("Nieuwe licentie", 'stap type', "ictu-gc-posttypes-brieven-beelden"),
+    		"search_items"     		=> _x("Zoek licentie", 'stap type', "ictu-gc-posttypes-brieven-beelden"),
+    		"popular_items"    		=> _x("Meest gebruikte licenties", 'stap type', "ictu-gc-posttypes-brieven-beelden"),
+    		"separate_items_with_commas" => _x("Scheid met komma's", 'stap type', "ictu-gc-posttypes-brieven-beelden"),
+    		"add_or_remove_items" => _x("Licentie toevoegen of verwijderen", 'stap type', "ictu-gc-posttypes-brieven-beelden"),
+    		"choose_from_most_used" => _x("Kies uit de meest gebruikte", 'stap type', "ictu-gc-posttypes-brieven-beelden"),
+    		"not_found"        		=> _x("Niet gevonden", 'stap type', "ictu-gc-posttypes-brieven-beelden"),
     		);
     
     	$args = array(
-    		"labels"              => $labels,
-    		"hierarchical"        => true,
-    		"label"               => "Licentie",
-    		"show_ui"             => true,
-    		"query_var"           => true,
-    		"rewrite"             => array( 'slug' => GC_TAX_LICENTIE, 'with_front' => true ),
-    		"show_admin_column"   => false,
+    		"labels"           		=> $labels,
+    		"hierarchical"     		=> true,
+    		"label"            		=> _x("Licentie", 'stap type', "ictu-gc-posttypes-brieven-beelden"),
+    		"show_ui"          		=> true,
+    		"query_var"        		=> true,
+    		"rewrite"          		=> array( 'slug' => GC_TAX_LICENTIE, 'with_front' => true ),
+    		"show_admin_column"		=> false,
     	);
     	register_taxonomy( GC_TAX_LICENTIE, array( GC_KLANTCONTACT_BEELDEN_CPT ), $args );
     
     
     	$labels = array(
-    		"name"                => "Organisatie",
-    		"label"               => "Organisatie",
-    		"menu_name"           => "Organisatie",
-    		"all_items"           => "Alle organisaties",
-    		"edit_item"           => "Bewerk organisatie",
-    		"view_item"           => "Bekijk organisatie",
-    		"update_item"         => "organisatie bijwerken",
-    		"add_new_item"        => "organisatie toevoegen",
-    		"new_item_name"       => "Nieuwe organisatie",
-    		"search_items"        => "Zoek organisatie",
-    		"popular_items"       => "Meest gebruikte organisaties",
-    		"separate_items_with_commas" => "Scheid met komma's",
-    		"add_or_remove_items" => "organisatie toevoegen of verwijderen",
-    		"choose_from_most_used" => "Kies uit de meest gebruikte",
-    		"not_found"           => "Niet gevonden",
+    		"name"             		=> _x('Organisatie', 'stap type', "ictu-gc-posttypes-brieven-beelden"),
+    		"label"            		=> _x('Organisatie', 'stap type', "ictu-gc-posttypes-brieven-beelden"),
+    		"menu_name"        		=> _x('Organisatie', 'stap type', "ictu-gc-posttypes-brieven-beelden"),
+    		"all_items"        		=> _x('Alle organisaties', 'stap type', "ictu-gc-posttypes-brieven-beelden"),
+    		"edit_item"        		=> _x('Bewerk organisatie', 'stap type', "ictu-gc-posttypes-brieven-beelden"),
+    		"view_item"        		=> _x('Bekijk organisatie', 'stap type', "ictu-gc-posttypes-brieven-beelden"),
+    		"update_item"      		=> _x('organisatie bijwerken', 'stap type', "ictu-gc-posttypes-brieven-beelden"),
+    		"add_new_item"     		=> _x('organisatie toevoegen', 'stap type', "ictu-gc-posttypes-brieven-beelden"),
+    		"new_item_name"    		=> _x('Nieuwe organisatie', 'stap type', "ictu-gc-posttypes-brieven-beelden"),
+    		"search_items"     		=> _x('Zoek organisatie', 'stap type', "ictu-gc-posttypes-brieven-beelden"),
+    		"popular_items"    		=> _x('Meest gebruikte organisaties', 'stap type', "ictu-gc-posttypes-brieven-beelden"),
+    		"separate_items_with_commas" => _x("Scheid met komma's", 'stap type', "ictu-gc-posttypes-brieven-beelden"),
+    		"add_or_remove_items" => _x('organisatie toevoegen of verwijderen', 'stap type', "ictu-gc-posttypes-brieven-beelden"),
+    		"choose_from_most_used" => _x('Kies uit de meest gebruikte', 'stap type', "ictu-gc-posttypes-brieven-beelden"),
+    		"not_found"        		=> _x('Niet gevonden', 'stap type', "ictu-gc-posttypes-brieven-beelden"),
     		);
     
     	$args = array(
-    		"labels"              => $labels,
-    		"hierarchical"        => true,
-    		"label"               => "Organisatie",
-    		"show_ui"             => true,
-    		"query_var"           => true,
-    		"rewrite"             => array( 'slug' => GC_TAX_ORGANISATIE, 'with_front' => true ),
-    		"show_admin_column"   => false,
+    		"labels"           		=> $labels,
+    		"hierarchical"     		=> true,
+    		"label"            		=> _x('Organisatie', 'stap type', "ictu-gc-posttypes-brieven-beelden"),
+    		"show_ui"          		=> true,
+    		"query_var"        		=> true,
+    		"rewrite"          		=> array( 'slug' => GC_TAX_ORGANISATIE, 'with_front' => true ),
+    		"show_admin_column"		=> false,
     	);
     	register_taxonomy( GC_TAX_ORGANISATIE, array( GC_KLANTCONTACT_BEELDEN_CPT, GC_KLANTCONTACT_BRIEF_CPT ), $args );
-    
-    
-      // ---------------------------------------------------------------------------------------------------
 
-      // clean up after ourselves
-    	flush_rewrite_rules();
+
+        // ---------------------------------------------------------------------------------------------------
+        // custom post type voor 'stappen'
+        $labels = [
+          "name"					=> _x('Stappen', 'stap type', "ictu-gc-posttypes-brieven-beelden"),
+          "singular_name"			=> _x('Stap', 'stap type', "ictu-gc-posttypes-brieven-beelden"),
+          "menu_name" 				=> _x('Stappen', 'stap type', "ictu-gc-posttypes-brieven-beelden"),
+          "all_items" 				=> _x('Alle stappen', 'stap type', "ictu-gc-posttypes-brieven-beelden"),
+          "add_new" 				=> _x('Nieuwe stap toevoegen', 'stap type', "ictu-gc-posttypes-brieven-beelden"),
+          "add_new_item" 			=> _x('Nieuwe stap toevoegen', 'stap type', "ictu-gc-posttypes-brieven-beelden"),
+          "edit_item" 				=> _x('Stap bewerken', 'stap type', "ictu-gc-posttypes-brieven-beelden"),
+          "new_item" 				=> _x('Nieuwe stap', 'stap type', "ictu-gc-posttypes-brieven-beelden"),
+          "view_item" 				=> _x('Stap bekijken', 'stap type', "ictu-gc-posttypes-brieven-beelden"),
+          "search_items" 			=> _x('Zoek een stap', 'stap type', "ictu-gc-posttypes-brieven-beelden"),
+          "not_found" 				=> _x('Niets gevonden', 'stap type', "ictu-gc-posttypes-brieven-beelden"),
+          "not_found_in_trash"		=> _x('Niets gevonden', 'stap type', "ictu-gc-posttypes-brieven-beelden"),
+          "featured_image" 			=> __('Featured image', "ictu-gc-posttypes-brieven-beelden"),
+          "archives" 				=> __('Archives', "ictu-gc-posttypes-brieven-beelden"),
+          "uploaded_to_this_item"		=> __('Uploaded media', "ictu-gc-posttypes-brieven-beelden"),
+        ];
+
+        $args = [
+          "label" 					=> _x('Stappen', 'Stappen label', "ictu-gc-posttypes-brieven-beelden"),
+          "labels" 					=> $labels,
+          "menu_icon" 				=> "dashicons-editor-ol",
+          "description" 			=> "",
+          "public" 					=> TRUE,
+          "publicly_queryable"		=> TRUE,
+          "show_ui" 				=> TRUE,
+          "show_in_rest" 			=> FALSE,
+          "rest_base" 				=> "",
+          "has_archive" 			=> TRUE,
+          "show_in_menu" 			=> TRUE,
+          "exclude_from_search"		=> FALSE,
+          "capability_type" 		=> "post",
+          "map_meta_cap" 			=> TRUE,
+          "hierarchical" 			=> FALSE,
+          "rewrite" 				=> ["slug" => ICTU_GC_CPT_STAP, "with_front" => TRUE],
+          "query_var" 				=> TRUE,
+          "supports" 				=> ["title", "editor", "thumbnail", "excerpt"],
+        ];
+		register_post_type(ICTU_GC_CPT_STAP, $args);
+		
+		
+		
+		// clean up after ourselves
+		flush_rewrite_rules();
   
     }
 
