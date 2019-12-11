@@ -1,5 +1,5 @@
 
-# sh '/shared-paul-files/Webs/git-repos/Gebruiker-Centraal---beelden-brieven---custom-post-types-taxonomies/distribute.sh' &>/dev/null
+# sh '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/plugins/ictu-gc-posttypes-brieven-beelden/distribute.sh' &>/dev/null
 
 echo '----------------------------------------------------------------';
 echo 'Distribute GC post type plugin';
@@ -9,7 +9,7 @@ echo 'Distribute GC post type plugin';
 > '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/gc_live_import/wp-content/debug.log'
 
 # copy to temp dir
-rsync -r -a --delete '/shared-paul-files/Webs/git-repos/Gebruiker-Centraal---beelden-brieven---custom-post-types-taxonomies/' '/shared-paul-files/Webs/temp/'
+rsync -r -a --delete '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/plugins/ictu-gc-posttypes-brieven-beelden/' '/shared-paul-files/Webs/temp/'
 
 # clean up temp dir
 rm -rf '/shared-paul-files/Webs/temp/.git/'

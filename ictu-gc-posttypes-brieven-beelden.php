@@ -1,20 +1,20 @@
 <?php
 
 /**
- * @link              https://wbvb.nl
-* @package           ictu-gc-posttypes-brieven-beelden
- *
- * @wordpress-plugin
- * Plugin Name:       ICTU / Gebruiker Centraal / Beelden en Brieven post types and taxonomies
- * Plugin URI:        https://github.com/ICTU/ICTU-Gebruiker-Centraal-Beelden-en-Brieven-CPTs-and-taxonomies
- * Description:       Plugin voor gebruikercentraal.nl voor het registeren van custom post types en taxonomieën
- * Version:           0.0.2
- * Author:            Paul van Buuren
- * Author URI:        https://wbvb.nl/
- * License:           GPL-2.0+
- * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:       ictu-gc-posttypes-brieven-beelden
- * Domain Path:       /languages
+	* @link              https://wbvb.nl
+	* @package           ictu-gc-posttypes-brieven-beelden
+	*
+	* @wordpress-plugin
+	* Plugin Name:       ICTU / Gebruiker Centraal / Beelden en Brieven post types and taxonomies (v2)
+	* Plugin URI:        https://github.com/ICTU/ICTU-Gebruiker-Centraal-Beelden-en-Brieven-CPTs-and-taxonomies
+	* Description:       Eerste versie voor gebruikercentraal.nl en beeldbank.gebruikercentraal.nl voor het registeren van CPTs voor beelden en brieven
+	* Version:           2.0.0
+	* Author:            Paul van Buuren & Tamara de Haas
+	* Author URI:        https://wbvb.nl/
+	* License:           GPL-2.0+
+	* License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
+	* Text Domain:       ictu-gc-posttypes-brieven-beelden
+	* Domain Path:       /languages
  */
 
 // If this file is called directly, abort.
