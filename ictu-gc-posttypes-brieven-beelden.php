@@ -9,6 +9,7 @@
 	* Plugin URI:        https://github.com/ICTU/ICTU-Gebruiker-Centraal-Beelden-en-Brieven-CPTs-and-taxonomies
 	* Description:       Eerste versie voor gebruikercentraal.nl en beeldbank.gebruikercentraal.nl voor het registeren van CPTs voor beelden en brieven
 	* Version:           2.0.0
+	* Version descr:     First setup of TOC menu added.
 	* Author:            Paul van Buuren & Tamara de Haas
 	* Author URI:        https://wbvb.nl/
 	* License:           GPL-2.0+
@@ -52,15 +53,17 @@ if ( ! defined( 'GC_TAX_ORGANISATIE' ) ) {
   define( 'GC_TAX_ORGANISATIE', 'organisatie' );
 }
 
+define( 'ICTU_GC_BEELDBANK_CSS',		'ictu-gc-plugin-beeldbank-css' );  
+define( 'ICTU_GC_BEELDBANK_BASE_URL',   trailingslashit( plugin_dir_url( __FILE__ ) ) );
+define( 'ICTU_GC_BEELDBANK_IMAGES',		esc_url( ICTU_GC_BEELDBANK_BASE_URL . 'images/' ) ); 
+define( 'ICTU_GC_BEELDBANK_VERSION',	'2.0.0' );
+define( 'ICTU_GC_BEELDBANK_DESC',		'First setup of TOC menu added.' );
+
+
 // nieuwe CPTs
 if (!defined('ICTU_GC_CPT_STAP')) {
     define('ICTU_GC_CPT_STAP', 'stap');   // slug for custom taxonomy 'document'
 }
-
-if (!defined('ICTU_GC_BEELDBANK_IMAGES')) {
-    define('ICTU_GC_BEELDBANK_IMAGES',  esc_url( plugins_url( '/images', dirname(__FILE__) ) ) );   // slug for custom taxonomy 'document'
-}
-
 
 
 //========================================================================================================
@@ -114,24 +117,34 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
      */
     private function setup_actions() {
 
-      add_action( 'init', array( $this, 'register_post_type' ) );
-      add_action( 'init', array( $this, 'acf_fields' ) );
-      
-      
-      add_action( 'plugins_loaded', array( $this, 'load_plugin_textdomain' ) );
-      add_action( 'init', array( $this, 'rhswp_dossiercontext_add_rewrite_rules' ) );
+		add_action( 'init', array( $this, 'register_post_type' ) );
+		add_action( 'init', array( $this, 'acf_fields' ) );
+		
+		
+		add_action( 'plugins_loaded', array( $this, 'load_plugin_textdomain' ) );
+		add_action( 'init', array( $this, 'rhswp_dossiercontext_add_rewrite_rules' ) );
+		
+		
+		add_filter( 'genesis_single_crumb',   array( $this, 'filter_breadcrumb' ), 10, 2 );
+		add_filter( 'genesis_page_crumb',     array( $this, 'filter_breadcrumb' ), 10, 2 );
+		add_filter( 'genesis_archive_crumb',  array( $this, 'filter_breadcrumb' ), 10, 2 ); 				
+		
+		
+		add_action( 'genesis_entry_content',  array( $this, 'append_content' ), 15 ); 				
+		
+		$this->templates = [];
+		$this->template_home = 'home-inclusie.php';
 
-
-      add_filter( 'genesis_single_crumb',   array( $this, 'filter_breadcrumb' ), 10, 2 );
-      add_filter( 'genesis_page_crumb',     array( $this, 'filter_breadcrumb' ), 10, 2 );
-      add_filter( 'genesis_archive_crumb',  array( $this, 'filter_breadcrumb' ), 10, 2 ); 				
-      
-      
-      add_action( 'genesis_entry_content',  array( $this, 'append_content' ), 15 ); 				
-
-            $this->templates = [];
-            $this->template_home = 'home-inclusie.php';
-
+		// add styling and scripts
+		add_action('wp_enqueue_scripts', array( $this, 'ictu_gc_register_frontend_style_script' ) );
+		
+		// add the page template to the templates list
+		add_filter('theme_page_templates', array( $this, 'ictu_gc_add_page_templates' ) );
+		
+		// activate the page filters
+		add_filter('template_redirect', array( $this, 'ictu_gc_frontend_use_page_template' ) );
+		
+        
 
     }
     
@@ -144,6 +157,35 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 	
 	}
 	
+
+	/** ----------------------------------------------------------------------------------------------------
+	 * Modify page content if using a specific page template.
+	 */
+	public function ictu_gc_frontend_use_page_template() {
+
+		global $post;
+		
+		$page_template = get_post_meta(get_the_ID(), '_wp_page_template', TRUE);
+		
+		if ($this->template_home == $page_template) {
+
+			remove_filter('genesis_post_title_output', 'gc_wbvb_sharebuttons_for_page_top', 15 );
+			
+			//* Remove standard header
+			remove_action('genesis_entry_header',	'genesis_entry_header_markup_open', 5 );
+			remove_action('genesis_entry_header',	'genesis_entry_header_markup_close', 15 );
+			remove_action('genesis_entry_header',	'genesis_do_post_title');
+			
+			//* Remove the post content (requires HTML5 theme support)
+			remove_action('genesis_entry_content', 'genesis_do_post_content');
+			
+			// append content
+			add_action( 'genesis_entry_content',	array( $this, 'ictu_gc_frontend_home_before_content' ), 8 );
+			add_action( 'genesis_after_content',	array( $this, 'ictu_gc_frontend_home_after_content' ), 12 );
+			
+		}
+		
+	}
 	
 	/** ----------------------------------------------------------------------------------------------------
 	* Hook this plugins functions into WordPress
@@ -153,8 +195,46 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 		require_once dirname(__FILE__) . '/includes/acffields-and-posttypes.php';
 	
 	}
+
+	/** ----------------------------------------------------------------------------------------------------
+	* Hides the custom post template for pages on WordPress 4.6 and older
+	*
+	* @param array $post_templates Array of page templates. Keys are filenames, values are translated names.
+	*
+	* @return array Expanded array of page templates.
+	*/
+	function ictu_gc_add_page_templates($post_templates) {
+	
+		$post_templates[$this->template_home] = _x('Beeldbank Home page', "naam template", "ictu-gc-posttypes-brieven-beelden");
+		return $post_templates;
+	
+	}
+	
 	
 	/** ----------------------------------------------------------------------------------------------------
+    /**ƒ
+     * Register frontend styles
+     */
+    public function ictu_gc_register_frontend_style_script() {
+
+        global $post;
+		$infooter = TRUE;
+
+		wp_enqueue_style( ICTU_GC_BEELDBANK_CSS, trailingslashit(plugin_dir_url(__FILE__)) . 'css/frontend-beeldbank.css', [], ICTU_GC_BEELDBANK_VERSION, 'all');
+		
+		
+//		if (WP_DEBUG) {
+//		wp_enqueue_script('inclusie-stepchart', trailingslashit(plugin_dir_url(__FILE__)) . 'js/stepchart.js', '', ICTU_GC_INCL_VERSION, $infooter);
+//		wp_enqueue_script('inclusie-btn', trailingslashit(plugin_dir_url(__FILE__)) . 'js/btn.js', '', ICTU_GC_INCL_VERSION, $infooter);
+//		}
+//		else {
+		wp_enqueue_script('inclusie-stepchart', trailingslashit(plugin_dir_url(__FILE__)) . 'js/stepchart.js', '', ICTU_GC_BEELDBANK_VERSION, $infooter);
+		wp_enqueue_script('inclusie-btn', trailingslashit(plugin_dir_url(__FILE__)) . 'js/btn.js', '', ICTU_GC_BEELDBANK_VERSION, $infooter);
+//		}
+		
+
+	}
+	
 
     /** ----------------------------------------------------------------------------------------------------
      * Do actually register the post types we need
@@ -456,6 +536,166 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
       endif;
         
     }  
+	
+	/**
+	* Handles the front-end display.
+	*
+	* @return void
+	*/
+	public function ictu_gc_frontend_home_before_content() {
+
+		global $post;
+	
+	    if (function_exists('get_field')) {
+	
+	        $home_inleiding = get_field('home_template_inleiding', $post->ID);
+	        $home_stappen = get_field('home_template_stappen', $post->ID);
+	        $home_template_poster = get_field('home_template_poster', $post->ID);
+	        $home_template_poster_linktekst = get_field('home_template_poster_linktekst', $post->ID);
+	
+	        echo '<div class="region region--intro">' .
+	          '<div id="entry__intro">' .
+	          '<h1 class="entry-title">' . get_the_title() . '</h1>';
+	
+	
+	        if ($home_inleiding) {
+	            echo $home_inleiding;
+	        }
+	
+	        if ($home_template_poster && $home_template_poster_linktekst) {
+	            echo '<a href="' . $home_template_poster['url'] . '" class="btn btn--download">' . $home_template_poster_linktekst . '</a>';
+	        }
+	
+	        echo '</div>'; // Einde Intro
+	
+	        if ($home_stappen):
+	
+	            $section_title = _x('Stappen', 'titel op home-pagina', 'ictu-gc-posttypes-inclusie');
+	            $title_id = sanitize_title($section_title . '-' . $post->ID);
+	            $stepcounter = 0;
+	
+	            echo '<div aria-labelledby="' . $title_id . '" class="stepchart">';
+	            echo '<h2 id="' . $title_id . '" class="visuallyhidden">' . $section_title . '</h2>';
+	
+	            echo '<div class="stepchart__bg">' .
+	              // Dit kan vast beter..  Paul? :)
+	              '<img src="' . ICTU_GC_BEELDBANK_IMAGES . '/stappenplan-bg-fullscreen.svg" alt="Stepchart Background">' .
+	              '</div>';
+	
+	            echo '<ol class="stepchart__items" role="tablist">';
+	
+	            foreach ($home_stappen as $stap):
+	
+	                $stepcounter++;
+	
+	                if (get_field('stap_verkorte_titel', $stap->ID)) {
+	                    $titel = get_field('stap_verkorte_titel', $stap->ID);
+	                }
+	                else {
+	                    $titel = get_the_title($stap->ID);
+	                }
+	
+	                $class = 'deel';
+	                if (get_field('stap_icon', $stap->ID)) {
+	                    $class = get_field('stap_icon', $stap->ID);
+	                }
+	
+	
+	                if (get_field('stap_inleiding', $stap->ID)) {
+	                    $inleiding = get_field('stap_inleiding', $stap->ID);
+	                }
+	                else {
+	                    $stap_post = get_post($stap->ID);
+	                    $content = $stap_post->post_content;
+	                    $inleiding = apply_filters('the_content', $content);
+	                }
+	
+	                $xtraclass = ' hidden';
+	                $title_id = sanitize_title(get_the_title($stap->ID) . '-' . $stepcounter);
+	                $steptitle = sprintf(_x('%s. %s', 'Label stappen', 'ictu-gc-posttypes-inclusie'), $stepcounter, $titel);
+	                $readmore = sprintf(_x('%s <span class="visuallyhidden">over %s</span>', 'home lees meer', 'ictu-gc-posttypes-inclusie'), _x('Lees meer', 'home lees meer', 'ictu-gc-posttypes-inclusie'), get_the_title($stap->ID));
+	
+	
+	                echo '<li class="stepchart__item">';
+	
+	                echo '<button class="stepchart__button btn btn--stepchart ' . $class . '" aria-selected="false" role="tab">' .
+	                  '<span class="btn__icon"></span>' .
+	                  '<span class="btn__text">' . $steptitle . '</span>' .
+	                  '</button>';
+	
+	                echo '<section class="stepchart__description" aria-hidden="true" aria-labelledby="' . $title_id . '" role="tabpanel">' .
+	                  '<button type="button" class="btn btn--close" data-trigger="action-popover-close">Sluit</button>' .
+	                  '<h3 id="' . $title_id . '" class="stepchart__title">' . get_the_title($stap->ID) . '</h3>' .
+	                  '<div class="description">' . $inleiding . '</div>' .
+	                  '<a href="' . get_permalink($stap->ID) . '" class="cta">' . $readmore . '</a>' .
+	                  '</section>';
+	
+	                echo '</li>';
+	
+	            endforeach;
+	
+	            echo '</ol>';
+	            echo '</div>';
+	
+	        endif;
+	
+	
+	        echo '</div>'; // region--intro, lekker herbruikbaar!
+	
+	        if (have_rows('home_template_doelgroepen')):
+	
+	            $section_title = _x('Doelgroepen', 'titel op Stap-pagina', 'ictu-gc-posttypes-inclusie');
+	            $title_id = sanitize_title($section_title . '-' . $post->ID);
+	            $posttype = '';
+	
+	            echo '<div class="region region--content-top">' .
+	
+	              '<div class="overview">' .
+	              // Items
+	              '<div class="overview__items grid grid--col-3">';
+	
+	            // loop through the rows of data
+	            while (have_rows('home_template_doelgroepen')) : the_row();
+	
+	                $doelgroep = get_sub_field('home_template_doelgroepen_doelgroep');
+	                $citaat = get_sub_field('home_template_doelgroepen_citaat');
+	
+	                echo $this->ictu_gc_doelgroep_card($doelgroep, $citaat);
+	
+	            endwhile;
+	
+	            echo '</div>';
+	
+	            $doelgroeplink = get_post_type_archive_link(ICTU_GC_CPT_DOELGROEP);
+	            $label = _x('Alle doelgroepen', 'Linktekst doelgroepoverzicht', 'ictu-gc-posttypes-inclusie'); // $obj->name;
+	            $doelgroeppaginaid = get_field('themesettings_inclusie_doelgroeppagina', 'option');
+	
+	            if ($doelgroeppaginaid) {
+	                $doelgroeplink = get_permalink($doelgroeppaginaid);
+	                $label = get_the_title($doelgroeppaginaid);
+	            }
+	
+	
+	            echo '<a href="' . $doelgroeplink . '" class="cta ' . $posttype . '">' . $label . '</a>';
+	        endif;
+	
+	        echo '</div>'; // Section content-top
+	
+	
+	    }	
+	}
+	/**
+	* Handles the front-end display.
+	*
+	* @return void
+	*/
+	public function ictu_gc_frontend_home_after_content() {
+	
+		global $post;
+	
+	}
+
+    
 
 }
 
