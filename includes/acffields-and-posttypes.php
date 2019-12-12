@@ -228,11 +228,11 @@ if( ! function_exists('ictu_gc_inclusie_initialize_acf_fields') ) {
 					'id' => '',
 				),
 				'choices' => array(
-					'identificeer' => '<img src="/wp-content/plugins/ictu-gc-posttypes-inclusie/images/identificeer.png"> Bereid voor',
-					'verdiep' => '<img src="/wp-content/plugins/ictu-gc-posttypes-inclusie/images/verdiep.png"> Ontwerp',
-					'ontwerp' => '<img src="/wp-content/plugins/ictu-gc-posttypes-inclusie/images/ontwerp.png"> Test',
-					'evalueer' => '<img src="/wp-content/plugins/ictu-gc-posttypes-inclusie/images/evalueer.png"> Evalueer',
-					'deel' => '<img src="/wp-content/plugins/ictu-gc-posttypes-inclusie/images/deel.png"> Deel',
+					'bereidvoor' => '<img src="' . esc_url( plugins_url( 'images/icons/stap/verdiep.png', dirname(__FILE__) ) )  . '"> Bereid voor',
+					'ontwerp' => '<img src="' . esc_url( plugins_url( 'images/icons/stap/ontwerp.png', dirname(__FILE__) ) )  . '"> Ontwerp',
+					'test' => '<img src="' . esc_url( plugins_url( 'images/icons/stap/lampje.png', dirname(__FILE__) ) )  . '"> Test',
+					'evalueer' => '<img src="' . esc_url( plugins_url( 'images/icons/stap/evalueer.png', dirname(__FILE__) ) )  . '"> Pas aan',
+					'deel' => '<img src="' . esc_url( plugins_url( 'images/icons/stap/deel.png', dirname(__FILE__) ) )  . '"> Deel',
 				),
 				'allow_null' => 0,
 				'other_choice' => 0,
@@ -260,6 +260,7 @@ if( ! function_exists('ictu_gc_inclusie_initialize_acf_fields') ) {
 				'media_upload' => 1,
 				'delay' => 0,
 			),
+/*
 			array(
 				'key' => 'field_5d7245be8ffc0',
 				'label' => 'Titel bij de methodes',
@@ -387,6 +388,8 @@ if( ! function_exists('ictu_gc_inclusie_initialize_acf_fields') ) {
 				'append' => '',
 				'maxlength' => '',
 			),
+	*/			
+/*	
 			array(
 				'key' => 'field_5d84d3eed46b2',
 				'label' => 'Bijbehorende tips Optimaal Digitaal',
@@ -491,6 +494,8 @@ if( ! function_exists('ictu_gc_inclusie_initialize_acf_fields') ) {
 					),
 				),
 			),
+	*/			
+			
 		),
 		'location' => array(
 			array(
