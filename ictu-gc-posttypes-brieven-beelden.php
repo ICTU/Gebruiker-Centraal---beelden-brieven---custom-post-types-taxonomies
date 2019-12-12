@@ -57,6 +57,11 @@ if (!defined('ICTU_GC_CPT_STAP')) {
     define('ICTU_GC_CPT_STAP', 'stap');   // slug for custom taxonomy 'document'
 }
 
+if (!defined('ICTU_GC_BEELDBANK_IMAGES')) {
+    define('ICTU_GC_BEELDBANK_IMAGES',  esc_url( plugins_url( '/images', dirname(__FILE__) ) ) );   // slug for custom taxonomy 'document'
+}
+
+
 
 //========================================================================================================
 // constants for rewrite rules
@@ -317,12 +322,12 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
         // ---------------------------------------------------------------------------------------------------
         // custom post type voor 'stappen'
         $labels = [
-          "name"					=> _x('Stappen', 'stap type', "ictu-gc-posttypes-brieven-beelden"),
+          "name"					=> _x('Stappen en richtlijnen', 'stap type', "ictu-gc-posttypes-brieven-beelden"),
           "singular_name"			=> _x('Stap', 'stap type', "ictu-gc-posttypes-brieven-beelden"),
-          "menu_name" 				=> _x('Stappen', 'stap type', "ictu-gc-posttypes-brieven-beelden"),
+          "menu_name" 				=> _x('Stappen en richtlijnen', 'stap type', "ictu-gc-posttypes-brieven-beelden"),
           "all_items" 				=> _x('Alle stappen', 'stap type', "ictu-gc-posttypes-brieven-beelden"),
-          "add_new" 				=> _x('Nieuwe stap toevoegen', 'stap type', "ictu-gc-posttypes-brieven-beelden"),
-          "add_new_item" 			=> _x('Nieuwe stap toevoegen', 'stap type', "ictu-gc-posttypes-brieven-beelden"),
+          "add_new" 				=> _x('Nieuwe toevoegen', 'stap type', "ictu-gc-posttypes-brieven-beelden"),
+          "add_new_item" 			=> _x('Nieuwe toevoegen', 'stap type', "ictu-gc-posttypes-brieven-beelden"),
           "edit_item" 				=> _x('Stap bewerken', 'stap type', "ictu-gc-posttypes-brieven-beelden"),
           "new_item" 				=> _x('Nieuwe stap', 'stap type', "ictu-gc-posttypes-brieven-beelden"),
           "view_item" 				=> _x('Stap bekijken', 'stap type', "ictu-gc-posttypes-brieven-beelden"),
@@ -335,7 +340,7 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
         ];
 
         $args = [
-          "label" 					=> _x('Stappen', 'Stappen label', "ictu-gc-posttypes-brieven-beelden"),
+          "label" 					=> _x('Stappen en richtlijnen', 'Stappen label', "ictu-gc-posttypes-brieven-beelden"),
           "labels" 					=> $labels,
           "menu_icon" 				=> "dashicons-editor-ol",
           "description" 			=> "",
@@ -344,15 +349,15 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
           "show_ui" 				=> TRUE,
           "show_in_rest" 			=> FALSE,
           "rest_base" 				=> "",
-          "has_archive" 			=> TRUE,
+          "has_archive" 			=> FALSE,
           "show_in_menu" 			=> TRUE,
           "exclude_from_search"		=> FALSE,
           "capability_type" 		=> "post",
           "map_meta_cap" 			=> TRUE,
-          "hierarchical" 			=> FALSE,
-          "rewrite" 				=> ["slug" => ICTU_GC_CPT_STAP, "with_front" => TRUE],
+          "hierarchical" 			=> TRUE,
+          "rewrite" 				=> [ "slug" => ICTU_GC_CPT_STAP, "with_front" => TRUE ],
           "query_var" 				=> TRUE,
-          "supports" 				=> ["title", "editor", "thumbnail", "excerpt"],
+          "supports" 				=> [ "title", "editor", "excerpt", "page-attributes" ],
         ];
 		register_post_type(ICTU_GC_CPT_STAP, $args);
 		
@@ -391,15 +396,54 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
     /** ----------------------------------------------------------------------------------------------------
      * filter the breadcrumb
      */
-    public function filter_breadcrumb( $crumb = '', $args = '' ) {
+	public function filter_breadcrumb( $crumb = '', $args = '' ) {
 
-      global $post;
-      
-      // code hier
+		global $post;
+		
+		$span_before_start = '<span class="breadcrumb-link-wrap" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">';
+		$span_between_start = '<span itemprop="name">';
+		$span_before_end = '</span>';
+		
+		$separator = '<span class="separator">&nbsp;</span>';
+		
+		if ( is_singular( ICTU_GC_CPT_STAP ) ) {
+		
+			$crumb_last 	= get_the_title( get_the_id() );
+			$crumb_parents	= '';
+			
+			if ( wp_get_post_parent_id( get_the_id() ) ) {
+				// this item has a parent
+				$currentitemhasparents	= true;
+				$counter 				= 0;
+				
+				$currentid 				= wp_get_post_parent_id( get_the_id() );
+				
+				while( $currentitemhasparents ) {
+					
+					$counter++;
+					$new_currentid = $currentid;
+//					echo 'joehoe: ' . $counter . '<br>';
+					
+					$crumb_parents = $span_before_start . '<a href="' . get_the_permalink( $currentid ) . '">' . get_the_title( $currentid ) . '</a>' . $span_before_end . $separator . $crumb_parents;
 
-      return $crumb;
-
-    }
+					
+					if ( wp_get_post_parent_id( $currentid ) ) {
+						$new_currentid			= wp_get_post_parent_id( $currentid );
+					}					
+					else {
+						$currentitemhasparents	= false;
+					}
+					$currentid = $new_currentid;
+				}
+			}
+			
+			$crumb = $crumb_parents . $crumb_last;
+		
+		}
+		
+		return $crumb;
+		
+	}
     
     //** ---------------------------------------------------------------------------------------------------
 
