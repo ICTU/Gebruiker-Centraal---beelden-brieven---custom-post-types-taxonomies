@@ -1,0 +1,507 @@
+/*
+// Gebruiker Centraal - less/includes/_template_doelgroeppagina.less
+// ----------------------------------------------------------------------------------
+// CSS specifiek voor pagina's gebaseerd op 
+// het template 'inclusie_template_doelgroeppagina'
+// ----------------------------------------------------------------------------------
+// @package   ictu-gc-posttypes-inclusie
+// @author    Paul van Buuren
+// @license   GPL-2.0+
+// @version   0.0.10c
+// @desc.     Bugfixing. Styling for page and other content types. Title for methodes.
+// @link      https://github.com/ICTU/Gebruiker-Centraal---Inclusie---custom-post-types-taxonomies
+ */
+@import "../mixins";
+
+/*
+WP TEMPLATES - Doelgroep
+---------------------------------------------------------------------------------------------------- */
+
+body.single-doelgroep {
+  #maincontent {
+
+    article.entry {
+      margin-bottom: @demarges;
+      margin-top: 0;
+      position: relative;
+
+      .entry-content {
+        padding-left: 0;
+        padding-right: 0;
+      }
+
+      .entry-title,
+      .wrap {
+        max-width: @contentwidth_761;
+        padding-left: @linkerrechtermarge;
+        padding-right: @linkerrechtermarge;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+
+  #maincontent article.entry {
+    max-width: @contentwidth_960;
+    margin-left: auto;
+    margin-right: auto;
+
+    .wrap {
+      background: none;
+
+      @media only screen and (min-width: ( @break_fullwidth )) {
+        padding-top: 5rem;
+      }
+    }
+  }
+}
+
+#doelgroep-inleiding {
+  .gc-box-shadow();
+  position: relative;
+  padding: 2rem;
+  background: @color-primary;
+  color: @white;
+  max-width: @contentwidth_960;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 0;
+
+  &:after {
+    content: ' ';
+    height: 22rem;
+    width: 100%;
+    clip-path: polygon(0 9%, 100% 0, 100% 100%, 0% 100%);
+    background: @gc_old_green;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -2;
+  }
+
+  @media only screen and (max-width: ( @break_tablet )) {
+    padding-bottom: ~"calc(@{citaten_minheight} - 2rem )";
+  }
+
+  // Desktop layout
+  @media only screen and (min-width: ( @break_tablet )) {
+    padding-left: 40%;
+    display: flex;
+    flex-direction: column;
+    min-height: 35rem;
+
+    &:after {
+      display: none;
+    }
+
+    > header {
+      order: 2;
+    }
+
+    #doelgroep-inleiding-citaten {
+      order: 1;
+    }
+
+    .doelgroep__posttext {
+      order: 3;
+      padding-right: 5rem;
+    }
+
+    .tegeltje {
+      padding-left: 3rem;
+      padding-right: 3rem;
+
+      &:before {
+        right: auto;
+        left: 0;
+        bottom: 50px;
+        margin-left: -28px;
+        clip-path: polygon(100% 34%, 0 100%, 100% 100%);
+      }
+
+      &:after {
+        right: auto;
+        left: 0;
+        bottom: 50px;
+        margin-left: -28px;
+        clip-path: polygon(100% 34%, 0 100%, 100% 100%);
+      }
+    }
+  }
+
+  @media only screen and (min-width: ( @break_fullwidth )) {
+    padding-left: 340px;
+  }
+
+  header {
+    padding-left: 0;
+    margin: 0;
+  }
+
+  h1 {
+    .font-size(40);
+    line-height: 48px;
+
+    @media only screen and (min-width: ( @break_tablet )) {
+      .font-size(68);
+      line-height: 64px;
+      text-transform: none;
+      margin-top: 2rem;
+    }
+  }
+
+  .tegeltje {
+    margin-top: 0;
+    margin-bottom: 0;
+
+    @media only screen and (min-width: ( @break_tablet )) {
+      margin-left: -3rem;
+      margin-top: -5rem;
+    }
+  }
+}
+
+.doelgroep__avatar {
+  content: " ";
+  display: block;
+  position: absolute;
+  width: 30rem;
+  height: 30rem;
+  background: url('../images/avatar/poppetje-1.svg') center bottom no-repeat;
+  z-index: -1;
+
+  @media only screen and (max-width: ( @break_tablet )) {
+    bottom: 0;
+    left: 50%;
+    margin-left: -15rem;
+  }
+
+  @media only screen and (min-width: ( @break_tablet )) {
+    left: 0;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    width: 35%;
+    min-width: 260px;
+    background-color: @gc_old_green;
+    overflow: hidden;
+    background-position: 20% 100%;
+    background-size: 80% auto;
+
+    &:after {
+      content: " ";
+      background: @color-primary;
+      position: absolute;
+      width: 5rem;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      transform: rotate(-2deg);
+      margin-right: -.9rem;
+      margin-top: -.5rem;
+      margin-bottom: -.5rem;
+    }
+  }
+
+  @media only screen and (min-width: ( @break_fullwidth )) {
+    background-size: auto 300px;
+    background-position: 35% 100%;
+    width: 340px;
+    height: 100%;
+  }
+
+
+}
+
+.doelgroep__posttext {
+  margin-top: 1.6rem;
+}
+
+.facts-figures {
+	.gc-box-shadow();
+	background: @gc_darkerblue;
+	color: @white;
+	display: flex;
+	position: relative;
+	z-index: 5;
+	
+	.source {
+		background: @gc_darkerblue;
+		*, a {
+			color: @white;
+		}
+	}
+	
+	span {
+		display: block;
+	}
+	
+	.source {
+		.font-size(20);
+		z-index: +1;
+		position: relative;;
+		padding: 3rem;
+	}
+	
+	cite {
+		display: block;
+		clear: both;
+		float: none;
+		.font-size(14);
+		margin-top: 1.5rem;
+		padding-top: 1.5rem;
+		border-top: .1rem solid @gc_blue_light;
+	}
+	
+	.hugely {
+		padding-top: 2rem;
+		.font-size(40);
+		text-align: center;
+		font-family: @bodyfont_bold;
+		line-height: 1.2;
+	}
+
+	@media only screen and (max-width: ( @break_fullwidth ) ) {
+		& {
+			flex-direction: column;
+		}
+	}
+	
+	@media only screen and (min-width: ( @break_fullwidth ) ) {
+		background: @gc_darkerblue; /* Old browsers */
+		position: relative;
+		
+		.source {
+			flex-basis: ( ( 100% / 3 ) * 2 );
+		}
+		
+		.hugely {
+			padding: 3rem;
+			background: @gc_darkblue;
+			position: relative;
+			width: 318px;
+			display: block;
+			overflow: hidden;
+			.font-size(40);
+			line-height: 1.2;
+			padding: 4rem;
+			
+			&:before {
+				content: " ";
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				top: 0;
+				width: 5rem;
+				margin-right: -4rem;
+				margin-top: -.5rem;
+				background: @gc_darkerblue;
+				transform: rotate(-2deg);
+			}
+		}
+		
+		&:after {
+			margin-bottom: -10rem;
+			height: 10rem;
+		}
+	}
+}
+
+.spacer-doelgroep {
+	background: @gc_pantybrown_light;
+	height: 5rem;
+	
+	@media only screen and (min-width: ( @break_fullwidth ) ) {
+		height: 10rem;
+	}
+}
+
+.dosdonts {
+	margin-bottom: 4rem;
+	box-shadow: 3px 3px 0px rgba(#000, 0.2);
+	border: 1px solid @gc_cardbordergrey;
+	
+	.flexblock {
+		border-style: none;
+		margin-top: 0;
+		padding: 2rem;
+		
+		@media only screen and ( min-width: ( @break_phone )) {
+			& {
+				width: 50%;
+				margin-left: 0;
+				margin-right: 0;
+			}
+		}
+		
+		h2, h3, h4 {
+			margin-top: 0;
+			padding-top: 0;
+		}
+		
+		ul li {
+			padding-left: 1rem;
+			margin-bottom: 2rem;
+		}
+		
+		&.aanrader {
+			ul li {
+				list-style-image: url('../images/list-item-do.svg');
+			}
+		}
+		&.afrader {
+			background: @gc_pantybrown_xlight;
+			ul li {
+				list-style-image: url('../images/list-item-dont.svg');
+			}
+		}
+	}
+	
+	h4 {
+		padding-bottom: 2rem;
+		font-family: @bodyfont_bold;
+		border-bottom: 1px solid @gc_cardbordergrey;
+	}
+}
+
+.content .doelgroep-tips-title {
+	overflow: hidden;
+	clear: both;
+	padding: 2rem 0 .5rem 0;
+	
+	margin-top: 4rem;
+	margin-bottom: 0;
+	.font-size( 46 );
+	text-transform: uppercase;
+	border-top: 2px solid @gc_cardbordergrey;
+	
+	span {
+		display: inline-block;
+		overflow: hidden;
+		float: left;
+		margin-top: .75rem;
+		margin-right: 2rem;
+		width: 7rem;
+		height: 8.5rem;
+		background: @gc_a11y_green;
+		position: relative;
+		.gc-box-shadow();
+		
+		&:before,
+		&:after {
+			content: ' ';
+			display: block;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			overflow: hidden;
+		}
+		&:before {
+			background: @gc_old_green;
+			bottom: 50%;
+			transform: translateX(-1rem) translateY(-2rem) rotate(8deg);
+			height: 6rem;
+			width: 10rem;
+		}
+		&:after {
+			background-image: url('../images/avatar/poppetje-1.svg');
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center top;
+		}
+	}
+}
+
+.doelgroep-tips {
+	border-top: 1px solid @gc_cardbordergrey;
+	padding-top: 2rem;
+	margin-top: 2rem;
+	overflow: hidden;
+	
+	h2, h3 {
+		font-family: @bodyfont_bold;
+		.font-size( 24 );
+		background: url('../images/icons/tip.svg') no-repeat left center;
+		padding-left: 4rem;
+		padding-top: .25rem;
+		padding-top: .25rem;
+		a {
+			text-decoration: none;
+			&:hover,
+			&:active,
+			&:focus {
+				color: @txt;
+				text-decoration: underline;
+			}
+		}
+	}
+}
+
+
+//--------------------------------------------------------------------------------------------------------------
+// MEUK!
+//--------------------------------------------------------------------------------------------------------------
+
+@dinges1: 		( @contentwidth_960 - @contentwidth_761 );
+@dinges2: 		( @dinges1 / 2 );
+@dinges2_neg:	( @dinges2 * -1 );
+
+.table-of-contents {
+	.visuallyhidden();	
+}
+	
+.xtable-of-contents {
+	padding-bottom: 4rem;
+	margin-left: ( -1 * @dinges2 );
+	margin-left: ~"calc( -2rem + @{dinges2_neg})";
+	margin-right: ( -1 * @dinges2 );
+	margin-right: ~"calc( -2rem + @{dinges2_neg})";
+	overflow: hidden;
+	padding: 0 ( @dinges2 * -1 ) 2rem 0;
+	
+	.table-of-contents-inner {
+		background: @gc_a11y_green;
+		box-shadow: 6px 0px 24px black;
+		width: 100%;
+		padding: 2rem;
+		padding-left: ( -1 * @dinges2 );
+		padding-left: ~"calc( 2rem + @{dinges2})";
+		padding-right: ( -1 * @dinges2 );
+		padding-right: ~"calc( 2rem + @{dinges2})";
+
+		*, a {
+			color: @wit;
+		}
+		
+	}
+
+	h2, h3 {
+		margin-top: 0;
+		padding-top: 0;
+	}
+	
+
+	ul li {
+		display: list-item;
+		padding: 0 2em 0 .3em;
+		margin-left: .2em;
+		list-style-image: url('../images/icons/icon-list-item.svg');      
+		.iconaddbullet('../images/icons/icon-list-item.svg', #002f3e, @wit );
+
+		a {
+			text-decoration: none;
+			&:hover,
+			&:active,
+			&:focus {
+				text-decoration: underline;
+				color: @wit;
+			}
+		}
+	}
+	
+}
+

@@ -1,0 +1,170 @@
+@import "../mixins";
+
+
+.card--doelgroep {
+  padding: 0;
+
+  .tegeltje {
+    position: absolute;
+    top: 0;
+    left: 1.5rem;
+    right: 1.5rem;
+    margin-top: -44rem;
+  }
+
+  .card__image {
+    height: 42rem;
+    width: 100%;
+    background: @color-primary url('../images/avatar/poppetje-1.svg') center bottom no-repeat;
+    background-size: auto 290px;
+  }
+
+  .card__content {
+    background: none;
+
+    &:before {
+      display: none;
+    }
+
+    &:after {
+      position: absolute;
+      content: " ";
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: @white;
+      height: 7rem;
+      z-index: -1;
+    }
+
+    h2 {
+      .font-size(40);
+      background: none;
+      overflow: hidden;
+      position: relative;
+      margin-top: -5rem;
+      min-height: 11rem;
+      z-index: +1;
+      padding: 4rem 0 0 0;
+      text-transform: uppercase;
+      font-family: @font-secondary;
+
+      > a {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 1rem 3.5rem 1.5rem @gutter;
+
+        .btn {
+          margin-right: 0;
+        }
+      }
+
+      &:before {
+        content: " ";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 110%;
+        height: 17rem;
+        background: @white;
+        margin: 3rem -2rem 0;
+        transform: rotate(2deg);
+        z-index: -1;
+      }
+
+      span {
+        display: block;
+
+        &:first-child {
+          width: 100%;
+
+          .font-size(14);
+          line-height: 20px;
+          margin-bottom: .8rem;
+          font-family: @montserrat_semibold;
+          text-transform: none;
+        }
+      }
+    }
+  }
+
+  .btn--arrow {
+    position: absolute;
+    right: 1.5rem;
+    top: 7.8rem;
+    height: 4.5rem;
+  }
+}
+
+// More margin top for Doelgroeps whenever in a grid {
+
+.grid--col-3 > .card--doelgroep {
+  margin-top: 5rem;
+}
+
+// Geen margin in tegeltje P
+
+
+
+.tegeltje {
+  padding: 1em;
+  min-height: 120px;
+  color: @txt;
+  background: white;
+  margin-bottom: 25rem;
+  margin-top: -5rem;
+
+  .font-size(22);
+  line-height: 34px;
+
+  box-shadow: 3px 3px 0px rgba(#000, 0.2);
+  position: relative;
+  z-index: 500;
+
+  &:before {
+    content: ' ';
+    display: block;
+    height: 28px;
+    width: 28px;
+    position: absolute;
+    right: 1.8rem;
+    bottom: 0;
+    background: rgba(#000, 0.2); // @wit;
+    transform: translateY(28px);
+    z-index: 450;
+    clip-path: polygon(0 0, 0 100%, 70% 0);
+  }
+
+  &:after {
+    content: ' ';
+    display: block;
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    right: 2rem;
+    bottom: 0;
+    background: @wit;
+    transform: translateY(25px);
+    z-index: 450;
+    box-shadow: 3px 3px 0px rgba(#000, 0.2);
+    clip-path: polygon(0 0, 0 100%, 70% 0);
+  }
+
+  p {
+    margin: 0;
+  }
+
+  strong {
+    font-family: @bodyfont_bold;
+    font-weight: 700;
+    .font-size(14);
+
+    &:before {
+      content: '– ';
+      display: inline-block;
+      float: left;
+      line-height: 2.8;
+      margin-right: .5em;
+    }
+  }
+}
