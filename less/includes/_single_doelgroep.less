@@ -79,6 +79,7 @@ body.single-doelgroep {
     left: 0;
     right: 0;
     z-index: -2;
+	speak: none;
   }
 
   @media only screen and (max-width: ( @break_tablet )) {
@@ -171,6 +172,7 @@ body.single-doelgroep {
   height: 30rem;
   background: url('../images/avatar/poppetje-1.svg') center bottom no-repeat;
   z-index: -1;
+	speak: none;
 
   @media only screen and (max-width: ( @break_tablet )) {
     bottom: 0;
@@ -202,6 +204,7 @@ body.single-doelgroep {
       margin-right: -.9rem;
       margin-top: -.5rem;
       margin-bottom: -.5rem;
+		speak: none;
     }
   }
 
@@ -299,6 +302,7 @@ body.single-doelgroep {
 				margin-top: -.5rem;
 				background: @gc_darkerblue;
 				transform: rotate(-2deg);
+				speak: none;
 			}
 		}
 		
@@ -328,14 +332,6 @@ body.single-doelgroep {
 		margin-top: 0;
 		padding: 2rem;
 		
-		@media only screen and ( min-width: ( @break_phone )) {
-			& {
-				width: 50%;
-				margin-left: 0;
-				margin-right: 0;
-			}
-		}
-		
 		h2, h3, h4 {
 			margin-top: 0;
 			padding-top: 0;
@@ -364,6 +360,26 @@ body.single-doelgroep {
 		font-family: @bodyfont_bold;
 		border-bottom: 1px solid @gc_cardbordergrey;
 	}
+
+	&.grid--col-2 {
+		@media only screen and ( min-width: ( @break_phone )) {
+			.flexblock {
+				width: 50%;
+				margin-left: 0;
+				margin-right: 0;
+			}
+		}
+	}	
+	&.grid--col-1 {
+		@media only screen and ( min-width: ( @break_phone )) {
+			ul {
+				columns: 300px 2;
+				li {
+					margin-right: 2rem;
+				}
+			}
+		}
+	}	
 }
 
 .content .doelgroep-tips-title {
@@ -399,6 +415,7 @@ body.single-doelgroep {
 			left: 0;
 			right: 0;
 			overflow: hidden;
+			speak: none;
 		}
 		&:before {
 			background: @gc_old_green;
