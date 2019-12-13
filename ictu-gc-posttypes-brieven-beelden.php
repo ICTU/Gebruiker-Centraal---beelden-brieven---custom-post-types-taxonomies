@@ -144,6 +144,8 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 		// activate the page filters
 		add_filter('template_redirect', array( $this, 'ictu_gc_frontend_use_page_template' ) );
 		
+        // disable the author pages
+        add_filter('template_redirect', array( $this, 'ictu_gc_disable_author_pages' ) );
         
 
     }
@@ -536,6 +538,24 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
       endif;
         
     }  
+
+        /** ----------------------------------------------------------------------------------------------------
+         * disable all author pages
+         */
+        function ictu_gc_disable_author_pages() {
+
+		    global $wp_query;
+		
+		    if ( is_author() ) {
+		        // Redirect to homepage, set status to 301 permenant redirect. 
+		        // Function defaults to 302 temporary redirect. 
+		        wp_redirect(get_option('home'), 301); 
+		        exit; 
+		    }
+
+        }
+
+    
 	
 	/**
 	* Handles the front-end display.
