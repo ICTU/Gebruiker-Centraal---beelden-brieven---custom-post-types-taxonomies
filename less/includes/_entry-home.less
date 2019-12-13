@@ -1,0 +1,138 @@
+// Gebruiker Centraal - entry-home.less
+// ----------------------------------------------------------------------------------
+// styling voor homepage template
+// ----------------------------------------------------------------------------------
+// @package   ictu-gc-posttypes-inclusie
+// @author    Paul van Buuren / Haas Ontwerp
+// @license   GPL-2.0+
+// @version   0.0.11
+// @desc.     JS homepage voor openen en sluiten modal windows verbeterd.
+// @link      https://github.com/ICTU/Gebruiker-Centraal---Inclusie---custom-post-types-taxonomies
+
+@import "../mixins";
+
+.home {
+  .content-sidebar-wrap {
+    padding: 0;
+
+    > .content {
+      padding: 0;
+      box-shadow: none;
+      background: none;
+    }
+  }
+
+  .entry > .wrap,
+  &.full-width-content .content {
+    max-width: none;
+    width: 100%;
+  }
+
+  #maincontent article.entry .wrap {
+    background: none;
+    padding: 0;
+  }
+
+  #entry__intro {
+    .font-size(22);
+    position: relative;
+    z-index: +5;
+
+    @media only screen and ( min-width: ( @break_fullwidth )) {
+      .btn {
+        position: absolute;
+        right: 0;
+        top: 0;
+        margin-top: 1.2rem;
+      }
+
+      h1 {
+        margin-right: 12rem;
+      }
+    }
+  }
+
+  .region--intro {
+    padding-bottom: 8rem;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+
+    &:before {
+      content: " ";
+      position: absolute;
+      display: block;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      margin: 0 -5% -5%;
+      height: 40%;
+      transform: rotate(3deg);
+      background: @inclusierood;
+		speak: none;
+
+      @media only screen and ( min-width: ( @break_fullwidth )) {
+        height: 48%;
+      }
+    }
+  }
+
+  .region--content-top > .overview {
+    margin-top: -8rem;
+  }
+
+  .footer-widgets {
+    margin-top: 0;
+  }
+}
+
+#doelgroep-archive-p {
+  .gc-padding();
+}
+
+// Frontpage margin
+.page-template-home-inclusie {
+  #maincontent article.entry {
+    @media only screen and ( min-width: ( @break_fullwidth )) {
+      margin-bottom: calc(@spacer-large - 2rem); // There was already a margin
+    }
+  }
+}
+
+//~"calc(@{a} + 7px)";
+
+#home_template_teasers {
+  .gc-padding();
+  padding-bottom: @spacer-default;
+  max-width: ~"calc(@{contentmaxwidth} + @{gutter} * 2)";
+  position: relative;
+  z-index: 5;
+  margin: 0 auto;
+
+  &:before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: @wit;
+    margin-left: -9999px;
+    margin-right: -9999px;
+    z-index: -1;
+		speak: none;
+  }
+
+  .cta {
+    float: none;
+  }
+
+  @media only screen and ( min-width: ( @break_fullwidth )) {
+    padding-top: 2rem;
+    padding-bottom: @spacer-large;
+  }
+
+  h2 {
+    .gc-section-heading();
+  }
+}
