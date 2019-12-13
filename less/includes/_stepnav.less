@@ -187,27 +187,31 @@
   display: inline-block;
   width: 4.5rem;
   height: 4.5rem;
-  background: @gc_orange url('../images/icon-identificeer.svg') center center no-repeat;
+  background: @gc_orange url('../images/icons/stap/verdiep.svg') center center no-repeat;
   background-size: 65% auto;
   margin: 0 auto;
   border-radius: 50rem;
   transition: background-color .2s, transform .2s;
   outline: .7rem solid @inclusiekoraal;
 
-  &.icon--deel {
-    background-image: url('../images/icon-deel.svg');
+  &.bereidvoor {
+    background-image: url('../images/icons/stap/verdiep.svg');
+  }
+
+  &.icon--ontwerp {
+    background-image: url('../images/icons/stap/ontwerp.svg');
+  }
+
+  &.icon--test {
+    background-image: url('../images/icons/stap/lampje.svg');
   }
 
   &.icon--evalueer {
     background-image: url('../images/icon-evalueer.svg');
   }
 
-  &.icon--ontwerp {
-    background-image: url('../images/icon-ontwerp.svg');
-  }
-
-  &.icon--verdiep {
-    background-image: url('../images/icon-verdiep.svg');
+  &.icon--deel {
+    background-image: url('../images/icon-deel.svg');
   }
 
   @media only screen and ( min-width: ( @break_phone )) {
