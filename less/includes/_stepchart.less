@@ -1,0 +1,290 @@
+.stepchart {
+  position: relative;
+  max-width: @max-width-inner;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media only screen and ( min-width: ( @break_tablet )) {
+    margin-top: -13rem;
+  }
+}
+
+.stepchart__bg {
+  position: relative;
+  > img {
+    display: none;
+  }
+
+  @media only screen and ( min-width: ( @break_tablet )) {
+    > img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+.entry-content .stepchart__items {
+  margin: 0;
+  padding: 0;
+}
+
+.stepchart__item {
+  list-style: none;
+
+  @media only screen and ( max-width: ( @break_tablet )) {
+    .gc-box-shadow();
+    margin-top: @gutter;
+  }
+
+  @media only screen and ( min-width: ( @break_tablet )) {
+    position: absolute;
+    margin-top: -60px;
+    margin-left: -70px;
+
+    &:first-child {
+      top: 50%;
+      left: 50%;
+    }
+
+    &:nth-child(2) {
+      top: 30%;
+      left: 28%;
+    }
+
+    &:nth-child(3) {
+      top: 45.5%;
+      right: 16%;
+    }
+
+    &:nth-child(4) {
+      bottom: 17%;
+      left: 40%;
+    }
+
+    &:nth-child(5) {
+      bottom: 8%;
+      right: 8%;
+    }
+  }
+}
+
+// Override vanwege content bepaling
+.entry-content ol li.stepchart__item {
+  list-style: none;
+}
+
+#home-inleiding .stepchart__description p {
+  font-size: 1.6rem;
+  line-height: 2.6rem;
+}
+
+.stepchart__description {
+  background: @wit;
+  color: @gc_darkerblue;
+  padding: 2rem;
+
+  .cta {
+    float: none;
+  }
+
+  .btn--close {
+    display: none;
+    @media only screen and ( min-width: ( @break_tablet )) {
+      display: block;
+      position: absolute;
+      right: 2rem;
+      top: 2rem;
+    }
+  }
+
+  @media only screen and ( min-width: ( @break_tablet )) {
+    .gc-box-shadow();
+    position: absolute;
+    bottom: 13.5rem;
+    width: 40rem;
+    left: 50%;
+    margin-left: -20rem;
+    text-align: center;
+    padding: 2rem 4.5rem 3rem;
+    z-index: 90;
+
+    .cta {
+      display: inline-block;
+    }
+
+    &:before,
+    &:after {
+      content: " ";
+      position: absolute;
+      display: block;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 30px 15px 0 15px;
+      border-color: @wit transparent transparent transparent;
+      bottom: 0;
+      margin-bottom: -3rem;
+      left: 50%;
+      margin-left: -15px;
+	speak: none;
+    }
+
+    &:before {
+      z-index: -1;
+      margin-left: -9px;
+      border-top-color: rgba(#000, 0.1);
+    }
+  }
+
+  @media only screen and ( min-width: ( @break_fullwidth )) {
+    width: 50rem;
+    margin-left: -25rem;
+  }
+}
+
+.stepchart__title {
+  .font-size(32);
+  font-family: @font-secondary;
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase;
+
+  + .description {
+    margin-top: 1rem;
+  }
+
+  @media only screen and ( min-width: ( @break_tablet )) {
+    .font-size(42);
+    margin: 1rem 1.5rem 0;
+  }
+}
+
+.btn--stepchart {
+  border: none;
+
+  &:hover,
+  &:focus {
+    background-color: none;
+    border: none;
+    outline: none;
+  }
+
+  @media only screen and ( max-width: ( @break_tablet )) {
+    .font-size(26);
+    text-align: left;
+    display: flex;
+    background: @gc_a11y_green url('../images/icon-identificeer.svg') 14px center no-repeat;
+    background-size: 30px auto;
+    padding: 1rem 1rem 1rem 5.5rem;
+    align-items: center;
+    transition: background-color .2s;
+    width: 100%;
+
+    &:after {
+      content: " ";
+      display: block;
+      margin-left: auto;
+      width: 3rem;
+      height: 3.4rem;
+      background: url(../images/arrow-down.svg) center center no-repeat;
+      border: .1rem solid transparent;
+	speak: none;
+    }
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+      background-color: @gc_a11y_green_dark_1;
+      color: @wit;
+      border: none;
+      outline: none;
+
+      &:after {
+        background: transparent url(../images/arrow-down.svg) center center no-repeat;
+        border-color: @wit;
+      }
+    }
+
+    &.verdiep {
+      background-image: url('../images/icon-verdiep.svg');
+    }
+
+    &.ontwerp {
+      background-image: url('../images/icon-ontwerp.svg');
+    }
+
+    &.evalueer {
+      background-image: url('../images/icon-evalueer.svg');
+    }
+
+    &.deel {
+      background-image: url('../images/icon-deel.svg');
+    }
+  }
+
+  @media only screen and ( min-width: ( @break_tablet )) {
+    background: none;
+    width: 140px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+
+    &:hover,
+    &:focus {
+      background: none;
+      border: none;
+
+      .btn__text {
+        color: @wit;
+        text-decoration: underline;
+        background: @gc_a11y_green_dark_1;
+        position: relative;
+        z-index: +5;
+      }
+
+      .btn__icon {
+        transform: scale(1.05);
+        background-color: lighten(@gc_orange, 10%);
+      }
+    }
+
+    .btn__icon {
+      background: @gc_orange url('../images/icon-identificeer.svg') center center no-repeat;
+      background-size: 55px auto;
+      display: block;
+      width: 95px;
+      height: 95px;
+      border-radius: 50%;
+      transition: transform .2s, background-color .2s;
+    }
+
+    .btn__text {
+      .font-size(24);
+      background: @gc_a11y_green;
+      padding: .6rem 1.2rem;
+      box-shadow: 2px 2px 0 rgba(#000, 0.1);
+      margin-top: -1.3rem;
+    }
+  }
+}
+
+.btn__icon {
+  .verdiep & {
+    background-image: url('../images/icon-verdiep.svg');
+  }
+
+  .ontwerp & {
+    background-image: url('../images/icon-ontwerp.svg');
+  }
+
+  .evalueer & {
+    background-image: url('../images/icon-evalueer.svg');
+  }
+
+  .deel & {
+    background-image: url('../images/icon-deel.svg');
+  }
+}

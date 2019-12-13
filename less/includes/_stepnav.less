@@ -1,0 +1,238 @@
+@import "../mixins";
+
+.stepnav {
+  padding: 3rem 0 3rem;
+  display: flex;
+  height: 15rem;
+  align-items: flex-end;
+  position: relative;
+
+  &:before {
+    position: absolute;
+    margin-left: -100rem;
+    margin-right: -100rem;
+    content: " ";
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: @inclusiekoraal;
+		speak: none;
+  }
+
+
+  @media only screen and ( min-width: ( @break_fullwidth )) {
+    padding: 10rem 0 17rem;
+    height: 42rem;
+  }
+}
+
+.stepnav__items {
+  padding: 0;
+  margin: 0 auto;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  counter-reset: stepnav;
+  max-width: @contentwidth_960;
+
+  &:before,
+  &:after {
+    position: absolute;
+    display: block;
+    content: " ";
+    top: 0;
+    height: 6.5rem;
+    width: auto;
+    background: url('../images/b-stepnav.svg') 0 100% no-repeat;
+    background-size: 350px auto;
+    z-index: 15;
+    border: none;
+		speak: none;
+  }
+
+  &:before {
+    right: 50%;
+    left: 27.5%;
+    background-position: 0 100%;
+  }
+
+  &:after {
+    left: 50%;
+    right: 29%;
+    background-position: 100% 100%;
+  }
+
+
+  @media only screen and ( min-width: ( @break_fullwidth )) {
+    height: 11rem;
+
+    &:before,
+    &:after {
+      background-size: 450px auto;
+      height: 12rem;
+    }
+
+    &:before {
+      left: 32.5%;
+    }
+
+    &:after {
+      right: 33%;
+    }
+  }
+}
+
+.stepnav__step {
+  list-style: none;
+  flex: 1;
+  text-align: center;
+  position: relative;
+  display: block;
+  counter-increment: stepnav;
+
+  .stepnav__linktext:before {
+    content: counter(stepnav) ". "
+  }
+
+  &:before {
+    content: " ";
+    position: absolute;
+    display: block;
+    height: .5rem;
+    top: 2.1rem;
+    background: @gc_pantybrown_light;
+    width: 100%;
+    left: 50%;
+		speak: none;
+  }
+
+  &:first-child,
+  &:nth-last-child(2) {
+    &:before {
+      background: @inclusiekoraal_2;
+    }
+  }
+
+  &:first-child:before {
+    left: 50%;
+  }
+
+  &:last-child:before {
+    display: none;
+  }
+
+  @media only screen and ( min-width: ( @break_fullwidth )) {
+    &:before {
+      height: .7rem;
+      top: 3.9rem;
+    }
+  }
+}
+
+.stepnav__link {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  z-index: 5;
+  text-decoration: none;
+
+  &:before {
+    display: none;
+  }
+
+  span {
+    position: relative;
+    z-index: +1;
+  }
+
+  &:hover,
+  &:focus,
+  &.is-active {
+
+   .stepnav__linktext {
+     text-decoration: underline;
+   }
+
+    .stepnav__icon {
+      background-color: @gc_pantybrown_light;
+      transform: scale(1.05);
+
+      &.icon--identificeer {
+        background-image: url('../images/icon-identificeer-blue.svg');
+      }
+
+      &.icon--deel {
+        background-image: url('../images/icon-deel-blue.svg');
+      }
+
+      &.icon--evalueer {
+        background-image: url('../images/icon-evalueer-blue.svg');
+      }
+
+      &.icon--ontwerp {
+        background-image: url('../images/icon-ontwerp-blue.svg');
+      }
+
+      &.icon--verdiep {
+        background-image: url('../images/icon-verdiep-blue.svg');
+      }
+    }
+  }
+
+  @media only screen and ( max-width: ( @break_fullwidth )) {
+
+  }
+}
+
+.stepnav__icon {
+  display: inline-block;
+  width: 4.5rem;
+  height: 4.5rem;
+  background: @gc_orange url('../images/icon-identificeer.svg') center center no-repeat;
+  background-size: 65% auto;
+  margin: 0 auto;
+  border-radius: 50rem;
+  transition: background-color .2s, transform .2s;
+  outline: .7rem solid @inclusiekoraal;
+
+  &.icon--deel {
+    background-image: url('../images/icon-deel.svg');
+  }
+
+  &.icon--evalueer {
+    background-image: url('../images/icon-evalueer.svg');
+  }
+
+  &.icon--ontwerp {
+    background-image: url('../images/icon-ontwerp.svg');
+  }
+
+  &.icon--verdiep {
+    background-image: url('../images/icon-verdiep.svg');
+  }
+
+  @media only screen and ( min-width: ( @break_phone )) {
+    outline-width: 1.5rem;
+  }
+
+  @media only screen and ( min-width: ( @break_fullwidth )) {
+    width: 8.5rem;
+    height: 8.5rem;
+    background-size: 50% auto;
+    outline-width: 2.5rem;
+  }
+
+}
+
+.stepnav__linktext {
+  .font-size(16);
+  font-family: @bodyfont_bold;
+  color: @white;
+  margin-top: 1.6rem;
+
+  @media only screen and ( max-width: ( @break_fullwidth )) {
+    .visuallyhidden();
+  }
+}
