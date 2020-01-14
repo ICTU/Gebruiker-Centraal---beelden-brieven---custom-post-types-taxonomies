@@ -1,4 +1,4 @@
-@import "../mixins";
+
 
 .stepnav {
   padding: 3rem 0 3rem;
@@ -197,25 +197,24 @@
   transition: background-color .2s, transform .2s;
   outline: .7rem solid @inclusiekoraal;
 
-  &.bereidvoor {
-    background-image: url('../images/icons/stap/verdiep.svg');
-  }
-
-  &.icon--ontwerp {
-    background-image: url('../images/icons/stap/ontwerp.svg');
-  }
-
-  &.icon--test {
-    background-image: url('../images/icons/stap/lampje.svg');
-  }
-
-  &.icon--evalueer {
-    background-image: url('../images/icon-evalueer.svg');
-  }
-
-  &.icon--deel {
-    background-image: url('../images/icon-deel.svg');
-  }
+	&.bereidvoor {	
+		background-image: url('../images/icons/stap/verdiep.svg');	
+	}	
+	&.icon--ontwerp {	
+		background-image: url('../images/icons/stap/ontwerp.svg');	
+	}
+	&.icon--test {	
+		background-image: url('../images/icons/stap/lampje.svg');
+	}
+	&.icon--evalueer {
+		background-image: url('../images/icon-evalueer.svg');
+	}
+	&.icon--ontwerp {
+		background-image: url('../images/icon-ontwerp.svg');
+	}
+	&.icon--verdiep {
+		background-image: url('../images/icon-verdiep.svg');
+	}
 
   @media only screen and ( min-width: ( @break_phone )) {
     outline-width: 1.5rem;

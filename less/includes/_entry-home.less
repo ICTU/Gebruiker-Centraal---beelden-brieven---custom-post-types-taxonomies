@@ -9,7 +9,7 @@
 // @desc.     JS homepage voor openen en sluiten modal windows verbeterd.
 // @link      https://github.com/ICTU/Gebruiker-Centraal---Inclusie---custom-post-types-taxonomies
 
-@import "../mixins";
+
 
 .home {
   .content-sidebar-wrap {
@@ -39,9 +39,6 @@
     z-index: +5;
 
     @media only screen and ( min-width: ( @break_fullwidth )) {
-
-        color: @txt;
-	    
       .btn {
         position: absolute;
         right: 0;
@@ -50,36 +47,36 @@
       }
 
       h1 {
-//        margin-right: 12rem;
-        color: @txt;
+        margin-right: 12rem;
       }
     }
   }
 
-	.region--intro {
-		padding-bottom: 8rem;
-		position: relative;
-		overflow: hidden;
-		width: 100%;
-		background: @inclusiekoraal_2;
-		
-		&:before {
-			content: " ";
-			position: absolute;
-			display: block;
-			left: 0;
-			bottom: 0;
-			right: 0;
-			margin: 0 -5% -5%;
-			height: 40%;
-			transform: rotate(-3deg);
-			background: @inclusierood;
-			
-			@media only screen and ( min-width: ( @break_fullwidth )) {
-				height: 48%;
-			}
-		}
-	}
+  .region--intro {
+    padding-bottom: 8rem;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+	background: @inclusiekoraal_2;
+
+    &:before {
+      content: " ";
+      position: absolute;
+      display: block;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      margin: 0 -5% -5%;
+      height: 40%;
+      transform: rotate(-3deg);
+      background: @inclusiekoraal;
+		speak: none;
+
+      @media only screen and ( min-width: ( @break_fullwidth )) {
+        height: 48%;
+      }
+    }
+  }
 
   .region--content-top > .overview {
     margin-top: -8rem;

@@ -1,0 +1,119 @@
+// Gebruiker Centraal - variables.less
+// ----------------------------------------------------------------------------------
+// bevat CSS voor frontend
+// ----------------------------------------------------------------------------------
+// @package   ictu-gc-posttypes-inclusie
+// @author    Paul van Buuren
+// @license   GPL-2.0+
+// @version   1.0.3
+// @desc.     Several small css bugfixes. New version number to purge browser cache memories. moved mixins.less and split the file into mixins and variables.
+// @link      https://github.com/ICTU/Gebruiker-Centraal---Inclusie---custom-post-types-taxonomies
+
+//=========================================================================================================
+
+@blauw3: #002F3E;
+@wit: #fff;
+@lichtgrijs: #e2e2e2;
+
+@bordercolor: #d1dfe3; // @lichtgrijs;
+
+@txt: @blauw3;
+
+@inclusierood: #D94721;
+@inclusieroze: #FCD7CB;
+@inclusieoranje: #F89D1D;
+@inclusiekoraal:			#00B4AC; // #C73D19;
+
+@inclusiekoraal_2:			#16C3BC;
+
+//=========================================================================================================
+
+@gc_old_green: #25B34B; // als vanouds
+
+@gc_a11y_green: #148839; // ook wel 'GC Green - Accessible'
+@gc_a11y_green_dark_1: #0b732c; // ook wel 'GC Green - Darker'
+@gc_a11y_green_dark_2: darken(@gc_a11y_green_dark_1, 10%);
+@gc_a11y_green_light_1: pink; // lighten( @gc_a11y_green, 10% );
+@gc_a11y_green_light_2: #E0F6E7; // voor hover
+
+@gc_a11y_orange: #c73d19; // ook wel 'Inclusie Accessible Orange'
+@gc_a11y_orange_less: #d94721; // ook wel 'Inclusie Less Accessible Orange'
+
+@gc_darkblue: #004152; // ook wel 'GC Dark Blue'
+@gc_darkerblue: #00303d; // ook wel 'GC Darker Blue'
+
+@gc_pantybrown_light: #f2ebe4; // ook wel 'GC PantyBrown Light'
+@gc_pantybrown_xlight: #f9f6f3; // ook wel 'GC PantyBrown X Light'
+@gc_pantybrown: #e8d8c7; // ook wel 'GC PantyBrown'
+
+@gc_blue_light: #6F99A3;
+
+@gc_orange: #F89D1D;
+
+@gc_cardbordergrey: #D1DFE3;
+@white: #FFF;
+
+@color-primary: @gc_a11y_green;
+
+//=========================================================================================================
+
+@break_fullwidth: 800px; // was 960px ( 63 * @padding );
+@break_xlarge: 1200px; // was 960px ( 63 * @padding );
+@break_tablet: 650px;
+@break_phone: 500px;
+
+@mobile: ~"only screen and (max-width: @{break_phone})";
+@tablet_only: ~"only screen and (min-width: @{break_phone}) and (max-width: @{break_fullwidth})";
+@tablet: ~"only screen and (min-width: @{break_phone})";
+@desktop: ~"only screen and (min-width: @{break_fullwidth})";
+@desktop-xl: ~"only screen and (min-width: @{break_xlarge})";
+@cm: ~"only screen and (min-width: 1000px)";
+
+@contentmaxwidth: 1180px;
+@contentwidth_960: 960px;
+@contentwidth_761: 761px;
+@containermaxwidth: 1900px;
+
+// Gutters & Margins
+@gutter: 3rem;
+
+@spacer-default: 3rem;
+@spacer-med: 5rem;
+@spacer-large: 8rem;
+
+@max-width-content: 960px;
+@max-width-inner: 770px;
+
+//=========================================================================================================
+
+@pixel: 1px;
+@basefontsize: 10;
+@basefont: ( @basefontsize * @pixel );
+@basis_rem: 1rem;
+
+//=========================================================================================================
+
+@headerfont: 'League Gothic', Impact, Helvetica, Arial, sans-serif;
+@headerfont2: 'montserratregular', Helvetica, Arial, sans-serif;
+@bodyfont: 'Montserrat light', Helvetica, Arial, sans-serif; // 'Montserrat light',Helvetica,Arial,sans-serif
+@bodyfont_bold: 'montserratbold', Helvetica, Arial, sans-serif;
+@montserrat_semibold: 'montserrat_semiboldregular', Helvetica, Arial, sans-serif;
+
+//=========================================================================================================
+
+@listimagewidth: 3rem;
+@avafactor: ( 402 / 586 ); // factor for correct dimensions of avatars
+@avatarwidth: 250px;
+
+@linkerrechtermarge: 2rem;
+@demarges: ( @linkerrechtermarge * 2 );
+
+@citaten_minheight: 30rem;
+
+@font-primary-reg: @headerfont2;
+@font-primary-bold: @bodyfont_bold;
+
+@font-secondary: @headerfont;
+
+//=========================================================================================================
+

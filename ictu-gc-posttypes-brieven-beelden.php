@@ -8,7 +8,7 @@
 	* Plugin Name:       ICTU / Gebruiker Centraal / Beelden en Brieven post types and taxonomies (v2)
 	* Plugin URI:        https://github.com/ICTU/ICTU-Gebruiker-Centraal-Beelden-en-Brieven-CPTs-and-taxonomies
 	* Description:       Eerste versie voor gebruikercentraal.nl en beeldbank.gebruikercentraal.nl voor het registeren van CPTs voor beelden en brieven
-	* Version:           2.0.0
+	* Version:           2.0.0.3
 	* Version descr:     First setup of TOC menu added.
 	* Author:            Paul van Buuren & Tamara de Haas
 	* Author URI:        https://wbvb.nl/
@@ -56,13 +56,13 @@ if ( ! defined( 'GC_TAX_ORGANISATIE' ) ) {
 define( 'ICTU_GC_BEELDBANK_CSS',		'ictu-gc-plugin-beeldbank-css' );  
 define( 'ICTU_GC_BEELDBANK_BASE_URL',   trailingslashit( plugin_dir_url( __FILE__ ) ) );
 define( 'ICTU_GC_BEELDBANK_IMAGES',		esc_url( ICTU_GC_BEELDBANK_BASE_URL . 'images/' ) ); 
-define( 'ICTU_GC_BEELDBANK_VERSION',	'2.0.0' );
+define( 'ICTU_GC_BEELDBANK_VERSION',	'2.0.0.3' );
 define( 'ICTU_GC_BEELDBANK_DESC',		'First setup of TOC menu added.' );
 
 
 // nieuwe CPTs
 if (!defined('ICTU_GC_CPT_STAP')) {
-    define('ICTU_GC_CPT_STAP', 'stap');   // slug for custom taxonomy 'document'
+    define('ICTU_GC_CPT_STAP', 'stap');   // slug for custom taxonomy 'stap'
 }
 
 
@@ -132,9 +132,9 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 		
 		add_action( 'genesis_entry_content',  array( $this, 'append_content' ), 15 ); 				
 		
-		$this->templates = [];
-		$this->template_home = 'home-inclusie.php';
-
+		$this->templates		= [];
+		$this->template_home	= 'home-beeldbank.php';
+		
 		// add styling and scripts
 		add_action('wp_enqueue_scripts', array( $this, 'ictu_gc_register_frontend_style_script' ) );
 		
@@ -144,10 +144,9 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 		// activate the page filters
 		add_filter('template_redirect', array( $this, 'ictu_gc_frontend_use_page_template' ) );
 		
-        // disable the author pages
-        add_filter('template_redirect', array( $this, 'ictu_gc_disable_author_pages' ) );
-        
-
+		// disable the author pages
+		add_filter('template_redirect', array( $this, 'ictu_gc_disable_author_pages' ) );
+		
     }
     
 	/** ----------------------------------------------------------------------------------------------------
@@ -164,13 +163,13 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 	 * Modify page content if using a specific page template.
 	 */
 	public function ictu_gc_frontend_use_page_template() {
-
+		
 		global $post;
 		
 		$page_template = get_post_meta(get_the_ID(), '_wp_page_template', TRUE);
 		
 		if ($this->template_home == $page_template) {
-
+			
 			remove_filter('genesis_post_title_output', 'gc_wbvb_sharebuttons_for_page_top', 15 );
 			
 			//* Remove standard header
@@ -183,8 +182,28 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 			
 			// append content
 			add_action( 'genesis_entry_content',	array( $this, 'ictu_gc_frontend_home_before_content' ), 8 );
-			add_action( 'genesis_after_content',	array( $this, 'ictu_gc_frontend_home_after_content' ), 12 );
+
+			add_action( 'genesis_after_content',	array( $this, 'ictu_gc_frontend_home_after_content_teasers' ), 12 );
+
+			add_action( 'genesis_after_content',	array( $this, 'ictu_gc_frontend_home_after_content_posts' ), 14 );
+
+			add_action( 'genesis_after_content',	array( $this, 'ictu_gc_frontend_stap_get_related_content' ), 16 );
+
+		}
+		elseif (ICTU_GC_CPT_STAP == get_post_type()) {
+		
+			//* Remove standard header
+			remove_action('genesis_entry_header',	'genesis_entry_header_markup_open', 5 );
+			remove_action('genesis_entry_header',	'genesis_entry_header_markup_close', 15 );
+			remove_action('genesis_entry_header',	'genesis_do_post_title');
 			
+			// voeg pijlenschema toe
+			add_action( 'genesis_entry_header',		array( $this, 'ictu_gc_frontend_stap_append_title' ), 10 );
+			
+			// gerelateerde dinges
+			add_action( 'genesis_before_loop',		array( $this, 'ictu_gc_frontend_stap_before_content' ), 8 );
+			add_action( 'genesis_after_loop',		array( $this, 'ictu_gc_frontend_stap_get_related_content' ), 12 );
+		
 		}
 		
 	}
@@ -405,9 +424,9 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
         // custom post type voor 'stappen'
         $labels = [
           "name"					=> _x('Stappen en richtlijnen', 'stap type', "ictu-gc-posttypes-brieven-beelden"),
-          "singular_name"			=> _x('Stap', 'stap type', "ictu-gc-posttypes-brieven-beelden"),
+          "singular_name"			=> _x('Stap / richtlijn', 'stap type', "ictu-gc-posttypes-brieven-beelden"),
           "menu_name" 				=> _x('Stappen en richtlijnen', 'stap type', "ictu-gc-posttypes-brieven-beelden"),
-          "all_items" 				=> _x('Alle stappen', 'stap type', "ictu-gc-posttypes-brieven-beelden"),
+          "all_items" 				=> _x('Alle stappen / richtlijnen', 'stap type', "ictu-gc-posttypes-brieven-beelden"),
           "add_new" 				=> _x('Nieuwe toevoegen', 'stap type', "ictu-gc-posttypes-brieven-beelden"),
           "add_new_item" 			=> _x('Nieuwe toevoegen', 'stap type', "ictu-gc-posttypes-brieven-beelden"),
           "edit_item" 				=> _x('Stap bewerken', 'stap type', "ictu-gc-posttypes-brieven-beelden"),
@@ -570,8 +589,8 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 	
 	        $home_inleiding = get_field('home_template_inleiding', $post->ID);
 	        $home_stappen = get_field('home_template_stappen', $post->ID);
-	        $home_template_poster = get_field('home_template_poster', $post->ID);
-	        $home_template_poster_linktekst = get_field('home_template_poster_linktekst', $post->ID);
+	        $poster = get_field('home_template_poster', $post->ID);
+	        $poster_linktekst = get_field('home_template_poster_linktekst', $post->ID);
 	
 	        echo '<div class="region region--intro">' .
 	          '<div id="entry__intro">' .
@@ -582,8 +601,8 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 	            echo $home_inleiding;
 	        }
 	
-	        if ($home_template_poster && $home_template_poster_linktekst) {
-	            echo '<a href="' . $home_template_poster['url'] . '" class="btn btn--download">' . $home_template_poster_linktekst . '</a>';
+	        if ($poster && $poster_linktekst) {
+	            echo '<a href="' . $poster['url'] . '" class="btn btn--download">' . $poster_linktekst . '</a>';
 	        }
 	
 	        echo '</div>'; // Einde Intro
@@ -599,7 +618,7 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 	
 	            echo '<div class="stepchart__bg">' .
 	              // Dit kan vast beter..  Paul? :)
-	              '<img src="' . ICTU_GC_BEELDBANK_IMAGES . '/stappenplan-bg-fullscreen.svg" alt="Stepchart Background">' .
+	              '<img src="' . ICTU_GC_BEELDBANK_IMAGES . 'stappenplan-bg-fullscreen.svg" alt="">' .
 	              '</div>';
 	
 	            echo '<ol class="stepchart__items" role="tablist">';
@@ -662,58 +681,430 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 	
 	        echo '</div>'; // region--intro, lekker herbruikbaar!
 	
-	        if (have_rows('home_template_doelgroepen')):
-	
-	            $section_title = _x('Doelgroepen', 'titel op Stap-pagina', 'ictu-gc-posttypes-inclusie');
-	            $title_id = sanitize_title($section_title . '-' . $post->ID);
-	            $posttype = '';
-	
-	            echo '<div class="region region--content-top">' .
-	
-	              '<div class="overview">' .
-	              // Items
-	              '<div class="overview__items grid grid--col-3">';
-	
-	            // loop through the rows of data
-	            while (have_rows('home_template_doelgroepen')) : the_row();
-	
-	                $doelgroep = get_sub_field('home_template_doelgroepen_doelgroep');
-	                $citaat = get_sub_field('home_template_doelgroepen_citaat');
-	
-	                echo $this->ictu_gc_doelgroep_card($doelgroep, $citaat);
-	
-	            endwhile;
-	
-	            echo '</div>';
-	
-	            $doelgroeplink = get_post_type_archive_link(ICTU_GC_CPT_DOELGROEP);
-	            $label = _x('Alle doelgroepen', 'Linktekst doelgroepoverzicht', 'ictu-gc-posttypes-inclusie'); // $obj->name;
-	            $doelgroeppaginaid = get_field('themesettings_inclusie_doelgroeppagina', 'option');
-	
-	            if ($doelgroeppaginaid) {
-	                $doelgroeplink = get_permalink($doelgroeppaginaid);
-	                $label = get_the_title($doelgroeppaginaid);
-	            }
-	
-	
-	            echo '<a href="' . $doelgroeplink . '" class="cta ' . $posttype . '">' . $label . '</a>';
-	        endif;
-	
 	        echo '</div>'; // Section content-top
 	
 	
 	    }	
 	}
+	
+	
 	/**
 	* Handles the front-end display.
 	*
 	* @return void
 	*/
-	public function ictu_gc_frontend_home_after_content() {
+	public function ictu_gc_frontend_home_after_content_posts() {
+
+
+        global $post;
+     
+        if (function_exists('get_field')) {
+
+            $home_template_posts = get_field('home_template_posts', $post->ID);
+
+
+	        
+	        if ( 'home_template_posts_ja' == $home_template_posts ) {
+
+	            $posts_number 				= get_field('home_template_posts_number', $post->ID);
+	            $posts_category_filter		= get_field('home_template_posts_category_filter', $post->ID);
+	            $posts_categories			= array();
+				
+				if ( ! ( $posts_number > 0 && $posts_number < 99 ) ) {
+					$posts_number = 3;
+				}
+				
+                $args = array(
+					'post_type' 		=> 'post',
+					'posts_per_page'	=> $posts_number,
+					'post_status'		=> 'publish',
+                );
+
+	            if ( 'home_template_posts_category_filter_ja' == $posts_category_filter ) {
+		            $args['cat']	= get_field('home_template_posts_category_filter_catid', $post->ID);
+	            }
+				/*
+				echo '<pre>';
+				var_dump( $args );
+				echo '</pre>';
+				*/
+                $alledoelgroepen = new WP_query($args);
+
+                if ($alledoelgroepen->have_posts()) {
+
+					$columncounter = 'grid--col-2';
+					$countcount = $alledoelgroepen->found_posts;
+				
+					if ( $countcount < 2  ) {
+						$columncounter = 'grid--col-1';
+					}
+					elseif ( $countcount === 4 ) {
+						$columncounter = 'grid--col-2';
+					}
+					elseif ( $alledoelgroepen->found_posts > 2  ) {
+						$columncounter = 'grid--col-3';
+					}
 	
-		global $post;
 	
+                    echo '<div class="grid ' . $columncounter . '">';
+
+                    $postcounter = 0;
+
+                    while ($alledoelgroepen->have_posts()) : $alledoelgroepen->the_post();
+
+                        $postcounter++;
+			            $title_id = sanitize_title( get_the_title( $post ) . '-' . $post->ID);
+			            $section_id = sanitize_title( 'post-' . $post->ID);
+
+			            echo '<section aria-labelledby="' . $title_id . '" class="card" id="' . $section_id . '">';
+			            echo '<div class="card__image"></div>';
+			            echo '<div class="card__content">';
+			            echo
+			              '<h2 class="card__title" id="' . $title_id . '">' .
+			              '<a href="' . get_permalink( $post->ID ) . '">' .
+			              '<span>' . _x('Ontwerpen voor', 'Home section doelgroep', 'ictu-gc-posttypes-inclusie') . ' </span>' .
+			              '<span>' . get_the_title( $post ) . '</span>' .
+			              '<span class="btn btn--arrow"></span>' .
+			              '</a></h2>';
+			            echo '<p>' . get_the_excerpt( $post->ID ) . '</p>';
+			            echo '</div>';
+			            echo '</section>';
+			
+
+                    endwhile;
+
+                    echo '</div>';
+
+                    wp_reset_query();
+
+                }
+		        
+	        }
+        
+        } // if (function_exists('get_field')) {
+
+        
+
 	}
+	
+	
+	/**
+	* Handles the front-end display.
+	*
+	* @return void
+	*/
+	public function ictu_gc_frontend_home_after_content_teasers() {
+
+        global $post;
+
+        if (function_exists('get_field')) {
+
+            $home_teasers = get_field('home_template_teasers', $post->ID);
+
+            if (have_rows('home_template_teasers')):
+
+				$columncounter = 'grid--col-2';
+				$countcount = count( $home_teasers );
+			
+				if ( $countcount < 2  ) {
+					$columncounter = 'grid--col-1';
+				}
+				elseif ( $countcount === 4 ) {
+					$columncounter = 'grid--col-2';
+				}
+				elseif ( $countcount > 2  ) {
+					$columncounter = 'grid--col-3';
+				}
+
+                echo '<div id="home_template_teasers">';
+                echo '<div class="grid ' . $columncounter . '">';
+
+                // loop through the rows of data
+                while (have_rows('home_template_teasers')) : the_row();
+
+                    $section_title = get_sub_field('home_template_teaser_title');
+                    $section_text = get_sub_field('home_template_teaser_text');
+                    $section_link = get_sub_field('home_template_teaser_link');
+                    $title_id = sanitize_title($section_title);
+
+                    echo '<section aria-labelledby="' . $title_id . '" class="flexblock">';
+                    echo '<h2 id="' . $title_id . '">' . $section_title . '</h2>';
+                    echo $section_text;
+                    if ($section_link) {
+                        echo '<p><a href="' . $section_link['url'] . '" class="cta">' . $section_link['title'] . '</a></p>';
+                    }
+                    echo '</section>';
+
+                endwhile;
+                echo '</div>';
+                echo '</div>';
+
+            endif;
+
+        }
+        
+	}
+
+    //========================================================================================================
+
+    /**
+     * Handles the front-end display.
+     *
+     * @return void
+     */
+    public function ictu_gc_frontend_stap_before_content() {
+
+        global $post;
+
+        $homepageID = get_option('page_on_front');
+
+        if (!$homepageID) {
+            return;
+        }
+
+		$parentsofcurrentpage = array();
+
+		if ( wp_get_post_parent_id( get_the_id() ) ) {
+			// this step has a parent
+			$currentitemhasparents	= true;
+			$currentid 				= wp_get_post_parent_id( get_the_id() );
+			
+			while( $currentitemhasparents ) {
+				
+				$new_currentid = $currentid;
+				
+				$parentsofcurrentpage[] = $currentid;
+				
+				if ( wp_get_post_parent_id( $currentid ) ) {
+					// current item heeft parent
+					$new_currentid			= wp_get_post_parent_id( $currentid );
+				}					
+				else {
+					// current item heeft *GEEN* parent
+					$currentitemhasparents	= false;
+				}
+				$currentid = $new_currentid;
+			}
+		}
+
+		if (function_exists('get_field')) {
+		
+		    $home_stappen = get_field('home_template_stappen', $homepageID);
+		
+		    if ($home_stappen):
+		        $section_title = _x('Stappen', 'titel op home-pagina', 'ictu-gc-posttypes-inclusie');
+		        $title_id = sanitize_title($section_title . '-' . $post->ID);
+		        $stepcounter = 0;
+		
+		        echo '<div aria-labelledby="' . $title_id . '" class="stepnav">';
+		        echo '<h2 id="' . $title_id . '" class="visuallyhidden">' . $section_title . '</h2>';
+		        echo '<ol class="stepnav__items l-item-count-' . count($home_stappen) . '">';
+		
+		        foreach ($home_stappen as $stap):
+		            unset($icon_classes);
+		            $active = '';
+		            $icon_classes[] = 'stepnav__icon';
+		            $stepcounter++;
+		            $titel = get_the_title($stap->ID);
+		
+		            if (get_field('stap_verkorte_titel', $stap->ID)) {
+		                $titel = get_field('stap_verkorte_titel', $stap->ID);
+		            }
+		
+		            if (get_field('stap_icon', $stap->ID)) {
+		                $icon_classes[] = 'icon--' . get_field('stap_icon', $stap->ID);
+		            }
+		
+		            if ($stap->ID === $post->ID) {
+		                $active = 'active';
+		            }
+		
+					if (in_array( $stap->ID, $parentsofcurrentpage )) {
+					    $active = 'active';
+					}
+		            
+		
+		            $title_id = sanitize_title(get_the_title($stap->ID) . '-' . $stepcounter);
+		            $steptitle = sprintf(_x('%s. %s', 'Label stappen', 'ictu-gc-posttypes-inclusie'), $stepcounter, $titel);
+		
+		
+		            echo '<li id="step_' . $stepcounter . '" class="stepnav__step">' .
+		              '<a href="' . get_permalink($stap->ID) . '" class="stepnav__link ' . (($active) ? 'is-active' : '') . '" title="' . $titel . '" >' .
+		              '<span class="' . implode(' ', $icon_classes) . '">&nbsp;</span>' .
+		              '<span class="stepnav__linktext">' . $titel . '</span>' .
+		              '</a>' .
+		              '</li>';
+		
+		        endforeach;
+		
+		        echo '</ol>';
+		        echo '</div>';
+		
+		    endif;
+		}
+
+            $stap_inleiding = get_field('stap_inleiding', $post->ID);
+
+
+            // Make reusable Intro region as a data container
+            echo '<div class="region region--content-top">' .
+              '<div class="page-intro inleiding">' .
+              '<header class="entry-header"><h1 class="entry-title">' . get_the_title() . '</h1>' . '</header>';
+
+            if ($stap_inleiding) {
+                echo $stap_inleiding;
+            }
+
+            echo '</div>'; // #step-inleiding
+
+
+    }
+
+
+    //========================================================================================================
+
+    /**
+     * Handles the front-end display.
+     *
+     * @return void
+     */
+        public function ictu_gc_frontend_stap_append_title() {
+
+            global $post;
+
+            $section_title = _x('Tips', 'titel op Stap-pagina', 'ictu-gc-posttypes-inclusie');
+            $title_id = sanitize_title($section_title . '-' . $post->ID);
+
+            // force a title, but do not make it seeable
+            echo '<h2 id="' . $title_id . '" class="visuallyhidden">' . $section_title . '</h2>';
+
+        }
+
+
+	    //========================================================================================================
+	
+	    /**
+	     * Handles the front-end display.
+	     *
+	     * @return void
+	     */
+        public function ictu_gc_frontend_stap_get_related_content() {
+
+echo 'ictu_gc_frontend_stap_get_related_content';
+
+            global $post;
+
+            $stap_gerelateerde_content				= get_field('stap_gerelateerde_content', $post->ID);
+
+            if ( $stap_gerelateerde_content ) {
+
+				$columncounter = 'grid--col-2';
+				
+				$countcount = count( $stap_gerelateerde_content );
+				
+				if ( $countcount < 2  ) {
+					$columncounter = 'grid--col-1';
+				}
+				elseif ( $countcount === 4 ) {
+					$columncounter = 'grid--col-3';
+				}
+				elseif ( count( $stap_gerelateerde_content ) > 2  ) {
+					$columncounter = 'grid--col-3';
+				}
+				
+	            $stap_gerelateerd_inleiding 		= get_field('stap_gerelateerd_inleiding', $post->ID);
+	            $stap_gerelateerd_titel 			= get_field('stap_gerelateerd_titel', $post->ID);
+	            
+	            if ( ! $stap_gerelateerd_titel ) {
+	                $stap_gerelateerd_titel = _x('Zie ook', 'titel op Stap-pagina', 'ictu-gc-posttypes-inclusie');
+	            }
+
+                $title_id = sanitize_title( $stap_gerelateerd_titel . '-' . $post->ID);
+
+                echo '<section aria-labelledby="' . $title_id . '" class="wrap">';
+                echo '<div class="page-intro__intro-text">';
+                echo '<h2 id="' . $title_id . '">' . $stap_gerelateerd_titel . '</h2>';
+
+                if ($stap_gerelateerd_inleiding) {
+                    echo $stap_gerelateerd_inleiding;
+                }
+                echo '</div>'; // .inleiding
+                echo '</div>';
+
+
+                echo '<div class="grid ' . $columncounter . ' cards">';
+
+                // loop through the rows of data
+                foreach ($stap_gerelateerde_content as $post):
+
+                    setup_postdata($post);
+
+                    $theid = $post->ID;
+
+                    $section_title = get_the_title($theid);
+                    $section_text = get_the_excerpt($theid);
+                    $section_link = get_sub_field('home_template_teaser_link');
+                    $title_id = sanitize_title($section_title);
+
+                    echo '<div class="card no-image">';
+                    echo '<h3 id="' . $title_id . '"><a href="' . get_permalink($theid) . '">' . $section_title .
+                      '<span class="btn btn--arrow"></span>' .
+                      '</a></h3>';
+                    echo '<p>';
+                    echo $section_text;
+                    echo '</p>';
+                    echo '</div>';
+
+                endforeach;
+
+                wp_reset_postdata();
+
+                echo '</div>';
+                echo '</section>';
+
+			} // if ($stap_gerelateerde_content) {
+
+            // Externe links
+            if (have_rows('stap_links', $post->ID)) {
+
+                // er zijn links
+	            $stap_links_titel	= get_field('stap_links_sectiontitle', $post->ID);
+                $title_id 			= sanitize_title($stap_links_titel . '-' . $post->ID);
+
+                echo '<section aria-labelledby="' . $title_id . '" id="step-od-tips">';
+                echo '<h2 id="' . $title_id . '">' . $stap_links_titel . '</h2>';
+
+                while (have_rows('stap_links', $post->ID)) : the_row();
+
+                    $section_title	= get_sub_field('stap_tip_externe_link_titel');
+                    $shortdescr 	= get_sub_field('stap_tip_externe_link_korte_beschrijving');
+                    $section_link 	= get_sub_field('stap_tip_externe_link_url');
+
+                    $title_id = sanitize_title($section_title);
+
+                    echo '<div class="card no-image">';
+                    echo '<h3 id="' . $title_id . '"><a href="' . $section_link . '">' . $section_title .
+                      '<span class="btn btn--arrow"></span>' .
+                      '</a></h3>';
+
+					if ( $shortdescr ) {
+						echo '<p>';
+						echo wp_strip_all_tags( $shortdescr );
+						echo '</p>';
+					}
+                    
+                    echo '</div>';
+
+                endwhile;
+
+                echo '</section>';
+			} // if (have_rows('stap_links', $post->ID))
+
+        }
+
+
+    //========================================================================================================
+
 
     
 

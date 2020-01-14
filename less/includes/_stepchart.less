@@ -206,26 +206,25 @@
       }
     }
 
-    &.bereidvoor {
-	    background-image: url('../images/icons/stap/verdiep.svg');
-    }
-
-    &.ontwerp {
-	    background-image: url('../images/icons/stap/ontwerp.svg');
-    }
-
-    &.test {
-	    background-image: url('../images/icons/stap/lampje.svg');
-    }
-
-    &.evalueer {
-	    background-image: url('../images/icons/stap/evalueer.svg');
-    }
-
-    &.deel {
-	    background-image: url('../images/icons/stap/deel.svg');
-    }
-
+	&.bereidvoor {
+		background-image: url('../images/icons/stap/verdiep.svg');
+	}
+	
+	&.ontwerp {
+		background-image: url('../images/icons/stap/ontwerp.svg');
+	}
+	
+	&.test {	
+		background-image: url('../images/icons/stap/lampje.svg');	
+	}    
+	
+	&.evalueer {
+		background-image: url('../images/icons/stap/evalueer.svg');
+	}
+	
+	&.deel {
+		background-image: url('../images/icons/stap/deel.svg');	    
+	}
   }
 
   @media only screen and ( min-width: ( @break_tablet )) {
@@ -245,19 +244,19 @@
       .btn__text {
         color: @wit;
         text-decoration: underline;
-		background: @knop_bg_hover;
+        background: @knop_bg_hover;
         position: relative;
         z-index: +5;
       }
 
       .btn__icon {
         transform: scale(1.05);
-//        background-color: lighten(@gc_orange, 10%);
+        background-color: lighten(@gc_orange, 10%);
       }
     }
 
     .btn__icon {
-      background: @wit url('../images/icons/stap/verdiep.svg') center center no-repeat;
+      background: @wit url('../images/icons/stap/verdiep.svg') center center no-repeat;      
       background-size: 55px auto;
       display: block;
       width: 95px;
@@ -270,6 +269,7 @@
       .font-size(24);
       background: @knop_bg;
       padding: .6rem 1.2rem;
+      line-height: 2.8rem;
       box-shadow: 2px 2px 0 rgba(#000, 0.1);
       margin-top: -1.3rem;
     }
@@ -297,5 +297,5 @@
 	.deel & {
 		background-image: url('../images/icons/stap/deel.svg');
 	}
-  
+
 }

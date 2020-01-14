@@ -6,7 +6,7 @@
 // @package   ictu-gc-posttypes-brieven-beelden
 // @author    Paul van Buuren
 // @license   GPL-2.0+
-// @version   2.0.0
+// @version   2.0.0.3
 // @desc.     First setup of TOC menu added.
 // @link      https://github.com/ICTU/Gebruiker-Centraal---Inclusie---custom-post-types-taxonomies
 
@@ -46,7 +46,7 @@
 <!--              `::::::::::::::::}}}}}}}}}}}}}}.              -->
 <!--              `::::::::::::::::}}}}}}}}}}}}}}.              -->
 <!--                                                            -->
-<!-- =============== f=========================================   -->
+<!-- ========================================================   -->
 <!--                                                            -->
 	
 
@@ -55,10 +55,12 @@
 /*
 Imports
 ---------------------------------------------------------------------------------------------------- */
-@import "mixins.less";
+@import "includes/_mixins"; 
+@import "includes/_variables"; 
+
 // colors, sizes */
 /*
- * Includes
+ * Includes / Compoments
  */
 @import "includes/_grid.less";
 @import "includes/_flexblock.less";
@@ -73,7 +75,7 @@ Imports
 @import "includes/_entry";
 @import "includes/_entry-home.less";
 @import "includes/_single-step.less";
-@import "includes/_single_doelgroep.less";
+//@import "includes/_single_doelgroep.less";
 // styling template doelgroep page
 // Inclusie specifiek
 @import "includes/_card-doelgroep";

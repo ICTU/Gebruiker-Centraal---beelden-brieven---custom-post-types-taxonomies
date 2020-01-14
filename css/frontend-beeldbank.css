@@ -34,7 +34,7 @@
 <!--              `::::::::::::::::}}}}}}}}}}}}}}.              -->
 <!--              `::::::::::::::::}}}}}}}}}}}}}}.              -->
 <!--                                                            -->
-<!-- =============== f=========================================   -->
+<!-- ========================================================   -->
 <!--                                                            -->
 	
 
@@ -64,7 +64,7 @@ Imports
   width: auto;
 }
 /*
- * Includes
+ * Includes / Compoments
  */
 .grid > div,
 .grid > section {
@@ -200,6 +200,7 @@ Imports
   background: #FFF;
   height: 7rem;
   z-index: -1;
+  speak: none;
 }
 .card .card__content h2 {
   font-size: 40px;
@@ -231,6 +232,7 @@ Imports
   margin: 0.7rem -2rem 0;
   transform: rotate(2deg);
   z-index: -1;
+  speak: none;
 }
 .card .card__content h2 span,
 .card .card__content h3 span {
@@ -273,6 +275,7 @@ Imports
   z-index: -1;
   margin: -1rem -2rem 0;
   transform: rotate(2deg);
+  speak: none;
 }
 .card__content h2 {
   font-size: 32px;
@@ -309,7 +312,7 @@ Imports
   display: inline-block;
 }
 .btn--arrow {
-  background: url('../images/arrow-right.svg') center center no-repeat;
+  background: url('../images/arrow-right-blue.svg') center center no-repeat;
   background-size: 12px auto;
   min-width: 3.6rem;
   display: inline-block;
@@ -480,6 +483,7 @@ Imports
     margin-bottom: -3rem;
     left: 50%;
     margin-left: -15px;
+    speak: none;
   }
   .stepchart__description:before {
     z-index: -1;
@@ -539,8 +543,9 @@ Imports
     margin-left: auto;
     width: 3rem;
     height: 3.4rem;
-    background: url('../images/arrow-down.svg') center center no-repeat;
+    background: url(../images/arrow-down.svg) center center no-repeat;
     border: 0.1rem solid transparent;
+    speak: none;
   }
   .btn--stepchart:hover,
   .btn--stepchart:focus {
@@ -597,6 +602,7 @@ Imports
   .btn--stepchart:hover .btn__icon,
   .btn--stepchart:focus .btn__icon {
     transform: scale(1.05);
+    background-color: #fab24e;
   }
   .btn--stepchart .btn__icon {
     background: #fff url('../images/icons/stap/verdiep.svg') center center no-repeat;
@@ -612,6 +618,7 @@ Imports
     font-size: 2.4rem;
     background: #C42C76;
     padding: 0.6rem 1.2rem;
+    line-height: 2.8rem;
     box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
     margin-top: -1.3rem;
   }
@@ -648,6 +655,7 @@ Imports
   top: 0;
   bottom: 0;
   background: #00B4AC;
+  speak: none;
 }
 @media only screen and (min-width: 800px) {
   .stepnav {
@@ -676,6 +684,7 @@ Imports
   background-size: 350px auto;
   z-index: 15;
   border: none;
+  speak: none;
 }
 .stepnav__items:before {
   right: 50%;
@@ -723,6 +732,7 @@ Imports
   background: #f2ebe4;
   width: 100%;
   left: 50%;
+  speak: none;
 }
 .stepnav__step:first-child:before,
 .stepnav__step:nth-last-child(2):before {
@@ -814,8 +824,11 @@ Imports
 .stepnav__icon.icon--evalueer {
   background-image: url('../images/icon-evalueer.svg');
 }
-.stepnav__icon.icon--deel {
-  background-image: url('../images/icon-deel.svg');
+.stepnav__icon.icon--ontwerp {
+  background-image: url('../images/icon-ontwerp.svg');
+}
+.stepnav__icon.icon--verdiep {
+  background-image: url('../images/icon-verdiep.svg');
 }
 @media only screen and (min-width: 500px) {
   .stepnav__icon {
@@ -885,6 +898,22 @@ h1,
     line-height: 76px;
   }
 }
+@media only screen and (min-width: 650px) {
+  h1,
+  .page .entry-header .entry-title {
+    font-size: 44px;
+    font-size: 4.4rem;
+    line-height: 48px;
+  }
+}
+@media only screen and (min-width: 800px) {
+  h1,
+  .page .entry-header .entry-title {
+    font-size: 68px;
+    font-size: 6.8rem;
+    line-height: 76px;
+  }
+}
 .breadcrumb > .wrap {
   max-width: 1180px;
   margin-left: auto;
@@ -905,6 +934,12 @@ h1,
   padding-right: 1.5rem;
   padding-bottom: 5rem;
   padding-top: 5rem;
+}
+@media only screen and (min-width: 800px) {
+  .content-sidebar-wrap {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
 }
 @media only screen and (min-width: 800px) {
   .content-sidebar-wrap {
@@ -951,7 +986,8 @@ h1,
 }
 @media only screen and (min-width: 800px) {
   .content-sidebar-wrap > .content .inleiding {
-    padding: 3rem 5rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
   }
 }
 .full-width-content .content-sidebar-wrap > .content {
@@ -963,6 +999,12 @@ h1,
 .full-width-content .content-sidebar-wrap > .entry.inleiding + .grid {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+}
+@media only screen and (min-width: 800px) {
+  .full-width-content .content-sidebar-wrap > .entry.inleiding + .grid {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
 }
 @media only screen and (min-width: 800px) {
   .full-width-content .content-sidebar-wrap > .entry.inleiding + .grid {
@@ -1000,21 +1042,7 @@ h1,
   left: 0;
   right: 0;
   height: 300px;
-}
-.entry-content h2 {
-  font-size: 34px;
-  font-size: 3.4rem;
-  font-family: 'League Gothic', Impact, Helvetica, Arial, sans-serif;
-  text-transform: uppercase;
-  line-height: 40px;
-  text-transform: none;
-}
-@media only screen and (min-width: 800px) {
-  .entry-content h2 {
-    font-size: 46px;
-    font-size: 4.6rem;
-    line-height: 50px;
-  }
+  speak: none;
 }
 .page-intro__intro {
   background: #148839;
@@ -1051,6 +1079,13 @@ h1,
     line-height: 50px;
   }
 }
+@media only screen and (min-width: 800px) {
+  .page-intro__intro-text h2 {
+    font-size: 46px;
+    font-size: 4.6rem;
+    line-height: 50px;
+  }
+}
 .page-intro__intro-text h2 + p {
   margin-top: 1.8rem;
 }
@@ -1065,6 +1100,12 @@ h1,
   background: #00B4AC;
   padding-top: 5rem;
   color: #FFF;
+}
+@media only screen and (min-width: 800px) {
+  .region--intro {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
 }
 @media only screen and (min-width: 800px) {
   .region--intro {
@@ -1111,6 +1152,12 @@ h1,
     padding-right: 3rem;
   }
 }
+@media only screen and (min-width: 800px) {
+  .region--content-top {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
 .home .content-sidebar-wrap {
   padding: 0;
 }
@@ -1135,9 +1182,6 @@ h1,
   z-index: 5;
 }
 @media only screen and (min-width: 800px) {
-  .home #entry__intro {
-    color: #002F3E;
-  }
   .home #entry__intro .btn {
     position: absolute;
     right: 0;
@@ -1145,7 +1189,7 @@ h1,
     margin-top: 1.2rem;
   }
   .home #entry__intro h1 {
-    color: #002F3E;
+    margin-right: 12rem;
   }
 }
 .home .region--intro {
@@ -1165,7 +1209,8 @@ h1,
   margin: 0 -5% -5%;
   height: 40%;
   transform: rotate(-3deg);
-  background: #D94721;
+  background: #00B4AC;
+  speak: none;
 }
 @media only screen and (min-width: 800px) {
   .home .region--intro:before {
@@ -1181,6 +1226,12 @@ h1,
 #doelgroep-archive-p {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+}
+@media only screen and (min-width: 800px) {
+  #doelgroep-archive-p {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
 }
 @media only screen and (min-width: 800px) {
   #doelgroep-archive-p {
@@ -1208,6 +1259,12 @@ h1,
     padding-right: 3rem;
   }
 }
+@media only screen and (min-width: 800px) {
+  #home_template_teasers {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
 #home_template_teasers:before {
   content: " ";
   position: absolute;
@@ -1219,6 +1276,7 @@ h1,
   margin-left: -9999px;
   margin-right: -9999px;
   z-index: -1;
+  speak: none;
 }
 #home_template_teasers .cta {
   float: none;
@@ -1235,6 +1293,13 @@ h1,
   font-family: 'League Gothic', Impact, Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   line-height: 40px;
+}
+@media only screen and (min-width: 800px) {
+  #home_template_teasers h2 {
+    font-size: 46px;
+    font-size: 4.6rem;
+    line-height: 50px;
+  }
 }
 @media only screen and (min-width: 800px) {
   #home_template_teasers h2 {
@@ -1308,472 +1373,6 @@ body.single-stap .site-inner header {
   margin: 0;
   padding: 0;
 }
-/*
-// Gebruiker Centraal - less/includes/_template_doelgroeppagina.less
-// ----------------------------------------------------------------------------------
-// CSS specifiek voor pagina's gebaseerd op 
-// het template 'inclusie_template_doelgroeppagina'
-// ----------------------------------------------------------------------------------
-// @package   ictu-gc-posttypes-inclusie
-// @author    Paul van Buuren
-// @license   GPL-2.0+
-// @version   0.0.10c
-// @desc.     Bugfixing. Styling for page and other content types. Title for methodes.
-// @link      https://github.com/ICTU/Gebruiker-Centraal---Inclusie---custom-post-types-taxonomies
- */
-/*
-WP TEMPLATES - Doelgroep
----------------------------------------------------------------------------------------------------- */
-body.single-doelgroep #maincontent article.entry {
-  margin-bottom: 4rem;
-  margin-top: 0;
-  position: relative;
-}
-body.single-doelgroep #maincontent article.entry .entry-content {
-  padding-left: 0;
-  padding-right: 0;
-}
-body.single-doelgroep #maincontent article.entry .entry-title,
-body.single-doelgroep #maincontent article.entry .wrap {
-  max-width: 761px;
-  padding-left: 2rem;
-  padding-right: 2rem;
-  margin-left: auto;
-  margin-right: auto;
-}
-body.single-doelgroep #maincontent article.entry {
-  max-width: 960px;
-  margin-left: auto;
-  margin-right: auto;
-}
-body.single-doelgroep #maincontent article.entry .wrap {
-  background: none;
-}
-@media only screen and (min-width: 800px) {
-  body.single-doelgroep #maincontent article.entry .wrap {
-    padding-top: 5rem;
-  }
-}
-#doelgroep-inleiding {
-  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
-  position: relative;
-  padding: 2rem;
-  background: #148839;
-  color: #FFF;
-  max-width: 960px;
-  margin-left: auto;
-  margin-right: auto;
-  z-index: 0;
-}
-#doelgroep-inleiding:after {
-  content: ' ';
-  height: 22rem;
-  width: 100%;
-  clip-path: polygon(0 9%, 100% 0, 100% 100%, 0% 100%);
-  background: #25B34B;
-  display: block;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: -2;
-}
-@media only screen and (max-width: 650px) {
-  #doelgroep-inleiding {
-    padding-bottom: calc(30rem - 2rem );
-  }
-}
-@media only screen and (min-width: 650px) {
-  #doelgroep-inleiding {
-    padding-left: 40%;
-    display: flex;
-    flex-direction: column;
-    min-height: 35rem;
-  }
-  #doelgroep-inleiding:after {
-    display: none;
-  }
-  #doelgroep-inleiding > header {
-    order: 2;
-  }
-  #doelgroep-inleiding #doelgroep-inleiding-citaten {
-    order: 1;
-  }
-  #doelgroep-inleiding .doelgroep__posttext {
-    order: 3;
-    padding-right: 5rem;
-  }
-  #doelgroep-inleiding .tegeltje {
-    padding-left: 3rem;
-    padding-right: 3rem;
-  }
-  #doelgroep-inleiding .tegeltje:before {
-    right: auto;
-    left: 0;
-    bottom: 50px;
-    margin-left: -28px;
-    clip-path: polygon(100% 34%, 0 100%, 100% 100%);
-  }
-  #doelgroep-inleiding .tegeltje:after {
-    right: auto;
-    left: 0;
-    bottom: 50px;
-    margin-left: -28px;
-    clip-path: polygon(100% 34%, 0 100%, 100% 100%);
-  }
-}
-@media only screen and (min-width: 800px) {
-  #doelgroep-inleiding {
-    padding-left: 340px;
-  }
-}
-#doelgroep-inleiding header {
-  padding-left: 0;
-  margin: 0;
-}
-#doelgroep-inleiding h1 {
-  font-size: 40px;
-  font-size: 4rem;
-  line-height: 48px;
-}
-@media only screen and (min-width: 650px) {
-  #doelgroep-inleiding h1 {
-    font-size: 68px;
-    font-size: 6.8rem;
-    line-height: 64px;
-    text-transform: none;
-    margin-top: 2rem;
-  }
-}
-#doelgroep-inleiding .tegeltje {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-@media only screen and (min-width: 650px) {
-  #doelgroep-inleiding .tegeltje {
-    margin-left: -3rem;
-    margin-top: -5rem;
-  }
-}
-.doelgroep__avatar {
-  content: " ";
-  display: block;
-  position: absolute;
-  width: 30rem;
-  height: 30rem;
-  background: url('../images/avatar/poppetje-1.svg') center bottom no-repeat;
-  z-index: -1;
-}
-@media only screen and (max-width: 650px) {
-  .doelgroep__avatar {
-    bottom: 0;
-    left: 50%;
-    margin-left: -15rem;
-  }
-}
-@media only screen and (min-width: 650px) {
-  .doelgroep__avatar {
-    left: 0;
-    top: 0;
-    bottom: 0;
-    height: 100%;
-    width: 35%;
-    min-width: 260px;
-    background-color: #25B34B;
-    overflow: hidden;
-    background-position: 20% 100%;
-    background-size: 80% auto;
-  }
-  .doelgroep__avatar:after {
-    content: " ";
-    background: #148839;
-    position: absolute;
-    width: 5rem;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    transform: rotate(-2deg);
-    margin-right: -0.9rem;
-    margin-top: -0.5rem;
-    margin-bottom: -0.5rem;
-  }
-}
-@media only screen and (min-width: 800px) {
-  .doelgroep__avatar {
-    background-size: auto 300px;
-    background-position: 35% 100%;
-    width: 340px;
-    height: 100%;
-  }
-}
-.doelgroep__posttext {
-  margin-top: 1.6rem;
-}
-.facts-figures {
-  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
-  background: #00303d;
-  color: #FFF;
-  display: flex;
-  position: relative;
-  z-index: 5;
-}
-.facts-figures .source {
-  background: #00303d;
-}
-.facts-figures .source *,
-.facts-figures .source a {
-  color: #FFF;
-}
-.facts-figures span {
-  display: block;
-}
-.facts-figures .source {
-  font-size: 20px;
-  font-size: 2rem;
-  z-index: 1;
-  position: relative;
-  padding: 3rem;
-}
-.facts-figures cite {
-  display: block;
-  clear: both;
-  float: none;
-  font-size: 14px;
-  font-size: 1.4rem;
-  margin-top: 1.5rem;
-  padding-top: 1.5rem;
-  border-top: 0.1rem solid #6F99A3;
-}
-.facts-figures .hugely {
-  padding-top: 2rem;
-  font-size: 40px;
-  font-size: 4rem;
-  text-align: center;
-  font-family: 'montserratbold', Helvetica, Arial, sans-serif;
-  line-height: 1.2;
-}
-@media only screen and (max-width: 800px) {
-  .facts-figures {
-    flex-direction: column;
-  }
-}
-@media only screen and (min-width: 800px) {
-  .facts-figures {
-    background: #00303d;
-    /* Old browsers */
-    position: relative;
-  }
-  .facts-figures .source {
-    flex-basis: 66.66666667%;
-  }
-  .facts-figures .hugely {
-    padding: 3rem;
-    background: #004152;
-    position: relative;
-    width: 318px;
-    display: block;
-    overflow: hidden;
-    font-size: 40px;
-    font-size: 4rem;
-    line-height: 1.2;
-    padding: 4rem;
-  }
-  .facts-figures .hugely:before {
-    content: " ";
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    top: 0;
-    width: 5rem;
-    margin-right: -4rem;
-    margin-top: -0.5rem;
-    background: #00303d;
-    transform: rotate(-2deg);
-  }
-  .facts-figures:after {
-    margin-bottom: -10rem;
-    height: 10rem;
-  }
-}
-.spacer-doelgroep {
-  background: #f2ebe4;
-  height: 5rem;
-}
-@media only screen and (min-width: 800px) {
-  .spacer-doelgroep {
-    height: 10rem;
-  }
-}
-.dosdonts {
-  margin-bottom: 4rem;
-  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);
-  border: 1px solid #D1DFE3;
-}
-.dosdonts .flexblock {
-  border-style: none;
-  margin-top: 0;
-  padding: 2rem;
-}
-@media only screen and (min-width: 500px) {
-  .dosdonts .flexblock {
-    width: 50%;
-    margin-left: 0;
-    margin-right: 0;
-  }
-}
-.dosdonts .flexblock h2,
-.dosdonts .flexblock h3,
-.dosdonts .flexblock h4 {
-  margin-top: 0;
-  padding-top: 0;
-}
-.dosdonts .flexblock ul li {
-  padding-left: 1rem;
-  margin-bottom: 2rem;
-}
-.dosdonts .flexblock.aanrader ul li {
-  list-style-image: url('../images/list-item-do.svg');
-}
-.dosdonts .flexblock.afrader {
-  background: #f9f6f3;
-}
-.dosdonts .flexblock.afrader ul li {
-  list-style-image: url('../images/list-item-dont.svg');
-}
-.dosdonts h4 {
-  padding-bottom: 2rem;
-  font-family: 'montserratbold', Helvetica, Arial, sans-serif;
-  border-bottom: 1px solid #D1DFE3;
-}
-.content .doelgroep-tips-title {
-  overflow: hidden;
-  clear: both;
-  padding: 2rem 0 0.5rem 0;
-  margin-top: 4rem;
-  margin-bottom: 0;
-  font-size: 46px;
-  font-size: 4.6rem;
-  text-transform: uppercase;
-  border-top: 2px solid #D1DFE3;
-}
-.content .doelgroep-tips-title span {
-  display: inline-block;
-  overflow: hidden;
-  float: left;
-  margin-top: 0.75rem;
-  margin-right: 2rem;
-  width: 7rem;
-  height: 8.5rem;
-  background: #148839;
-  position: relative;
-  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
-}
-.content .doelgroep-tips-title span:before,
-.content .doelgroep-tips-title span:after {
-  content: ' ';
-  display: block;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  overflow: hidden;
-}
-.content .doelgroep-tips-title span:before {
-  background: #25B34B;
-  bottom: 50%;
-  transform: translateX(-1rem) translateY(-2rem) rotate(8deg);
-  height: 6rem;
-  width: 10rem;
-}
-.content .doelgroep-tips-title span:after {
-  background-image: url('../images/avatar/poppetje-1.svg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center top;
-}
-.doelgroep-tips {
-  border-top: 1px solid #D1DFE3;
-  padding-top: 2rem;
-  margin-top: 2rem;
-  overflow: hidden;
-}
-.doelgroep-tips h2,
-.doelgroep-tips h3 {
-  font-family: 'montserratbold', Helvetica, Arial, sans-serif;
-  font-size: 24px;
-  font-size: 2.4rem;
-  background: url('../images/icons/tip.svg') no-repeat left center;
-  padding-left: 4rem;
-  padding-top: 0.25rem;
-}
-.doelgroep-tips h2 a,
-.doelgroep-tips h3 a {
-  text-decoration: none;
-}
-.doelgroep-tips h2 a:hover,
-.doelgroep-tips h3 a:hover,
-.doelgroep-tips h2 a:active,
-.doelgroep-tips h3 a:active,
-.doelgroep-tips h2 a:focus,
-.doelgroep-tips h3 a:focus {
-  color: #002F3E;
-  text-decoration: underline;
-}
-.table-of-contents {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-}
-.xtable-of-contents {
-  padding-bottom: 4rem;
-  margin-left: -99.5px;
-  margin-left: calc( -2rem + -99.5px);
-  margin-right: -99.5px;
-  margin-right: calc( -2rem + -99.5px);
-  overflow: hidden;
-  padding: 0 -99.5px 2rem 0;
-}
-.xtable-of-contents .table-of-contents-inner {
-  background: #148839;
-  box-shadow: 6px 0px 24px black;
-  width: 100%;
-  padding: 2rem;
-  padding-left: -99.5px;
-  padding-left: calc( 2rem + 99.5px);
-  padding-right: -99.5px;
-  padding-right: calc( 2rem + 99.5px);
-}
-.xtable-of-contents .table-of-contents-inner *,
-.xtable-of-contents .table-of-contents-inner a {
-  color: #fff;
-}
-.xtable-of-contents h2,
-.xtable-of-contents h3 {
-  margin-top: 0;
-  padding-top: 0;
-}
-.xtable-of-contents ul li {
-  display: list-item;
-  padding: 0 2em 0 0.3em;
-  margin-left: 0.2em;
-  list-style-image: url('../images/icons/icon-list-item.svg');
-  list-style-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20width%3D%2216%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22m1.19007105%205-1.19007105%201.16647506%203.61985789%203.54808557-3.61985789%203.54753577%201.19007105%201.166475%204.80992895-4.71401077z%22%20fill%3D%22%23fff%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E");
-}
-.xtable-of-contents ul li a {
-  text-decoration: none;
-}
-.xtable-of-contents ul li a:hover,
-.xtable-of-contents ul li a:active,
-.xtable-of-contents ul li a:focus {
-  text-decoration: underline;
-  color: #fff;
-}
 .card--doelgroep {
   padding: 0;
 }
@@ -1805,6 +1404,7 @@ body.single-doelgroep #maincontent article.entry .wrap {
   background: #FFF;
   height: 7rem;
   z-index: -1;
+  speak: none;
 }
 .card--doelgroep .card__content h2 {
   font-size: 40px;
@@ -1838,6 +1438,7 @@ body.single-doelgroep #maincontent article.entry .wrap {
   margin: 3rem -2rem 0;
   transform: rotate(2deg);
   z-index: -1;
+  speak: none;
 }
 .card--doelgroep .card__content h2 span {
   display: block;
@@ -1886,6 +1487,7 @@ body.single-doelgroep #maincontent article.entry .wrap {
   transform: translateY(28px);
   z-index: 450;
   clip-path: polygon(0 0, 0 100%, 70% 0);
+  speak: none;
 }
 .tegeltje:after {
   content: ' ';
@@ -1900,6 +1502,7 @@ body.single-doelgroep #maincontent article.entry .wrap {
   z-index: 450;
   box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);
   clip-path: polygon(0 0, 0 100%, 70% 0);
+  speak: none;
 }
 .tegeltje p {
   margin: 0;
@@ -1916,6 +1519,27 @@ body.single-doelgroep #maincontent article.entry .wrap {
   float: left;
   line-height: 2.8;
   margin-right: 0.5em;
+  speak: none;
+}
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+.visuallyvisual {
+  border: inherit;
+  clip: auto;
+  height: auto;
+  margin: auto;
+  overflow: auto;
+  padding: inherit;
+  position: inherit;
+  width: auto;
 }
 .full-width-content .breadcrumb {
   margin: 0;
@@ -1924,6 +1548,12 @@ body.single-doelgroep #maincontent article.entry .wrap {
 .full-width-content .breadcrumb .wrap {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+}
+@media only screen and (min-width: 800px) {
+  .full-width-content .breadcrumb .wrap {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
 }
 @media only screen and (min-width: 800px) {
   .full-width-content .breadcrumb .wrap {
@@ -1941,12 +1571,24 @@ body.single-doelgroep #maincontent article.entry .wrap {
     padding-right: 3rem;
   }
 }
+@media only screen and (min-width: 800px) {
+  .full-width-content .nav-primary #mainnav {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
 .full-width-content .menu-met-js {
   padding-left: 0;
 }
 .full-width-content .site-header > .wrap {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+}
+@media only screen and (min-width: 800px) {
+  .full-width-content .site-header > .wrap {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
 }
 @media only screen and (min-width: 800px) {
   .full-width-content .site-header > .wrap {
@@ -2006,6 +1648,13 @@ body.single {
     padding-right: 3rem;
   }
 }
+@media only screen and (min-width: 800px) {
+  #maincontent article.entry.inleiding .entry-header,
+  #maincontent article.entry.inleiding .entry-content {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
 @media only screen and (max-width: 800px) {
   #maincontent article.entry {
     margin-top: 2rem;
@@ -2053,6 +1702,31 @@ STYLING STEPS
 ---------------------------------------------------------------------------------------------------- */
 @media only screen and (max-width: 800px) {
   .bereidvoor button {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20width%3D%2240%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22m24.3331636.54529091c.2366061%200%20.4331313.17023569.4738826.39501384l.0077538.08662252v4.64618182c-.369-.162-.7505795-.300375-1.1431278-.41305398l-.3961449-.10403693v-3.07145454h-21.73636366v27.84109086h21.73636366v-7.1394545c.3996818-.0957273.7889318-.2172273%201.1661392-.3631193l.3731335-.1539716v8.9678182c0%20.105-.0708333.1933333-.1673611.2198611l-.0606389.0081389h-24.22309091c-.17611363%200-.3225767-.1248665-.3564407-.2905547l-.00737748-.0732635v-30.18709092c0-.1785.12611932-.32693182.2939478-.36125071l.07423402-.00747656zm-7.5481091%2024.14639999c.4249091%200%20.7696364.3447273.7696364.7696364%200%20.3895-.2896667.711625-.6652326.7626076l-.1044038.0070287h-10.54199995c-.4249091%200-.76963637-.3447272-.76963637-.7696363%200-.3895.28966667-.711625.66523264-.7626077l.10440373-.0070287zm4.4406546-18.25919999c1.9352727%200%203.8705454.738%205.3470909%202.21509091%202.5638042%202.56380418%202.8998558%206.50972638%201.0116869%209.43806418l-.1536869.2290267%202.1349091%202.1354546-1.8845455%201.8845454-2.1354545-2.1354545c-1.2938182.9032727-2.8063636%201.3570909-4.32%201.3570909-1.9358182%200-3.8705455-.738-5.3470909-2.2150909-2.9536364-2.9530909-2.9536364-7.7405455%200-10.69363638%201.4765454-1.47709091%203.4112727-2.21509091%205.3470909-2.21509091zm-6.8998364%2013.53087269c.5149091.582%201.1018182%201.0985455%201.7498182%201.5332728l-.0605454.006h-9.77181823c-.42545454%200-.76963636-.3447273-.76963636-.7696364s.34418182-.7696364.76963636-.7696364zm6.8998364-11.87432724c-1.5774546%200-3.0605455.61418182-4.176%201.72963637-1.1149091%201.11545457-1.7296364%202.59854547-1.7296364%204.17599997%200%201.5769091.6147273%203.06%201.7296364%204.1754546.1592727.1592727.3265454.3078788.5005252.4459798l.2658384.1992929.8394546.498c.7914545.3829091%201.6652727.5863636%202.5701818.5863636.8043636%200%201.5837306-.1607542%202.3028567-.4654066l.2667797-.120957.84-.498c.27-.1914545.526909-.4063636.7658181-.6452727%201.1154546-1.1154546%201.7296364-2.5985455%201.7296364-4.1754546%200-1.5774545-.6141818-3.0605454-1.7296364-4.17599997-1.1154545-1.11545455-2.5985454-1.72963637-4.1754545-1.72963637zm2.0498182%202.01965454c.6147272.3250909%201.1416363.792%201.5392727%201.3565455v5.0116363c-.3976364.5645455-.9245455%201.0314546-1.5392727%201.3565455zm-4.9511455%205.1266727c.4249091%200%20.7696364.3447273.7696364.7696364s-.3447273.7696364-.7696364.7696364h-.4609091c-.3747272-.4461819-.6616363-.9676364-.8345454-1.5392728zm-6.1815818.0001637c.0556364.3968182.1370455.7853522.2423864%201.1639914l.11325.3752813h-6.25527276c-.42490909%200-.76963637-.3447273-.76963637-.7696364%200-.3895.28966667-.711625.66523264-.7626076l.10440373-.0070287zm6.3776182-4.6996364c.3294545.0872727.5738182.3845455.5738182.7412727%200%20.3895-.2896667.711625-.6652327.7626077l-.1044037.0070287h-1.0314545c.2918181-.5912727.7123636-1.1072727%201.2272727-1.5109091zm-5.7782727-.0284182c-.1538182.3694091-.283091.7513978-.3868978%201.1436648l-.0952841.395608h-6.01690905c-.4249091%200-.76963637-.3447273-.76963637-.7696364%200-.3895.28966667-.711625.66523264-.7626076l.10440373-.0070288zm-1.3449819-4.72789088c.4249091%200%20.7696364.34472727.7696364.76963636%200%20.3895-.2896667.711625-.6652326.76260764l-.1044038.00702873h-5.15399996c-.42490909%200-.76963637-.34472728-.76963637-.76963637%200-.3895.28966667-.711625.66523264-.76260764l.10440373-.00702872z%22%20fill%3D%22%236f99a3%22%20fill-rule%3D%22evenodd%22%20transform%3D%22translate(7%204)%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+  }
+  .bereidvoor p.icon.bereidvoor:before {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20width%3D%2240%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22m24.3331636.54529091c.2366061%200%20.4331313.17023569.4738826.39501384l.0077538.08662252v4.64618182c-.369-.162-.7505795-.300375-1.1431278-.41305398l-.3961449-.10403693v-3.07145454h-21.73636366v27.84109086h21.73636366v-7.1394545c.3996818-.0957273.7889318-.2172273%201.1661392-.3631193l.3731335-.1539716v8.9678182c0%20.105-.0708333.1933333-.1673611.2198611l-.0606389.0081389h-24.22309091c-.17611363%200-.3225767-.1248665-.3564407-.2905547l-.00737748-.0732635v-30.18709092c0-.1785.12611932-.32693182.2939478-.36125071l.07423402-.00747656zm-7.5481091%2024.14639999c.4249091%200%20.7696364.3447273.7696364.7696364%200%20.3895-.2896667.711625-.6652326.7626076l-.1044038.0070287h-10.54199995c-.4249091%200-.76963637-.3447272-.76963637-.7696363%200-.3895.28966667-.711625.66523264-.7626077l.10440373-.0070287zm4.4406546-18.25919999c1.9352727%200%203.8705454.738%205.3470909%202.21509091%202.5638042%202.56380418%202.8998558%206.50972638%201.0116869%209.43806418l-.1536869.2290267%202.1349091%202.1354546-1.8845455%201.8845454-2.1354545-2.1354545c-1.2938182.9032727-2.8063636%201.3570909-4.32%201.3570909-1.9358182%200-3.8705455-.738-5.3470909-2.2150909-2.9536364-2.9530909-2.9536364-7.7405455%200-10.69363638%201.4765454-1.47709091%203.4112727-2.21509091%205.3470909-2.21509091zm-6.8998364%2013.53087269c.5149091.582%201.1018182%201.0985455%201.7498182%201.5332728l-.0605454.006h-9.77181823c-.42545454%200-.76963636-.3447273-.76963636-.7696364s.34418182-.7696364.76963636-.7696364zm6.8998364-11.87432724c-1.5774546%200-3.0605455.61418182-4.176%201.72963637-1.1149091%201.11545457-1.7296364%202.59854547-1.7296364%204.17599997%200%201.5769091.6147273%203.06%201.7296364%204.1754546.1592727.1592727.3265454.3078788.5005252.4459798l.2658384.1992929.8394546.498c.7914545.3829091%201.6652727.5863636%202.5701818.5863636.8043636%200%201.5837306-.1607542%202.3028567-.4654066l.2667797-.120957.84-.498c.27-.1914545.526909-.4063636.7658181-.6452727%201.1154546-1.1154546%201.7296364-2.5985455%201.7296364-4.1754546%200-1.5774545-.6141818-3.0605454-1.7296364-4.17599997-1.1154545-1.11545455-2.5985454-1.72963637-4.1754545-1.72963637zm2.0498182%202.01965454c.6147272.3250909%201.1416363.792%201.5392727%201.3565455v5.0116363c-.3976364.5645455-.9245455%201.0314546-1.5392727%201.3565455zm-4.9511455%205.1266727c.4249091%200%20.7696364.3447273.7696364.7696364s-.3447273.7696364-.7696364.7696364h-.4609091c-.3747272-.4461819-.6616363-.9676364-.8345454-1.5392728zm-6.1815818.0001637c.0556364.3968182.1370455.7853522.2423864%201.1639914l.11325.3752813h-6.25527276c-.42490909%200-.76963637-.3447273-.76963637-.7696364%200-.3895.28966667-.711625.66523264-.7626076l.10440373-.0070287zm6.3776182-4.6996364c.3294545.0872727.5738182.3845455.5738182.7412727%200%20.3895-.2896667.711625-.6652327.7626077l-.1044037.0070287h-1.0314545c.2918181-.5912727.7123636-1.1072727%201.2272727-1.5109091zm-5.7782727-.0284182c-.1538182.3694091-.283091.7513978-.3868978%201.1436648l-.0952841.395608h-6.01690905c-.4249091%200-.76963637-.3447273-.76963637-.7696364%200-.3895.28966667-.711625.66523264-.7626076l.10440373-.0070288zm-1.3449819-4.72789088c.4249091%200%20.7696364.34472727.7696364.76963636%200%20.3895-.2896667.711625-.6652326.76260764l-.1044038.00702873h-5.15399996c-.42490909%200-.76963637-.34472728-.76963637-.76963637%200-.3895.28966667-.711625.66523264-.76260764l.10440373-.00702872z%22%20fill%3D%22%236f99a3%22%20fill-rule%3D%22evenodd%22%20transform%3D%22translate(7%204)%22%2F%3E%3C%2Fsvg%3E");
+  }
+  .bereidvoor p.icon.bereidvoor.current:before {
+    background-color: #e8d8c7;
+    border-color: #e8d8c7;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20width%3D%2240%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22m24.3331636.54529091c.2366061%200%20.4331313.17023569.4738826.39501384l.0077538.08662252v4.64618182c-.369-.162-.7505795-.300375-1.1431278-.41305398l-.3961449-.10403693v-3.07145454h-21.73636366v27.84109086h21.73636366v-7.1394545c.3996818-.0957273.7889318-.2172273%201.1661392-.3631193l.3731335-.1539716v8.9678182c0%20.105-.0708333.1933333-.1673611.2198611l-.0606389.0081389h-24.22309091c-.17611363%200-.3225767-.1248665-.3564407-.2905547l-.00737748-.0732635v-30.18709092c0-.1785.12611932-.32693182.2939478-.36125071l.07423402-.00747656zm-7.5481091%2024.14639999c.4249091%200%20.7696364.3447273.7696364.7696364%200%20.3895-.2896667.711625-.6652326.7626076l-.1044038.0070287h-10.54199995c-.4249091%200-.76963637-.3447272-.76963637-.7696363%200-.3895.28966667-.711625.66523264-.7626077l.10440373-.0070287zm4.4406546-18.25919999c1.9352727%200%203.8705454.738%205.3470909%202.21509091%202.5638042%202.56380418%202.8998558%206.50972638%201.0116869%209.43806418l-.1536869.2290267%202.1349091%202.1354546-1.8845455%201.8845454-2.1354545-2.1354545c-1.2938182.9032727-2.8063636%201.3570909-4.32%201.3570909-1.9358182%200-3.8705455-.738-5.3470909-2.2150909-2.9536364-2.9530909-2.9536364-7.7405455%200-10.69363638%201.4765454-1.47709091%203.4112727-2.21509091%205.3470909-2.21509091zm-6.8998364%2013.53087269c.5149091.582%201.1018182%201.0985455%201.7498182%201.5332728l-.0605454.006h-9.77181823c-.42545454%200-.76963636-.3447273-.76963636-.7696364s.34418182-.7696364.76963636-.7696364zm6.8998364-11.87432724c-1.5774546%200-3.0605455.61418182-4.176%201.72963637-1.1149091%201.11545457-1.7296364%202.59854547-1.7296364%204.17599997%200%201.5769091.6147273%203.06%201.7296364%204.1754546.1592727.1592727.3265454.3078788.5005252.4459798l.2658384.1992929.8394546.498c.7914545.3829091%201.6652727.5863636%202.5701818.5863636.8043636%200%201.5837306-.1607542%202.3028567-.4654066l.2667797-.120957.84-.498c.27-.1914545.526909-.4063636.7658181-.6452727%201.1154546-1.1154546%201.7296364-2.5985455%201.7296364-4.1754546%200-1.5774545-.6141818-3.0605454-1.7296364-4.17599997-1.1154545-1.11545455-2.5985454-1.72963637-4.1754545-1.72963637zm2.0498182%202.01965454c.6147272.3250909%201.1416363.792%201.5392727%201.3565455v5.0116363c-.3976364.5645455-.9245455%201.0314546-1.5392727%201.3565455zm-4.9511455%205.1266727c.4249091%200%20.7696364.3447273.7696364.7696364s-.3447273.7696364-.7696364.7696364h-.4609091c-.3747272-.4461819-.6616363-.9676364-.8345454-1.5392728zm-6.1815818.0001637c.0556364.3968182.1370455.7853522.2423864%201.1639914l.11325.3752813h-6.25527276c-.42490909%200-.76963637-.3447273-.76963637-.7696364%200-.3895.28966667-.711625.66523264-.7626076l.10440373-.0070287zm6.3776182-4.6996364c.3294545.0872727.5738182.3845455.5738182.7412727%200%20.3895-.2896667.711625-.6652327.7626077l-.1044037.0070287h-1.0314545c.2918181-.5912727.7123636-1.1072727%201.2272727-1.5109091zm-5.7782727-.0284182c-.1538182.3694091-.283091.7513978-.3868978%201.1436648l-.0952841.395608h-6.01690905c-.4249091%200-.76963637-.3447273-.76963637-.7696364%200-.3895.28966667-.711625.66523264-.7626076l.10440373-.0070288zm-1.3449819-4.72789088c.4249091%200%20.7696364.34472727.7696364.76963636%200%20.3895-.2896667.711625-.6652326.76260764l-.1044038.00702873h-5.15399996c-.42490909%200-.76963637-.34472728-.76963637-.76963637%200-.3895.28966667-.711625.66523264-.76260764l.10440373-.00702872z%22%20fill%3D%22%236f99a3%22%20fill-rule%3D%22evenodd%22%20transform%3D%22translate(7%204)%22%2F%3E%3C%2Fsvg%3E");
+  }
+}
+@media only screen and (min-width: 800px) {
+  .bereidvoor:before {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20width%3D%2240%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22m24.3331636.54529091c.2366061%200%20.4331313.17023569.4738826.39501384l.0077538.08662252v4.64618182c-.369-.162-.7505795-.300375-1.1431278-.41305398l-.3961449-.10403693v-3.07145454h-21.73636366v27.84109086h21.73636366v-7.1394545c.3996818-.0957273.7889318-.2172273%201.1661392-.3631193l.3731335-.1539716v8.9678182c0%20.105-.0708333.1933333-.1673611.2198611l-.0606389.0081389h-24.22309091c-.17611363%200-.3225767-.1248665-.3564407-.2905547l-.00737748-.0732635v-30.18709092c0-.1785.12611932-.32693182.2939478-.36125071l.07423402-.00747656zm-7.5481091%2024.14639999c.4249091%200%20.7696364.3447273.7696364.7696364%200%20.3895-.2896667.711625-.6652326.7626076l-.1044038.0070287h-10.54199995c-.4249091%200-.76963637-.3447272-.76963637-.7696363%200-.3895.28966667-.711625.66523264-.7626077l.10440373-.0070287zm4.4406546-18.25919999c1.9352727%200%203.8705454.738%205.3470909%202.21509091%202.5638042%202.56380418%202.8998558%206.50972638%201.0116869%209.43806418l-.1536869.2290267%202.1349091%202.1354546-1.8845455%201.8845454-2.1354545-2.1354545c-1.2938182.9032727-2.8063636%201.3570909-4.32%201.3570909-1.9358182%200-3.8705455-.738-5.3470909-2.2150909-2.9536364-2.9530909-2.9536364-7.7405455%200-10.69363638%201.4765454-1.47709091%203.4112727-2.21509091%205.3470909-2.21509091zm-6.8998364%2013.53087269c.5149091.582%201.1018182%201.0985455%201.7498182%201.5332728l-.0605454.006h-9.77181823c-.42545454%200-.76963636-.3447273-.76963636-.7696364s.34418182-.7696364.76963636-.7696364zm6.8998364-11.87432724c-1.5774546%200-3.0605455.61418182-4.176%201.72963637-1.1149091%201.11545457-1.7296364%202.59854547-1.7296364%204.17599997%200%201.5769091.6147273%203.06%201.7296364%204.1754546.1592727.1592727.3265454.3078788.5005252.4459798l.2658384.1992929.8394546.498c.7914545.3829091%201.6652727.5863636%202.5701818.5863636.8043636%200%201.5837306-.1607542%202.3028567-.4654066l.2667797-.120957.84-.498c.27-.1914545.526909-.4063636.7658181-.6452727%201.1154546-1.1154546%201.7296364-2.5985455%201.7296364-4.1754546%200-1.5774545-.6141818-3.0605454-1.7296364-4.17599997-1.1154545-1.11545455-2.5985454-1.72963637-4.1754545-1.72963637zm2.0498182%202.01965454c.6147272.3250909%201.1416363.792%201.5392727%201.3565455v5.0116363c-.3976364.5645455-.9245455%201.0314546-1.5392727%201.3565455zm-4.9511455%205.1266727c.4249091%200%20.7696364.3447273.7696364.7696364s-.3447273.7696364-.7696364.7696364h-.4609091c-.3747272-.4461819-.6616363-.9676364-.8345454-1.5392728zm-6.1815818.0001637c.0556364.3968182.1370455.7853522.2423864%201.1639914l.11325.3752813h-6.25527276c-.42490909%200-.76963637-.3447273-.76963637-.7696364%200-.3895.28966667-.711625.66523264-.7626076l.10440373-.0070287zm6.3776182-4.6996364c.3294545.0872727.5738182.3845455.5738182.7412727%200%20.3895-.2896667.711625-.6652327.7626077l-.1044037.0070287h-1.0314545c.2918181-.5912727.7123636-1.1072727%201.2272727-1.5109091zm-5.7782727-.0284182c-.1538182.3694091-.283091.7513978-.3868978%201.1436648l-.0952841.395608h-6.01690905c-.4249091%200-.76963637-.3447273-.76963637-.7696364%200-.3895.28966667-.711625.66523264-.7626076l.10440373-.0070288zm-1.3449819-4.72789088c.4249091%200%20.7696364.34472727.7696364.76963636%200%20.3895-.2896667.711625-.6652326.76260764l-.1044038.00702873h-5.15399996c-.42490909%200-.76963637-.34472728-.76963637-.76963637%200-.3895.28966667-.711625.66523264-.76260764l.10440373-.00702872z%22%20fill%3D%22%236f99a3%22%20fill-rule%3D%22evenodd%22%20transform%3D%22translate(7%204)%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+  }
+  .bereidvoor.current:before {
+    background-color: #e8d8c7;
+    border-color: #e8d8c7;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20width%3D%2240%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22m24.3331636.54529091c.2366061%200%20.4331313.17023569.4738826.39501384l.0077538.08662252v4.64618182c-.369-.162-.7505795-.300375-1.1431278-.41305398l-.3961449-.10403693v-3.07145454h-21.73636366v27.84109086h21.73636366v-7.1394545c.3996818-.0957273.7889318-.2172273%201.1661392-.3631193l.3731335-.1539716v8.9678182c0%20.105-.0708333.1933333-.1673611.2198611l-.0606389.0081389h-24.22309091c-.17611363%200-.3225767-.1248665-.3564407-.2905547l-.00737748-.0732635v-30.18709092c0-.1785.12611932-.32693182.2939478-.36125071l.07423402-.00747656zm-7.5481091%2024.14639999c.4249091%200%20.7696364.3447273.7696364.7696364%200%20.3895-.2896667.711625-.6652326.7626076l-.1044038.0070287h-10.54199995c-.4249091%200-.76963637-.3447272-.76963637-.7696363%200-.3895.28966667-.711625.66523264-.7626077l.10440373-.0070287zm4.4406546-18.25919999c1.9352727%200%203.8705454.738%205.3470909%202.21509091%202.5638042%202.56380418%202.8998558%206.50972638%201.0116869%209.43806418l-.1536869.2290267%202.1349091%202.1354546-1.8845455%201.8845454-2.1354545-2.1354545c-1.2938182.9032727-2.8063636%201.3570909-4.32%201.3570909-1.9358182%200-3.8705455-.738-5.3470909-2.2150909-2.9536364-2.9530909-2.9536364-7.7405455%200-10.69363638%201.4765454-1.47709091%203.4112727-2.21509091%205.3470909-2.21509091zm-6.8998364%2013.53087269c.5149091.582%201.1018182%201.0985455%201.7498182%201.5332728l-.0605454.006h-9.77181823c-.42545454%200-.76963636-.3447273-.76963636-.7696364s.34418182-.7696364.76963636-.7696364zm6.8998364-11.87432724c-1.5774546%200-3.0605455.61418182-4.176%201.72963637-1.1149091%201.11545457-1.7296364%202.59854547-1.7296364%204.17599997%200%201.5769091.6147273%203.06%201.7296364%204.1754546.1592727.1592727.3265454.3078788.5005252.4459798l.2658384.1992929.8394546.498c.7914545.3829091%201.6652727.5863636%202.5701818.5863636.8043636%200%201.5837306-.1607542%202.3028567-.4654066l.2667797-.120957.84-.498c.27-.1914545.526909-.4063636.7658181-.6452727%201.1154546-1.1154546%201.7296364-2.5985455%201.7296364-4.1754546%200-1.5774545-.6141818-3.0605454-1.7296364-4.17599997-1.1154545-1.11545455-2.5985454-1.72963637-4.1754545-1.72963637zm2.0498182%202.01965454c.6147272.3250909%201.1416363.792%201.5392727%201.3565455v5.0116363c-.3976364.5645455-.9245455%201.0314546-1.5392727%201.3565455zm-4.9511455%205.1266727c.4249091%200%20.7696364.3447273.7696364.7696364s-.3447273.7696364-.7696364.7696364h-.4609091c-.3747272-.4461819-.6616363-.9676364-.8345454-1.5392728zm-6.1815818.0001637c.0556364.3968182.1370455.7853522.2423864%201.1639914l.11325.3752813h-6.25527276c-.42490909%200-.76963637-.3447273-.76963637-.7696364%200-.3895.28966667-.711625.66523264-.7626076l.10440373-.0070287zm6.3776182-4.6996364c.3294545.0872727.5738182.3845455.5738182.7412727%200%20.3895-.2896667.711625-.6652327.7626077l-.1044037.0070287h-1.0314545c.2918181-.5912727.7123636-1.1072727%201.2272727-1.5109091zm-5.7782727-.0284182c-.1538182.3694091-.283091.7513978-.3868978%201.1436648l-.0952841.395608h-6.01690905c-.4249091%200-.76963637-.3447273-.76963637-.7696364%200-.3895.28966667-.711625.66523264-.7626076l.10440373-.0070288zm-1.3449819-4.72789088c.4249091%200%20.7696364.34472727.7696364.76963636%200%20.3895-.2896667.711625-.6652326.76260764l-.1044038.00702873h-5.15399996c-.42490909%200-.76963637-.34472728-.76963637-.76963637%200-.3895.28966667-.711625.66523264-.76260764l.10440373-.00702872z%22%20fill%3D%22%236f99a3%22%20fill-rule%3D%22evenodd%22%20transform%3D%22translate(7%204)%22%2F%3E%3C%2Fsvg%3E");
+  }
+}
+@media only screen and (max-width: 800px) {
+  .bereidvoor button {
     background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20width%3D%2240%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22m24.3331636.54529091c.2366061%200%20.4331313.17023569.4738826.39501384l.0077538.08662252v4.64618182c-.369-.162-.7505795-.300375-1.1431278-.41305398l-.3961449-.10403693v-3.07145454h-21.73636366v27.84109086h21.73636366v-7.1394545c.3996818-.0957273.7889318-.2172273%201.1661392-.3631193l.3731335-.1539716v8.9678182c0%20.105-.0708333.1933333-.1673611.2198611l-.0606389.0081389h-24.22309091c-.17611363%200-.3225767-.1248665-.3564407-.2905547l-.00737748-.0732635v-30.18709092c0-.1785.12611932-.32693182.2939478-.36125071l.07423402-.00747656zm-7.5481091%2024.14639999c.4249091%200%20.7696364.3447273.7696364.7696364%200%20.3895-.2896667.711625-.6652326.7626076l-.1044038.0070287h-10.54199995c-.4249091%200-.76963637-.3447272-.76963637-.7696363%200-.3895.28966667-.711625.66523264-.7626077l.10440373-.0070287zm4.4406546-18.25919999c1.9352727%200%203.8705454.738%205.3470909%202.21509091%202.5638042%202.56380418%202.8998558%206.50972638%201.0116869%209.43806418l-.1536869.2290267%202.1349091%202.1354546-1.8845455%201.8845454-2.1354545-2.1354545c-1.2938182.9032727-2.8063636%201.3570909-4.32%201.3570909-1.9358182%200-3.8705455-.738-5.3470909-2.2150909-2.9536364-2.9530909-2.9536364-7.7405455%200-10.69363638%201.4765454-1.47709091%203.4112727-2.21509091%205.3470909-2.21509091zm-6.8998364%2013.53087269c.5149091.582%201.1018182%201.0985455%201.7498182%201.5332728l-.0605454.006h-9.77181823c-.42545454%200-.76963636-.3447273-.76963636-.7696364s.34418182-.7696364.76963636-.7696364zm6.8998364-11.87432724c-1.5774546%200-3.0605455.61418182-4.176%201.72963637-1.1149091%201.11545457-1.7296364%202.59854547-1.7296364%204.17599997%200%201.5769091.6147273%203.06%201.7296364%204.1754546.1592727.1592727.3265454.3078788.5005252.4459798l.2658384.1992929.8394546.498c.7914545.3829091%201.6652727.5863636%202.5701818.5863636.8043636%200%201.5837306-.1607542%202.3028567-.4654066l.2667797-.120957.84-.498c.27-.1914545.526909-.4063636.7658181-.6452727%201.1154546-1.1154546%201.7296364-2.5985455%201.7296364-4.1754546%200-1.5774545-.6141818-3.0605454-1.7296364-4.17599997-1.1154545-1.11545455-2.5985454-1.72963637-4.1754545-1.72963637zm2.0498182%202.01965454c.6147272.3250909%201.1416363.792%201.5392727%201.3565455v5.0116363c-.3976364.5645455-.9245455%201.0314546-1.5392727%201.3565455zm-4.9511455%205.1266727c.4249091%200%20.7696364.3447273.7696364.7696364s-.3447273.7696364-.7696364.7696364h-.4609091c-.3747272-.4461819-.6616363-.9676364-.8345454-1.5392728zm-6.1815818.0001637c.0556364.3968182.1370455.7853522.2423864%201.1639914l.11325.3752813h-6.25527276c-.42490909%200-.76963637-.3447273-.76963637-.7696364%200-.3895.28966667-.711625.66523264-.7626076l.10440373-.0070287zm6.3776182-4.6996364c.3294545.0872727.5738182.3845455.5738182.7412727%200%20.3895-.2896667.711625-.6652327.7626077l-.1044037.0070287h-1.0314545c.2918181-.5912727.7123636-1.1072727%201.2272727-1.5109091zm-5.7782727-.0284182c-.1538182.3694091-.283091.7513978-.3868978%201.1436648l-.0952841.395608h-6.01690905c-.4249091%200-.76963637-.3447273-.76963637-.7696364%200-.3895.28966667-.711625.66523264-.7626076l.10440373-.0070288zm-1.3449819-4.72789088c.4249091%200%20.7696364.34472727.7696364.76963636%200%20.3895-.2896667.711625-.6652326.76260764l-.1044038.00702873h-5.15399996c-.42490909%200-.76963637-.34472728-.76963637-.76963637%200-.3895.28966667-.711625.66523264-.76260764l.10440373-.00702872z%22%20fill%3D%22%23f00%22%20fill-rule%3D%22evenodd%22%20transform%3D%22translate(7%204)%22%2F%3E%3C%2Fsvg%3E");
     background-repeat: no-repeat;
   }
@@ -2074,6 +1748,31 @@ STYLING STEPS
     background-color: #e8d8c7;
     border-color: #e8d8c7;
     background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20width%3D%2240%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22m24.3331636.54529091c.2366061%200%20.4331313.17023569.4738826.39501384l.0077538.08662252v4.64618182c-.369-.162-.7505795-.300375-1.1431278-.41305398l-.3961449-.10403693v-3.07145454h-21.73636366v27.84109086h21.73636366v-7.1394545c.3996818-.0957273.7889318-.2172273%201.1661392-.3631193l.3731335-.1539716v8.9678182c0%20.105-.0708333.1933333-.1673611.2198611l-.0606389.0081389h-24.22309091c-.17611363%200-.3225767-.1248665-.3564407-.2905547l-.00737748-.0732635v-30.18709092c0-.1785.12611932-.32693182.2939478-.36125071l.07423402-.00747656zm-7.5481091%2024.14639999c.4249091%200%20.7696364.3447273.7696364.7696364%200%20.3895-.2896667.711625-.6652326.7626076l-.1044038.0070287h-10.54199995c-.4249091%200-.76963637-.3447272-.76963637-.7696363%200-.3895.28966667-.711625.66523264-.7626077l.10440373-.0070287zm4.4406546-18.25919999c1.9352727%200%203.8705454.738%205.3470909%202.21509091%202.5638042%202.56380418%202.8998558%206.50972638%201.0116869%209.43806418l-.1536869.2290267%202.1349091%202.1354546-1.8845455%201.8845454-2.1354545-2.1354545c-1.2938182.9032727-2.8063636%201.3570909-4.32%201.3570909-1.9358182%200-3.8705455-.738-5.3470909-2.2150909-2.9536364-2.9530909-2.9536364-7.7405455%200-10.69363638%201.4765454-1.47709091%203.4112727-2.21509091%205.3470909-2.21509091zm-6.8998364%2013.53087269c.5149091.582%201.1018182%201.0985455%201.7498182%201.5332728l-.0605454.006h-9.77181823c-.42545454%200-.76963636-.3447273-.76963636-.7696364s.34418182-.7696364.76963636-.7696364zm6.8998364-11.87432724c-1.5774546%200-3.0605455.61418182-4.176%201.72963637-1.1149091%201.11545457-1.7296364%202.59854547-1.7296364%204.17599997%200%201.5769091.6147273%203.06%201.7296364%204.1754546.1592727.1592727.3265454.3078788.5005252.4459798l.2658384.1992929.8394546.498c.7914545.3829091%201.6652727.5863636%202.5701818.5863636.8043636%200%201.5837306-.1607542%202.3028567-.4654066l.2667797-.120957.84-.498c.27-.1914545.526909-.4063636.7658181-.6452727%201.1154546-1.1154546%201.7296364-2.5985455%201.7296364-4.1754546%200-1.5774545-.6141818-3.0605454-1.7296364-4.17599997-1.1154545-1.11545455-2.5985454-1.72963637-4.1754545-1.72963637zm2.0498182%202.01965454c.6147272.3250909%201.1416363.792%201.5392727%201.3565455v5.0116363c-.3976364.5645455-.9245455%201.0314546-1.5392727%201.3565455zm-4.9511455%205.1266727c.4249091%200%20.7696364.3447273.7696364.7696364s-.3447273.7696364-.7696364.7696364h-.4609091c-.3747272-.4461819-.6616363-.9676364-.8345454-1.5392728zm-6.1815818.0001637c.0556364.3968182.1370455.7853522.2423864%201.1639914l.11325.3752813h-6.25527276c-.42490909%200-.76963637-.3447273-.76963637-.7696364%200-.3895.28966667-.711625.66523264-.7626076l.10440373-.0070287zm6.3776182-4.6996364c.3294545.0872727.5738182.3845455.5738182.7412727%200%20.3895-.2896667.711625-.6652327.7626077l-.1044037.0070287h-1.0314545c.2918181-.5912727.7123636-1.1072727%201.2272727-1.5109091zm-5.7782727-.0284182c-.1538182.3694091-.283091.7513978-.3868978%201.1436648l-.0952841.395608h-6.01690905c-.4249091%200-.76963637-.3447273-.76963637-.7696364%200-.3895.28966667-.711625.66523264-.7626076l.10440373-.0070288zm-1.3449819-4.72789088c.4249091%200%20.7696364.34472727.7696364.76963636%200%20.3895-.2896667.711625-.6652326.76260764l-.1044038.00702873h-5.15399996c-.42490909%200-.76963637-.34472728-.76963637-.76963637%200-.3895.28966667-.711625.66523264-.76260764l.10440373-.00702872z%22%20fill%3D%22%23002F3E%22%20fill-rule%3D%22evenodd%22%20transform%3D%22translate(7%204)%22%2F%3E%3C%2Fsvg%3E");
+  }
+}
+@media only screen and (max-width: 800px) {
+  .ontwerp button {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20width%3D%2240%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22%236f99a3%22%20fill-rule%3D%22evenodd%22%20transform%3D%22translate(7%203)%22%3E%3Cpath%20d%3D%22m1.61096%2031.24134h22.74376v-29.11168h-22.74376zm23.85084-30.7216h-25.07648c-.21268%200-.38532.17264-.38532.38532v31.56608c0%20.21008.17004.38012.38064.38012h25.34584c.13208%200%20.23868-.1066.23868-.23868v-31.58896c0-.2782-.22516-.50388-.50336-.50388z%22%2F%3E%3Cpath%20d%3D%22m15.76822%2024.969828c.4732%200%20.85592.38324.85592.85592%200%20.4732-.38272.85592-.85592.85592h-5.57128c-.47268%200-.85592-.38272-.85592-.85592%200-.47268.38324-.85592.85592-.85592zm-6.1971-10.150972c.129376.373984.2664064.7133568.4377152%201.0330278l.1353248.2362922-2.45232%202.45752-.54912%201.9864%201.9864-.55016%202.40084-2.405c.35856.28656.4034215.3205662.9325321.7061027l.1428279.1040573-2.81892%202.8236-4.5162%201.19444%201.21576-4.4954zm2.144272-3.066336c1.97236.58084%202.52876.62972%203.64052%202.03112%201.40868%201.7706%205.81464%207.74852%205.81464%207.74852.351.4966-.2548%201.11696-.75712.7748%200%200-6.07932-4.27024-7.88528-5.63576-1.3643443-1.0325843-1.4831344-1.5836939-2.036981-3.3398557l-.078379-.2471043zm-1.152528%204.906668c.08944.10608.1869689.2128533.2935111.3204741l.1666889.1620859-1.7472%201.75136-.47164-.47164zm7.411508-10.259236%203.30044%203.30096-4.16208%204.1704c-.1924-.25064-.3676978-.4811733-.5497748-.7107052l-.2811852-.3459348%203.13196-3.1382-1.43676-1.43728-3.20372%203.21048c-.31616-.190112-.6452992-.3362944-1.0049894-.4654374l-.2757706-.0940826zm.024804%202.805088.4706.4706-2.63172%202.63848c-.16484-.17264-.3276-.32188-.48776-.45448zm-12.72934-2.805088c1.82621739.78288261%205.6205893.64364376%205.5500523%204.0186637l-.0104923.2302563-1.42896%201.45756c-3.55992.06188-3.49388-3.73776-4.1106-5.70648z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+  }
+  .ontwerp p.icon.ontwerp:before {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20width%3D%2240%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22%236f99a3%22%20fill-rule%3D%22evenodd%22%20transform%3D%22translate(7%203)%22%3E%3Cpath%20d%3D%22m1.61096%2031.24134h22.74376v-29.11168h-22.74376zm23.85084-30.7216h-25.07648c-.21268%200-.38532.17264-.38532.38532v31.56608c0%20.21008.17004.38012.38064.38012h25.34584c.13208%200%20.23868-.1066.23868-.23868v-31.58896c0-.2782-.22516-.50388-.50336-.50388z%22%2F%3E%3Cpath%20d%3D%22m15.76822%2024.969828c.4732%200%20.85592.38324.85592.85592%200%20.4732-.38272.85592-.85592.85592h-5.57128c-.47268%200-.85592-.38272-.85592-.85592%200-.47268.38324-.85592.85592-.85592zm-6.1971-10.150972c.129376.373984.2664064.7133568.4377152%201.0330278l.1353248.2362922-2.45232%202.45752-.54912%201.9864%201.9864-.55016%202.40084-2.405c.35856.28656.4034215.3205662.9325321.7061027l.1428279.1040573-2.81892%202.8236-4.5162%201.19444%201.21576-4.4954zm2.144272-3.066336c1.97236.58084%202.52876.62972%203.64052%202.03112%201.40868%201.7706%205.81464%207.74852%205.81464%207.74852.351.4966-.2548%201.11696-.75712.7748%200%200-6.07932-4.27024-7.88528-5.63576-1.3643443-1.0325843-1.4831344-1.5836939-2.036981-3.3398557l-.078379-.2471043zm-1.152528%204.906668c.08944.10608.1869689.2128533.2935111.3204741l.1666889.1620859-1.7472%201.75136-.47164-.47164zm7.411508-10.259236%203.30044%203.30096-4.16208%204.1704c-.1924-.25064-.3676978-.4811733-.5497748-.7107052l-.2811852-.3459348%203.13196-3.1382-1.43676-1.43728-3.20372%203.21048c-.31616-.190112-.6452992-.3362944-1.0049894-.4654374l-.2757706-.0940826zm.024804%202.805088.4706.4706-2.63172%202.63848c-.16484-.17264-.3276-.32188-.48776-.45448zm-12.72934-2.805088c1.82621739.78288261%205.6205893.64364376%205.5500523%204.0186637l-.0104923.2302563-1.42896%201.45756c-3.55992.06188-3.49388-3.73776-4.1106-5.70648z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  }
+  .ontwerp p.icon.ontwerp.current:before {
+    background-color: #e8d8c7;
+    border-color: #e8d8c7;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20width%3D%2240%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22%236f99a3%22%20fill-rule%3D%22evenodd%22%20transform%3D%22translate(7%203)%22%3E%3Cpath%20d%3D%22m1.61096%2031.24134h22.74376v-29.11168h-22.74376zm23.85084-30.7216h-25.07648c-.21268%200-.38532.17264-.38532.38532v31.56608c0%20.21008.17004.38012.38064.38012h25.34584c.13208%200%20.23868-.1066.23868-.23868v-31.58896c0-.2782-.22516-.50388-.50336-.50388z%22%2F%3E%3Cpath%20d%3D%22m15.76822%2024.969828c.4732%200%20.85592.38324.85592.85592%200%20.4732-.38272.85592-.85592.85592h-5.57128c-.47268%200-.85592-.38272-.85592-.85592%200-.47268.38324-.85592.85592-.85592zm-6.1971-10.150972c.129376.373984.2664064.7133568.4377152%201.0330278l.1353248.2362922-2.45232%202.45752-.54912%201.9864%201.9864-.55016%202.40084-2.405c.35856.28656.4034215.3205662.9325321.7061027l.1428279.1040573-2.81892%202.8236-4.5162%201.19444%201.21576-4.4954zm2.144272-3.066336c1.97236.58084%202.52876.62972%203.64052%202.03112%201.40868%201.7706%205.81464%207.74852%205.81464%207.74852.351.4966-.2548%201.11696-.75712.7748%200%200-6.07932-4.27024-7.88528-5.63576-1.3643443-1.0325843-1.4831344-1.5836939-2.036981-3.3398557l-.078379-.2471043zm-1.152528%204.906668c.08944.10608.1869689.2128533.2935111.3204741l.1666889.1620859-1.7472%201.75136-.47164-.47164zm7.411508-10.259236%203.30044%203.30096-4.16208%204.1704c-.1924-.25064-.3676978-.4811733-.5497748-.7107052l-.2811852-.3459348%203.13196-3.1382-1.43676-1.43728-3.20372%203.21048c-.31616-.190112-.6452992-.3362944-1.0049894-.4654374l-.2757706-.0940826zm.024804%202.805088.4706.4706-2.63172%202.63848c-.16484-.17264-.3276-.32188-.48776-.45448zm-12.72934-2.805088c1.82621739.78288261%205.6205893.64364376%205.5500523%204.0186637l-.0104923.2302563-1.42896%201.45756c-3.55992.06188-3.49388-3.73776-4.1106-5.70648z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  }
+}
+@media only screen and (min-width: 800px) {
+  .ontwerp:before {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20width%3D%2240%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22%236f99a3%22%20fill-rule%3D%22evenodd%22%20transform%3D%22translate(7%203)%22%3E%3Cpath%20d%3D%22m1.61096%2031.24134h22.74376v-29.11168h-22.74376zm23.85084-30.7216h-25.07648c-.21268%200-.38532.17264-.38532.38532v31.56608c0%20.21008.17004.38012.38064.38012h25.34584c.13208%200%20.23868-.1066.23868-.23868v-31.58896c0-.2782-.22516-.50388-.50336-.50388z%22%2F%3E%3Cpath%20d%3D%22m15.76822%2024.969828c.4732%200%20.85592.38324.85592.85592%200%20.4732-.38272.85592-.85592.85592h-5.57128c-.47268%200-.85592-.38272-.85592-.85592%200-.47268.38324-.85592.85592-.85592zm-6.1971-10.150972c.129376.373984.2664064.7133568.4377152%201.0330278l.1353248.2362922-2.45232%202.45752-.54912%201.9864%201.9864-.55016%202.40084-2.405c.35856.28656.4034215.3205662.9325321.7061027l.1428279.1040573-2.81892%202.8236-4.5162%201.19444%201.21576-4.4954zm2.144272-3.066336c1.97236.58084%202.52876.62972%203.64052%202.03112%201.40868%201.7706%205.81464%207.74852%205.81464%207.74852.351.4966-.2548%201.11696-.75712.7748%200%200-6.07932-4.27024-7.88528-5.63576-1.3643443-1.0325843-1.4831344-1.5836939-2.036981-3.3398557l-.078379-.2471043zm-1.152528%204.906668c.08944.10608.1869689.2128533.2935111.3204741l.1666889.1620859-1.7472%201.75136-.47164-.47164zm7.411508-10.259236%203.30044%203.30096-4.16208%204.1704c-.1924-.25064-.3676978-.4811733-.5497748-.7107052l-.2811852-.3459348%203.13196-3.1382-1.43676-1.43728-3.20372%203.21048c-.31616-.190112-.6452992-.3362944-1.0049894-.4654374l-.2757706-.0940826zm.024804%202.805088.4706.4706-2.63172%202.63848c-.16484-.17264-.3276-.32188-.48776-.45448zm-12.72934-2.805088c1.82621739.78288261%205.6205893.64364376%205.5500523%204.0186637l-.0104923.2302563-1.42896%201.45756c-3.55992.06188-3.49388-3.73776-4.1106-5.70648z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+  }
+  .ontwerp.current:before {
+    background-color: #e8d8c7;
+    border-color: #e8d8c7;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20width%3D%2240%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22%236f99a3%22%20fill-rule%3D%22evenodd%22%20transform%3D%22translate(7%203)%22%3E%3Cpath%20d%3D%22m1.61096%2031.24134h22.74376v-29.11168h-22.74376zm23.85084-30.7216h-25.07648c-.21268%200-.38532.17264-.38532.38532v31.56608c0%20.21008.17004.38012.38064.38012h25.34584c.13208%200%20.23868-.1066.23868-.23868v-31.58896c0-.2782-.22516-.50388-.50336-.50388z%22%2F%3E%3Cpath%20d%3D%22m15.76822%2024.969828c.4732%200%20.85592.38324.85592.85592%200%20.4732-.38272.85592-.85592.85592h-5.57128c-.47268%200-.85592-.38272-.85592-.85592%200-.47268.38324-.85592.85592-.85592zm-6.1971-10.150972c.129376.373984.2664064.7133568.4377152%201.0330278l.1353248.2362922-2.45232%202.45752-.54912%201.9864%201.9864-.55016%202.40084-2.405c.35856.28656.4034215.3205662.9325321.7061027l.1428279.1040573-2.81892%202.8236-4.5162%201.19444%201.21576-4.4954zm2.144272-3.066336c1.97236.58084%202.52876.62972%203.64052%202.03112%201.40868%201.7706%205.81464%207.74852%205.81464%207.74852.351.4966-.2548%201.11696-.75712.7748%200%200-6.07932-4.27024-7.88528-5.63576-1.3643443-1.0325843-1.4831344-1.5836939-2.036981-3.3398557l-.078379-.2471043zm-1.152528%204.906668c.08944.10608.1869689.2128533.2935111.3204741l.1666889.1620859-1.7472%201.75136-.47164-.47164zm7.411508-10.259236%203.30044%203.30096-4.16208%204.1704c-.1924-.25064-.3676978-.4811733-.5497748-.7107052l-.2811852-.3459348%203.13196-3.1382-1.43676-1.43728-3.20372%203.21048c-.31616-.190112-.6452992-.3362944-1.0049894-.4654374l-.2757706-.0940826zm.024804%202.805088.4706.4706-2.63172%202.63848c-.16484-.17264-.3276-.32188-.48776-.45448zm-12.72934-2.805088c1.82621739.78288261%205.6205893.64364376%205.5500523%204.0186637l-.0104923.2302563-1.42896%201.45756c-3.55992.06188-3.49388-3.73776-4.1106-5.70648z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
   }
 }
 @media only screen and (max-width: 800px) {
@@ -2103,6 +1802,31 @@ STYLING STEPS
 }
 @media only screen and (max-width: 800px) {
   .test button {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20width%3D%2240%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22m17.9505472%2016.3247132c.3066037%200%20.7147547.0706415.9168679.4061887.3021887.501849.2815849%201.6880377-.6828679%203.5104906-.0269812.0510188-.052.1015471-.0760378.1515849-.1515849-.1736604-.3090566-.3365283-.4684905-.4949812-.5253963-.5219622-.7888302-.7834339-.7888302-2.3767924%200-.8163019.349283-1.1964906%201.0993585-1.1964906m-2.8869321-15.24031697c-.3438868.46701886-.6343019.97426415-.8560377%201.51879245h-12.68800004v27.46384902h21.45637734v-18.141132c.5391321-.1815095%201.0473585-.4267925%201.5197736-.7265283v20.161283c0%20.1241132-.1010566.2251698-.2256604.2251698h-23.91116979c-.19818868%200-.35860377-.1604151-.35860377-.3586038v-29.77932074c0-.20064151.16237736-.36350943.36350943-.36350943zm2.8869321%2013.51401507c2.3493207%200%203.9833962%202.247283%201.7596603%206.4499623-.635283%201.2013962.4238491%201.6056226%201.7768302%201.9372453v1.7783019c-.6701132-.1555095-1.2921509-.3090566-1.8896603-.5764151.0328679.3164151.0554339.6568679.0672075%201.0243018.0039245.1196982.0044151.1412831-.1295094%202.7383397-.0103019.1952453-.0206038.3939245-.0309057.5930943.0004906-.0004906.0004906.0220755-.0004906.0573962h-1.7228679c.0858491-1.7326792.1609057-3.2681509.1589434-3.3333962-.1712075-5.3319623-2.8143773-3.019434-2.8143773-7.7460377%200-1.8950566%201.2352452-2.9227925%202.8251698-2.9227925zm-9.42647173-3.7723056c3.13079243%200%205.31135853%202.9968679%202.34490563%208.6001132-.97377355%201.8410943%201.0385283%202.2786792%203.1989812%202.7780754%201.8729811.4326793%201.9975849%201.3480755%201.9975849%202.9335849-.0084553.1289081-.1059782%201.6158681-.2121216%203.2406105l-.0145199.2222952h-1.7199246l.0058255-.091.0054576-.091c.0961509-1.5286038.1903396-3.030717.2089811-3.3333962-.0014717-.5303019-.0264906-.8638868-.0735849-.9929057-.0412076-.0274717-.1669228-.0977606-.4533904-.1737303l-.132836-.032798-.0833963-.0191321c-1.8386415-.4248301-3.73958487-.8638868-4.45777355-2.4356603-.27128302-.5930944-.45573585-1.5624529.20554717-2.8119246%201.18766038-2.243849%201.52222638-4.2046415.89479248-5.2466037-.40815097-.6784529-1.15773588-.820717-1.71452833-.820717-.56218868%200-1.31913207.1456981-1.73267924.839849-.62939623%201.0566793-.29090566%203.0052076.90460377%205.2107925.67550943%201.2460377.49645283%202.2188302.22762264%202.8153585-.71279245%201.5806038-2.5985283%202.0152453-4.42196226%202.4361509%200%200-.21633963.0480755-.41732702.1248366l-.08452204.0345974v-1.8150944c2.10943396-.487132%204.17962264-.9266792%203.17837736-2.7731698-2.97332076-5.4869811-.84671698-8.599132%202.34588679-8.599132zm12.20994343-10.82595853c2.8953207%200%205.2505283%202.35520755%205.2505283%205.25101887%200%202.89532075-2.3552076%205.25052826-5.2505283%205.25052826-2.8953208%200-5.2505283-2.35520751-5.2505283-5.25052826%200-2.89581132%202.3552075-5.25101887%205.2505283-5.25101887zm2.2700307%203.19509294-.0286345.01713347-2.6784906%202.74520755c-.0163522.0163522-.0394633.022239-.0604668.01736967l-.0288162-.0154074-1.2058113-1.14350944c-.0166793-.01569811-.0396814-.02071279-.0604305-.01518938l-.028362.01617051-.8212075.82218868c-.0166793.01667925-.022239.04033543-.0165339.06152062l.0170245.02874353%202.1153207%202.05154717c.0166793.01602516.0401174.02114885.0611572.01551643l.0286164-.01649756%203.5894717-3.65815094c.0163522-.01667925.0215849-.03989937.0159888-.06079385l-.0164794-.02848917-.820717-.82071698c-.0170062-.01700629-.0405534-.02245702-.0616296-.01664291z%22%20fill%3D%22%236f99a3%22%20fill-rule%3D%22evenodd%22%20transform%3D%22translate(8%204)%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+  }
+  .test p.icon.test:before {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20width%3D%2240%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22m17.9505472%2016.3247132c.3066037%200%20.7147547.0706415.9168679.4061887.3021887.501849.2815849%201.6880377-.6828679%203.5104906-.0269812.0510188-.052.1015471-.0760378.1515849-.1515849-.1736604-.3090566-.3365283-.4684905-.4949812-.5253963-.5219622-.7888302-.7834339-.7888302-2.3767924%200-.8163019.349283-1.1964906%201.0993585-1.1964906m-2.8869321-15.24031697c-.3438868.46701886-.6343019.97426415-.8560377%201.51879245h-12.68800004v27.46384902h21.45637734v-18.141132c.5391321-.1815095%201.0473585-.4267925%201.5197736-.7265283v20.161283c0%20.1241132-.1010566.2251698-.2256604.2251698h-23.91116979c-.19818868%200-.35860377-.1604151-.35860377-.3586038v-29.77932074c0-.20064151.16237736-.36350943.36350943-.36350943zm2.8869321%2013.51401507c2.3493207%200%203.9833962%202.247283%201.7596603%206.4499623-.635283%201.2013962.4238491%201.6056226%201.7768302%201.9372453v1.7783019c-.6701132-.1555095-1.2921509-.3090566-1.8896603-.5764151.0328679.3164151.0554339.6568679.0672075%201.0243018.0039245.1196982.0044151.1412831-.1295094%202.7383397-.0103019.1952453-.0206038.3939245-.0309057.5930943.0004906-.0004906.0004906.0220755-.0004906.0573962h-1.7228679c.0858491-1.7326792.1609057-3.2681509.1589434-3.3333962-.1712075-5.3319623-2.8143773-3.019434-2.8143773-7.7460377%200-1.8950566%201.2352452-2.9227925%202.8251698-2.9227925zm-9.42647173-3.7723056c3.13079243%200%205.31135853%202.9968679%202.34490563%208.6001132-.97377355%201.8410943%201.0385283%202.2786792%203.1989812%202.7780754%201.8729811.4326793%201.9975849%201.3480755%201.9975849%202.9335849-.0084553.1289081-.1059782%201.6158681-.2121216%203.2406105l-.0145199.2222952h-1.7199246l.0058255-.091.0054576-.091c.0961509-1.5286038.1903396-3.030717.2089811-3.3333962-.0014717-.5303019-.0264906-.8638868-.0735849-.9929057-.0412076-.0274717-.1669228-.0977606-.4533904-.1737303l-.132836-.032798-.0833963-.0191321c-1.8386415-.4248301-3.73958487-.8638868-4.45777355-2.4356603-.27128302-.5930944-.45573585-1.5624529.20554717-2.8119246%201.18766038-2.243849%201.52222638-4.2046415.89479248-5.2466037-.40815097-.6784529-1.15773588-.820717-1.71452833-.820717-.56218868%200-1.31913207.1456981-1.73267924.839849-.62939623%201.0566793-.29090566%203.0052076.90460377%205.2107925.67550943%201.2460377.49645283%202.2188302.22762264%202.8153585-.71279245%201.5806038-2.5985283%202.0152453-4.42196226%202.4361509%200%200-.21633963.0480755-.41732702.1248366l-.08452204.0345974v-1.8150944c2.10943396-.487132%204.17962264-.9266792%203.17837736-2.7731698-2.97332076-5.4869811-.84671698-8.599132%202.34588679-8.599132zm12.20994343-10.82595853c2.8953207%200%205.2505283%202.35520755%205.2505283%205.25101887%200%202.89532075-2.3552076%205.25052826-5.2505283%205.25052826-2.8953208%200-5.2505283-2.35520751-5.2505283-5.25052826%200-2.89581132%202.3552075-5.25101887%205.2505283-5.25101887zm2.2700307%203.19509294-.0286345.01713347-2.6784906%202.74520755c-.0163522.0163522-.0394633.022239-.0604668.01736967l-.0288162-.0154074-1.2058113-1.14350944c-.0166793-.01569811-.0396814-.02071279-.0604305-.01518938l-.028362.01617051-.8212075.82218868c-.0166793.01667925-.022239.04033543-.0165339.06152062l.0170245.02874353%202.1153207%202.05154717c.0166793.01602516.0401174.02114885.0611572.01551643l.0286164-.01649756%203.5894717-3.65815094c.0163522-.01667925.0215849-.03989937.0159888-.06079385l-.0164794-.02848917-.820717-.82071698c-.0170062-.01700629-.0405534-.02245702-.0616296-.01664291z%22%20fill%3D%22%236f99a3%22%20fill-rule%3D%22evenodd%22%20transform%3D%22translate(8%204)%22%2F%3E%3C%2Fsvg%3E");
+  }
+  .test p.icon.test.current:before {
+    background-color: #e8d8c7;
+    border-color: #e8d8c7;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20width%3D%2240%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22m17.9505472%2016.3247132c.3066037%200%20.7147547.0706415.9168679.4061887.3021887.501849.2815849%201.6880377-.6828679%203.5104906-.0269812.0510188-.052.1015471-.0760378.1515849-.1515849-.1736604-.3090566-.3365283-.4684905-.4949812-.5253963-.5219622-.7888302-.7834339-.7888302-2.3767924%200-.8163019.349283-1.1964906%201.0993585-1.1964906m-2.8869321-15.24031697c-.3438868.46701886-.6343019.97426415-.8560377%201.51879245h-12.68800004v27.46384902h21.45637734v-18.141132c.5391321-.1815095%201.0473585-.4267925%201.5197736-.7265283v20.161283c0%20.1241132-.1010566.2251698-.2256604.2251698h-23.91116979c-.19818868%200-.35860377-.1604151-.35860377-.3586038v-29.77932074c0-.20064151.16237736-.36350943.36350943-.36350943zm2.8869321%2013.51401507c2.3493207%200%203.9833962%202.247283%201.7596603%206.4499623-.635283%201.2013962.4238491%201.6056226%201.7768302%201.9372453v1.7783019c-.6701132-.1555095-1.2921509-.3090566-1.8896603-.5764151.0328679.3164151.0554339.6568679.0672075%201.0243018.0039245.1196982.0044151.1412831-.1295094%202.7383397-.0103019.1952453-.0206038.3939245-.0309057.5930943.0004906-.0004906.0004906.0220755-.0004906.0573962h-1.7228679c.0858491-1.7326792.1609057-3.2681509.1589434-3.3333962-.1712075-5.3319623-2.8143773-3.019434-2.8143773-7.7460377%200-1.8950566%201.2352452-2.9227925%202.8251698-2.9227925zm-9.42647173-3.7723056c3.13079243%200%205.31135853%202.9968679%202.34490563%208.6001132-.97377355%201.8410943%201.0385283%202.2786792%203.1989812%202.7780754%201.8729811.4326793%201.9975849%201.3480755%201.9975849%202.9335849-.0084553.1289081-.1059782%201.6158681-.2121216%203.2406105l-.0145199.2222952h-1.7199246l.0058255-.091.0054576-.091c.0961509-1.5286038.1903396-3.030717.2089811-3.3333962-.0014717-.5303019-.0264906-.8638868-.0735849-.9929057-.0412076-.0274717-.1669228-.0977606-.4533904-.1737303l-.132836-.032798-.0833963-.0191321c-1.8386415-.4248301-3.73958487-.8638868-4.45777355-2.4356603-.27128302-.5930944-.45573585-1.5624529.20554717-2.8119246%201.18766038-2.243849%201.52222638-4.2046415.89479248-5.2466037-.40815097-.6784529-1.15773588-.820717-1.71452833-.820717-.56218868%200-1.31913207.1456981-1.73267924.839849-.62939623%201.0566793-.29090566%203.0052076.90460377%205.2107925.67550943%201.2460377.49645283%202.2188302.22762264%202.8153585-.71279245%201.5806038-2.5985283%202.0152453-4.42196226%202.4361509%200%200-.21633963.0480755-.41732702.1248366l-.08452204.0345974v-1.8150944c2.10943396-.487132%204.17962264-.9266792%203.17837736-2.7731698-2.97332076-5.4869811-.84671698-8.599132%202.34588679-8.599132zm12.20994343-10.82595853c2.8953207%200%205.2505283%202.35520755%205.2505283%205.25101887%200%202.89532075-2.3552076%205.25052826-5.2505283%205.25052826-2.8953208%200-5.2505283-2.35520751-5.2505283-5.25052826%200-2.89581132%202.3552075-5.25101887%205.2505283-5.25101887zm2.2700307%203.19509294-.0286345.01713347-2.6784906%202.74520755c-.0163522.0163522-.0394633.022239-.0604668.01736967l-.0288162-.0154074-1.2058113-1.14350944c-.0166793-.01569811-.0396814-.02071279-.0604305-.01518938l-.028362.01617051-.8212075.82218868c-.0166793.01667925-.022239.04033543-.0165339.06152062l.0170245.02874353%202.1153207%202.05154717c.0166793.01602516.0401174.02114885.0611572.01551643l.0286164-.01649756%203.5894717-3.65815094c.0163522-.01667925.0215849-.03989937.0159888-.06079385l-.0164794-.02848917-.820717-.82071698c-.0170062-.01700629-.0405534-.02245702-.0616296-.01664291z%22%20fill%3D%22%236f99a3%22%20fill-rule%3D%22evenodd%22%20transform%3D%22translate(8%204)%22%2F%3E%3C%2Fsvg%3E");
+  }
+}
+@media only screen and (min-width: 800px) {
+  .test:before {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20width%3D%2240%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22m17.9505472%2016.3247132c.3066037%200%20.7147547.0706415.9168679.4061887.3021887.501849.2815849%201.6880377-.6828679%203.5104906-.0269812.0510188-.052.1015471-.0760378.1515849-.1515849-.1736604-.3090566-.3365283-.4684905-.4949812-.5253963-.5219622-.7888302-.7834339-.7888302-2.3767924%200-.8163019.349283-1.1964906%201.0993585-1.1964906m-2.8869321-15.24031697c-.3438868.46701886-.6343019.97426415-.8560377%201.51879245h-12.68800004v27.46384902h21.45637734v-18.141132c.5391321-.1815095%201.0473585-.4267925%201.5197736-.7265283v20.161283c0%20.1241132-.1010566.2251698-.2256604.2251698h-23.91116979c-.19818868%200-.35860377-.1604151-.35860377-.3586038v-29.77932074c0-.20064151.16237736-.36350943.36350943-.36350943zm2.8869321%2013.51401507c2.3493207%200%203.9833962%202.247283%201.7596603%206.4499623-.635283%201.2013962.4238491%201.6056226%201.7768302%201.9372453v1.7783019c-.6701132-.1555095-1.2921509-.3090566-1.8896603-.5764151.0328679.3164151.0554339.6568679.0672075%201.0243018.0039245.1196982.0044151.1412831-.1295094%202.7383397-.0103019.1952453-.0206038.3939245-.0309057.5930943.0004906-.0004906.0004906.0220755-.0004906.0573962h-1.7228679c.0858491-1.7326792.1609057-3.2681509.1589434-3.3333962-.1712075-5.3319623-2.8143773-3.019434-2.8143773-7.7460377%200-1.8950566%201.2352452-2.9227925%202.8251698-2.9227925zm-9.42647173-3.7723056c3.13079243%200%205.31135853%202.9968679%202.34490563%208.6001132-.97377355%201.8410943%201.0385283%202.2786792%203.1989812%202.7780754%201.8729811.4326793%201.9975849%201.3480755%201.9975849%202.9335849-.0084553.1289081-.1059782%201.6158681-.2121216%203.2406105l-.0145199.2222952h-1.7199246l.0058255-.091.0054576-.091c.0961509-1.5286038.1903396-3.030717.2089811-3.3333962-.0014717-.5303019-.0264906-.8638868-.0735849-.9929057-.0412076-.0274717-.1669228-.0977606-.4533904-.1737303l-.132836-.032798-.0833963-.0191321c-1.8386415-.4248301-3.73958487-.8638868-4.45777355-2.4356603-.27128302-.5930944-.45573585-1.5624529.20554717-2.8119246%201.18766038-2.243849%201.52222638-4.2046415.89479248-5.2466037-.40815097-.6784529-1.15773588-.820717-1.71452833-.820717-.56218868%200-1.31913207.1456981-1.73267924.839849-.62939623%201.0566793-.29090566%203.0052076.90460377%205.2107925.67550943%201.2460377.49645283%202.2188302.22762264%202.8153585-.71279245%201.5806038-2.5985283%202.0152453-4.42196226%202.4361509%200%200-.21633963.0480755-.41732702.1248366l-.08452204.0345974v-1.8150944c2.10943396-.487132%204.17962264-.9266792%203.17837736-2.7731698-2.97332076-5.4869811-.84671698-8.599132%202.34588679-8.599132zm12.20994343-10.82595853c2.8953207%200%205.2505283%202.35520755%205.2505283%205.25101887%200%202.89532075-2.3552076%205.25052826-5.2505283%205.25052826-2.8953208%200-5.2505283-2.35520751-5.2505283-5.25052826%200-2.89581132%202.3552075-5.25101887%205.2505283-5.25101887zm2.2700307%203.19509294-.0286345.01713347-2.6784906%202.74520755c-.0163522.0163522-.0394633.022239-.0604668.01736967l-.0288162-.0154074-1.2058113-1.14350944c-.0166793-.01569811-.0396814-.02071279-.0604305-.01518938l-.028362.01617051-.8212075.82218868c-.0166793.01667925-.022239.04033543-.0165339.06152062l.0170245.02874353%202.1153207%202.05154717c.0166793.01602516.0401174.02114885.0611572.01551643l.0286164-.01649756%203.5894717-3.65815094c.0163522-.01667925.0215849-.03989937.0159888-.06079385l-.0164794-.02848917-.820717-.82071698c-.0170062-.01700629-.0405534-.02245702-.0616296-.01664291z%22%20fill%3D%22%236f99a3%22%20fill-rule%3D%22evenodd%22%20transform%3D%22translate(8%204)%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+  }
+  .test.current:before {
+    background-color: #e8d8c7;
+    border-color: #e8d8c7;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20width%3D%2240%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22m17.9505472%2016.3247132c.3066037%200%20.7147547.0706415.9168679.4061887.3021887.501849.2815849%201.6880377-.6828679%203.5104906-.0269812.0510188-.052.1015471-.0760378.1515849-.1515849-.1736604-.3090566-.3365283-.4684905-.4949812-.5253963-.5219622-.7888302-.7834339-.7888302-2.3767924%200-.8163019.349283-1.1964906%201.0993585-1.1964906m-2.8869321-15.24031697c-.3438868.46701886-.6343019.97426415-.8560377%201.51879245h-12.68800004v27.46384902h21.45637734v-18.141132c.5391321-.1815095%201.0473585-.4267925%201.5197736-.7265283v20.161283c0%20.1241132-.1010566.2251698-.2256604.2251698h-23.91116979c-.19818868%200-.35860377-.1604151-.35860377-.3586038v-29.77932074c0-.20064151.16237736-.36350943.36350943-.36350943zm2.8869321%2013.51401507c2.3493207%200%203.9833962%202.247283%201.7596603%206.4499623-.635283%201.2013962.4238491%201.6056226%201.7768302%201.9372453v1.7783019c-.6701132-.1555095-1.2921509-.3090566-1.8896603-.5764151.0328679.3164151.0554339.6568679.0672075%201.0243018.0039245.1196982.0044151.1412831-.1295094%202.7383397-.0103019.1952453-.0206038.3939245-.0309057.5930943.0004906-.0004906.0004906.0220755-.0004906.0573962h-1.7228679c.0858491-1.7326792.1609057-3.2681509.1589434-3.3333962-.1712075-5.3319623-2.8143773-3.019434-2.8143773-7.7460377%200-1.8950566%201.2352452-2.9227925%202.8251698-2.9227925zm-9.42647173-3.7723056c3.13079243%200%205.31135853%202.9968679%202.34490563%208.6001132-.97377355%201.8410943%201.0385283%202.2786792%203.1989812%202.7780754%201.8729811.4326793%201.9975849%201.3480755%201.9975849%202.9335849-.0084553.1289081-.1059782%201.6158681-.2121216%203.2406105l-.0145199.2222952h-1.7199246l.0058255-.091.0054576-.091c.0961509-1.5286038.1903396-3.030717.2089811-3.3333962-.0014717-.5303019-.0264906-.8638868-.0735849-.9929057-.0412076-.0274717-.1669228-.0977606-.4533904-.1737303l-.132836-.032798-.0833963-.0191321c-1.8386415-.4248301-3.73958487-.8638868-4.45777355-2.4356603-.27128302-.5930944-.45573585-1.5624529.20554717-2.8119246%201.18766038-2.243849%201.52222638-4.2046415.89479248-5.2466037-.40815097-.6784529-1.15773588-.820717-1.71452833-.820717-.56218868%200-1.31913207.1456981-1.73267924.839849-.62939623%201.0566793-.29090566%203.0052076.90460377%205.2107925.67550943%201.2460377.49645283%202.2188302.22762264%202.8153585-.71279245%201.5806038-2.5985283%202.0152453-4.42196226%202.4361509%200%200-.21633963.0480755-.41732702.1248366l-.08452204.0345974v-1.8150944c2.10943396-.487132%204.17962264-.9266792%203.17837736-2.7731698-2.97332076-5.4869811-.84671698-8.599132%202.34588679-8.599132zm12.20994343-10.82595853c2.8953207%200%205.2505283%202.35520755%205.2505283%205.25101887%200%202.89532075-2.3552076%205.25052826-5.2505283%205.25052826-2.8953208%200-5.2505283-2.35520751-5.2505283-5.25052826%200-2.89581132%202.3552075-5.25101887%205.2505283-5.25101887zm2.2700307%203.19509294-.0286345.01713347-2.6784906%202.74520755c-.0163522.0163522-.0394633.022239-.0604668.01736967l-.0288162-.0154074-1.2058113-1.14350944c-.0166793-.01569811-.0396814-.02071279-.0604305-.01518938l-.028362.01617051-.8212075.82218868c-.0166793.01667925-.022239.04033543-.0165339.06152062l.0170245.02874353%202.1153207%202.05154717c.0166793.01602516.0401174.02114885.0611572.01551643l.0286164-.01649756%203.5894717-3.65815094c.0163522-.01667925.0215849-.03989937.0159888-.06079385l-.0164794-.02848917-.820717-.82071698c-.0170062-.01700629-.0405534-.02245702-.0616296-.01664291z%22%20fill%3D%22%236f99a3%22%20fill-rule%3D%22evenodd%22%20transform%3D%22translate(8%204)%22%2F%3E%3C%2Fsvg%3E");
+  }
+}
+@media only screen and (max-width: 800px) {
+  .test button {
     background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20width%3D%2240%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22m17.9505472%2016.3247132c.3066037%200%20.7147547.0706415.9168679.4061887.3021887.501849.2815849%201.6880377-.6828679%203.5104906-.0269812.0510188-.052.1015471-.0760378.1515849-.1515849-.1736604-.3090566-.3365283-.4684905-.4949812-.5253963-.5219622-.7888302-.7834339-.7888302-2.3767924%200-.8163019.349283-1.1964906%201.0993585-1.1964906m-2.8869321-15.24031697c-.3438868.46701886-.6343019.97426415-.8560377%201.51879245h-12.68800004v27.46384902h21.45637734v-18.141132c.5391321-.1815095%201.0473585-.4267925%201.5197736-.7265283v20.161283c0%20.1241132-.1010566.2251698-.2256604.2251698h-23.91116979c-.19818868%200-.35860377-.1604151-.35860377-.3586038v-29.77932074c0-.20064151.16237736-.36350943.36350943-.36350943zm2.8869321%2013.51401507c2.3493207%200%203.9833962%202.247283%201.7596603%206.4499623-.635283%201.2013962.4238491%201.6056226%201.7768302%201.9372453v1.7783019c-.6701132-.1555095-1.2921509-.3090566-1.8896603-.5764151.0328679.3164151.0554339.6568679.0672075%201.0243018.0039245.1196982.0044151.1412831-.1295094%202.7383397-.0103019.1952453-.0206038.3939245-.0309057.5930943.0004906-.0004906.0004906.0220755-.0004906.0573962h-1.7228679c.0858491-1.7326792.1609057-3.2681509.1589434-3.3333962-.1712075-5.3319623-2.8143773-3.019434-2.8143773-7.7460377%200-1.8950566%201.2352452-2.9227925%202.8251698-2.9227925zm-9.42647173-3.7723056c3.13079243%200%205.31135853%202.9968679%202.34490563%208.6001132-.97377355%201.8410943%201.0385283%202.2786792%203.1989812%202.7780754%201.8729811.4326793%201.9975849%201.3480755%201.9975849%202.9335849-.0084553.1289081-.1059782%201.6158681-.2121216%203.2406105l-.0145199.2222952h-1.7199246l.0058255-.091.0054576-.091c.0961509-1.5286038.1903396-3.030717.2089811-3.3333962-.0014717-.5303019-.0264906-.8638868-.0735849-.9929057-.0412076-.0274717-.1669228-.0977606-.4533904-.1737303l-.132836-.032798-.0833963-.0191321c-1.8386415-.4248301-3.73958487-.8638868-4.45777355-2.4356603-.27128302-.5930944-.45573585-1.5624529.20554717-2.8119246%201.18766038-2.243849%201.52222638-4.2046415.89479248-5.2466037-.40815097-.6784529-1.15773588-.820717-1.71452833-.820717-.56218868%200-1.31913207.1456981-1.73267924.839849-.62939623%201.0566793-.29090566%203.0052076.90460377%205.2107925.67550943%201.2460377.49645283%202.2188302.22762264%202.8153585-.71279245%201.5806038-2.5985283%202.0152453-4.42196226%202.4361509%200%200-.21633963.0480755-.41732702.1248366l-.08452204.0345974v-1.8150944c2.10943396-.487132%204.17962264-.9266792%203.17837736-2.7731698-2.97332076-5.4869811-.84671698-8.599132%202.34588679-8.599132zm12.20994343-10.82595853c2.8953207%200%205.2505283%202.35520755%205.2505283%205.25101887%200%202.89532075-2.3552076%205.25052826-5.2505283%205.25052826-2.8953208%200-5.2505283-2.35520751-5.2505283-5.25052826%200-2.89581132%202.3552075-5.25101887%205.2505283-5.25101887zm2.2700307%203.19509294-.0286345.01713347-2.6784906%202.74520755c-.0163522.0163522-.0394633.022239-.0604668.01736967l-.0288162-.0154074-1.2058113-1.14350944c-.0166793-.01569811-.0396814-.02071279-.0604305-.01518938l-.028362.01617051-.8212075.82218868c-.0166793.01667925-.022239.04033543-.0165339.06152062l.0170245.02874353%202.1153207%202.05154717c.0166793.01602516.0401174.02114885.0611572.01551643l.0286164-.01649756%203.5894717-3.65815094c.0163522-.01667925.0215849-.03989937.0159888-.06079385l-.0164794-.02848917-.820717-.82071698c-.0170062-.01700629-.0405534-.02245702-.0616296-.01664291z%22%20fill%3D%22%23f00%22%20fill-rule%3D%22evenodd%22%20transform%3D%22translate(8%204)%22%2F%3E%3C%2Fsvg%3E");
     background-repeat: no-repeat;
   }
@@ -2128,6 +1852,31 @@ STYLING STEPS
 }
 @media only screen and (max-width: 800px) {
   .evalueer button {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20width%3D%2240%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22m22.930257%205.45128465c.1250529%200%20.2263555.10569206.2263555.23616361v1.09585983c0%20.13047154-.1013026.23616361-.2263555.23616361h-13.20035773c-.12553766%200-.22684025.10569206-.22684025.2361636v27.186123c0%20.1304716.10130259.2361636.22684025.2361636h20.22901263c.1250529%200%20.2263555-.105692.2263555-.2361636v-20.2220779c0-.1304715.1013026-.2361636.2268403-.2361636h1.0498632c.1250529%200%20.2263555.1056921.2263555.2361636v21.7184551c0%20.1704221-.1318388.3079735-.2951831.3079735h-23.09796015c-.16285967%200-.29518315-.1375514-.29518315-.3079735v-30.17887732c0-.16991643.13232348-.30797353.29518315-.30797353zm4.6394438%2024.87274275c.5100796%200%20.818812.6889956.2905152%201.1342649-.03979.0337468-.0930032.0501514-.1447782.0501514h-6.2091644c-.0441047%200-.0901269-.012655-.1265611-.0365589-.673075-.4448006-.2607926-1.1478574.2545604-1.1478574zm-13.0556276-4.7376653c2.2649504%200%203.8774545%202.529137%202.3802401%204.7951237-.0940929.1421735-.2114506.2688371-.345352.374304-2.3145818%201.8136166-4.9957123.0620394-4.9957123-2.2080834%200-1.6114717%201.3064436-2.9613443%202.9608242-2.9613443zm1.1306657%201.687987c-1.7252087-1.2051142-3.6086176.6782967-2.4035048%202.4035072.0377406.0548015.087889.1044329.1426904.1426905%201.7252087%201.2051141%203.6086176-.6782967%202.4035048-2.4035073-.0382576-.0548014-.087889-.1044329-.1426904-.1426904zm11.9296264-.5035707c.5059803%200%20.8122315.6889957.2877049%201.1347337-.0389947.033278-.0917802.0496826-.1436147.0496826h-7.2734669c-.5112113%200-.9201803-.7030567-.2525146-1.1478573.0361415-.0243727.0813183-.036559.125544-.036559zm-13.0602701-8.2909142c1.6548384%200%202.9612354%201.3498754%202.9612354%202.9608336%200%202.2706446-2.6810347%204.0222256-4.9960507%202.2086051-.1338967-.1054671-.2512501-.232131-.3453396-.3743048-1.496644-2.2659916.1158025-4.7951339%202.3801549-4.7951339zm13.0602701%203.5532489c.5059803%200%20.8122315.6889957.2877049%201.134265-.0389947.0337467-.0917802.0501514-.1436147.0501514h-7.2734669c-.5112113%200-.9201803-.7030568-.2525146-1.1478574.0361415-.0243726.0813183-.036559.125544-.036559zm-11.7869596.5382541c1.2050698-1.7252143-.6782718-3.6086292-2.4034188-2.4035125-.0547994.0377407-.1044291.0878893-.1426852.1426908-1.2055868%201.7252143.6782717%203.6091461%202.4034188%202.4035124.0542824-.0382576.1044291-.0878892.1426852-.1426907zm11.7869596-5.2759193c.5059803%200%20.8122315.6889956.2877049%201.1342649-.0394702.0337467-.0917802.0501514-.1436147.0501514h-7.2734669c-.5112113%200-.9201803-.7030568-.2525146-1.1478574.0361415-.0243726.0813183-.0365589.125544-.0365589zm-11.3437297-6.7510269c.1741323-.2896318.5663174-.4553464.8706613-.2896318.3048606.1657146.4789928.5384496.3048606.8280814l-2.8724071%205.7985366c-.1741322.248326-.4789928.4140407-.8272573.4140407-.3477478%200-.6526084-.1244089-.8701446-.4140407l-1.1750051-1.9054723c-.2175362-.3309375-.0873245-.7036725.2175361-.8693871.3482645-.2070204.7399329-.0831032.9140651.2070203l.6386572%201.0336265c.0981755.1593221.3436141.1485039.4268049-.0186859zm11.3036195%203.1977779c.5112087%200%20.9201756.7030568.2525133%201.1478574-.0361412.0243726-.0817933.0365589-.1255433.0365589h-7.3428584c-.0442255%200-.0894021-.0121863-.1260189-.0365589-.6676623-.4448006-.2582198-1.1478574.2525133-1.1478574zm5.7487695-3.0027323c.0530618%200%20.1070712.0219117.1463938.0663274.4703754.5335483.2540386%201.3397618-.2510149%201.4231484l-.0867806.0070343h-2.8331239c-.509299%200-.9167382-.8883123-.2520438-1.4503178.0243201-.0205299.051588-.0342165.0801192-.0410598l.0435339-.0051325zm-1.5975432-4.54634372c.0092826.05731075-.0046414.11611397-.0345924.16499228l-.0350274.04514714-2.3541785%202.42244054c-.1304725.08968071-.2604293.17883077-.4342208.17883077-.3290177%200-.6580355-.16025784-.6920718-.7848389-.0024066-.04563633.0091681-.09127267.0310567-.13109146l.0401102-.05463782%202.3149851-2.3815801c.3805879-.39162346%201.039139-.21120073%201.1639389.54073755zm-5.5708831-2.84647196c.0205299.02432001.0342165.05158791.0410598.08011918l.0051324.04353388v3.15291625c0%20.05306185-.0219117.10707124-.0663273.14639386-.5335484.47037535-1.3397619.2540386-1.4231485-.2510149l-.0070342-.08678064v-2.83312384c0-.50929902.8883122-.91673823%201.4503178-.25204379z%22%20fill%3D%22%236f99a3%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+  }
+  .evalueer p.icon.evalueer:before {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20width%3D%2240%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22m22.930257%205.45128465c.1250529%200%20.2263555.10569206.2263555.23616361v1.09585983c0%20.13047154-.1013026.23616361-.2263555.23616361h-13.20035773c-.12553766%200-.22684025.10569206-.22684025.2361636v27.186123c0%20.1304716.10130259.2361636.22684025.2361636h20.22901263c.1250529%200%20.2263555-.105692.2263555-.2361636v-20.2220779c0-.1304715.1013026-.2361636.2268403-.2361636h1.0498632c.1250529%200%20.2263555.1056921.2263555.2361636v21.7184551c0%20.1704221-.1318388.3079735-.2951831.3079735h-23.09796015c-.16285967%200-.29518315-.1375514-.29518315-.3079735v-30.17887732c0-.16991643.13232348-.30797353.29518315-.30797353zm4.6394438%2024.87274275c.5100796%200%20.818812.6889956.2905152%201.1342649-.03979.0337468-.0930032.0501514-.1447782.0501514h-6.2091644c-.0441047%200-.0901269-.012655-.1265611-.0365589-.673075-.4448006-.2607926-1.1478574.2545604-1.1478574zm-13.0556276-4.7376653c2.2649504%200%203.8774545%202.529137%202.3802401%204.7951237-.0940929.1421735-.2114506.2688371-.345352.374304-2.3145818%201.8136166-4.9957123.0620394-4.9957123-2.2080834%200-1.6114717%201.3064436-2.9613443%202.9608242-2.9613443zm1.1306657%201.687987c-1.7252087-1.2051142-3.6086176.6782967-2.4035048%202.4035072.0377406.0548015.087889.1044329.1426904.1426905%201.7252087%201.2051141%203.6086176-.6782967%202.4035048-2.4035073-.0382576-.0548014-.087889-.1044329-.1426904-.1426904zm11.9296264-.5035707c.5059803%200%20.8122315.6889957.2877049%201.1347337-.0389947.033278-.0917802.0496826-.1436147.0496826h-7.2734669c-.5112113%200-.9201803-.7030567-.2525146-1.1478573.0361415-.0243727.0813183-.036559.125544-.036559zm-13.0602701-8.2909142c1.6548384%200%202.9612354%201.3498754%202.9612354%202.9608336%200%202.2706446-2.6810347%204.0222256-4.9960507%202.2086051-.1338967-.1054671-.2512501-.232131-.3453396-.3743048-1.496644-2.2659916.1158025-4.7951339%202.3801549-4.7951339zm13.0602701%203.5532489c.5059803%200%20.8122315.6889957.2877049%201.134265-.0389947.0337467-.0917802.0501514-.1436147.0501514h-7.2734669c-.5112113%200-.9201803-.7030568-.2525146-1.1478574.0361415-.0243726.0813183-.036559.125544-.036559zm-11.7869596.5382541c1.2050698-1.7252143-.6782718-3.6086292-2.4034188-2.4035125-.0547994.0377407-.1044291.0878893-.1426852.1426908-1.2055868%201.7252143.6782717%203.6091461%202.4034188%202.4035124.0542824-.0382576.1044291-.0878892.1426852-.1426907zm11.7869596-5.2759193c.5059803%200%20.8122315.6889956.2877049%201.1342649-.0394702.0337467-.0917802.0501514-.1436147.0501514h-7.2734669c-.5112113%200-.9201803-.7030568-.2525146-1.1478574.0361415-.0243726.0813183-.0365589.125544-.0365589zm-11.3437297-6.7510269c.1741323-.2896318.5663174-.4553464.8706613-.2896318.3048606.1657146.4789928.5384496.3048606.8280814l-2.8724071%205.7985366c-.1741322.248326-.4789928.4140407-.8272573.4140407-.3477478%200-.6526084-.1244089-.8701446-.4140407l-1.1750051-1.9054723c-.2175362-.3309375-.0873245-.7036725.2175361-.8693871.3482645-.2070204.7399329-.0831032.9140651.2070203l.6386572%201.0336265c.0981755.1593221.3436141.1485039.4268049-.0186859zm11.3036195%203.1977779c.5112087%200%20.9201756.7030568.2525133%201.1478574-.0361412.0243726-.0817933.0365589-.1255433.0365589h-7.3428584c-.0442255%200-.0894021-.0121863-.1260189-.0365589-.6676623-.4448006-.2582198-1.1478574.2525133-1.1478574zm5.7487695-3.0027323c.0530618%200%20.1070712.0219117.1463938.0663274.4703754.5335483.2540386%201.3397618-.2510149%201.4231484l-.0867806.0070343h-2.8331239c-.509299%200-.9167382-.8883123-.2520438-1.4503178.0243201-.0205299.051588-.0342165.0801192-.0410598l.0435339-.0051325zm-1.5975432-4.54634372c.0092826.05731075-.0046414.11611397-.0345924.16499228l-.0350274.04514714-2.3541785%202.42244054c-.1304725.08968071-.2604293.17883077-.4342208.17883077-.3290177%200-.6580355-.16025784-.6920718-.7848389-.0024066-.04563633.0091681-.09127267.0310567-.13109146l.0401102-.05463782%202.3149851-2.3815801c.3805879-.39162346%201.039139-.21120073%201.1639389.54073755zm-5.5708831-2.84647196c.0205299.02432001.0342165.05158791.0410598.08011918l.0051324.04353388v3.15291625c0%20.05306185-.0219117.10707124-.0663273.14639386-.5335484.47037535-1.3397619.2540386-1.4231485-.2510149l-.0070342-.08678064v-2.83312384c0-.50929902.8883122-.91673823%201.4503178-.25204379z%22%20fill%3D%22%236f99a3%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E");
+  }
+  .evalueer p.icon.evalueer.current:before {
+    background-color: #e8d8c7;
+    border-color: #e8d8c7;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20width%3D%2240%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22m22.930257%205.45128465c.1250529%200%20.2263555.10569206.2263555.23616361v1.09585983c0%20.13047154-.1013026.23616361-.2263555.23616361h-13.20035773c-.12553766%200-.22684025.10569206-.22684025.2361636v27.186123c0%20.1304716.10130259.2361636.22684025.2361636h20.22901263c.1250529%200%20.2263555-.105692.2263555-.2361636v-20.2220779c0-.1304715.1013026-.2361636.2268403-.2361636h1.0498632c.1250529%200%20.2263555.1056921.2263555.2361636v21.7184551c0%20.1704221-.1318388.3079735-.2951831.3079735h-23.09796015c-.16285967%200-.29518315-.1375514-.29518315-.3079735v-30.17887732c0-.16991643.13232348-.30797353.29518315-.30797353zm4.6394438%2024.87274275c.5100796%200%20.818812.6889956.2905152%201.1342649-.03979.0337468-.0930032.0501514-.1447782.0501514h-6.2091644c-.0441047%200-.0901269-.012655-.1265611-.0365589-.673075-.4448006-.2607926-1.1478574.2545604-1.1478574zm-13.0556276-4.7376653c2.2649504%200%203.8774545%202.529137%202.3802401%204.7951237-.0940929.1421735-.2114506.2688371-.345352.374304-2.3145818%201.8136166-4.9957123.0620394-4.9957123-2.2080834%200-1.6114717%201.3064436-2.9613443%202.9608242-2.9613443zm1.1306657%201.687987c-1.7252087-1.2051142-3.6086176.6782967-2.4035048%202.4035072.0377406.0548015.087889.1044329.1426904.1426905%201.7252087%201.2051141%203.6086176-.6782967%202.4035048-2.4035073-.0382576-.0548014-.087889-.1044329-.1426904-.1426904zm11.9296264-.5035707c.5059803%200%20.8122315.6889957.2877049%201.1347337-.0389947.033278-.0917802.0496826-.1436147.0496826h-7.2734669c-.5112113%200-.9201803-.7030567-.2525146-1.1478573.0361415-.0243727.0813183-.036559.125544-.036559zm-13.0602701-8.2909142c1.6548384%200%202.9612354%201.3498754%202.9612354%202.9608336%200%202.2706446-2.6810347%204.0222256-4.9960507%202.2086051-.1338967-.1054671-.2512501-.232131-.3453396-.3743048-1.496644-2.2659916.1158025-4.7951339%202.3801549-4.7951339zm13.0602701%203.5532489c.5059803%200%20.8122315.6889957.2877049%201.134265-.0389947.0337467-.0917802.0501514-.1436147.0501514h-7.2734669c-.5112113%200-.9201803-.7030568-.2525146-1.1478574.0361415-.0243726.0813183-.036559.125544-.036559zm-11.7869596.5382541c1.2050698-1.7252143-.6782718-3.6086292-2.4034188-2.4035125-.0547994.0377407-.1044291.0878893-.1426852.1426908-1.2055868%201.7252143.6782717%203.6091461%202.4034188%202.4035124.0542824-.0382576.1044291-.0878892.1426852-.1426907zm11.7869596-5.2759193c.5059803%200%20.8122315.6889956.2877049%201.1342649-.0394702.0337467-.0917802.0501514-.1436147.0501514h-7.2734669c-.5112113%200-.9201803-.7030568-.2525146-1.1478574.0361415-.0243726.0813183-.0365589.125544-.0365589zm-11.3437297-6.7510269c.1741323-.2896318.5663174-.4553464.8706613-.2896318.3048606.1657146.4789928.5384496.3048606.8280814l-2.8724071%205.7985366c-.1741322.248326-.4789928.4140407-.8272573.4140407-.3477478%200-.6526084-.1244089-.8701446-.4140407l-1.1750051-1.9054723c-.2175362-.3309375-.0873245-.7036725.2175361-.8693871.3482645-.2070204.7399329-.0831032.9140651.2070203l.6386572%201.0336265c.0981755.1593221.3436141.1485039.4268049-.0186859zm11.3036195%203.1977779c.5112087%200%20.9201756.7030568.2525133%201.1478574-.0361412.0243726-.0817933.0365589-.1255433.0365589h-7.3428584c-.0442255%200-.0894021-.0121863-.1260189-.0365589-.6676623-.4448006-.2582198-1.1478574.2525133-1.1478574zm5.7487695-3.0027323c.0530618%200%20.1070712.0219117.1463938.0663274.4703754.5335483.2540386%201.3397618-.2510149%201.4231484l-.0867806.0070343h-2.8331239c-.509299%200-.9167382-.8883123-.2520438-1.4503178.0243201-.0205299.051588-.0342165.0801192-.0410598l.0435339-.0051325zm-1.5975432-4.54634372c.0092826.05731075-.0046414.11611397-.0345924.16499228l-.0350274.04514714-2.3541785%202.42244054c-.1304725.08968071-.2604293.17883077-.4342208.17883077-.3290177%200-.6580355-.16025784-.6920718-.7848389-.0024066-.04563633.0091681-.09127267.0310567-.13109146l.0401102-.05463782%202.3149851-2.3815801c.3805879-.39162346%201.039139-.21120073%201.1639389.54073755zm-5.5708831-2.84647196c.0205299.02432001.0342165.05158791.0410598.08011918l.0051324.04353388v3.15291625c0%20.05306185-.0219117.10707124-.0663273.14639386-.5335484.47037535-1.3397619.2540386-1.4231485-.2510149l-.0070342-.08678064v-2.83312384c0-.50929902.8883122-.91673823%201.4503178-.25204379z%22%20fill%3D%22%236f99a3%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E");
+  }
+}
+@media only screen and (min-width: 800px) {
+  .evalueer:before {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20width%3D%2240%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22m22.930257%205.45128465c.1250529%200%20.2263555.10569206.2263555.23616361v1.09585983c0%20.13047154-.1013026.23616361-.2263555.23616361h-13.20035773c-.12553766%200-.22684025.10569206-.22684025.2361636v27.186123c0%20.1304716.10130259.2361636.22684025.2361636h20.22901263c.1250529%200%20.2263555-.105692.2263555-.2361636v-20.2220779c0-.1304715.1013026-.2361636.2268403-.2361636h1.0498632c.1250529%200%20.2263555.1056921.2263555.2361636v21.7184551c0%20.1704221-.1318388.3079735-.2951831.3079735h-23.09796015c-.16285967%200-.29518315-.1375514-.29518315-.3079735v-30.17887732c0-.16991643.13232348-.30797353.29518315-.30797353zm4.6394438%2024.87274275c.5100796%200%20.818812.6889956.2905152%201.1342649-.03979.0337468-.0930032.0501514-.1447782.0501514h-6.2091644c-.0441047%200-.0901269-.012655-.1265611-.0365589-.673075-.4448006-.2607926-1.1478574.2545604-1.1478574zm-13.0556276-4.7376653c2.2649504%200%203.8774545%202.529137%202.3802401%204.7951237-.0940929.1421735-.2114506.2688371-.345352.374304-2.3145818%201.8136166-4.9957123.0620394-4.9957123-2.2080834%200-1.6114717%201.3064436-2.9613443%202.9608242-2.9613443zm1.1306657%201.687987c-1.7252087-1.2051142-3.6086176.6782967-2.4035048%202.4035072.0377406.0548015.087889.1044329.1426904.1426905%201.7252087%201.2051141%203.6086176-.6782967%202.4035048-2.4035073-.0382576-.0548014-.087889-.1044329-.1426904-.1426904zm11.9296264-.5035707c.5059803%200%20.8122315.6889957.2877049%201.1347337-.0389947.033278-.0917802.0496826-.1436147.0496826h-7.2734669c-.5112113%200-.9201803-.7030567-.2525146-1.1478573.0361415-.0243727.0813183-.036559.125544-.036559zm-13.0602701-8.2909142c1.6548384%200%202.9612354%201.3498754%202.9612354%202.9608336%200%202.2706446-2.6810347%204.0222256-4.9960507%202.2086051-.1338967-.1054671-.2512501-.232131-.3453396-.3743048-1.496644-2.2659916.1158025-4.7951339%202.3801549-4.7951339zm13.0602701%203.5532489c.5059803%200%20.8122315.6889957.2877049%201.134265-.0389947.0337467-.0917802.0501514-.1436147.0501514h-7.2734669c-.5112113%200-.9201803-.7030568-.2525146-1.1478574.0361415-.0243726.0813183-.036559.125544-.036559zm-11.7869596.5382541c1.2050698-1.7252143-.6782718-3.6086292-2.4034188-2.4035125-.0547994.0377407-.1044291.0878893-.1426852.1426908-1.2055868%201.7252143.6782717%203.6091461%202.4034188%202.4035124.0542824-.0382576.1044291-.0878892.1426852-.1426907zm11.7869596-5.2759193c.5059803%200%20.8122315.6889956.2877049%201.1342649-.0394702.0337467-.0917802.0501514-.1436147.0501514h-7.2734669c-.5112113%200-.9201803-.7030568-.2525146-1.1478574.0361415-.0243726.0813183-.0365589.125544-.0365589zm-11.3437297-6.7510269c.1741323-.2896318.5663174-.4553464.8706613-.2896318.3048606.1657146.4789928.5384496.3048606.8280814l-2.8724071%205.7985366c-.1741322.248326-.4789928.4140407-.8272573.4140407-.3477478%200-.6526084-.1244089-.8701446-.4140407l-1.1750051-1.9054723c-.2175362-.3309375-.0873245-.7036725.2175361-.8693871.3482645-.2070204.7399329-.0831032.9140651.2070203l.6386572%201.0336265c.0981755.1593221.3436141.1485039.4268049-.0186859zm11.3036195%203.1977779c.5112087%200%20.9201756.7030568.2525133%201.1478574-.0361412.0243726-.0817933.0365589-.1255433.0365589h-7.3428584c-.0442255%200-.0894021-.0121863-.1260189-.0365589-.6676623-.4448006-.2582198-1.1478574.2525133-1.1478574zm5.7487695-3.0027323c.0530618%200%20.1070712.0219117.1463938.0663274.4703754.5335483.2540386%201.3397618-.2510149%201.4231484l-.0867806.0070343h-2.8331239c-.509299%200-.9167382-.8883123-.2520438-1.4503178.0243201-.0205299.051588-.0342165.0801192-.0410598l.0435339-.0051325zm-1.5975432-4.54634372c.0092826.05731075-.0046414.11611397-.0345924.16499228l-.0350274.04514714-2.3541785%202.42244054c-.1304725.08968071-.2604293.17883077-.4342208.17883077-.3290177%200-.6580355-.16025784-.6920718-.7848389-.0024066-.04563633.0091681-.09127267.0310567-.13109146l.0401102-.05463782%202.3149851-2.3815801c.3805879-.39162346%201.039139-.21120073%201.1639389.54073755zm-5.5708831-2.84647196c.0205299.02432001.0342165.05158791.0410598.08011918l.0051324.04353388v3.15291625c0%20.05306185-.0219117.10707124-.0663273.14639386-.5335484.47037535-1.3397619.2540386-1.4231485-.2510149l-.0070342-.08678064v-2.83312384c0-.50929902.8883122-.91673823%201.4503178-.25204379z%22%20fill%3D%22%236f99a3%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+  }
+  .evalueer.current:before {
+    background-color: #e8d8c7;
+    border-color: #e8d8c7;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20width%3D%2240%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22m22.930257%205.45128465c.1250529%200%20.2263555.10569206.2263555.23616361v1.09585983c0%20.13047154-.1013026.23616361-.2263555.23616361h-13.20035773c-.12553766%200-.22684025.10569206-.22684025.2361636v27.186123c0%20.1304716.10130259.2361636.22684025.2361636h20.22901263c.1250529%200%20.2263555-.105692.2263555-.2361636v-20.2220779c0-.1304715.1013026-.2361636.2268403-.2361636h1.0498632c.1250529%200%20.2263555.1056921.2263555.2361636v21.7184551c0%20.1704221-.1318388.3079735-.2951831.3079735h-23.09796015c-.16285967%200-.29518315-.1375514-.29518315-.3079735v-30.17887732c0-.16991643.13232348-.30797353.29518315-.30797353zm4.6394438%2024.87274275c.5100796%200%20.818812.6889956.2905152%201.1342649-.03979.0337468-.0930032.0501514-.1447782.0501514h-6.2091644c-.0441047%200-.0901269-.012655-.1265611-.0365589-.673075-.4448006-.2607926-1.1478574.2545604-1.1478574zm-13.0556276-4.7376653c2.2649504%200%203.8774545%202.529137%202.3802401%204.7951237-.0940929.1421735-.2114506.2688371-.345352.374304-2.3145818%201.8136166-4.9957123.0620394-4.9957123-2.2080834%200-1.6114717%201.3064436-2.9613443%202.9608242-2.9613443zm1.1306657%201.687987c-1.7252087-1.2051142-3.6086176.6782967-2.4035048%202.4035072.0377406.0548015.087889.1044329.1426904.1426905%201.7252087%201.2051141%203.6086176-.6782967%202.4035048-2.4035073-.0382576-.0548014-.087889-.1044329-.1426904-.1426904zm11.9296264-.5035707c.5059803%200%20.8122315.6889957.2877049%201.1347337-.0389947.033278-.0917802.0496826-.1436147.0496826h-7.2734669c-.5112113%200-.9201803-.7030567-.2525146-1.1478573.0361415-.0243727.0813183-.036559.125544-.036559zm-13.0602701-8.2909142c1.6548384%200%202.9612354%201.3498754%202.9612354%202.9608336%200%202.2706446-2.6810347%204.0222256-4.9960507%202.2086051-.1338967-.1054671-.2512501-.232131-.3453396-.3743048-1.496644-2.2659916.1158025-4.7951339%202.3801549-4.7951339zm13.0602701%203.5532489c.5059803%200%20.8122315.6889957.2877049%201.134265-.0389947.0337467-.0917802.0501514-.1436147.0501514h-7.2734669c-.5112113%200-.9201803-.7030568-.2525146-1.1478574.0361415-.0243726.0813183-.036559.125544-.036559zm-11.7869596.5382541c1.2050698-1.7252143-.6782718-3.6086292-2.4034188-2.4035125-.0547994.0377407-.1044291.0878893-.1426852.1426908-1.2055868%201.7252143.6782717%203.6091461%202.4034188%202.4035124.0542824-.0382576.1044291-.0878892.1426852-.1426907zm11.7869596-5.2759193c.5059803%200%20.8122315.6889956.2877049%201.1342649-.0394702.0337467-.0917802.0501514-.1436147.0501514h-7.2734669c-.5112113%200-.9201803-.7030568-.2525146-1.1478574.0361415-.0243726.0813183-.0365589.125544-.0365589zm-11.3437297-6.7510269c.1741323-.2896318.5663174-.4553464.8706613-.2896318.3048606.1657146.4789928.5384496.3048606.8280814l-2.8724071%205.7985366c-.1741322.248326-.4789928.4140407-.8272573.4140407-.3477478%200-.6526084-.1244089-.8701446-.4140407l-1.1750051-1.9054723c-.2175362-.3309375-.0873245-.7036725.2175361-.8693871.3482645-.2070204.7399329-.0831032.9140651.2070203l.6386572%201.0336265c.0981755.1593221.3436141.1485039.4268049-.0186859zm11.3036195%203.1977779c.5112087%200%20.9201756.7030568.2525133%201.1478574-.0361412.0243726-.0817933.0365589-.1255433.0365589h-7.3428584c-.0442255%200-.0894021-.0121863-.1260189-.0365589-.6676623-.4448006-.2582198-1.1478574.2525133-1.1478574zm5.7487695-3.0027323c.0530618%200%20.1070712.0219117.1463938.0663274.4703754.5335483.2540386%201.3397618-.2510149%201.4231484l-.0867806.0070343h-2.8331239c-.509299%200-.9167382-.8883123-.2520438-1.4503178.0243201-.0205299.051588-.0342165.0801192-.0410598l.0435339-.0051325zm-1.5975432-4.54634372c.0092826.05731075-.0046414.11611397-.0345924.16499228l-.0350274.04514714-2.3541785%202.42244054c-.1304725.08968071-.2604293.17883077-.4342208.17883077-.3290177%200-.6580355-.16025784-.6920718-.7848389-.0024066-.04563633.0091681-.09127267.0310567-.13109146l.0401102-.05463782%202.3149851-2.3815801c.3805879-.39162346%201.039139-.21120073%201.1639389.54073755zm-5.5708831-2.84647196c.0205299.02432001.0342165.05158791.0410598.08011918l.0051324.04353388v3.15291625c0%20.05306185-.0219117.10707124-.0663273.14639386-.5335484.47037535-1.3397619.2540386-1.4231485-.2510149l-.0070342-.08678064v-2.83312384c0-.50929902.8883122-.91673823%201.4503178-.25204379z%22%20fill%3D%22%236f99a3%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E");
+  }
+}
+@media only screen and (max-width: 800px) {
+  .evalueer button {
     background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20width%3D%2240%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22m22.930257%205.45128465c.1250529%200%20.2263555.10569206.2263555.23616361v1.09585983c0%20.13047154-.1013026.23616361-.2263555.23616361h-13.20035773c-.12553766%200-.22684025.10569206-.22684025.2361636v27.186123c0%20.1304716.10130259.2361636.22684025.2361636h20.22901263c.1250529%200%20.2263555-.105692.2263555-.2361636v-20.2220779c0-.1304715.1013026-.2361636.2268403-.2361636h1.0498632c.1250529%200%20.2263555.1056921.2263555.2361636v21.7184551c0%20.1704221-.1318388.3079735-.2951831.3079735h-23.09796015c-.16285967%200-.29518315-.1375514-.29518315-.3079735v-30.17887732c0-.16991643.13232348-.30797353.29518315-.30797353zm4.6394438%2024.87274275c.5100796%200%20.818812.6889956.2905152%201.1342649-.03979.0337468-.0930032.0501514-.1447782.0501514h-6.2091644c-.0441047%200-.0901269-.012655-.1265611-.0365589-.673075-.4448006-.2607926-1.1478574.2545604-1.1478574zm-13.0556276-4.7376653c2.2649504%200%203.8774545%202.529137%202.3802401%204.7951237-.0940929.1421735-.2114506.2688371-.345352.374304-2.3145818%201.8136166-4.9957123.0620394-4.9957123-2.2080834%200-1.6114717%201.3064436-2.9613443%202.9608242-2.9613443zm1.1306657%201.687987c-1.7252087-1.2051142-3.6086176.6782967-2.4035048%202.4035072.0377406.0548015.087889.1044329.1426904.1426905%201.7252087%201.2051141%203.6086176-.6782967%202.4035048-2.4035073-.0382576-.0548014-.087889-.1044329-.1426904-.1426904zm11.9296264-.5035707c.5059803%200%20.8122315.6889957.2877049%201.1347337-.0389947.033278-.0917802.0496826-.1436147.0496826h-7.2734669c-.5112113%200-.9201803-.7030567-.2525146-1.1478573.0361415-.0243727.0813183-.036559.125544-.036559zm-13.0602701-8.2909142c1.6548384%200%202.9612354%201.3498754%202.9612354%202.9608336%200%202.2706446-2.6810347%204.0222256-4.9960507%202.2086051-.1338967-.1054671-.2512501-.232131-.3453396-.3743048-1.496644-2.2659916.1158025-4.7951339%202.3801549-4.7951339zm13.0602701%203.5532489c.5059803%200%20.8122315.6889957.2877049%201.134265-.0389947.0337467-.0917802.0501514-.1436147.0501514h-7.2734669c-.5112113%200-.9201803-.7030568-.2525146-1.1478574.0361415-.0243726.0813183-.036559.125544-.036559zm-11.7869596.5382541c1.2050698-1.7252143-.6782718-3.6086292-2.4034188-2.4035125-.0547994.0377407-.1044291.0878893-.1426852.1426908-1.2055868%201.7252143.6782717%203.6091461%202.4034188%202.4035124.0542824-.0382576.1044291-.0878892.1426852-.1426907zm11.7869596-5.2759193c.5059803%200%20.8122315.6889956.2877049%201.1342649-.0394702.0337467-.0917802.0501514-.1436147.0501514h-7.2734669c-.5112113%200-.9201803-.7030568-.2525146-1.1478574.0361415-.0243726.0813183-.0365589.125544-.0365589zm-11.3437297-6.7510269c.1741323-.2896318.5663174-.4553464.8706613-.2896318.3048606.1657146.4789928.5384496.3048606.8280814l-2.8724071%205.7985366c-.1741322.248326-.4789928.4140407-.8272573.4140407-.3477478%200-.6526084-.1244089-.8701446-.4140407l-1.1750051-1.9054723c-.2175362-.3309375-.0873245-.7036725.2175361-.8693871.3482645-.2070204.7399329-.0831032.9140651.2070203l.6386572%201.0336265c.0981755.1593221.3436141.1485039.4268049-.0186859zm11.3036195%203.1977779c.5112087%200%20.9201756.7030568.2525133%201.1478574-.0361412.0243726-.0817933.0365589-.1255433.0365589h-7.3428584c-.0442255%200-.0894021-.0121863-.1260189-.0365589-.6676623-.4448006-.2582198-1.1478574.2525133-1.1478574zm5.7487695-3.0027323c.0530618%200%20.1070712.0219117.1463938.0663274.4703754.5335483.2540386%201.3397618-.2510149%201.4231484l-.0867806.0070343h-2.8331239c-.509299%200-.9167382-.8883123-.2520438-1.4503178.0243201-.0205299.051588-.0342165.0801192-.0410598l.0435339-.0051325zm-1.5975432-4.54634372c.0092826.05731075-.0046414.11611397-.0345924.16499228l-.0350274.04514714-2.3541785%202.42244054c-.1304725.08968071-.2604293.17883077-.4342208.17883077-.3290177%200-.6580355-.16025784-.6920718-.7848389-.0024066-.04563633.0091681-.09127267.0310567-.13109146l.0401102-.05463782%202.3149851-2.3815801c.3805879-.39162346%201.039139-.21120073%201.1639389.54073755zm-5.5708831-2.84647196c.0205299.02432001.0342165.05158791.0410598.08011918l.0051324.04353388v3.15291625c0%20.05306185-.0219117.10707124-.0663273.14639386-.5335484.47037535-1.3397619.2540386-1.4231485-.2510149l-.0070342-.08678064v-2.83312384c0-.50929902.8883122-.91673823%201.4503178-.25204379z%22%20fill%3D%22%23f00%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E");
     background-repeat: no-repeat;
   }
@@ -2149,6 +1898,31 @@ STYLING STEPS
     background-color: #e8d8c7;
     border-color: #e8d8c7;
     background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20width%3D%2240%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22m22.930257%205.45128465c.1250529%200%20.2263555.10569206.2263555.23616361v1.09585983c0%20.13047154-.1013026.23616361-.2263555.23616361h-13.20035773c-.12553766%200-.22684025.10569206-.22684025.2361636v27.186123c0%20.1304716.10130259.2361636.22684025.2361636h20.22901263c.1250529%200%20.2263555-.105692.2263555-.2361636v-20.2220779c0-.1304715.1013026-.2361636.2268403-.2361636h1.0498632c.1250529%200%20.2263555.1056921.2263555.2361636v21.7184551c0%20.1704221-.1318388.3079735-.2951831.3079735h-23.09796015c-.16285967%200-.29518315-.1375514-.29518315-.3079735v-30.17887732c0-.16991643.13232348-.30797353.29518315-.30797353zm4.6394438%2024.87274275c.5100796%200%20.818812.6889956.2905152%201.1342649-.03979.0337468-.0930032.0501514-.1447782.0501514h-6.2091644c-.0441047%200-.0901269-.012655-.1265611-.0365589-.673075-.4448006-.2607926-1.1478574.2545604-1.1478574zm-13.0556276-4.7376653c2.2649504%200%203.8774545%202.529137%202.3802401%204.7951237-.0940929.1421735-.2114506.2688371-.345352.374304-2.3145818%201.8136166-4.9957123.0620394-4.9957123-2.2080834%200-1.6114717%201.3064436-2.9613443%202.9608242-2.9613443zm1.1306657%201.687987c-1.7252087-1.2051142-3.6086176.6782967-2.4035048%202.4035072.0377406.0548015.087889.1044329.1426904.1426905%201.7252087%201.2051141%203.6086176-.6782967%202.4035048-2.4035073-.0382576-.0548014-.087889-.1044329-.1426904-.1426904zm11.9296264-.5035707c.5059803%200%20.8122315.6889957.2877049%201.1347337-.0389947.033278-.0917802.0496826-.1436147.0496826h-7.2734669c-.5112113%200-.9201803-.7030567-.2525146-1.1478573.0361415-.0243727.0813183-.036559.125544-.036559zm-13.0602701-8.2909142c1.6548384%200%202.9612354%201.3498754%202.9612354%202.9608336%200%202.2706446-2.6810347%204.0222256-4.9960507%202.2086051-.1338967-.1054671-.2512501-.232131-.3453396-.3743048-1.496644-2.2659916.1158025-4.7951339%202.3801549-4.7951339zm13.0602701%203.5532489c.5059803%200%20.8122315.6889957.2877049%201.134265-.0389947.0337467-.0917802.0501514-.1436147.0501514h-7.2734669c-.5112113%200-.9201803-.7030568-.2525146-1.1478574.0361415-.0243726.0813183-.036559.125544-.036559zm-11.7869596.5382541c1.2050698-1.7252143-.6782718-3.6086292-2.4034188-2.4035125-.0547994.0377407-.1044291.0878893-.1426852.1426908-1.2055868%201.7252143.6782717%203.6091461%202.4034188%202.4035124.0542824-.0382576.1044291-.0878892.1426852-.1426907zm11.7869596-5.2759193c.5059803%200%20.8122315.6889956.2877049%201.1342649-.0394702.0337467-.0917802.0501514-.1436147.0501514h-7.2734669c-.5112113%200-.9201803-.7030568-.2525146-1.1478574.0361415-.0243726.0813183-.0365589.125544-.0365589zm-11.3437297-6.7510269c.1741323-.2896318.5663174-.4553464.8706613-.2896318.3048606.1657146.4789928.5384496.3048606.8280814l-2.8724071%205.7985366c-.1741322.248326-.4789928.4140407-.8272573.4140407-.3477478%200-.6526084-.1244089-.8701446-.4140407l-1.1750051-1.9054723c-.2175362-.3309375-.0873245-.7036725.2175361-.8693871.3482645-.2070204.7399329-.0831032.9140651.2070203l.6386572%201.0336265c.0981755.1593221.3436141.1485039.4268049-.0186859zm11.3036195%203.1977779c.5112087%200%20.9201756.7030568.2525133%201.1478574-.0361412.0243726-.0817933.0365589-.1255433.0365589h-7.3428584c-.0442255%200-.0894021-.0121863-.1260189-.0365589-.6676623-.4448006-.2582198-1.1478574.2525133-1.1478574zm5.7487695-3.0027323c.0530618%200%20.1070712.0219117.1463938.0663274.4703754.5335483.2540386%201.3397618-.2510149%201.4231484l-.0867806.0070343h-2.8331239c-.509299%200-.9167382-.8883123-.2520438-1.4503178.0243201-.0205299.051588-.0342165.0801192-.0410598l.0435339-.0051325zm-1.5975432-4.54634372c.0092826.05731075-.0046414.11611397-.0345924.16499228l-.0350274.04514714-2.3541785%202.42244054c-.1304725.08968071-.2604293.17883077-.4342208.17883077-.3290177%200-.6580355-.16025784-.6920718-.7848389-.0024066-.04563633.0091681-.09127267.0310567-.13109146l.0401102-.05463782%202.3149851-2.3815801c.3805879-.39162346%201.039139-.21120073%201.1639389.54073755zm-5.5708831-2.84647196c.0205299.02432001.0342165.05158791.0410598.08011918l.0051324.04353388v3.15291625c0%20.05306185-.0219117.10707124-.0663273.14639386-.5335484.47037535-1.3397619.2540386-1.4231485-.2510149l-.0070342-.08678064v-2.83312384c0-.50929902.8883122-.91673823%201.4503178-.25204379z%22%20fill%3D%22%23002F3E%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E");
+  }
+}
+@media only screen and (max-width: 800px) {
+  .deel button {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20width%3D%2240%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22m12.8677286%202.67527143c.2989285%200%20.54648.21800571.593001.50342657l.0078561.09743057v.13414286c0%20.29854286-.2176586.54640286-.5033224.59298943l-.0975347.00786771h-10.93114289c-.29854285%200-.54640285.21800572-.59298942.50342657l-.00786772.09743057v17.64128569c0%20.2985429.21800572.5464029.50342657.5929895l.09743057.0078677h17.17714289c.2985428%200%20.5464028-.2180057.5929894-.5034266l.0078677-.0974306v-11.7098571c0-.2989286.2180057-.54648001.5034266-.59300101l.0974306-.00785615h.1341428c.2985429%200%20.5464029.21765856.5929894.50332246l.0078678.0975347v12.9844286c0%20.3323376-.2451004.6076505-.5643233.6549608l-.0978196.007182h-19.72628571c-.33233767%200-.60765054-.2451003-.65496083-.5643233l-.00718203-.0978195v-20.19042861c0-.33233767.24510035-.60765054.56432328-.65496083l.09781958-.00718203zm.6768857%2015.68798567c.3338571%200%20.6047143.2704286.6047143.6042858%200%20.3338571-.2708572.6042857-.6047143.6042857h-8.28300001c-.33385715%200-.60471429-.2704286-.60471429-.6042857%200-.3338572.27085714-.6042858.60471429-.6042858zm1.2095571-3.8914714c.3338572%200%20.6047143.2708572.6047143.6042857%200%20.3338572-.2708571.6042857-.6047143.6042857h-9.49242854c-.33385715%200-.60471429-.2704285-.60471429-.6042857%200-.3334285.27085714-.6042857.60471429-.6042857zm-1.7142857-3.8912571c.3338572%200%20.6047143.2704285.6047143.6042857%200%20.3338571-.2708571.6042857-.6047143.6042857h-7.77814284c-.33385715%200-.60471429-.2704286-.60471429-.6042857%200-.3338572.27085714-.6042857.60471429-.6042857zm4.5423-10.15191431%206.3835714.10928571-.108%206.087c-.0081428.44657143-.3767142.80228571-.8232857.79457143-.4478571-.00814286-.8035714-.37671429-.7954285-.82328572l.0518571-2.92071428.0115714-.65357143-.5031428.417-.1238572.10285714c-1.2231428%201.01442857-3.327%202.925-5.0532857%204.72071429-.1431428.14871428-.3381428.23228571-.5447143.23228571h-.1007143c-.3861428%200-.7448571-.26742857-.798-.64928571-.0334285-.23828572.0415715-.47014286.2014286-.63728572%201.4082857-1.47385714%203.3051429-3.26828571%204.7194286-4.46528571l.15-.12685714.609-.516-.798-.01285715-2.5054286-.04071428c-.447-.00728572-.8035714-.37628572-.7954286-.82328572.0081429-.44657142.3762858-.80228571.8224286-.79457142zm-8.27074284%206.2607c.33385714%200%20.60471428.27042857.60471428.60428571s-.27085714.60428571-.60471428.60428571h-4.04957143c-.33428572%200-.60471429-.27042857-.60471429-.60428571s.27042857-.60428571.60471429-.60428571z%22%20fill%3D%22%236f99a3%22%20fill-rule%3D%22evenodd%22%20transform%3D%22translate(9%207)%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+  }
+  .deel p.icon.deel:before {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20width%3D%2240%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22m12.8677286%202.67527143c.2989285%200%20.54648.21800571.593001.50342657l.0078561.09743057v.13414286c0%20.29854286-.2176586.54640286-.5033224.59298943l-.0975347.00786771h-10.93114289c-.29854285%200-.54640285.21800572-.59298942.50342657l-.00786772.09743057v17.64128569c0%20.2985429.21800572.5464029.50342657.5929895l.09743057.0078677h17.17714289c.2985428%200%20.5464028-.2180057.5929894-.5034266l.0078677-.0974306v-11.7098571c0-.2989286.2180057-.54648001.5034266-.59300101l.0974306-.00785615h.1341428c.2985429%200%20.5464029.21765856.5929894.50332246l.0078678.0975347v12.9844286c0%20.3323376-.2451004.6076505-.5643233.6549608l-.0978196.007182h-19.72628571c-.33233767%200-.60765054-.2451003-.65496083-.5643233l-.00718203-.0978195v-20.19042861c0-.33233767.24510035-.60765054.56432328-.65496083l.09781958-.00718203zm.6768857%2015.68798567c.3338571%200%20.6047143.2704286.6047143.6042858%200%20.3338571-.2708572.6042857-.6047143.6042857h-8.28300001c-.33385715%200-.60471429-.2704286-.60471429-.6042857%200-.3338572.27085714-.6042858.60471429-.6042858zm1.2095571-3.8914714c.3338572%200%20.6047143.2708572.6047143.6042857%200%20.3338572-.2708571.6042857-.6047143.6042857h-9.49242854c-.33385715%200-.60471429-.2704285-.60471429-.6042857%200-.3334285.27085714-.6042857.60471429-.6042857zm-1.7142857-3.8912571c.3338572%200%20.6047143.2704285.6047143.6042857%200%20.3338571-.2708571.6042857-.6047143.6042857h-7.77814284c-.33385715%200-.60471429-.2704286-.60471429-.6042857%200-.3338572.27085714-.6042857.60471429-.6042857zm4.5423-10.15191431%206.3835714.10928571-.108%206.087c-.0081428.44657143-.3767142.80228571-.8232857.79457143-.4478571-.00814286-.8035714-.37671429-.7954285-.82328572l.0518571-2.92071428.0115714-.65357143-.5031428.417-.1238572.10285714c-1.2231428%201.01442857-3.327%202.925-5.0532857%204.72071429-.1431428.14871428-.3381428.23228571-.5447143.23228571h-.1007143c-.3861428%200-.7448571-.26742857-.798-.64928571-.0334285-.23828572.0415715-.47014286.2014286-.63728572%201.4082857-1.47385714%203.3051429-3.26828571%204.7194286-4.46528571l.15-.12685714.609-.516-.798-.01285715-2.5054286-.04071428c-.447-.00728572-.8035714-.37628572-.7954286-.82328572.0081429-.44657142.3762858-.80228571.8224286-.79457142zm-8.27074284%206.2607c.33385714%200%20.60471428.27042857.60471428.60428571s-.27085714.60428571-.60471428.60428571h-4.04957143c-.33428572%200-.60471429-.27042857-.60471429-.60428571s.27042857-.60428571.60471429-.60428571z%22%20fill%3D%22%236f99a3%22%20fill-rule%3D%22evenodd%22%20transform%3D%22translate(9%207)%22%2F%3E%3C%2Fsvg%3E");
+  }
+  .deel p.icon.deel.current:before {
+    background-color: #e8d8c7;
+    border-color: #e8d8c7;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20width%3D%2240%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22m12.8677286%202.67527143c.2989285%200%20.54648.21800571.593001.50342657l.0078561.09743057v.13414286c0%20.29854286-.2176586.54640286-.5033224.59298943l-.0975347.00786771h-10.93114289c-.29854285%200-.54640285.21800572-.59298942.50342657l-.00786772.09743057v17.64128569c0%20.2985429.21800572.5464029.50342657.5929895l.09743057.0078677h17.17714289c.2985428%200%20.5464028-.2180057.5929894-.5034266l.0078677-.0974306v-11.7098571c0-.2989286.2180057-.54648001.5034266-.59300101l.0974306-.00785615h.1341428c.2985429%200%20.5464029.21765856.5929894.50332246l.0078678.0975347v12.9844286c0%20.3323376-.2451004.6076505-.5643233.6549608l-.0978196.007182h-19.72628571c-.33233767%200-.60765054-.2451003-.65496083-.5643233l-.00718203-.0978195v-20.19042861c0-.33233767.24510035-.60765054.56432328-.65496083l.09781958-.00718203zm.6768857%2015.68798567c.3338571%200%20.6047143.2704286.6047143.6042858%200%20.3338571-.2708572.6042857-.6047143.6042857h-8.28300001c-.33385715%200-.60471429-.2704286-.60471429-.6042857%200-.3338572.27085714-.6042858.60471429-.6042858zm1.2095571-3.8914714c.3338572%200%20.6047143.2708572.6047143.6042857%200%20.3338572-.2708571.6042857-.6047143.6042857h-9.49242854c-.33385715%200-.60471429-.2704285-.60471429-.6042857%200-.3334285.27085714-.6042857.60471429-.6042857zm-1.7142857-3.8912571c.3338572%200%20.6047143.2704285.6047143.6042857%200%20.3338571-.2708571.6042857-.6047143.6042857h-7.77814284c-.33385715%200-.60471429-.2704286-.60471429-.6042857%200-.3338572.27085714-.6042857.60471429-.6042857zm4.5423-10.15191431%206.3835714.10928571-.108%206.087c-.0081428.44657143-.3767142.80228571-.8232857.79457143-.4478571-.00814286-.8035714-.37671429-.7954285-.82328572l.0518571-2.92071428.0115714-.65357143-.5031428.417-.1238572.10285714c-1.2231428%201.01442857-3.327%202.925-5.0532857%204.72071429-.1431428.14871428-.3381428.23228571-.5447143.23228571h-.1007143c-.3861428%200-.7448571-.26742857-.798-.64928571-.0334285-.23828572.0415715-.47014286.2014286-.63728572%201.4082857-1.47385714%203.3051429-3.26828571%204.7194286-4.46528571l.15-.12685714.609-.516-.798-.01285715-2.5054286-.04071428c-.447-.00728572-.8035714-.37628572-.7954286-.82328572.0081429-.44657142.3762858-.80228571.8224286-.79457142zm-8.27074284%206.2607c.33385714%200%20.60471428.27042857.60471428.60428571s-.27085714.60428571-.60471428.60428571h-4.04957143c-.33428572%200-.60471429-.27042857-.60471429-.60428571s.27042857-.60428571.60471429-.60428571z%22%20fill%3D%22%236f99a3%22%20fill-rule%3D%22evenodd%22%20transform%3D%22translate(9%207)%22%2F%3E%3C%2Fsvg%3E");
+  }
+}
+@media only screen and (min-width: 800px) {
+  .deel:before {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20width%3D%2240%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22m12.8677286%202.67527143c.2989285%200%20.54648.21800571.593001.50342657l.0078561.09743057v.13414286c0%20.29854286-.2176586.54640286-.5033224.59298943l-.0975347.00786771h-10.93114289c-.29854285%200-.54640285.21800572-.59298942.50342657l-.00786772.09743057v17.64128569c0%20.2985429.21800572.5464029.50342657.5929895l.09743057.0078677h17.17714289c.2985428%200%20.5464028-.2180057.5929894-.5034266l.0078677-.0974306v-11.7098571c0-.2989286.2180057-.54648001.5034266-.59300101l.0974306-.00785615h.1341428c.2985429%200%20.5464029.21765856.5929894.50332246l.0078678.0975347v12.9844286c0%20.3323376-.2451004.6076505-.5643233.6549608l-.0978196.007182h-19.72628571c-.33233767%200-.60765054-.2451003-.65496083-.5643233l-.00718203-.0978195v-20.19042861c0-.33233767.24510035-.60765054.56432328-.65496083l.09781958-.00718203zm.6768857%2015.68798567c.3338571%200%20.6047143.2704286.6047143.6042858%200%20.3338571-.2708572.6042857-.6047143.6042857h-8.28300001c-.33385715%200-.60471429-.2704286-.60471429-.6042857%200-.3338572.27085714-.6042858.60471429-.6042858zm1.2095571-3.8914714c.3338572%200%20.6047143.2708572.6047143.6042857%200%20.3338572-.2708571.6042857-.6047143.6042857h-9.49242854c-.33385715%200-.60471429-.2704285-.60471429-.6042857%200-.3334285.27085714-.6042857.60471429-.6042857zm-1.7142857-3.8912571c.3338572%200%20.6047143.2704285.6047143.6042857%200%20.3338571-.2708571.6042857-.6047143.6042857h-7.77814284c-.33385715%200-.60471429-.2704286-.60471429-.6042857%200-.3338572.27085714-.6042857.60471429-.6042857zm4.5423-10.15191431%206.3835714.10928571-.108%206.087c-.0081428.44657143-.3767142.80228571-.8232857.79457143-.4478571-.00814286-.8035714-.37671429-.7954285-.82328572l.0518571-2.92071428.0115714-.65357143-.5031428.417-.1238572.10285714c-1.2231428%201.01442857-3.327%202.925-5.0532857%204.72071429-.1431428.14871428-.3381428.23228571-.5447143.23228571h-.1007143c-.3861428%200-.7448571-.26742857-.798-.64928571-.0334285-.23828572.0415715-.47014286.2014286-.63728572%201.4082857-1.47385714%203.3051429-3.26828571%204.7194286-4.46528571l.15-.12685714.609-.516-.798-.01285715-2.5054286-.04071428c-.447-.00728572-.8035714-.37628572-.7954286-.82328572.0081429-.44657142.3762858-.80228571.8224286-.79457142zm-8.27074284%206.2607c.33385714%200%20.60471428.27042857.60471428.60428571s-.27085714.60428571-.60471428.60428571h-4.04957143c-.33428572%200-.60471429-.27042857-.60471429-.60428571s.27042857-.60428571.60471429-.60428571z%22%20fill%3D%22%236f99a3%22%20fill-rule%3D%22evenodd%22%20transform%3D%22translate(9%207)%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+  }
+  .deel.current:before {
+    background-color: #e8d8c7;
+    border-color: #e8d8c7;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20width%3D%2240%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22m12.8677286%202.67527143c.2989285%200%20.54648.21800571.593001.50342657l.0078561.09743057v.13414286c0%20.29854286-.2176586.54640286-.5033224.59298943l-.0975347.00786771h-10.93114289c-.29854285%200-.54640285.21800572-.59298942.50342657l-.00786772.09743057v17.64128569c0%20.2985429.21800572.5464029.50342657.5929895l.09743057.0078677h17.17714289c.2985428%200%20.5464028-.2180057.5929894-.5034266l.0078677-.0974306v-11.7098571c0-.2989286.2180057-.54648001.5034266-.59300101l.0974306-.00785615h.1341428c.2985429%200%20.5464029.21765856.5929894.50332246l.0078678.0975347v12.9844286c0%20.3323376-.2451004.6076505-.5643233.6549608l-.0978196.007182h-19.72628571c-.33233767%200-.60765054-.2451003-.65496083-.5643233l-.00718203-.0978195v-20.19042861c0-.33233767.24510035-.60765054.56432328-.65496083l.09781958-.00718203zm.6768857%2015.68798567c.3338571%200%20.6047143.2704286.6047143.6042858%200%20.3338571-.2708572.6042857-.6047143.6042857h-8.28300001c-.33385715%200-.60471429-.2704286-.60471429-.6042857%200-.3338572.27085714-.6042858.60471429-.6042858zm1.2095571-3.8914714c.3338572%200%20.6047143.2708572.6047143.6042857%200%20.3338572-.2708571.6042857-.6047143.6042857h-9.49242854c-.33385715%200-.60471429-.2704285-.60471429-.6042857%200-.3334285.27085714-.6042857.60471429-.6042857zm-1.7142857-3.8912571c.3338572%200%20.6047143.2704285.6047143.6042857%200%20.3338571-.2708571.6042857-.6047143.6042857h-7.77814284c-.33385715%200-.60471429-.2704286-.60471429-.6042857%200-.3338572.27085714-.6042857.60471429-.6042857zm4.5423-10.15191431%206.3835714.10928571-.108%206.087c-.0081428.44657143-.3767142.80228571-.8232857.79457143-.4478571-.00814286-.8035714-.37671429-.7954285-.82328572l.0518571-2.92071428.0115714-.65357143-.5031428.417-.1238572.10285714c-1.2231428%201.01442857-3.327%202.925-5.0532857%204.72071429-.1431428.14871428-.3381428.23228571-.5447143.23228571h-.1007143c-.3861428%200-.7448571-.26742857-.798-.64928571-.0334285-.23828572.0415715-.47014286.2014286-.63728572%201.4082857-1.47385714%203.3051429-3.26828571%204.7194286-4.46528571l.15-.12685714.609-.516-.798-.01285715-2.5054286-.04071428c-.447-.00728572-.8035714-.37628572-.7954286-.82328572.0081429-.44657142.3762858-.80228571.8224286-.79457142zm-8.27074284%206.2607c.33385714%200%20.60471428.27042857.60471428.60428571s-.27085714.60428571-.60471428.60428571h-4.04957143c-.33428572%200-.60471429-.27042857-.60471429-.60428571s.27042857-.60428571.60471429-.60428571z%22%20fill%3D%22%236f99a3%22%20fill-rule%3D%22evenodd%22%20transform%3D%22translate(9%207)%22%2F%3E%3C%2Fsvg%3E");
   }
 }
 @media only screen and (max-width: 800px) {
@@ -2239,13 +2013,15 @@ DOELGROEPEN
 }
 .doelgroepcard h2 span + span:before,
 .doelgroepcard h3 span + span:before {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20height%3D%2222%22%20viewBox%3D%220%200%2014%2022%22%20width%3D%2214%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22m2.65623859%200-2.65623859%202.65623859%208.07952281%208.07952281-8.07952281%208.0782708%202.65623859%202.6562386%2010.73576141-10.7345094z%22%20fill%3D%22%23002F3E%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E%0A");
   content: ' ';
   border: 1px solid transparent;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20height%3D%2222%22%20viewBox%3D%220%200%2014%2022%22%20width%3D%2214%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22m2.65623859%200-2.65623859%202.65623859%208.07952281%208.07952281-8.07952281%208.0782708%202.65623859%202.6562386%2010.73576141-10.7345094z%22%20fill%3D%22%23002F3E%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E");
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%226px%22%20height%3D%2210px%22%20viewBox%3D%220%200%206%2010%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3C!--%20Generator%3A%20Sketch%2061%20(89581)%20-%20https%3A%2F%2Fsketch.com%20--%3E%0A%20%20%20%20%3Ctitle%3Earrow-right%3C%2Ftitle%3E%0A%20%20%20%20%3Cdesc%3ECreated%20with%20Sketch.%3C%2Fdesc%3E%0A%20%20%20%20%3Cg%20id%3D%22Desktop%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cg%20id%3D%2203b1a.-Doelgroep-detail-Copy%22%20transform%3D%22translate(-273.000000%2C%20-1473.000000)%22%20fill%3D%22%23FFFFFF%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20id%3D%22Content%22%20transform%3D%22translate(221.000000%2C%201142.000000)%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20id%3D%22Components-%2F-Fold-out-menu%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20id%3D%22Content%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20id%3D%22Col-left%22%20transform%3D%22translate(52.000000%2C%2092.000000)%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20id%3D%22Arrows-Copy%22%20transform%3D%22translate(0.000000%2C%2016.000000)%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cpolygon%20id%3D%22arrow-right%22%20points%3D%221.19007105%20222.992857%200%20224.159332%203.61985789%20227.707418%200%20231.254954%201.19007105%20232.421429%206%20227.707418%22%3E%3C%2Fpolygon%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
   background-repeat: no-repeat;
   background-position: center center;
   float: right;
   display: block;
+  speak: none;
 }
 @media only screen and (max-width: 800px) {
   .doelgroepcard h2 span + span,
@@ -2478,6 +2254,7 @@ a.download:active {
   border-top-style: none;
   background-color: #b1c9d0;
   clip-path: polygon(0 14%, 100% 0, 100% 100%, 0% 100%);
+  speak: none;
 }
 .tipkaart a:hover,
 .tipkaart a:active,
@@ -2504,6 +2281,7 @@ a.download:active {
   display: inline-block;
   transform: translateY(-9px);
   line-height: 1;
+  speak: none;
 }
 .tipkaart .tipnummer:before {
   content: '_ ';
@@ -2590,6 +2368,16 @@ details summary h3 {
 .poppetje-1 .doelgroep__avatar {
   background-image: url('../images/avatar/poppetje-1.svg');
 }
+.doelgroepcard.poppetje-1 {
+  background-image: url('../images/avatar/poppetje-1.svg');
+}
+.doelgroep-tips-title.poppetje-1 span:after {
+  background-image: url('../images/avatar/poppetje-1.svg');
+}
+.poppetje-1 .card__image,
+.poppetje-1 .doelgroep__avatar {
+  background-image: url('../images/avatar/poppetje-1.svg');
+}
 .doelgroepcard.poppetje-2 {
   background-image: url('../images/avatar/poppetje-2.svg');
 }
@@ -2599,6 +2387,26 @@ details summary h3 {
 .poppetje-2 .card__image,
 .poppetje-2 .doelgroep__avatar {
   background-image: url('../images/avatar/poppetje-2.svg');
+}
+.doelgroepcard.poppetje-2 {
+  background-image: url('../images/avatar/poppetje-2.svg');
+}
+.doelgroep-tips-title.poppetje-2 span:after {
+  background-image: url('../images/avatar/poppetje-2.svg');
+}
+.poppetje-2 .card__image,
+.poppetje-2 .doelgroep__avatar {
+  background-image: url('../images/avatar/poppetje-2.svg');
+}
+.doelgroepcard.poppetje-3 {
+  background-image: url('../images/avatar/poppetje-3.svg');
+}
+.doelgroep-tips-title.poppetje-3 span:after {
+  background-image: url('../images/avatar/poppetje-3.svg');
+}
+.poppetje-3 .card__image,
+.poppetje-3 .doelgroep__avatar {
+  background-image: url('../images/avatar/poppetje-3.svg');
 }
 .doelgroepcard.poppetje-3 {
   background-image: url('../images/avatar/poppetje-3.svg');
@@ -2620,6 +2428,16 @@ details summary h3 {
 .poppetje-4 .doelgroep__avatar {
   background-image: url('../images/avatar/poppetje-4.svg');
 }
+.doelgroepcard.poppetje-4 {
+  background-image: url('../images/avatar/poppetje-4.svg');
+}
+.doelgroep-tips-title.poppetje-4 span:after {
+  background-image: url('../images/avatar/poppetje-4.svg');
+}
+.poppetje-4 .card__image,
+.poppetje-4 .doelgroep__avatar {
+  background-image: url('../images/avatar/poppetje-4.svg');
+}
 .doelgroepcard.poppetje-5 {
   background-image: url('../images/avatar/poppetje-5.svg');
 }
@@ -2629,6 +2447,26 @@ details summary h3 {
 .poppetje-5 .card__image,
 .poppetje-5 .doelgroep__avatar {
   background-image: url('../images/avatar/poppetje-5.svg');
+}
+.doelgroepcard.poppetje-5 {
+  background-image: url('../images/avatar/poppetje-5.svg');
+}
+.doelgroep-tips-title.poppetje-5 span:after {
+  background-image: url('../images/avatar/poppetje-5.svg');
+}
+.poppetje-5 .card__image,
+.poppetje-5 .doelgroep__avatar {
+  background-image: url('../images/avatar/poppetje-5.svg');
+}
+.doelgroepcard.poppetje-6 {
+  background-image: url('../images/avatar/poppetje-6.svg');
+}
+.doelgroep-tips-title.poppetje-6 span:after {
+  background-image: url('../images/avatar/poppetje-6.svg');
+}
+.poppetje-6 .card__image,
+.poppetje-6 .doelgroep__avatar {
+  background-image: url('../images/avatar/poppetje-6.svg');
 }
 .doelgroepcard.poppetje-6 {
   background-image: url('../images/avatar/poppetje-6.svg');
@@ -2650,6 +2488,16 @@ details summary h3 {
 .poppetje-7 .doelgroep__avatar {
   background-image: url('../images/avatar/poppetje-7.svg');
 }
+.doelgroepcard.poppetje-7 {
+  background-image: url('../images/avatar/poppetje-7.svg');
+}
+.doelgroep-tips-title.poppetje-7 span:after {
+  background-image: url('../images/avatar/poppetje-7.svg');
+}
+.poppetje-7 .card__image,
+.poppetje-7 .doelgroep__avatar {
+  background-image: url('../images/avatar/poppetje-7.svg');
+}
 .doelgroepcard.poppetje-8 {
   background-image: url('../images/avatar/poppetje-8.svg');
 }
@@ -2659,6 +2507,26 @@ details summary h3 {
 .poppetje-8 .card__image,
 .poppetje-8 .doelgroep__avatar {
   background-image: url('../images/avatar/poppetje-8.svg');
+}
+.doelgroepcard.poppetje-8 {
+  background-image: url('../images/avatar/poppetje-8.svg');
+}
+.doelgroep-tips-title.poppetje-8 span:after {
+  background-image: url('../images/avatar/poppetje-8.svg');
+}
+.poppetje-8 .card__image,
+.poppetje-8 .doelgroep__avatar {
+  background-image: url('../images/avatar/poppetje-8.svg');
+}
+.doelgroepcard.poppetje-9 {
+  background-image: url('../images/avatar/poppetje-9.svg');
+}
+.doelgroep-tips-title.poppetje-9 span:after {
+  background-image: url('../images/avatar/poppetje-9.svg');
+}
+.poppetje-9 .card__image,
+.poppetje-9 .doelgroep__avatar {
+  background-image: url('../images/avatar/poppetje-9.svg');
 }
 .doelgroepcard.poppetje-9 {
   background-image: url('../images/avatar/poppetje-9.svg');
@@ -2680,6 +2548,16 @@ details summary h3 {
 .poppetje-10 .doelgroep__avatar {
   background-image: url('../images/avatar/poppetje-10.svg');
 }
+.doelgroepcard.poppetje-10 {
+  background-image: url('../images/avatar/poppetje-10.svg');
+}
+.doelgroep-tips-title.poppetje-10 span:after {
+  background-image: url('../images/avatar/poppetje-10.svg');
+}
+.poppetje-10 .card__image,
+.poppetje-10 .doelgroep__avatar {
+  background-image: url('../images/avatar/poppetje-10.svg');
+}
 .doelgroepcard.poppetje-11 {
   background-image: url('../images/avatar/poppetje-11.svg');
 }
@@ -2689,6 +2567,26 @@ details summary h3 {
 .poppetje-11 .card__image,
 .poppetje-11 .doelgroep__avatar {
   background-image: url('../images/avatar/poppetje-11.svg');
+}
+.doelgroepcard.poppetje-11 {
+  background-image: url('../images/avatar/poppetje-11.svg');
+}
+.doelgroep-tips-title.poppetje-11 span:after {
+  background-image: url('../images/avatar/poppetje-11.svg');
+}
+.poppetje-11 .card__image,
+.poppetje-11 .doelgroep__avatar {
+  background-image: url('../images/avatar/poppetje-11.svg');
+}
+.doelgroepcard.poppetje-12 {
+  background-image: url('../images/avatar/poppetje-12.svg');
+}
+.doelgroep-tips-title.poppetje-12 span:after {
+  background-image: url('../images/avatar/poppetje-12.svg');
+}
+.poppetje-12 .card__image,
+.poppetje-12 .doelgroep__avatar {
+  background-image: url('../images/avatar/poppetje-12.svg');
 }
 .doelgroepcard.poppetje-12 {
   background-image: url('../images/avatar/poppetje-12.svg');
@@ -2710,6 +2608,16 @@ details summary h3 {
 .poppetje-13 .doelgroep__avatar {
   background-image: url('../images/avatar/poppetje-13.svg');
 }
+.doelgroepcard.poppetje-13 {
+  background-image: url('../images/avatar/poppetje-13.svg');
+}
+.doelgroep-tips-title.poppetje-13 span:after {
+  background-image: url('../images/avatar/poppetje-13.svg');
+}
+.poppetje-13 .card__image,
+.poppetje-13 .doelgroep__avatar {
+  background-image: url('../images/avatar/poppetje-13.svg');
+}
 .doelgroepcard.poppetje-14 {
   background-image: url('../images/avatar/poppetje-14.svg');
 }
@@ -2719,6 +2627,26 @@ details summary h3 {
 .poppetje-14 .card__image,
 .poppetje-14 .doelgroep__avatar {
   background-image: url('../images/avatar/poppetje-14.svg');
+}
+.doelgroepcard.poppetje-14 {
+  background-image: url('../images/avatar/poppetje-14.svg');
+}
+.doelgroep-tips-title.poppetje-14 span:after {
+  background-image: url('../images/avatar/poppetje-14.svg');
+}
+.poppetje-14 .card__image,
+.poppetje-14 .doelgroep__avatar {
+  background-image: url('../images/avatar/poppetje-14.svg');
+}
+.doelgroepcard.poppetje-15 {
+  background-image: url('../images/avatar/poppetje-15.svg');
+}
+.doelgroep-tips-title.poppetje-15 span:after {
+  background-image: url('../images/avatar/poppetje-15.svg');
+}
+.poppetje-15 .card__image,
+.poppetje-15 .doelgroep__avatar {
+  background-image: url('../images/avatar/poppetje-15.svg');
 }
 .doelgroepcard.poppetje-15 {
   background-image: url('../images/avatar/poppetje-15.svg');
