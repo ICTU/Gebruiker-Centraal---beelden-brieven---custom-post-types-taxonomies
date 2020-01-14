@@ -6,7 +6,6 @@ echo 'Distribute GC post type plugin';
 
 # clear the log file
 > '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/debug.log'
-> '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/gc_live_import/wp-content/debug.log'
 
 # copy to temp dir
 rsync -r -a --delete '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/plugins/ictu-gc-posttypes-brieven-beelden/' '/shared-paul-files/Webs/temp/'
@@ -29,9 +28,6 @@ rm '/shared-paul-files/Webs/temp/languages/ictu-gc-posttypes-brieven-beelden.pot
 # copy files to /wp-content/languages/themes
 rsync -ah '/shared-paul-files/Webs/temp/languages/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/languages/plugins/'
 
-# languages erics server
-rsync -ah '/shared-paul-files/Webs/temp/languages/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/live-dutchlogic/wp-content/languages/plugins/'
-
 # languages Sentia accept
 rsync -ah '/shared-paul-files/Webs/temp/languages/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/sentia/accept/www/wp-content/languages/plugins/'
 
@@ -47,20 +43,13 @@ find . -name ‘*.DS_Store’ -type f -delete
 
 
 # copy from temp dir to dev-env
-rsync -r -a --delete '/shared-paul-files/Webs/temp/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/plugins/ictu-gc-posttypes-brieven-beelden/' 
+#rsync -r -a --delete '/shared-paul-files/Webs/temp/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/plugins/ictu-gc-posttypes-brieven-beelden/' 
 
 # remove temp dir
 rm -rf '/shared-paul-files/Webs/temp/'
 
 
-
-# Naar GC import
-rsync -r -a  --delete '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/plugins/ictu-gc-posttypes-brieven-beelden/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/gc_live_import/wp-content/plugins/ictu-gc-posttypes-brieven-beelden/'
-
-# Naar Eriks server
-rsync -r -a  --delete '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/plugins/ictu-gc-posttypes-brieven-beelden/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/live-dutchlogic/wp-content/plugins/ictu-gc-posttypes-brieven-beelden/'
-
-# en een kopietje naar Sentia accept
+# een kopietje naar Sentia accept
 rsync -r -a --delete '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/plugins/ictu-gc-posttypes-brieven-beelden/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/sentia/accept/www/wp-content/plugins/ictu-gc-posttypes-brieven-beelden/'
 
 # en een kopietje naar Sentia live
