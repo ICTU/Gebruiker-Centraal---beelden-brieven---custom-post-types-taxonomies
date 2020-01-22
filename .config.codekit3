@@ -75,12 +75,12 @@
 		"oAP": "/build/images",
 		"oF": 0
 		},
-	"/includes/acffields-and-posttypes.php": {
+	"/includes/beeldbank.acf-definitions.php": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 0,
-		"oAP": "/includes/acffields-and-posttypes.php",
+		"oAP": "/includes/beeldbank.acf-definitions.php",
 		"oF": 0
 		},
 	"/index.php": {
@@ -203,8 +203,8 @@
 		"oF": 0
 		},
 	"/less/frontend-beeldbank.less": {
-		"aP": 0,
-		"bl": 0,
+		"aP": 1,
+		"bl": 1,
 		"eJ": 0,
 		"ft": 1,
 		"iI": 0,
@@ -213,10 +213,10 @@
 		"oA": 0,
 		"oAP": "/css/frontend-beeldbank.css",
 		"oF": 0,
-		"oS": 0,
+		"oS": 1,
 		"rwU": 0,
-		"sI": 0,
-		"sU": 0
+		"sI": 1,
+		"sU": 1
 		},
 	"/less/includes/_btn.less": {
 		"aP": 0,
@@ -388,6 +388,38 @@
 		"mS": 0,
 		"oA": 1,
 		"oAP": "/less/css/_overview.css",
+		"oF": 0,
+		"oS": 0,
+		"rwU": 0,
+		"sI": 0,
+		"sU": 0
+		},
+	"/less/includes/_page-template-inclusie_template_overzichtspagina.less": {
+		"aP": 0,
+		"bl": 0,
+		"eJ": 0,
+		"ft": 1,
+		"iI": 0,
+		"ma": 1,
+		"mS": 0,
+		"oA": 1,
+		"oAP": "/less/css/_page-template-inclusie_template_overzichtspagina.css",
+		"oF": 0,
+		"oS": 0,
+		"rwU": 0,
+		"sI": 0,
+		"sU": 0
+		},
+	"/less/includes/_page.less": {
+		"aP": 0,
+		"bl": 0,
+		"eJ": 0,
+		"ft": 1,
+		"iI": 0,
+		"ma": 1,
+		"mS": 0,
+		"oA": 1,
+		"oAP": "/less/css/_page.css",
 		"oF": 0,
 		"oS": 0,
 		"rwU": 0,
@@ -760,6 +792,14 @@
 		"hM": 0,
 		"oA": 0,
 		"oAP": "/LICENSE",
+		"oF": 0
+		},
+	"/README.html": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/README.html",
 		"oF": 0
 		},
 	"/README.md": {
@@ -1228,7 +1268,7 @@
 		},
 	"environmentVariablesString": "NODE_ENV:::production",
 	"esLintConfigFileHandlingType": 0,
-	"esLintECMAVersion": 7,
+	"esLintECMAVersion": 9,
 	"esLintEnvironmentsMask": 1,
 	"esLintRules": {
 		"accessor-pairs": {

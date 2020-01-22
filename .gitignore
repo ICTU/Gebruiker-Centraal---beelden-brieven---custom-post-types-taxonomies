@@ -22,3 +22,4 @@ config.codekit3
 less/negeermij/
 css/frontend.css
 css/frontend.css.map
+*.codekit3
