@@ -1,5 +1,9 @@
 
 
+@stepnav__icon_bg_default:	@wit;
+@stepnav__icon_bg_hover:	@color_primary;
+
+
 .stepnav {
   padding: 3rem 0 3rem;
   display: flex;
@@ -156,7 +160,7 @@
    }
 
     .stepnav__icon {
-      background-color: @gc_pantybrown_light;
+      background-color: @stepnav__icon_bg_hover;
       transform: scale(1.05);
 
       &.icon--identificeer {
@@ -186,11 +190,13 @@
   }
 }
 
+
+
 .stepnav__icon {
   display: inline-block;
   width: 4.5rem;
   height: 4.5rem;
-  background: @gc_orange url('../images/icons/stap/verdiep.svg') center center no-repeat;
+  background: @stepnav__icon_bg_default url('../images/icons/stap/verdiep.svg') center center no-repeat;
   background-size: 65% auto;
   margin: 0 auto;
   border-radius: 50rem;
@@ -215,6 +221,30 @@
 	&.icon--verdiep {
 		background-image: url('../images/icon-verdiep.svg');
 	}
+
+
+
+      &.icon--identificeer {
+        background-image: url('../images/icon-identificeer.svg');
+      }
+
+      &.icon--deel {
+        background-image: url('../images/icon-deel.svg');
+      }
+
+      &.icon--evalueer {
+        background-image: url('../images/icon-evalueer.svg');
+      }
+
+      &.icon--ontwerp {
+        background-image: url('../images/icon-ontwerp.svg');
+      }
+
+      &.icon--verdiep {
+        background-image: url('../images/icon-verdiep.svg');
+      }
+
+
 
   @media only screen and ( min-width: ( @break_phone )) {
     outline-width: 1.5rem;

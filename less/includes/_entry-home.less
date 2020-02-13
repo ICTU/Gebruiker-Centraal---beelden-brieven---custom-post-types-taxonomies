@@ -34,11 +34,16 @@
   }
 
   #entry__intro {
-    .font-size(22);
     position: relative;
     z-index: +5;
 
-    @media only screen and ( min-width: ( @break_fullwidth )) {
+	@media only screen and ( min-width: ( @break_tablet )) {
+		// dit is ook het breakpoint waarop het stepchart img weer getoond wordt
+		.font-size(22);
+	}
+	
+	@media only screen and ( min-width: ( @break_fullwidth )) {
+	    
       .btn {
         position: absolute;
         right: 0;
@@ -57,7 +62,6 @@
     position: relative;
     overflow: hidden;
     width: 100%;
-	background: @inclusiekoraal_2;
 
     &:before {
       content: " ";
@@ -137,3 +141,35 @@
     .gc-section-heading();
   }
 }
+
+
+
+.page-template-home-inclusie {
+	// op basis van het pagina template afdwingen dat de stepchart-ruimte
+	// de juiste afmetingen krijgt.
+	// #maincontent is ook vaak het doel van andere pagina-templates
+	#maincontent {
+		article.entry {
+			.entry-content.wrap {
+				box-shadow: none;
+				padding: 0;
+			}
+
+			@media only screen and ( max-width: ( @break_fullwidth ) ) {
+				margin-top: 0;
+			}
+			
+			@media only screen and ( min-width: ( @break_fullwidth ) ) {
+				margin-bottom: 4rem;
+	
+				.entry-content.wrap {
+					padding-top: 0;
+					padding-bottom: 0;
+					padding-left: 0;
+					padding-right: 0;
+				}
+			}
+		}
+	}
+}
+
