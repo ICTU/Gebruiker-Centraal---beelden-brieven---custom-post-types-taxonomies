@@ -162,36 +162,20 @@
 		"sC": 1,
 		"tS": 0
 		},
-	"/languages/ictu-gc-posttypes-brieven-beelden-en_US.mo": {
+	"/languages/en_US.mo": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 0,
-		"oAP": "/languages/ictu-gc-posttypes-brieven-beelden-en_US.mo",
+		"oAP": "/languages/en_US.mo",
 		"oF": 0
 		},
-	"/languages/ictu-gc-posttypes-brieven-beelden-en_US.po": {
+	"/languages/en_US.po": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 0,
-		"oAP": "/languages/ictu-gc-posttypes-brieven-beelden-en_US.po",
-		"oF": 0
-		},
-	"/languages/ictu-gc-posttypes-brieven-beelden-nl_NL.mo": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/languages/ictu-gc-posttypes-brieven-beelden-nl_NL.mo",
-		"oF": 0
-		},
-	"/languages/ictu-gc-posttypes-brieven-beelden-nl_NL.po": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/languages/ictu-gc-posttypes-brieven-beelden-nl_NL.po",
+		"oAP": "/languages/en_US.po",
 		"oF": 0
 		},
 	"/languages/ictu-gc-posttypes-brieven-beelden.pot": {
@@ -200,6 +184,22 @@
 		"hM": 0,
 		"oA": 0,
 		"oAP": "/languages/ictu-gc-posttypes-brieven-beelden.pot",
+		"oF": 0
+		},
+	"/languages/nl_NL.mo": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/languages/nl_NL.mo",
+		"oF": 0
+		},
+	"/languages/nl_NL.po": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/languages/nl_NL.po",
 		"oF": 0
 		},
 	"/less/frontend-beeldbank.less": {
@@ -388,38 +388,6 @@
 		"mS": 0,
 		"oA": 1,
 		"oAP": "/less/css/_overview.css",
-		"oF": 0,
-		"oS": 0,
-		"rwU": 0,
-		"sI": 0,
-		"sU": 0
-		},
-	"/less/includes/_page-template-inclusie_template_overzichtspagina.less": {
-		"aP": 0,
-		"bl": 0,
-		"eJ": 0,
-		"ft": 1,
-		"iI": 0,
-		"ma": 1,
-		"mS": 0,
-		"oA": 1,
-		"oAP": "/less/css/_page-template-inclusie_template_overzichtspagina.css",
-		"oF": 0,
-		"oS": 0,
-		"rwU": 0,
-		"sI": 0,
-		"sU": 0
-		},
-	"/less/includes/_page.less": {
-		"aP": 0,
-		"bl": 0,
-		"eJ": 0,
-		"ft": 1,
-		"iI": 0,
-		"ma": 1,
-		"mS": 0,
-		"oA": 1,
-		"oAP": "/less/css/_page.css",
 		"oF": 0,
 		"oS": 0,
 		"rwU": 0,
@@ -823,12 +791,21 @@
 		}
 	},
 "hooks": [
+	{
+		"enabled": 1,
+		"name": "Hook #1",
+		"predicateDataBase64Encoded": "YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMSAAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGvEBYLDBMYICorLjU5Pj9CRkpPUFNZXWFjVSRudWxs0w0ODxAREl8QF05TQ29tcG91bmRQcmVkaWNhdGVUeXBlXxAPTlNTdWJwcmVkaWNhdGVzViRjbGFzcxACgAKAFdIUDxUXWk5TLm9iamVjdHOhFoADgBTUDxkaGxwdHh9fEBFOU1JpZ2h0RXhwcmVzc2lvbl8QEE5TTGVmdEV4cHJlc3Npb25fEBNOU1ByZWRpY2F0ZU9wZXJhdG9ygBOADoAEgBHVISIjJA8lJicoKVlOU09wZXJhbmReTlNTZWxlY3Rvck5hbWVfEBBOU0V4cHJlc3Npb25UeXBlW05TQXJndW1lbnRzgAaABRADgAiADVx2YWx1ZUZvcktleTrSIw8sLRABgAfSLzAxMlokY2xhc3NuYW1lWCRjbGFzc2VzXxAQTlNTZWxmRXhwcmVzc2lvbqMxMzRcTlNFeHByZXNzaW9uWE5TT2JqZWN00hQPNjihN4AJgAzTDyM6Ozw9WU5TS2V5UGF0aIALEAqACl1pbnB1dEZ1bGxQYXRo0i8wQEFfEBxOU0tleVBhdGhTcGVjaWZpZXJFeHByZXNzaW9uo0AzNNIvMENEXk5TTXV0YWJsZUFycmF5o0NFNFdOU0FycmF50i8wR0hfEBNOU0tleVBhdGhFeHByZXNzaW9upEdJMzRfEBROU0Z1bmN0aW9uRXhwcmVzc2lvbtNLIw9MTU5fEA9OU0NvbnN0YW50VmFsdWWADxAAgBBfECFpY3R1LWdjLXBvc3R0eXBlcy1icmlldmVuLWJlZWxkZW7SLzBRUl8QGU5TQ29uc3RhbnRWYWx1ZUV4cHJlc3Npb26jUTM01A9UVVZXTSxYWk5TTW9kaWZpZXJXTlNGbGFnc15OU09wZXJhdG9yVHlwZYASEGPSLzBaW18QFU5TSW5QcmVkaWNhdGVPcGVyYXRvcqNaXDRfEBNOU1ByZWRpY2F0ZU9wZXJhdG9y0i8wXl9fEBVOU0NvbXBhcmlzb25QcmVkaWNhdGWjXmA0W05TUHJlZGljYXRl0i8wRWKiRTTSLzBkZV8QE05TQ29tcG91bmRQcmVkaWNhdGWjZGA0AAgAEQAaACQAKQAyADcASQBMAFEAUwBsAHIAeQCTAKUArACuALAAsgC3AMIAxADGAMgA0QDlAPgBDgEQARIBFAEWASEBKwE6AU0BWQFbAV0BXwFhAWMBcAF1AXcBeQF+AYkBkgGlAakBtgG/AcQBxgHIAcoB0QHbAd0B3wHhAe8B9AITAhcCHAIrAi8CNwI8AlICVwJuAnUChwKJAosCjQKxArYC0gLWAt8C6gLyAwEDAwMFAwoDIgMmAzwDQQNZA10DaQNuA3EDdgOMAAAAAAAAAgEAAAAAAAAAZgAAAAAAAAAAAAAAAAAAA5A=",
+		"runOrder": 0,
+		"scriptSourceString": "sh '/Users/paul/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/plugins/ictu-gc-posttypes-brieven-beelden/distribute.sh' &>/dev/null\n",
+		"scriptType": 1,
+		"uuidString": "9A9B89A6-2789-417D-B5C6-6962DB72F2DF"
+		}
 	],
 "manualImportLinks": {
 	},
 "projectAttributes": {
 	"creationDate": 597836652.44908297,
-	"displayValue": "ICTU GC beeldbank (DE ECHTE)",
+	"displayValue": "ICTU GC beeldbank",
 	"displayValueWasSetByUser": 1,
 	"iconImageName": "/images/favicon-512w.png",
 	"iconImageWasSetByUser": 1
