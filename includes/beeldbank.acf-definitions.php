@@ -1,9 +1,9 @@
 <?php
 
 /*
-// Gebruiker Centraal - inclusie.acf-definitions.php
+// Gebruiker Centraal - beeldbank.acf-definitions.php
 // ----------------------------------------------------------------------------------
-// ACF definities voor inclusie plugin
+// ACF definities voor beeldbank plugin
 // ----------------------------------------------------------------------------------
 // @package   ictu-gc-posttypes-inclusie
 // @author    Paul van Buuren
@@ -16,15 +16,66 @@
 if( ! function_exists('ictu_gc_inclusie_initialize_acf_fields') ) {
 
 	//------------------------------------------------------------------------------------------------
-	// velden voor home template
+	// velden voor stap- en richtlijnpagina's
 	acf_add_local_field_group(array(
-		'key' => 'group_5c90e063ca578',
-		'title' => 'Homepage template: inleiding, stappen en doelgroepen',
+		'key' => 'group_5c8fde441c0a9',
+		'title' => '(01) - Stap en richtlijn: type pagina, icoontjes, inleiding',
 		'fields' => array(
 			array(
-				'key' => 'field_5c90fd5fe0a58',
-				'label' => 'Inleiding op homepage',
-				'name' => 'home_template_inleiding',
+				'key' => 'field_5df7819105f34',
+				'label' => 'Is dit een stap of een richtlijn?',
+				'name' => 'stap_type_pagina',
+				'type' => 'radio',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'choices' => array(
+					'stap' => 'Stap',
+					'richtlijn' => 'Richtlijn',
+				),
+				'allow_null' => 0,
+				'other_choice' => 0,
+				'default_value' => 'stap',
+				'layout' => 'vertical',
+				'return_format' => 'value',
+				'save_other_choice' => 0,
+			),
+			array(
+				'key' => 'field_5c91fb7281870',
+				'label' => 'Verkorte titel',
+				'name' => 'stap_verkorte_titel',
+				'type' => 'text',
+				'instructions' => 'Deze tekst wordt als label getoond in het stappenschema. Gebruik bij voorkeur 1 woord.',
+				'required' => 0,
+				'conditional_logic' => array(
+					array(
+						array(
+							'field' => 'field_5df7819105f34',
+							'operator' => '==',
+							'value' => 'stap',
+						),
+					),
+				),
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'default_value' => '',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'maxlength' => '',
+			),
+			array(
+				'key' => 'field_5c90bae01c857',
+				'label' => 'Inleiding',
+				'name' => 'stap_inleiding',
 				'type' => 'wysiwyg',
 				'instructions' => '',
 				'required' => 0,
@@ -36,60 +87,77 @@ if( ! function_exists('ictu_gc_inclusie_initialize_acf_fields') ) {
 				),
 				'default_value' => '',
 				'tabs' => 'all',
-				'toolbar' => 'full',
+				'toolbar' => 'basic',
 				'media_upload' => 1,
 				'delay' => 0,
 			),
 			array(
-				'key' => 'field_5c90e0739fa4b',
-				'label' => 'Stappen',
-				'name' => 'home_template_stappen',
-				'type' => 'relationship',
+				'key' => 'field_5cdb1d4374d09',
+				'label' => 'Icoontje',
+				'name' => 'stap_icon',
+				'type' => 'radio',
 				'instructions' => '',
 				'required' => 0,
-				'conditional_logic' => 0,
+				'conditional_logic' => array(
+					array(
+						array(
+							'field' => 'field_5df7819105f34',
+							'operator' => '==',
+							'value' => 'stap',
+						),
+					),
+				),
 				'wrapper' => array(
 					'width' => '',
 					'class' => '',
 					'id' => '',
 				),
-				'post_type' => array(
-					0 => 'stap',
+				'choices' => array(
+					'bereidvoor' => '<img src="/wp-content/plugins/ictu-gc-posttypes-brieven-beelden/images/icons/stap/verdiep.png"> Bereid voor',
+					'ontwerp' => '<img src="/wp-content/plugins/ictu-gc-posttypes-brieven-beelden/images/icons/stap/ontwerp.png"> Ontwerp',
+					'test' => '<img src="/wp-content/plugins/ictu-gc-posttypes-brieven-beelden/images/icons/stap/lampje.png"> Test',
+					'evalueer' => '<img src="/wp-content/plugins/ictu-gc-posttypes-brieven-beelden/images/icons/stap/evalueer.png"> Pas aan',
+					'deel' => '<img src="/wp-content/plugins/ictu-gc-posttypes-brieven-beelden/images/icons/stap/deel.png"> Deel',
 				),
-				'taxonomy' => '',
-				'filters' => array(
-					0 => 'search',
-					1 => 'taxonomy',
-				),
-				'elements' => '',
-				'min' => '',
-				'max' => '',
-				'return_format' => 'object',
+				'allow_null' => 0,
+				'other_choice' => 0,
+				'default_value' => 'identificeer',
+				'layout' => 'vertical',
+				'return_format' => 'value',
+				'save_other_choice' => 0,
 			),
 			array(
-				'key' => 'field_5c90e096cca0a',
-				'label' => 'Doelgroepen',
-				'name' => 'home_template_doelgroepen',
+				'key' => 'field_5e2db1497013e',
+				'label' => 'Tests en resultaten',
+				'name' => 'richtlijn_resultaatblokken',
 				'type' => 'repeater',
-				'instructions' => '',
+				'instructions' => 'Voeg blokken toe die een indruk geven van hoe je getest hebt en wat de resultaten waren.',
 				'required' => 0,
-				'conditional_logic' => 0,
+				'conditional_logic' => array(
+					array(
+						array(
+							'field' => 'field_5df7819105f34',
+							'operator' => '==',
+							'value' => 'richtlijn',
+						),
+					),
+				),
 				'wrapper' => array(
 					'width' => '',
 					'class' => '',
 					'id' => '',
 				),
-				'collapsed' => '',
+				'collapsed' => 'field_5e2db18b7013f',
 				'min' => 0,
 				'max' => 0,
-				'layout' => 'table',
-				'button_label' => '',
+				'layout' => 'row',
+				'button_label' => 'Blok toevoegen',
 				'sub_fields' => array(
 					array(
-						'key' => 'field_5c9104bff7ade',
-						'label' => 'Kies doelgroep',
-						'name' => 'home_template_doelgroepen_doelgroep',
-						'type' => 'post_object',
+						'key' => 'field_5e2db18b7013f',
+						'label' => 'Titel',
+						'name' => 'richtlijn_resultaatblok_titel',
+						'type' => 'text',
 						'instructions' => '',
 						'required' => 0,
 						'conditional_logic' => 0,
@@ -98,20 +166,17 @@ if( ! function_exists('ictu_gc_inclusie_initialize_acf_fields') ) {
 							'class' => '',
 							'id' => '',
 						),
-						'post_type' => array(
-							0 => 'doelgroep',
-						),
-						'taxonomy' => '',
-						'allow_null' => 1,
-						'multiple' => 0,
-						'return_format' => 'object',
-						'ui' => 1,
+						'default_value' => '',
+						'placeholder' => '',
+						'prepend' => '',
+						'append' => '',
+						'maxlength' => '',
 					),
 					array(
-						'key' => 'field_5c910507f7adf',
-						'label' => 'Kies citaat',
-						'name' => 'home_template_doelgroepen_citaat',
-						'type' => 'post_object',
+						'key' => 'field_5e2db1bb70140',
+						'label' => 'Tekst',
+						'name' => 'richtlijn_resultaatblok_tekst',
+						'type' => 'wysiwyg',
 						'instructions' => '',
 						'required' => 0,
 						'conditional_logic' => 0,
@@ -120,62 +185,70 @@ if( ! function_exists('ictu_gc_inclusie_initialize_acf_fields') ) {
 							'class' => '',
 							'id' => '',
 						),
-						'post_type' => array(
-							0 => 'citaat',
+						'default_value' => '',
+						'tabs' => 'all',
+						'toolbar' => 'basic',
+						'media_upload' => 0,
+						'delay' => 0,
+					),
+					array(
+						'key' => 'field_5e2db1e170141',
+						'label' => 'Afbeelding',
+						'name' => 'richtlijn_resultaatblok_afbeelding',
+						'type' => 'image',
+						'instructions' => '',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
 						),
-						'taxonomy' => '',
-						'allow_null' => 1,
-						'multiple' => 0,
-						'return_format' => 'object',
-						'ui' => 1,
+						'return_format' => 'array',
+						'preview_size' => 'medium',
+						'library' => 'all',
+						'min_width' => '',
+						'min_height' => '',
+						'min_size' => '',
+						'max_width' => '',
+						'max_height' => '',
+						'max_size' => '',
+						'mime_types' => '',
+					),
+					array(
+						'key' => 'field_5e2db20470142',
+						'label' => 'Label',
+						'name' => 'richtlijn_resultaatblok_label',
+						'type' => 'radio',
+						'instructions' => '',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'choices' => array(
+							'geen' => 'Geen label',
+							'nietzo' => 'Niet zo', // de key stemt overeen met de key uit ICTU_GC_BEELDBANK_LABELS
+							'maarzo' => 'Maar zo', // de key stemt overeen met de key uit ICTU_GC_BEELDBANK_LABELS
+						),
+						'allow_null' => 0,
+						'other_choice' => 0,
+						'default_value' => 'geen',
+						'layout' => 'vertical',
+						'return_format' => 'value',
+						'save_other_choice' => 0,
 					),
 				),
-			),
-			array(
-				'key' => 'field_5ccfec39e2de3',
-				'label' => 'home_template_poster',
-				'name' => 'home_template_poster',
-				'type' => 'file',
-				'instructions' => 'Upload de PDF voor de poster',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'return_format' => 'array',
-				'library' => 'all',
-				'min_size' => '',
-				'max_size' => '',
-				'mime_types' => '',
-			),
-			array(
-				'key' => 'field_5ccfeccee8a61',
-				'label' => 'home_template_poster_linktekst',
-				'name' => 'home_template_poster_linktekst',
-				'type' => 'text',
-				'instructions' => 'Dit is de tekst op de downloadknop als je een PDF met de poster hebt toegevoegd.',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => 'Download de poster',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'maxlength' => '',
 			),
 		),
 		'location' => array(
 			array(
 				array(
-					'param' => 'page_template',
+					'param' => 'post_type',
 					'operator' => '==',
-					'value' => 'home-inclusie.php',
+					'value' => 'stap',
 				),
 			),
 		),
@@ -189,11 +262,86 @@ if( ! function_exists('ictu_gc_inclusie_initialize_acf_fields') ) {
 		'description' => '',
 	));
 
+
 	//------------------------------------------------------------------------------------------------
-	// velden voor stap
+	// velden voor thema-instellingen
+	acf_add_local_field_group(array(
+		'key' => 'group_5d726d93a46f2',
+		'title' => 'Theme-instellingen voor beeldbankwebsite',
+		'fields' => array(
+			array(
+				'key' => 'field_5d726daa06090',
+				'label' => 'Pagina met brievenoverzicht',
+				'name' => 'themesettings_inclusie_brievenpagina',
+				'type' => 'post_object',
+				'instructions' => '',
+				'required' => 1,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'post_type' => array(
+					0 => 'page',
+				),
+				'taxonomy' => '',
+				'allow_null' => 0,
+				'multiple' => 0,
+				'return_format' => 'object',
+				'ui' => 1,
+			),
+			array(
+				'key' => 'field_5e32fa2b613a7',
+				'label' => 'Pagina met beeldenoverzicht',
+				'name' => 'themesettings_inclusie_beeldenpagina',
+				'type' => 'post_object',
+				'instructions' => '',
+				'required' => 1,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'post_type' => array(
+					0 => 'page',
+				),
+				'taxonomy' => '',
+				'allow_null' => 0,
+				'multiple' => 0,
+				'return_format' => 'object',
+				'ui' => 1,
+			),
+		),
+		'location' => array(
+			array(
+				array(
+					'param' => 'options_page',
+					'operator' => '==',
+					'value' => 'instellingen',
+				),
+			),
+		),
+		'menu_order' => 0,
+		'position' => 'normal',
+		'style' => 'default',
+		'label_placement' => 'top',
+		'instruction_placement' => 'label',
+		'hide_on_screen' => '',
+		'active' => true,
+		'description' => '',
+	));
+
+
+//------------------------------------------------------------------------------------------------
+// velden voor stap
+	
+if ( 22 == 33 ) {
+	
 	acf_add_local_field_group(array(
 		'key' => 'group_5c8fde441c0a9',
-		'title' => 'Stap: inleiding en methodes',
+		'title' => 'Stap ACF DEF: inleiding en methodes',
 		'fields' => array(
 			array(
 				'key' => 'field_5c91fb7281870',
@@ -515,6 +663,9 @@ if( ! function_exists('ictu_gc_inclusie_initialize_acf_fields') ) {
 		'active' => true,
 		'description' => '',
 	));
+
+}
+
 
 
 
