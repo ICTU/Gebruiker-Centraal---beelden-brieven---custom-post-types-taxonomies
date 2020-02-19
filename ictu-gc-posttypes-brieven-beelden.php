@@ -8,8 +8,8 @@
 	* Plugin Name:       ICTU / Gebruiker Centraal / Beelden en Brieven post types and taxonomies (v2)
 	* Plugin URI:        https://github.com/ICTU/ICTU-Gebruiker-Centraal-Beelden-en-Brieven-CPTs-and-taxonomies
 	* Description:       Eerste versie voor gebruikercentraal.nl en beeldbank.gebruikercentraal.nl voor het registeren van CPTs voor beelden en brieven
-	* Version:           2.0.3
-	* Version descr:     Display featured image for beeld / brief.
+	* Version:           2.0.4
+	* Version descr:     Start samenwerking met Tamara op beeldbank.
 	* Author:            Paul van Buuren & Tamara de Haas
 	* Author URI:        https://wbvb.nl/
 	* License:           GPL-2.0+
@@ -56,8 +56,8 @@ if ( ! defined( 'GC_TAX_ORGANISATIE' ) ) {
 define( 'ICTU_GC_BEELDBANK_CSS',		'ictu-gc-plugin-beeldbank-css' );  
 define( 'ICTU_GC_BEELDBANK_BASE_URL',   trailingslashit( plugin_dir_url( __FILE__ ) ) );
 define( 'ICTU_GC_BEELDBANK_IMAGES',		esc_url( ICTU_GC_BEELDBANK_BASE_URL . 'images/' ) ); 
-define( 'ICTU_GC_BEELDBANK_VERSION',	'2.0.3' );
-define( 'ICTU_GC_BEELDBANK_DESC',		'Display featured image for beeld / brief.' );
+define( 'ICTU_GC_BEELDBANK_VERSION',	'2.0.4' );
+define( 'ICTU_GC_BEELDBANK_DESC',		'Start samenwerking met Tamara op beeldbank.' );
 
 
 // nieuwe CPTs
@@ -142,7 +142,7 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 
 		
 		$this->templates		= [];
-		// @since 2.0.3
+		// @since 2.0.4
 		// de waarde voor 'template_home' is hetzelfde als template_home in de inclusie-plugin;
 		// door deze gedeelde naam kunnen ze functies en styling delen
 		$this->template_home	= 'home-inclusie.php'; 
@@ -840,7 +840,7 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 
     /**
      * Adds the featured image
-	 * @since 2.0.3 
+	 * @since 2.0.4 
      *
      * @return void
      */
@@ -870,7 +870,7 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 
     /**
      * Starts container voor brief
-	 * @since 2.0.3 
+	 * @since 2.0.4 
      *
      * @return void
      */
@@ -884,7 +884,7 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 
     /**
      * Ends container voor brief
-	 * @since 2.0.3 
+	 * @since 2.0.4 
      *
      * @return void
      */
@@ -899,7 +899,7 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 
     /**
      * Ends container voor brief
-	 * @since 2.0.3 
+	 * @since 2.0.4 
      *
      * @return void
      */
@@ -916,7 +916,7 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 
     /**
      * Ends container voor brief
-	 * @since 2.0.3 
+	 * @since 2.0.4 
      *
      * @return void
      */
@@ -966,7 +966,7 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 
     /**
      * Ends container voor brief
-	 * @since 2.0.3 
+	 * @since 2.0.4 
      *
      * @return void
      */
@@ -1166,7 +1166,7 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 
     /**
      * Adds the featured image
-	 * @since 2.0.3 
+	 * @since 2.0.4 
      *
      * @return void
      */
