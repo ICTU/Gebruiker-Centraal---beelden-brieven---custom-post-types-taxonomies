@@ -1,0 +1,320 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ICTU / Gebruiker Centraal / Beelden en Brieven post "
+"types and taxonomies (v2)\n"
+"POT-Creation-Date: 2020-02-13 20:41+0100\n"
+"PO-Revision-Date: 2020-02-13 20:41+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: ictu-gc-posttypes-brieven-beelden.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+
+#: ictu-gc-posttypes-brieven-beelden.php:70
+msgctxt "labels"
+msgid "Niet zo"
+msgstr "Not like this"
+
+#: ictu-gc-posttypes-brieven-beelden.php:71
+msgctxt "labels"
+msgid "Maar zo"
+msgstr "But like this"
+
+#: ictu-gc-posttypes-brieven-beelden.php:289
+msgctxt "naam template"
+msgid "Beeldbank Home page"
+msgstr ""
+
+#: ictu-gc-posttypes-brieven-beelden.php:424
+#: ictu-gc-posttypes-brieven-beelden.php:425
+#: ictu-gc-posttypes-brieven-beelden.php:426
+#: ictu-gc-posttypes-brieven-beelden.php:444
+msgctxt "stap type"
+msgid "Licentie"
+msgstr ""
+
+#: ictu-gc-posttypes-brieven-beelden.php:427
+msgctxt "stap type"
+msgid "Alle licenties"
+msgstr ""
+
+#: ictu-gc-posttypes-brieven-beelden.php:428
+msgctxt "stap type"
+msgid "Bewerk licentie"
+msgstr ""
+
+#: ictu-gc-posttypes-brieven-beelden.php:429
+msgctxt "stap type"
+msgid "Bekijk licentie"
+msgstr ""
+
+#: ictu-gc-posttypes-brieven-beelden.php:430
+msgctxt "stap type"
+msgid "Licentie bijwerken"
+msgstr ""
+
+#: ictu-gc-posttypes-brieven-beelden.php:431
+msgctxt "stap type"
+msgid "Licentie toevoegen"
+msgstr ""
+
+#: ictu-gc-posttypes-brieven-beelden.php:432
+msgctxt "stap type"
+msgid "Nieuwe licentie"
+msgstr ""
+
+#: ictu-gc-posttypes-brieven-beelden.php:433
+msgctxt "stap type"
+msgid "Zoek licentie"
+msgstr ""
+
+#: ictu-gc-posttypes-brieven-beelden.php:434
+msgctxt "stap type"
+msgid "Meest gebruikte licenties"
+msgstr ""
+
+#: ictu-gc-posttypes-brieven-beelden.php:435
+#: ictu-gc-posttypes-brieven-beelden.php:465
+msgctxt "stap type"
+msgid "Scheid met komma's"
+msgstr ""
+
+#: ictu-gc-posttypes-brieven-beelden.php:436
+msgctxt "stap type"
+msgid "Licentie toevoegen of verwijderen"
+msgstr ""
+
+#: ictu-gc-posttypes-brieven-beelden.php:437
+#: ictu-gc-posttypes-brieven-beelden.php:467
+msgctxt "stap type"
+msgid "Kies uit de meest gebruikte"
+msgstr ""
+
+#: ictu-gc-posttypes-brieven-beelden.php:438
+#: ictu-gc-posttypes-brieven-beelden.php:468
+msgctxt "stap type"
+msgid "Niet gevonden"
+msgstr ""
+
+#: ictu-gc-posttypes-brieven-beelden.php:454
+#: ictu-gc-posttypes-brieven-beelden.php:455
+#: ictu-gc-posttypes-brieven-beelden.php:456
+#: ictu-gc-posttypes-brieven-beelden.php:474
+msgctxt "stap type"
+msgid "Organisatie"
+msgstr ""
+
+#: ictu-gc-posttypes-brieven-beelden.php:457
+msgctxt "stap type"
+msgid "Alle organisaties"
+msgstr ""
+
+#: ictu-gc-posttypes-brieven-beelden.php:458
+msgctxt "stap type"
+msgid "Bewerk organisatie"
+msgstr ""
+
+#: ictu-gc-posttypes-brieven-beelden.php:459
+msgctxt "stap type"
+msgid "Bekijk organisatie"
+msgstr ""
+
+#: ictu-gc-posttypes-brieven-beelden.php:460
+msgctxt "stap type"
+msgid "organisatie bijwerken"
+msgstr ""
+
+#: ictu-gc-posttypes-brieven-beelden.php:461
+msgctxt "stap type"
+msgid "organisatie toevoegen"
+msgstr ""
+
+#: ictu-gc-posttypes-brieven-beelden.php:462
+msgctxt "stap type"
+msgid "Nieuwe organisatie"
+msgstr ""
+
+#: ictu-gc-posttypes-brieven-beelden.php:463
+msgctxt "stap type"
+msgid "Zoek organisatie"
+msgstr ""
+
+#: ictu-gc-posttypes-brieven-beelden.php:464
+msgctxt "stap type"
+msgid "Meest gebruikte organisaties"
+msgstr ""
+
+#: ictu-gc-posttypes-brieven-beelden.php:466
+msgctxt "stap type"
+msgid "organisatie toevoegen of verwijderen"
+msgstr ""
+
+#: ictu-gc-posttypes-brieven-beelden.php:486
+#: ictu-gc-posttypes-brieven-beelden.php:488
+msgctxt "stap type"
+msgid "Stappen en richtlijnen"
+msgstr ""
+
+#: ictu-gc-posttypes-brieven-beelden.php:487
+msgctxt "stap type"
+msgid "Stap / richtlijn"
+msgstr ""
+
+#: ictu-gc-posttypes-brieven-beelden.php:489
+msgctxt "stap type"
+msgid "Alle stappen / richtlijnen"
+msgstr ""
+
+#: ictu-gc-posttypes-brieven-beelden.php:490
+#: ictu-gc-posttypes-brieven-beelden.php:491
+msgctxt "stap type"
+msgid "Nieuwe toevoegen"
+msgstr ""
+
+#: ictu-gc-posttypes-brieven-beelden.php:492
+msgctxt "stap type"
+msgid "Stap / richtlijn bewerken"
+msgstr ""
+
+#: ictu-gc-posttypes-brieven-beelden.php:493
+msgctxt "stap type"
+msgid "Nieuwe stap / richtlijn"
+msgstr ""
+
+#: ictu-gc-posttypes-brieven-beelden.php:494
+msgctxt "stap type"
+msgid "Stap / richtlijn bekijken"
+msgstr ""
+
+#: ictu-gc-posttypes-brieven-beelden.php:495
+msgctxt "stap type"
+msgid "Zoek een stap / richtlijn"
+msgstr ""
+
+#: ictu-gc-posttypes-brieven-beelden.php:496
+#: ictu-gc-posttypes-brieven-beelden.php:497
+msgctxt "stap type"
+msgid "Niets gevonden"
+msgstr ""
+
+#: ictu-gc-posttypes-brieven-beelden.php:498
+msgid "Featured image"
+msgstr ""
+
+#: ictu-gc-posttypes-brieven-beelden.php:499
+msgid "Archives"
+msgstr ""
+
+#: ictu-gc-posttypes-brieven-beelden.php:500
+msgid "Uploaded media"
+msgstr ""
+
+#: ictu-gc-posttypes-brieven-beelden.php:504
+msgctxt "Stappen label"
+msgid "Stappen en richtlijnen"
+msgstr ""
+
+#: ictu-gc-posttypes-brieven-beelden.php:696
+msgctxt "Home section doelgroep"
+msgid "Ontwerpen voor"
+msgstr ""
+
+#: ictu-gc-posttypes-brieven-beelden.php:769
+msgctxt "titel op home-pagina"
+msgid "Stappen"
+msgstr ""
+
+#: ictu-gc-posttypes-brieven-beelden.php:802
+#, php-format
+msgctxt "Label stappen"
+msgid "%s. %s"
+msgstr ""
+
+#: ictu-gc-posttypes-brieven-beelden.php:942
+#, php-format
+msgctxt "download image met titel"
+msgid "Download %s"
+msgstr ""
+
+#: ictu-gc-posttypes-brieven-beelden.php:947
+msgctxt "download image"
+msgid "Download"
+msgstr ""
+
+#: ictu-gc-posttypes-brieven-beelden.php:951
+msgctxt "download image"
+msgid "File size"
+msgstr ""
+
+#: ictu-gc-posttypes-brieven-beelden.php:952
+msgctxt "download image"
+msgid "File type"
+msgstr ""
+
+#: ictu-gc-posttypes-brieven-beelden.php:1041
+msgid "Dit beeld wordt gebruikt in de volgende brief"
+msgid_plural "Dit beeld wordt gebruikt in de volgende brieven"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ictu-gc-posttypes-brieven-beelden.php:1045
+msgid "Deze brief gebruikt het volgende beeld"
+msgid_plural "Deze brief gebruikt de volgende beelden"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ictu-gc-posttypes-brieven-beelden.php:1210
+msgctxt "titel op Stap-pagina"
+msgid "Tips"
+msgstr ""
+
+#: ictu-gc-posttypes-brieven-beelden.php:1393
+#, php-format
+msgctxt "Alternative alt-description."
+msgid "Image %s for '%s'"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid ""
+"ICTU / Gebruiker Centraal / Beelden en Brieven post types and taxonomies (v2)"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid ""
+"https://github.com/ICTU/ICTU-Gebruiker-Centraal-Beelden-en-Brieven-CPTs-and-"
+"taxonomies"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Eerste versie voor gebruikercentraal.nl en beeldbank.gebruikercentraal.nl "
+"voor het registeren van CPTs voor beelden en brieven"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Paul van Buuren & Tamara de Haas"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://wbvb.nl/"
+msgstr ""
+
+#~ msgctxt "Dossiers label"
+#~ msgid "Dossiers"
+#~ msgstr "Dossiers"
+
+#~ msgctxt "Dossier"
+#~ msgid "Dossiers"
+#~ msgstr "Dossiers"

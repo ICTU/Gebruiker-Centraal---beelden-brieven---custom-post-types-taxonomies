@@ -8,9 +8,10 @@ Dit theme wordt gebruikt op [www.gebruikercentraal.nl](https://www.gebruikercent
 * Paul van Buuren: paul@wbvb.nl
 
 ## Current version:
-0.0.2 - Added first files.
+2.0.4 - Start samenwerking met Tamara op beeldbank.
 
 ## Version history
+* 2.0.4 - Start samenwerking met Tamara op beeldbank.
 * 0.0.2 - Added first files.
 * 0.0.1 - created readme.md
 

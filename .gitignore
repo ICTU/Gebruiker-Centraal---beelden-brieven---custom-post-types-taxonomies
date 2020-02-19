@@ -18,3 +18,8 @@ wp-content/plugins/hello.php
 /sitemap.xml.gz
 
 config.codekit3
+
+less/negeermij/
+css/frontend.css
+css/frontend.css.map
+*.codekit3

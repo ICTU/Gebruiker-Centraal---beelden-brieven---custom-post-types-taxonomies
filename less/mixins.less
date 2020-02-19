@@ -26,9 +26,12 @@
 @inclusierood:          	#D94721;
 @inclusieroze:          	#FCD7CB;
 @inclusieoranje:        	#F89D1D;
-@inclusiekoraal:			#C73D19;
+@inclusiekoraal:			#00B4AC; // #C73D19;
 
-@inclusiekoraal_2:			#F05A24;
+@inclusiekoraal_2:			#16C3BC;
+
+@knop_bg:					#C42C76;
+@knop_bg_hover:				#C42C76;
 
 //=========================================================================================================
 
@@ -114,20 +117,20 @@
 @citaten_minheight:			30rem;
 
 @font-primary-reg:			@headerfont2;
-@font-secondary:			@headerfont;
+@font_secondary:			@headerfont;
 
 
 //=========================================================================================================
 
 .visuallyhidden() {
 	border: 0;
-	clip: rect(0 0 0 0);
+	clip: rect(1px, 1px, 1px, 1px);
 	height: 1px;
+	width: 1px;
 	margin: -1px;
 	overflow: hidden;
 	padding: 0;
 	position: absolute;
-	width: 1px;
 }
 
 .visuallyhidden {
@@ -213,8 +216,8 @@
 
 .icoontje( @classname: 'default', @src: '../images/icon-deel.svg' ) {
 
-	@fill-old: @wit;
-	@fill-new: @wit;
+	@fill-old: #6f99a3; // @wit;
+	@fill-new: #f00; // @wit;
 	
 	.@{classname} {
 		@media only screen and ( max-width: @break_fullwidth ) {
@@ -287,7 +290,7 @@
 
 .gc-section-heading() {
 	.font-size(34);
-	font-family: @font-secondary;
+	font-family: @font_secondary;
 	text-transform: uppercase;
 	line-height: 40px;
 
