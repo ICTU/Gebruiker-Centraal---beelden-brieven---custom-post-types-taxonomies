@@ -57,82 +57,18 @@
 Imports
 ---------------------------------------------------------------------------------------------------- */
 
-@import "../../themes/gebruiker-centraal/less/abstracts/_fonts.less";
-@import "../../themes/gebruiker-centraal/less/abstracts/_variables.less";
-@import "../../themes/gebruiker-centraal/less/abstracts/_mixins.less";
-@import "../../themes/gebruiker-centraal/less/abstracts/_normalize.less";
+@import "../../../themes/gebruiker-centraal/less/abstracts/_fonts.less";
+@import "../../../themes/gebruiker-centraal/less/abstracts/_variables.less";
+@import "../../../themes/gebruiker-centraal/less/abstracts/_mixins.less";
+@import "../../../themes/gebruiker-centraal/less/abstracts/_normalize.less";
 
-/*
-@import "includes/_mixins"; 
-@import "includes/_variables"; 
-*/
-
-/*
- * Includes / Compoments
- */
-/*
-@import "includes/_flexblock.less";                     // VERPLAATSEN NAAR THEME?
-@import "includes/_card.less";                          // VERPLAATSEN NAAR THEME?
-@import "includes/_btn";
-@import "includes/_card_tipkaart.less";
-@import "includes/_stepchart"; // idee - generiek popupcomponent van maken
-@import "includes/_stepnav";
-
-@import "includes/_overview";
-
-@import "includes/_entry";
-
-@import "includes/_single-step.less";
-
-@import "includes/_card-doelgroep";
-@import "includes/_inclusie-design";
-
-*/
-
-//-------------
-// dingen uit het inclusie theme
-@import "../../plugins/ictu-gc-posttypes-inclusie/less/includes/_variables-inclusie.less";            // VERPLAATSEN NAAR THEME?
-@import "../../plugins/ictu-gc-posttypes-inclusie/less/includes/_grid.less";                          // VERPLAATSEN NAAR THEME?
-@import "../../plugins/ictu-gc-posttypes-inclusie/less/includes/_flexblock.less";                     // VERPLAATSEN NAAR THEME?
-@import "../../plugins/ictu-gc-posttypes-inclusie/less/includes/_card.less";                          // VERPLAATSEN NAAR THEME?
-@import "../../plugins/ictu-gc-posttypes-inclusie/less/includes/_btn";                                // VERPLAATSEN NAAR THEME?
-
-@import "../../plugins/ictu-gc-posttypes-inclusie/less/includes/_stepchart";                          // VERPLAATSEN NAAR THEME?
-@import "../../plugins/ictu-gc-posttypes-inclusie/less/includes/_stepnav";                            // VERPLAATSEN NAAR THEME?
-@import "../../plugins/ictu-gc-posttypes-inclusie/less/includes/_dos-donts";                          // VERPLAATSEN NAAR THEME?
-@import "../../plugins/ictu-gc-posttypes-inclusie/less/includes/_section";                            // VERPLAATSEN NAAR THEME?
-@import "../../plugins/ictu-gc-posttypes-inclusie/less/includes/_contentmenu";                        // VERPLAATSEN NAAR THEME?
-
-@import "../../plugins/ictu-gc-posttypes-inclusie/less/includes/_overview"; 	                        // VERPLAATSEN NAAR THEME? (?)
-
-@import "../../plugins/ictu-gc-posttypes-inclusie/less/includes/_entry"; 		                        // VERPLAATSEN NAAR THEME?
-
-@import "../../plugins/ictu-gc-posttypes-inclusie/less/includes/_single-step.less";                   // VERPLAATSEN NAAR THEME?
-@import "../../plugins/ictu-gc-posttypes-inclusie/less/includes/_single_doelgroep.less";              // VERPLAATSEN NAAR THEME?
-
-// Inclusie specifiek
-@import "../../plugins/ictu-gc-posttypes-inclusie/less/includes/_card-doelgroep";                     // VERPLAATSEN NAAR THEME?
-
-//@import "../../plugins/ictu-gc-posttypes-inclusie/less/includes/_card-vaardigheden";                // zie theme
-
-
-@import "../../plugins/ictu-gc-posttypes-inclusie/less/includes/_inclusie-design";                    // ik snap nog steeds niet wat dit ding hier doet?
-
-@import "../../plugins/ictu-gc-posttypes-inclusie/less/includes/_page";                               // VERPLAATSEN NAAR THEME?
-
-//-------------
-
-
-// includes uit GC theme
-@import "../../themes/gebruiker-centraal/less/components/_card.less";                         
-@import "../../themes/gebruiker-centraal/less/components/_card-doelgroep.less";               
-@import "../../themes/gebruiker-centraal/less/components/_card-featured-image.less";          
-
-@import "../../themes/gebruiker-centraal/less/components/_page_stappenplan";
-@import "../../themes/gebruiker-centraal/less/components/_page-overzichtspagina.less";
+@import "../../../themes/gebruiker-centraal/less/components/_stepnav";
+@import "../../../themes/gebruiker-centraal/less/components/_stepchart";
 
 
 @import "includes/_variables.less";
+
+@import "includes/_page-stepchart";
 
 
 
@@ -156,21 +92,21 @@ body {
 
 #maincontent {
 	background-color: @gc_pantybrown_light;
-	
+
 	&:before {
 		background: @inclusiekoraal;
 	}
 
 	article.entry .inleiding {
 		background: @color_primary;
-	}	
-	
+	}
+
 }
 
 .page-template-page_template_overzichtspagina #maincontent {
-	article.entry .inleiding {
+      article.entry .inleiding {
 		background: @color_primary;
-	}	
+	}
 }
 
 
@@ -188,13 +124,13 @@ body {
 			border: 1px solid @gc_cardbordergrey;
 		    .gc-box-shadow();
 		}
-		
+
 		.download-box {
 			padding-top: 2rem;
 			padding-bottom: 1rem;
 			border-top: 2px solid @gc_cardbordergrey;
 			border-bottom: 2px solid @gc_cardbordergrey;
-			
+
 			header {
 				display: flex;
 				padding: 0;
@@ -202,13 +138,13 @@ body {
 				align-content: stretch;
 				justify-content: space-between;
 			}
-			
+
 			h2 {
 				padding: 0;
 				font-family: @bodyfont_bold;
-				.font-size( 18 );		    
+				.font-size( 18 );
 			}
-			
+
 			h2,
 			.btn--download {
 				margin-top: 0;
@@ -226,7 +162,7 @@ dl {
 	flex-direction: row;
 	margin-bottom: 0;
 	color: #52757E;
-	
+
 	dt, dd {
 		flex: 1 0 content;
 		margin: 0;
@@ -246,10 +182,10 @@ dl {
 
 
 .single {
-	.site-inner header {	
+	.site-inner header {
 		.entry-meta,
 		.meta {
-			border-bottom-style: none;		
+			border-bottom-style: none;
 		}
 	}
 }
@@ -259,16 +195,16 @@ dl {
 // wat een zooitje paul
 .single-brief,
 .single-beeld {
-	
+
 	.content article {
 		background: none;
-		
+
 		header {
 			margin-bottom: 0;
 			padding-top: 2rem;
 			padding-bottom: 2rem;
 		}
-		
+
 		.wrap {
 			background: @wit;
 
@@ -289,7 +225,7 @@ dl {
 			background-size: auto 80%;
 			margin: 0;
 			border-bottom-style: none;
-		}		
+		}
 	}
 }
 
@@ -299,5 +235,5 @@ dl {
 			// niet wit, maar @txt blauw
 			color: @txt;
 		}
-	}	
+	}
 //}
