@@ -1,0 +1,19 @@
+{
+  "name": "ictu/ictuwp-plugin-beeldbank",
+  "type": "wordpress-plugin",
+  "license": "GPL-3.0",
+  "description": "Plugin voor post-types en taxonomieën voor de GC Beeldbank ",
+  "homepage": "https://beeldbank.gebruikercentraal.nl/",
+  "authors": [
+    {
+      "name": "Paul van Buuren",
+      "email": "paul@wbvb.nl",
+      "homepage": "https://wbvb.nl"
+    },
+    {
+      "name": "Tamara de Haas",
+      "email": "info@haas-ontwerp.nl",
+      "homepage": "http://haas-ontwerp.nl/"
+    }
+  ]
+}
