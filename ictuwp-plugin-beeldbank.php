@@ -764,7 +764,7 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 		if (function_exists('get_field')) {
 		
 		    $home_stappen = get_field('home_template_stappen', $homepageID);
-		
+
 		    if ($home_stappen):
 		        $section_title = _x('Stappen', 'titel op home-pagina', 'ictu-gc-posttypes-inclusie');
 		        $title_id = sanitize_title($section_title . '-' . $post->ID);
@@ -796,18 +796,16 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 					if (in_array( $stap->ID, $parentsofcurrentpage )) {
 					    $active = 'active';
 					}
-		            
-		
-		            $title_id = sanitize_title(get_the_title($stap->ID) . '-' . $stepcounter);
-		            $steptitle = sprintf(_x('%s. %s', 'Label stappen', 'ictu-gc-posttypes-inclusie'), $stepcounter, $titel);
-		
-		
-		            echo '<li id="step_' . $stepcounter . '" class="stepnav__step">' .
-		              '<a href="' . get_permalink($stap->ID) . '" class="stepnav__link ' . (($active) ? 'is-active' : '') . '" title="' . $titel . '" >' .
-		              '<span class="' . implode(' ', $icon_classes) . '">&nbsp;</span>' .
-		              '<span class="stepnav__linktext">' . $titel . '</span>' .
-		              '</a>' .
-		              '</li>';
+
+		            $stepnav_item = '<li id="step_' . $stepcounter . '" class="stepnav__step">'.
+                      '<a href="' . get_permalink($stap->ID) . '" class="stepnav__link ' . (($active) ? 'is-active' : '') . '" title="' . $titel . '" >' .
+                          '<svg class="icon icon--stepnav" focusable="false">' .
+                            '<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="'. get_stylesheet_directory_uri()  .'/images/svg/stepchart/defs/svg/sprite.defs.svg#'. get_field('stap_icon', $stap->ID). '"></use> '.
+                          '</svg> '.
+                      '<span class="stepnav__linktext">' . $titel . '</span>' .
+                      '</a></li>';
+
+                    echo $stepnav_item;
 		
 		        endforeach;
 		
