@@ -1,0 +1,49 @@
+.single-beeld,
+.single-brief {
+  .content {
+    .gc-content-container;
+    background: @white;
+    padding-top: 3rem;
+
+    @media @desktop {
+      padding-top: 5rem;
+    }
+  }
+
+  .entry-content {
+    @media @tablet {
+      display: flex;
+
+      .lightbox {
+        width: 34rem;
+      }
+
+      .entry-content-inner {
+        width: calc(100% - 34rem);
+        padding-left: @gutter;
+      }
+    }
+
+    @media @desktop {
+      .entry-content-inner {
+        padding-left: 5.5rem;
+      }
+    }
+  }
+
+  .tobi__slider__slide__content > figure > figcaption {
+    font-size: @font_small;
+    color: @meta_color;
+    padding: .8rem 1.5rem;
+    border-top: .1rem solid @border_color;
+    width: auto;
+    right: 0;
+    font-family: @font_primary_semi;
+  }
+}
+
+.lightbox.tobi-zoom {
+  .gc-box-shadow;
+  padding: 1.5rem;
+  border: .1rem solid @border_color;
+}
