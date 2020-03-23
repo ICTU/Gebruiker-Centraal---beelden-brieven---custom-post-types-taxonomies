@@ -18,9 +18,9 @@
 
 // Get icons from stepchart JSON
 function getIcons() {
-    $icon_array = [];
-    $icon_list = file_get_contents( get_stylesheet_directory_uri()  .'/images/svg/stepchart/stepchart_icons.json');
-    $icon_list = json_decode($icon_list, true);
+	$icon_array = [];
+	$icon_list = file_get_contents( get_stylesheet_directory()  .'/images/svg/stepchart/stepchart_icons.json' );
+	$icon_list = json_decode($icon_list, true);
 
     foreach ($icon_list as $key => $icon) {
         $icon_array[$key] =
