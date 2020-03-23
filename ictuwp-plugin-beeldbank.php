@@ -8,7 +8,7 @@
  * Plugin Name:       ICTU / Gebruiker Centraal / Beelden en Brieven post types and taxonomies (v2)
  * Plugin URI:        https://github.com/ICTU/ICTU-Gebruiker-Centraal-Beelden-en-Brieven-CPTs-and-taxonomies
  * Description:       Eerste versie voor gebruikercentraal.nl en beeldbank.gebruikercentraal.nl voor het registeren van CPTs voor beelden en brieven
- * Version:           2.0.4
+ * Version:           2.0.5
  * Version descr:     Start samenwerking met Tamara op beeldbank.
  * Author:            Paul van Buuren & Tamara de Haas
  * Author URI:        https://wbvb.nl/
@@ -56,7 +56,7 @@ if ( ! defined( 'GC_TAX_ORGANISATIE' ) ) {
 define( 'ICTU_GC_BEELDBANK_CSS', 'ictu-gc-plugin-beeldbank-css' );
 define( 'ICTU_GC_BEELDBANK_BASE_URL', trailingslashit( plugin_dir_url( __FILE__ ) ) );
 define( 'ICTU_GC_BEELDBANK_IMAGES', esc_url( ICTU_GC_BEELDBANK_BASE_URL . 'images/' ) );
-define( 'ICTU_GC_BEELDBANK_VERSION', '2.0.4' );
+define( 'ICTU_GC_BEELDBANK_VERSION', '2.0.5' );
 define( 'ICTU_GC_BEELDBANK_DESC', 'Start samenwerking met Tamara op beeldbank.' );
 
 
@@ -697,7 +697,9 @@ if (!class_exists('ICTU_GC_Register_posttypes_brieven_beelden')) :
 
 
         /**
-         * Handles the front-end display.
+         * Voeg berichten toe aan de homepage. Alle berichten of gefilterd op een bepaalde categorie
+         *
+         * @since 2.0.5
          *
          * @return void
          */
@@ -712,28 +714,36 @@ if (!class_exists('ICTU_GC_Register_posttypes_brieven_beelden')) :
 
                     $posts_number = get_field('home_template_posts_number', $post->ID);
                     $posts_category_filter = get_field('home_template_posts_category_filter', $post->ID);
+                    $posts_title = get_field('home_template_posts_titel', $post->ID);
+                    
+                    if ( ! $posts_title ) {
+	                    $posts_title = _x( 'Laatste nieuws en blogs', "titel boven berichten op home", 'ictu-gc-posttypes-brieven-beelden' );
+                    }
+                    
                     $posts_categories = [];
 
                     if (!($posts_number > 0 && $posts_number < 99)) {
                         $posts_number = 3;
                     }
 
-                    $args = [
-                      'post_type' => 'post',
-                      'posts_per_page' => $posts_number,
-                      'post_status' => 'publish',
-                    ];
+                    $args = array(
+						'post_type' => 'post',
+						'posts_per_page' => $posts_number,
+						'post_status' => 'publish',
+						'orderby' => 'publish_date',
+						'order'   => 'DESC',
+                    );
 
                     if ('home_template_posts_category_filter_ja' == $posts_category_filter) {
                         $args['cat'] = get_field('home_template_posts_category_filter_catid', $post->ID);
                     }
 
-                    $alledoelgroepen = new WP_query($args);
+                    $posts_home = new WP_query($args);
 
-                    if ($alledoelgroepen->have_posts()) {
+                    if ($posts_home->have_posts()) {
 
                         $columncounter = 'grid--col-2';
-                        $countcount = $alledoelgroepen->found_posts;
+                        $countcount = $posts_home->found_posts;
 
                         if ($countcount < 2) {
                             $columncounter = 'grid--col-1';
@@ -741,16 +751,16 @@ if (!class_exists('ICTU_GC_Register_posttypes_brieven_beelden')) :
                         elseif ($countcount === 4) {
                             $columncounter = 'grid--col-2';
                         }
-                        elseif ($alledoelgroepen->found_posts > 2) {
+                        elseif ($posts_home->found_posts > 2) {
                             $columncounter = 'grid--col-3';
                         }
 
-
+                        echo '<h2>' . $posts_title. '</h2>';
                         echo '<div class="grid ' . $columncounter . '">';
 
                         $postcounter = 0;
 
-                        while ($alledoelgroepen->have_posts()) : $alledoelgroepen->the_post();
+                        while ($posts_home->have_posts()) : $posts_home->the_post();
 
                             $postcounter++;
                             $title_id = sanitize_title(get_the_title($post) . '-' . $post->ID);
@@ -760,11 +770,11 @@ if (!class_exists('ICTU_GC_Register_posttypes_brieven_beelden')) :
                             echo '<div class="card__image"></div>';
                             echo '<div class="card__content">';
                             echo
-                              '<h2 class="card__title" id="' . $title_id . '">' .
+                              '<h3 class="card__title" id="' . $title_id . '">' .
                               '<a href="' . get_permalink($post->ID) . '" class="arrow-link">' .
                               '<span class="arrow-link__text">' . get_the_title($post) . '</span>' .
                               '<span class="arrow-link__icon"></span>' .
-                              '</a></h2>';
+                              '</a></h3>';
                             echo '<p>' . get_the_excerpt($post->ID) . '</p>';
                             echo '</div>';
                             echo '</section>';
@@ -773,6 +783,10 @@ if (!class_exists('ICTU_GC_Register_posttypes_brieven_beelden')) :
                         endwhile;
 
                         echo '</div>';
+
+						// algemene link naar de berichtenpagina
+						echo '<p><a href="' . get_post_type_archive_link( 'post' ) . '">' . _x( 'Alle berichten', "home link naar berichten", 'ictu-gc-posttypes-brieven-beelden' ) . '</a></p>';
+
 
                         wp_reset_query();
 

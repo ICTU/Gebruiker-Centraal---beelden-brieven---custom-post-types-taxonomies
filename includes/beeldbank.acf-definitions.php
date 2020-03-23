@@ -683,6 +683,180 @@ if ( 22 == 33 ) {
 }
 
 
+/**
+ * voor de homepage: mogelijkheid wel of geen nieuwsberichten te tonen
+ *
+ * @since 2.0.5
+ *
+ * @return void
+ */
+acf_add_local_field_group(array(
+	'key' => 'group_5df800c8c11b9',
+	'title' => '02 - Homepage template: nieuwsberichten tonen',
+	'fields' => array(
+		array(
+			'key' => 'field_5df801414bf08',
+			'label' => 'Wil je berichten tonen?',
+			'name' => 'home_template_posts',
+			'type' => 'radio',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'choices' => array(
+				'home_template_posts_nee' => 'Nee, geen nieuwsberichten',
+				'home_template_posts_ja' => 'Ja, toon nieuwsberichten',
+			),
+			'allow_null' => 0,
+			'other_choice' => 0,
+			'default_value' => 'home_template_posts_nee',
+			'layout' => 'vertical',
+			'return_format' => 'value',
+			'save_other_choice' => 0,
+		),
+		array(
+			'key' => 'field_5e789e77ae1e6',
+			'label' => 'Titel',
+			'name' => 'home_template_posts_titel',
+			'type' => 'text',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => array(
+				array(
+					array(
+						'field' => 'field_5df801414bf08',
+						'operator' => '==',
+						'value' => 'home_template_posts_ja',
+					),
+				),
+			),
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => 'Laatste nieuws en blogs',
+			'placeholder' => '',
+			'prepend' => '',
+			'append' => '',
+			'maxlength' => '',
+		),
+		array(
+			'key' => 'field_5df8019c4bf09',
+			'label' => 'Hoeveel berichten?',
+			'name' => 'home_template_posts_number',
+			'type' => 'number',
+			'instructions' => 'hoeveel berichten wil je maximaal tonen',
+			'required' => 0,
+			'conditional_logic' => array(
+				array(
+					array(
+						'field' => 'field_5df801414bf08',
+						'operator' => '==',
+						'value' => 'home_template_posts_ja',
+					),
+				),
+			),
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => '',
+			'placeholder' => '',
+			'prepend' => '',
+			'append' => '',
+			'min' => '',
+			'max' => 20,
+			'step' => '',
+		),
+		array(
+			'key' => 'field_5df802084bf0a',
+			'label' => 'Filteren op categorie?',
+			'name' => 'home_template_posts_category_filter',
+			'type' => 'radio',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => array(
+				array(
+					array(
+						'field' => 'field_5df801414bf08',
+						'operator' => '==',
+						'value' => 'home_template_posts_ja',
+					),
+				),
+			),
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'choices' => array(
+				'home_template_posts_category_filter_nee' => 'Nee, niet filteren op categorie',
+				'home_template_posts_category_filter_ja' => 'Ja, toon alleen berichten uit deze categorie:',
+			),
+			'allow_null' => 0,
+			'other_choice' => 0,
+			'default_value' => '',
+			'layout' => 'vertical',
+			'return_format' => 'value',
+			'save_other_choice' => 0,
+		),
+		array(
+			'key' => 'field_5df803760ec17',
+			'label' => 'Selecteer een categorie',
+			'name' => 'home_template_posts_category_filter_catid',
+			'type' => 'taxonomy',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => array(
+				array(
+					array(
+						'field' => 'field_5df802084bf0a',
+						'operator' => '==',
+						'value' => 'home_template_posts_category_filter_ja',
+					),
+				),
+			),
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'taxonomy' => 'category',
+			'field_type' => 'checkbox',
+			'add_term' => 0,
+			'save_terms' => 0,
+			'load_terms' => 0,
+			'return_format' => 'id',
+			'multiple' => 0,
+			'allow_null' => 0,
+		),
+	),
+	'location' => array(
+		array(
+			array(
+				'param' => 'page_template',
+				'operator' => '==',
+				'value' => 'home-inclusie.php',
+			),
+		),
+	),
+	'menu_order' => 0,
+	'position' => 'acf_after_title',
+	'style' => 'default',
+	'label_placement' => 'top',
+	'instruction_placement' => 'label',
+	'hide_on_screen' => '',
+	'active' => true,
+	'description' => '',
+));
+
+//------------------------------------------------------
 
 
 }
