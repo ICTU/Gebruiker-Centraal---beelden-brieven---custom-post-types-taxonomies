@@ -204,36 +204,28 @@ if (!class_exists('ICTU_GC_Register_posttypes_brieven_beelden')) :
 
             if ($this->template_home == $page_template) {
 
-                remove_filter('genesis_post_title_output', 'gc_wbvb_sharebuttons_for_page_top', 15);
+	            remove_filter( 'genesis_post_title_output', 'gc_wbvb_sharebuttons_for_page_top', 15 );
 
-                //* Remove standard header
-                remove_action('genesis_entry_header', 'genesis_entry_header_markup_open', 5);
-                remove_action('genesis_entry_header', 'genesis_entry_header_markup_close', 15);
-                remove_action('genesis_entry_header', 'genesis_do_post_title');
+	            //* Remove standard header
+	            remove_action( 'genesis_entry_header', 'genesis_entry_header_markup_open', 5 );
+	            remove_action( 'genesis_entry_header', 'genesis_entry_header_markup_close', 15 );
+	            remove_action( 'genesis_entry_header', 'genesis_do_post_title' );
 
-                //* Remove the post content (requires HTML5 theme support)
-                remove_action('genesis_entry_content', 'genesis_do_post_content');
+	            //* Remove the post content (requires HTML5 theme support)
+	            remove_action( 'genesis_entry_content', 'genesis_do_post_content' );
 
-                // append content
-                add_action('genesis_entry_content', [
-                  $this,
-                  'ictu_gc_frontend_home_before_content',
-                ], 8);
+	            // dit zijn de stappen in de cirkel
+	            add_action( 'genesis_entry_content', array( $this, 'ictu_gc_frontend_home_before_content' ), 8 );
 
-                // append content
-                add_action('genesis_after_content', 'ictu_gctheme_home_template_teasers', 12);
+	            // teasers toevoegen (paarse blokken)
+	            add_action( 'genesis_loop', 'ictu_gctheme_home_template_teasers', 12 );
 
+				// action voor het toevoegen van berichten
+	            add_action( 'genesis_loop', array( $this, 'ictu_beeldbank_home_add_posts' ), 12 );
 
-                add_action('genesis_after_content', [
-                  $this,
-                  'ictu_gc_frontend_home_after_content_posts',
-                ], 14);
+				// in page.php wordt de gerelateerde content toegevoegd via
+				// add_action( 'genesis_loop', 'ictu_gctheme_frontend_general_get_related_content', 12 );
 
-                // gerelateerde content
-                add_action('genesis_after_content', [
-                  $this,
-                  'ictu_gc_frontend_stap_get_related_content',
-                ], 16);
 
             }
             elseif (GC_BEELDBANK_BEELD_CPT == get_post_type()) {
@@ -709,15 +701,12 @@ if (!class_exists('ICTU_GC_Register_posttypes_brieven_beelden')) :
          *
          * @return void
          */
-        public function ictu_gc_frontend_home_after_content_posts() {
-
-
+        public function ictu_beeldbank_home_add_posts() {
             global $post;
 
             if (function_exists('get_field')) {
 
                 $home_template_posts = get_field('home_template_posts', $post->ID);
-
 
                 if ('home_template_posts_ja' == $home_template_posts) {
 
@@ -773,7 +762,6 @@ if (!class_exists('ICTU_GC_Register_posttypes_brieven_beelden')) :
                             echo
                               '<h2 class="card__title" id="' . $title_id . '">' .
                               '<a href="' . get_permalink($post->ID) . '" class="arrow-link">' .
-                              '<span>' . _x('Ontwerpen voor', 'Home section doelgroep', 'ictu-gc-posttypes-inclusie') . ' </span>' .
                               '<span class="arrow-link__text">' . get_the_title($post) . '</span>' .
                               '<span class="arrow-link__icon"></span>' .
                               '</a></h2>';
