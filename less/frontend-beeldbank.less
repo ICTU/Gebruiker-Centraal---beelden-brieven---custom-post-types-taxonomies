@@ -57,7 +57,6 @@
 Imports
 ---------------------------------------------------------------------------------------------------- */
 
-@import "../../../themes/gebruiker-centraal/less/abstracts/_fonts.less";
 @import "../../../themes/gebruiker-centraal/less/abstracts/_variables.less";
 @import "../../../themes/gebruiker-centraal/less/abstracts/_mixins.less";
 @import "../../../themes/gebruiker-centraal/less/abstracts/_normalize.less";
@@ -68,7 +67,10 @@ Imports
 
 @import "includes/_variables.less";
 
+@import "includes/_layout";
 @import "includes/_page-stepchart";
+@import "includes/_page-home";
+@import "includes/_page-brief-beeld";
 
 
 
@@ -92,23 +94,7 @@ body {
 
 #maincontent {
 	background-color: @gc_pantybrown_light;
-
-	&:before {
-		background: @inclusiekoraal;
-	}
-
-	article.entry .inleiding {
-		background: @color_primary;
-	}
-
 }
-
-.page-template-page_template_overzichtspagina #maincontent {
-      article.entry .inleiding {
-		background: @color_primary;
-	}
-}
-
 
 .myflex {
     display:flex;
@@ -179,61 +165,3 @@ dl {
 		}
 	}
 }
-
-
-.single {
-	.site-inner header {
-		.entry-meta,
-		.meta {
-			border-bottom-style: none;
-		}
-	}
-}
-
-
-// *oogrolt*
-// wat een zooitje paul
-.single-brief,
-.single-beeld {
-
-	.content article {
-		background: none;
-
-		header {
-			margin-bottom: 0;
-			padding-top: 2rem;
-			padding-bottom: 2rem;
-		}
-
-		.wrap {
-			background: @wit;
-
-			.section--related-content,
-			.section--related-links {
-				max-width: calc( 100% + 8em );
-				margin-top: 2rem;
-				margin-left: -4em;
-			}
-		}
-	}
-
-//@violet:                    #C42C76;
-
-	.section--related {
-		.card .card__image {
-			background-color: red;
-			background-size: auto 80%;
-			margin: 0;
-			border-bottom-style: none;
-		}
-	}
-}
-
-//.home {
-	.region--intro {
-		&, .entry-title {
-			// niet wit, maar @txt blauw
-			color: @txt;
-		}
-	}
-//}

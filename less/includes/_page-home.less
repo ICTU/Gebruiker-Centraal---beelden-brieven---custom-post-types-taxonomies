@@ -1,0 +1,39 @@
+.home {
+  #home_template_teasers {
+    .gc-padding;
+    background: @gc_pantybrown;
+    padding-top: .1rem;
+    padding-bottom: 3rem;
+    max-width: none;
+
+    .text-block {
+      .gc-box-shadow;
+      background: @bg_intro;
+      padding: 2rem;
+      color: @white;
+    }
+
+    @media @tablet {
+      padding-top: 0;
+
+      .grid {
+        max-width: @max-width-container;
+        margin-left: auto;
+        margin-right: auto;
+
+        section {
+          margin-top: -4rem;
+        }
+      }
+    }
+
+    @media @desktop {
+      padding-bottom: 7rem;
+
+      .text-block {
+        padding: 3rem;
+      }
+    }
+  }
+
+}

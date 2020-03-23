@@ -1,0 +1,82 @@
+.page-template-page_template_overzichtspagina {
+  .gc-overviewpage(@bg: @bg_intro);
+}
+
+.site-inner {
+  .gc-page-background(@bg: @brand_color);
+
+  .btn--download {
+    background-color: @gc_pink;
+  }
+}
+
+.page-template:not(.page-template-page_template_overzichtspagina):not(.page-template-home-inclusie),
+.page-template-default {
+  .content {
+    .gc-box-shadow;
+    background: @white;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+
+    @media @desktop {
+      padding-top: 5rem;
+    }
+  }
+}
+
+.page-template-default {
+  .content {
+    .gc-content-container;
+  }
+}
+
+.gc-beeldbank-card(){
+  position: relative;
+  overflow: hidden;
+
+  &:before {
+    content: " ";
+    position: absolute;
+    display: block;
+    background: @gc_pantybrown_xlight;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 35rem;
+  }
+
+  .card__image {
+    .gc-box-shadow;
+    width: 18rem;
+    height: 24rem;
+    margin: 3rem auto 5rem;
+    overflow: inherit;
+    background: @white;
+    background-size: 80% auto;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    &:before {
+      display: none;
+    }
+  }
+
+  .card__content {
+    .gc-rotated-thing;
+    overflow: visible;
+    z-index: 5;
+
+    &:before {
+      z-index: -1;
+      margin-top: -1rem;
+    }
+  }
+}
+
+.card--featured-image.brief {
+  .gc-beeldbank-card;
+}
+
+.card--featured-image.beeld {
+  .gc-beeldbank-card;
+}
