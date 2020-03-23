@@ -234,28 +234,13 @@ if (!class_exists('ICTU_GC_Register_posttypes_brieven_beelden')) :
 
                 remove_action('genesis_entry_content', 'genesis_do_post_content');
 
-                add_action('genesis_entry_content', [
-                  $this,
-                  'ictu_gc_frontend_brief_append_container_start',
-                ], 6);
-                add_action('genesis_entry_content', [
-                  $this,
-                  'ictu_gc_frontend_append_afbeelding',
-                ], 8);
+                add_action('genesis_entry_content', array( $this, 'ictu_gc_frontend_brief_append_container_start' ), 6 );
+                add_action('genesis_entry_content', array( $this, 'ictu_gc_frontend_brief_append_afbeelding' ), 12 );
+                add_action('genesis_entry_content', array( $this, 'ictu_gc_frontend_beeld_append_downloadinfo' ), 12 );
+                
+                add_action('genesis_entry_content', array( $this, 'ictu_gc_frontend_brief_append_container_end' ), 14 );
 
-                add_action('genesis_entry_content', [
-                  $this,
-                  'ictu_gc_frontend_beeld_append_downloadinfo',
-                ], 12);
-                add_action('genesis_entry_content', [
-                  $this,
-                  'ictu_gc_frontend_brief_append_container_end',
-                ], 14);
-
-                add_action('genesis_entry_content', [
-                  $this,
-                  'ictu_gc_frontend_brief_append_related_content',
-                ], 16);
+                add_action('genesis_loop', array( $this, 'ictu_gc_frontend_brief_append_related_content' ), 16 );
 
             }
             elseif (GC_BEELDBANK_BRIEF_CPT == get_post_type()) {
@@ -265,29 +250,16 @@ if (!class_exists('ICTU_GC_Register_posttypes_brieven_beelden')) :
                 // remove the content
                 remove_action('genesis_entry_content', 'genesis_do_post_content');
 
-                add_action('genesis_entry_content', [
-                  $this,
-                  'ictu_gc_frontend_brief_append_container_start',
-                ], 6);
-                add_action('genesis_entry_content', [
-                  $this,
-                  'ictu_gc_frontend_brief_append_afbeelding',
-                ], 8);
+// download-box
+                add_action('genesis_entry_content', array( $this, 'ictu_gc_frontend_brief_append_container_start' ), 6 );
+
+                add_action('genesis_entry_content', array( $this, 'ictu_gc_frontend_brief_append_afbeelding' ), 12 );
 
                 // the content is here
-                add_action('genesis_entry_content', [
-                  $this,
-                  'ictu_gc_frontend_brief_append_downloadinfo',
-                ], 12);
-                add_action('genesis_entry_content', [
-                  $this,
-                  'ictu_gc_frontend_brief_append_container_end',
-                ], 14);
+                add_action('genesis_entry_content', array( $this, 'ictu_gc_frontend_brief_append_downloadinfo' ), 12 );
+                add_action('genesis_entry_content', array( $this, 'ictu_gc_frontend_brief_append_container_end' ), 14 );
 
-                add_action('genesis_entry_content', [
-                  $this,
-                  'ictu_gc_frontend_brief_append_related_content',
-                ], 16);
+                add_action('genesis_loop', array( $this, 'ictu_gc_frontend_brief_append_related_content' ), 16 );
 
             }
             elseif (ICTU_GC_CPT_STAP == get_post_type()) {
@@ -974,7 +946,77 @@ if (!class_exists('ICTU_GC_Register_posttypes_brieven_beelden')) :
          */
         public function ictu_gc_frontend_brief_append_downloadinfo() {
 
-            echo '<div class="entry-content-inner"> <p>Brief downloaden</p>';
+			global $post;
+
+            echo '<div class="entry-content-inner"> ';
+
+            $beeldbrief_file	= get_field('beeldbrief_file', $post->ID);
+			$imageid 			= '';            
+			$filesize 			= '';            
+			$file 				= '';            
+			$titel 				= '';
+			$downloadlink 		= '';
+
+			if ( $beeldbrief_file ) {
+				
+				// gebruik de metagegevens van het bijgevoegde bestand
+
+				$titel 			= $beeldbrief_file['title'];	
+				$file 			= get_attached_file( $beeldbrief_file['id'] );
+				$downloadlink 	= $beeldbrief_file['url'];
+				$filesize 		= gc_wbvb_get_human_filesize(filesize($file));
+
+			    $mimetypestring	= mime_content_type($file);
+			    $mimetypearray	= explode('/', $mimetypestring);
+			    $mimetype		= $mimetypearray[1];
+			
+				if ( strpos( $mimetype, 'wordprocessingml' ) ) {
+					$mimetype = _x('Word-document', 'Mime type', "ictu-gc-posttypes-brieven-beelden");
+				}
+			
+			}
+			else {
+				// er is geen apart bestand toegevoegd, dus we gebruiken de uitgelichte afbeelding
+				
+				$imageid 		= get_post_thumbnail_id(get_the_id());
+				$image			= wp_get_attachment_image_src($imageid, 'full');
+			    $file 			= get_attached_file($imageid);
+			    $filesize 		= gc_wbvb_get_human_filesize(filesize($file));
+				$titel 			= get_the_title($image_id);
+				
+				$downloadlink 	= $image[0];
+			    $mimetypestring	= mime_content_type($file);
+			    $mimetypearray	= explode('/', $mimetypestring);
+			    $mimetype		= $mimetypearray[1];
+				
+			}
+
+
+            if ( $file && $downloadlink ) {
+
+                $arialabel	= sprintf(_x('Download %s', 'download image met titel', 'ictu-gc-posttypes-inclusie'), $titel);
+
+                echo '<section class="download-box">';
+                echo '<strong>' . $titel . '</strong>';
+                echo '<a href="' . $downloadlink . '" class="btn btn--download" download aria-label="' . $arialabel . '">' . _x('Download', 'download image', "ictu-gc-posttypes-brieven-beelden") . '</a>';
+                
+                if  ( $filesize || $mimetype ) {
+
+	                echo '<dl>';
+	                if ( $filesize ) {
+		                echo '<dt class="visuallyhidden">' . _x('File size', 'download image', "ictu-gc-posttypes-brieven-beelden") . '</dt><dd>' . $filesize . '</<dd>';
+	                }
+	                if ( $mimetype ) {
+		                echo '<dt class="visuallyhidden">' . _x('File type', 'download image', "ictu-gc-posttypes-brieven-beelden") . '</dt><dd>' . strtoupper( $mimetype ) . '</<dd>';
+	                }
+	                echo '</dl>';
+
+                }
+
+                echo '</section>'; // .download-box
+            }
+
+
             echo genesis_do_post_content();
             echo '</div>'; // .myflex
 
@@ -998,22 +1040,21 @@ if (!class_exists('ICTU_GC_Register_posttypes_brieven_beelden')) :
 
             echo '<div class="entry-content-inner">';
 
-            $imageid = get_post_thumbnail_id(get_the_id());
-            $image = wp_get_attachment_image_src($imageid, 'full');
+            $imageid 	= get_post_thumbnail_id(get_the_id());
+            $image		= wp_get_attachment_image_src($imageid, 'full');
 
             if ($image) {
 
-                $imagemeta = wp_get_attachment_metadata($imageid);
-                $file = get_attached_file($imageid);
-                $filesize = gc_wbvb_get_human_filesize(filesize($file));
-                $mimetype = mime_content_type($file);
-                $mimes = explode('/', $mimetype);
-                $titel = get_the_title($image_id);
-                $arialabel = sprintf(_x('Download %s', 'download image met titel', 'ictu-gc-posttypes-inclusie'), $titel);
+                $file 		= get_attached_file($imageid);
+                $filesize 	= gc_wbvb_get_human_filesize(filesize($file));
+                $mimetype 	= mime_content_type($file);
+                $mimes 		= explode('/', $mimetype);
+                $titel 		= get_the_title($image_id);
+                $arialabel	= sprintf(_x('Download %s', 'download image met titel', 'ictu-gc-posttypes-inclusie'), $titel);
 
                 echo '<section class="download-box">';
                 echo '<header>'; // .download-box
-                echo '<h4>' . $titel . '</h4>';
+                echo '<h2>' . $titel . '</h2>';
                 echo '<a href="' . $image[0] . '" class="btn btn--download" download aria-label="' . $arialabel . '">' . _x('Download', 'download image', "ictu-gc-posttypes-brieven-beelden") . '</a>';
                 echo '</header>'; // .download-box
 
