@@ -715,6 +715,8 @@ if (!class_exists('ICTU_GC_Register_posttypes_brieven_beelden')) :
                     $posts_number = get_field('home_template_posts_number', $post->ID);
                     $posts_category_filter = get_field('home_template_posts_category_filter', $post->ID);
                     $posts_title = get_field('home_template_posts_titel', $post->ID);
+                    $home_template_posts_leesmeer_linktekst = get_field('home_template_posts_leesmeer_linktekst', $post->ID);
+                    $home_template_posts_leesmeer_link = get_field('home_template_posts_leesmeer_link', $post->ID);
                     
                     if ( ! $posts_title ) {
 	                    $posts_title = _x( 'Laatste nieuws en blogs', "titel boven berichten op home", 'ictu-gc-posttypes-brieven-beelden' );
@@ -755,38 +757,51 @@ if (!class_exists('ICTU_GC_Register_posttypes_brieven_beelden')) :
                             $columncounter = 'grid--col-3';
                         }
 
-                        echo '<h2>' . $posts_title. '</h2>';
+						echo '<section class="section section--overview"><div class="l-section-top"><h2 class="section__title">' . $posts_title. '</h2></div>';
+                        echo '<div class="l-section-content">';
                         echo '<div class="grid ' . $columncounter . '">';
 
                         $postcounter = 0;
 
                         while ($posts_home->have_posts()) : $posts_home->the_post();
 
-                            $postcounter++;
-                            $title_id = sanitize_title(get_the_title($post) . '-' . $post->ID);
-                            $section_id = sanitize_title('post-' . $post->ID);
-
-                            echo '<section aria-labelledby="' . $title_id . '" class="card" id="' . $section_id . '">';
-                            echo '<div class="card__image"></div>';
-                            echo '<div class="card__content">';
-                            echo
-                              '<h3 class="card__title" id="' . $title_id . '">' .
-                              '<a href="' . get_permalink($post->ID) . '" class="arrow-link">' .
-                              '<span class="arrow-link__text">' . get_the_title($post) . '</span>' .
-                              '<span class="arrow-link__icon"></span>' .
-                              '</a></h3>';
-                            echo '<p>' . get_the_excerpt($post->ID) . '</p>';
-                            echo '</div>';
-                            echo '</section>';
-
-
+							$postcounter++;
+							$title_id = sanitize_title(get_the_title($post) . '-' . $post->ID);
+							$section_id = sanitize_title('post-' . $post->ID);
+							
+							echo '<div class="card card--with-image" id="' . $title_id . '">';
+							
+							if ( has_post_thumbnail( $post )  ) {
+							
+							    echo '  <div class="card__image">';
+							    the_post_thumbnail();
+							    echo '  </div>';
+							
+								}
+								
+								echo '  <div class="card__content">';
+								echo '    <h2 class="card__title">';
+								echo '      <a class="arrow-link" href="' . get_permalink($post->ID) . '">';
+								echo '        <span class="arrow-link__text">' . get_the_title($post) . '</span>';
+								echo '        <span class="arrow-link__icon"></span>';
+								echo '      </a>';
+								echo '    </h2>';
+								echo '    <p class="card__description">' . get_the_excerpt($post->ID) . '</p>';
+								echo '  </div>';
+								echo '</div>';
+								
                         endwhile;
 
-                        echo '</div>';
+                        echo '</div>'; // .grid columncounter
 
 						// algemene link naar de berichtenpagina
-						echo '<p><a href="' . get_post_type_archive_link( 'post' ) . '">' . _x( 'Alle berichten', "home link naar berichten", 'ictu-gc-posttypes-brieven-beelden' ) . '</a></p>';
+						if ( $home_template_posts_leesmeer_link ) {
 
+							echo '<p><a href="' . $home_template_posts_leesmeer_link['url'] . '" class="btn btn--secondary">' . $home_template_posts_leesmeer_link['title'] . '</a></p>';
+						}
+
+                        echo '</div>'; // .l-section-content
+                        echo '</section>'; // .section section--overview
 
                         wp_reset_query();
 
@@ -1060,7 +1075,7 @@ if (!class_exists('ICTU_GC_Register_posttypes_brieven_beelden')) :
             // defaults
             $menuarray = [];
             $return = '';
-            //		$return     = '<h1>ictu_gc_frontend_briefbeeld_append_related_content</h1>';
+
             $defaults = [
               'ID' => 0,
               'titletag' => 'h2',
@@ -1092,6 +1107,9 @@ if (!class_exists('ICTU_GC_Register_posttypes_brieven_beelden')) :
                         $columncounter = 'col-3';
                     }
 
+
+
+
                     if (GC_BEELDBANK_BEELD_CPT === get_post_type()) {
                         // titel voor een beeld en bijbehorende brieven
                         $section_title = sprintf(_n('Dit beeld wordt gebruikt in de volgende brief', 'Dit beeld wordt gebruikt in de volgende brieven', $countcount, 'gebruikercentraal'), number_format_i18n($countcount));
@@ -1103,17 +1121,12 @@ if (!class_exists('ICTU_GC_Register_posttypes_brieven_beelden')) :
 
                     $title_id = sanitize_title($section_title . '-title');
 
-                    $return .= '<section aria-labelledby="' . $title_id . '" class="section section--related section--related-content ' . $columncounter . '">';
+//                    $return .= '<section aria-labelledby="' . $title_id . '" class="section section--related section--related-content ' . $columncounter . '">';
 
-                    $return .= '<div class="wrap">';
-                    $return .= '<h2 id="' . $title_id . '" class="section__title">' . $section_title . '</h2>';
-                    $return .= '</div>'; // class="wrap";
+                    $return .= '<section class="section section--overview">';
+                    $return .= '<div class="l-section-top"><h2 id="' . $title_id . '" class="section__title">' . $section_title . '</h2></div>';
 
-
-                    $return .= '<div class="wrap-outer">';
-                    $return .= '</div>'; // class="wrap-outer";
-
-                    $return .= '<div class="grid grid--' . $columncounter . '">';
+                    $return .= '<div class="l-section-content"><div class="grid grid--' . $columncounter . '">';
 
 
                     // loop through the rows of data
@@ -1142,6 +1155,7 @@ if (!class_exists('ICTU_GC_Register_posttypes_brieven_beelden')) :
                     if (!$args['getmenu']) {
 
                         $return .= '</div>'; // class="grid ' . $columncounter . '">';
+                        $return .= '</div>'; // .l-section-content;
                         $return .= '</section>';
 
                     }

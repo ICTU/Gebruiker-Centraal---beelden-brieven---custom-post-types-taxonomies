@@ -836,6 +836,56 @@ acf_add_local_field_group(array(
 			'multiple' => 0,
 			'allow_null' => 0,
 		),
+		array(
+			'key' => 'field_5e78db2563a35',
+			'label' => 'Link en tekst voor doorklik',
+			'name' => 'home_template_posts_leesmeer_link',
+			'type' => 'link',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => array(
+				array(
+					array(
+						'field' => 'field_5df801414bf08',
+						'operator' => '==',
+						'value' => 'home_template_posts_ja',
+					),
+				),
+			),
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'return_format' => 'array',
+		),
+		array(
+			'key' => 'field_5e78db5263a36',
+			'label' => 'home_template_posts_leesmeer_linktekst',
+			'name' => 'home_template_posts_leesmeer_linktekst',
+			'type' => 'text',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => array(
+				array(
+					array(
+						'field' => 'field_5df801414bf08',
+						'operator' => '==',
+						'value' => 'home_template_posts_ja',
+					),
+				),
+			),
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => 'Alle berichten',
+			'placeholder' => '',
+			'prepend' => '',
+			'append' => '',
+			'maxlength' => '',
+		),
 	),
 	'location' => array(
 		array(
@@ -856,7 +906,149 @@ acf_add_local_field_group(array(
 	'description' => '',
 ));
 
+
+
 //------------------------------------------------------
+
+// relatie tussen een beeld en brieven
+acf_add_local_field_group(array(
+	'key' => 'group_5e45572685b3c',
+	'title' => '01 - Beeld: bijbehorende brieven',
+	'fields' => array(
+		array(
+			'key' => 'field_5e455747a6962',
+			'label' => 'relation_beeldbrief_beeld',
+			'name' => 'relation_beeldbrief_beeld',
+			'type' => 'relationship',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'post_type' => array(
+				0 => 'brief',
+			),
+			'taxonomy' => '',
+			'filters' => array(
+				0 => 'search',
+				1 => 'taxonomy',
+			),
+			'elements' => '',
+			'min' => '',
+			'max' => '',
+			'return_format' => 'object',
+		),
+		array(
+			'key' => 'field_5e78d2f7a581e',
+			'label' => '',
+			'name' => '',
+			'type' => 'text',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => '',
+			'placeholder' => '',
+			'prepend' => '',
+			'append' => '',
+			'maxlength' => '',
+		),
+	),
+	'location' => array(
+		array(
+			array(
+				'param' => 'post_type',
+				'operator' => '==',
+				'value' => 'beeld',
+			),
+		),
+	),
+	'menu_order' => 0,
+	'position' => 'acf_after_title',
+	'style' => 'default',
+	'label_placement' => 'top',
+	'instruction_placement' => 'label',
+	'hide_on_screen' => '',
+	'active' => true,
+	'description' => '',
+));
+
+// relatie tussen een brief en beelden
+acf_add_local_field_group(array(
+	'key' => 'group_5e45545c9e5e0',
+	'title' => '01 - Beeldbrief: bijbehorend bestand en relatie met beelden',
+	'fields' => array(
+		array(
+			'key' => 'field_5e45547862c17',
+			'label' => 'Kies een bestand',
+			'name' => 'beeldbrief_file',
+			'type' => 'file',
+			'instructions' => 'Je kunt hier een PDF toevoegen. Als je geen PDF hebt, kun je een plaatje selecteren. Als je hier geen bestanden toevoegt, dan gebruiken we de uitgelichte afbeelding als bijbehorend bestand.',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'return_format' => 'array',
+			'library' => 'all',
+			'min_size' => '',
+			'max_size' => '',
+			'mime_types' => '',
+		),
+		array(
+			'key' => 'field_5e455603cb722',
+			'label' => 'Kies de bijbehorende beelden',
+			'name' => 'relation_beeldbrief_beeld',
+			'type' => 'relationship',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'post_type' => array(
+				0 => 'beeld',
+			),
+			'taxonomy' => '',
+			'filters' => array(
+				0 => 'search',
+				1 => 'taxonomy',
+			),
+			'elements' => '',
+			'min' => '',
+			'max' => '',
+			'return_format' => 'object',
+		),
+	),
+	'location' => array(
+		array(
+			array(
+				'param' => 'post_type',
+				'operator' => '==',
+				'value' => 'brief',
+			),
+		),
+	),
+	'menu_order' => 0,
+	'position' => 'acf_after_title',
+	'style' => 'default',
+	'label_placement' => 'top',
+	'instruction_placement' => 'label',
+	'hide_on_screen' => '',
+	'active' => true,
+	'description' => '',
+));
 
 
 }
