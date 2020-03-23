@@ -5,75 +5,75 @@
  * @package           ictu-gc-posttypes-brieven-beelden
  *
  * @wordpress-plugin
- * Plugin Name:       ICTU / Gebruiker Centraal / Beelden en Brieven post types
- *   and taxonomies (v2) Plugin URI:
- *   https://github.com/ICTU/ICTU-Gebruiker-Centraal-Beelden-en-Brieven-CPTs-and-taxonomies
- *   Description:       Eerste versie voor gebruikercentraal.nl en
- *   beeldbank.gebruikercentraal.nl voor het registeren van CPTs voor beelden
- *   en brieven Version:           2.0.4 Version descr:     Start samenwerking
- *   met Tamara op beeldbank. Author:            Paul van Buuren & Tamara de
- *   Haas Author URI:        https://wbvb.nl/ License:           GPL-2.0+
- *   License URI:       http://www.gnu.org/licenses/gpl-2.0.txt Text Domain:
- *      ictu-gc-posttypes-brieven-beelden Domain Path:       /languages
+ * Plugin Name:       ICTU / Gebruiker Centraal / Beelden en Brieven post types and taxonomies (v2)
+ * Plugin URI:        https://github.com/ICTU/ICTU-Gebruiker-Centraal-Beelden-en-Brieven-CPTs-and-taxonomies
+ * Description:       Eerste versie voor gebruikercentraal.nl en beeldbank.gebruikercentraal.nl voor het registeren van CPTs voor beelden en brieven
+ * Version:           2.0.4
+ * Version descr:     Start samenwerking met Tamara op beeldbank.
+ * Author:            Paul van Buuren & Tamara de Haas
+ * Author URI:        https://wbvb.nl/
+ * License:           GPL-2.0+
+ * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
+ * Text Domain:       ictu-gc-posttypes-brieven-beelden
+ * Domain Path:       /languages
  */
 
 // If this file is called directly, abort.
-if (!defined('WPINC')) {
-    die;
+if ( ! defined( 'WPINC' ) ) {
+	die;
 }
 
 //========================================================================================================
 
-add_action('plugins_loaded', [
-  'ICTU_GC_Register_posttypes_brieven_beelden',
-  'init',
-], 10);
+add_action( 'plugins_loaded', array( 'ICTU_GC_Register_posttypes_brieven_beelden', 'init' ), 10 );
 
 //========================================================================================================
 
-if (!defined('GC_BEELDBANK_BEELD_CPT')) {
-    define('GC_BEELDBANK_BEELD_CPT', 'beeld');
+if ( ! defined( 'GC_BEELDBANK_BEELD_CPT' ) ) {
+	define( 'GC_BEELDBANK_BEELD_CPT', 'beeld' );
 }
 
-if (!defined('GC_BRIEVENCONTEXT')) {
-    define('GC_BRIEVENCONTEXT', 'briefcpt');
+if ( ! defined( 'GC_BRIEVENCONTEXT' ) ) {
+	define( 'GC_BRIEVENCONTEXT', 'briefcpt' );
 }
 
-if (!defined('GC_BEELDENCONTEXT')) {
-    define('GC_BEELDENCONTEXT', 'beeldcpt');
+if ( ! defined( 'GC_BEELDENCONTEXT' ) ) {
+	define( 'GC_BEELDENCONTEXT', 'beeldcpt' );
 }
 
-if (!defined('GC_BEELDBANK_BRIEF_CPT')) {
-    define('GC_BEELDBANK_BRIEF_CPT', 'brief');
+if ( ! defined( 'GC_BEELDBANK_BRIEF_CPT' ) ) {
+	define( 'GC_BEELDBANK_BRIEF_CPT', 'brief' );
 }
 
-if (!defined('GC_TAX_LICENTIE')) {
-    define('GC_TAX_LICENTIE', 'licentie');
+if ( ! defined( 'GC_TAX_LICENTIE' ) ) {
+	define( 'GC_TAX_LICENTIE', 'licentie' );
 }
 
-if (!defined('GC_TAX_ORGANISATIE')) {
-    define('GC_TAX_ORGANISATIE', 'organisatie');
+if ( ! defined( 'GC_TAX_ORGANISATIE' ) ) {
+	define( 'GC_TAX_ORGANISATIE', 'organisatie' );
 }
 
-define('ICTU_GC_BEELDBANK_CSS', 'ictu-gc-plugin-beeldbank-css');
-define('ICTU_GC_BEELDBANK_BASE_URL', trailingslashit(plugin_dir_url(__FILE__)));
-define('ICTU_GC_BEELDBANK_IMAGES', esc_url(ICTU_GC_BEELDBANK_BASE_URL . 'images/'));
-define('ICTU_GC_BEELDBANK_VERSION', '2.0.4');
-define('ICTU_GC_BEELDBANK_DESC', 'Start samenwerking met Tamara op beeldbank.');
+define( 'ICTU_GC_BEELDBANK_CSS', 'ictu-gc-plugin-beeldbank-css' );
+define( 'ICTU_GC_BEELDBANK_BASE_URL', trailingslashit( plugin_dir_url( __FILE__ ) ) );
+define( 'ICTU_GC_BEELDBANK_IMAGES', esc_url( ICTU_GC_BEELDBANK_BASE_URL . 'images/' ) );
+define( 'ICTU_GC_BEELDBANK_VERSION', '2.0.4' );
+define( 'ICTU_GC_BEELDBANK_DESC', 'Start samenwerking met Tamara op beeldbank.' );
 
 
 // nieuwe CPTs
-if (!defined('ICTU_GC_CPT_STAP')) {
-    define('ICTU_GC_CPT_STAP', 'stap');   // slug for custom taxonomy 'stap'
+if ( ! defined( 'ICTU_GC_CPT_STAP' ) ) {
+	define( 'ICTU_GC_CPT_STAP', 'stap' );   // slug for custom taxonomy 'stap'
 }
 
 // Vertaalbaar maken van de 'niet-zo, maar-zo' labels
-define('ICTU_GC_BEELDBANK_LABELS', [
-  "nietzo" => _x("Niet zo", 'labels', "ictu-gc-posttypes-brieven-beelden"),
-  "maarzo" => _x("Maar zo", 'labels', "ictu-gc-posttypes-brieven-beelden"),
-]);
+define( 'ICTU_GC_BEELDBANK_LABELS', array(
+	"nietzo" => _x( "Niet zo", 'labels', "ictu-gc-posttypes-brieven-beelden" ),
+	"maarzo" => _x( "Maar zo", 'labels', "ictu-gc-posttypes-brieven-beelden" )
+) );
+
 
 //========================================================================================================
+
 // constants for rewrite rules
 
 
