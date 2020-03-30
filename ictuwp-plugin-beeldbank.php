@@ -250,7 +250,6 @@ if (!class_exists('ICTU_GC_Register_posttypes_brieven_beelden')) :
                 // remove the content
                 remove_action('genesis_entry_content', 'genesis_do_post_content');
 
-// download-box
                 add_action('genesis_entry_content', array( $this, 'ictu_gc_frontend_brief_append_container_start' ), 6 );
 
                 add_action('genesis_entry_content', array( $this, 'ictu_gc_frontend_brief_append_afbeelding' ), 12 );
@@ -741,7 +740,7 @@ if (!class_exists('ICTU_GC_Register_posttypes_brieven_beelden')) :
 							$title_id = sanitize_title(get_the_title($post) . '-' . $post->ID);
 							$section_id = sanitize_title('post-' . $post->ID);
 							
-							echo '<div class="card card--with-image" id="' . $title_id . '">';
+							echo '<div class="card card--with-image" id="' . $title_id . '" itemid="' . get_permalink( $post->ID) . '" itemscope itemtype="http://schema.org/SocialMediaPosting">';
 							
 							if ( has_post_thumbnail( $post )  ) {
 							
@@ -749,18 +748,24 @@ if (!class_exists('ICTU_GC_Register_posttypes_brieven_beelden')) :
 							    the_post_thumbnail();
 							    echo '  </div>';
 							
-								}
-								
-								echo '  <div class="card__content">';
-								echo '    <h2 class="card__title">';
-								echo '      <a class="arrow-link" href="' . get_permalink($post->ID) . '">';
-								echo '        <span class="arrow-link__text">' . get_the_title($post) . '</span>';
-								echo '        <span class="arrow-link__icon"></span>';
-								echo '      </a>';
-								echo '    </h2>';
-								echo '    <p class="card__description">' . get_the_excerpt($post->ID) . '</p>';
-								echo '  </div>';
-								echo '</div>';
+							}
+							
+
+
+							echo '	<div class="card__content">';
+							echo '		<h2 class="card__title" itemprop="headline">';
+							echo '			<a class="arrow-link" href="' . get_permalink( $post->ID) . '" itemprop="url">';
+							echo '				<span class="arrow-link__text">' . get_the_title( $post ) . '</span>';
+							echo '				<span class="arrow-link__icon"></span>';
+							echo '      	</a>';
+							echo ' 		</h2>';
+							echo '		<p class="card__description">' . get_the_excerpt( $post->ID) . '</p>';
+							echo '		<div class="meta-data">';
+							echo '			<span class="meta-data__item" itemprop="datePublished" content="' . get_the_date('Y-m-d') . '">' . get_the_date() . '</span>';
+							echo '			<span class="meta-data__item" itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">' . get_the_author_meta( 'nicename' ) . '</span></span>';
+							echo '  	</div>';							
+							echo '	</div>'; // .card__content
+							echo '</div>'; // .card card--with-image
 								
                         endwhile;
 
