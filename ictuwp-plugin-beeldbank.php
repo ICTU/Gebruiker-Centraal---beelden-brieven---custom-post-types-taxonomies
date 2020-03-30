@@ -5,75 +5,75 @@
  * @package           ictu-gc-posttypes-brieven-beelden
  *
  * @wordpress-plugin
- * Plugin Name:       ICTU / Gebruiker Centraal / Beelden en Brieven post types
- *   and taxonomies (v2) Plugin URI:
- *   https://github.com/ICTU/ICTU-Gebruiker-Centraal-Beelden-en-Brieven-CPTs-and-taxonomies
- *   Description:       Eerste versie voor gebruikercentraal.nl en
- *   beeldbank.gebruikercentraal.nl voor het registeren van CPTs voor beelden
- *   en brieven Version:           2.0.4 Version descr:     Start samenwerking
- *   met Tamara op beeldbank. Author:            Paul van Buuren & Tamara de
- *   Haas Author URI:        https://wbvb.nl/ License:           GPL-2.0+
- *   License URI:       http://www.gnu.org/licenses/gpl-2.0.txt Text Domain:
- *      ictu-gc-posttypes-brieven-beelden Domain Path:       /languages
+ * Plugin Name:       ICTU / Gebruiker Centraal / Beelden en Brieven post types and taxonomies (v2)
+ * Plugin URI:        https://github.com/ICTU/ICTU-Gebruiker-Centraal-Beelden-en-Brieven-CPTs-and-taxonomies
+ * Description:       Eerste versie voor gebruikercentraal.nl en beeldbank.gebruikercentraal.nl voor het registeren van CPTs voor beelden en brieven
+ * Version:           2.0.5
+ * Version descr:     Start samenwerking met Tamara op beeldbank.
+ * Author:            Paul van Buuren & Tamara de Haas
+ * Author URI:        https://wbvb.nl/
+ * License:           GPL-2.0+
+ * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
+ * Text Domain:       ictu-gc-posttypes-brieven-beelden
+ * Domain Path:       /languages
  */
 
 // If this file is called directly, abort.
-if (!defined('WPINC')) {
-    die;
+if ( ! defined( 'WPINC' ) ) {
+	die;
 }
 
 //========================================================================================================
 
-add_action('plugins_loaded', [
-  'ICTU_GC_Register_posttypes_brieven_beelden',
-  'init',
-], 10);
+add_action( 'plugins_loaded', array( 'ICTU_GC_Register_posttypes_brieven_beelden', 'init' ), 10 );
 
 //========================================================================================================
 
-if (!defined('GC_BEELDBANK_BEELD_CPT')) {
-    define('GC_BEELDBANK_BEELD_CPT', 'beeld');
+if ( ! defined( 'GC_BEELDBANK_BEELD_CPT' ) ) {
+	define( 'GC_BEELDBANK_BEELD_CPT', 'beeld' );
 }
 
-if (!defined('GC_BRIEVENCONTEXT')) {
-    define('GC_BRIEVENCONTEXT', 'briefcpt');
+if ( ! defined( 'GC_BRIEVENCONTEXT' ) ) {
+	define( 'GC_BRIEVENCONTEXT', 'briefcpt' );
 }
 
-if (!defined('GC_BEELDENCONTEXT')) {
-    define('GC_BEELDENCONTEXT', 'beeldcpt');
+if ( ! defined( 'GC_BEELDENCONTEXT' ) ) {
+	define( 'GC_BEELDENCONTEXT', 'beeldcpt' );
 }
 
-if (!defined('GC_BEELDBANK_BRIEF_CPT')) {
-    define('GC_BEELDBANK_BRIEF_CPT', 'brief');
+if ( ! defined( 'GC_BEELDBANK_BRIEF_CPT' ) ) {
+	define( 'GC_BEELDBANK_BRIEF_CPT', 'brief' );
 }
 
-if (!defined('GC_TAX_LICENTIE')) {
-    define('GC_TAX_LICENTIE', 'licentie');
+if ( ! defined( 'GC_TAX_LICENTIE' ) ) {
+	define( 'GC_TAX_LICENTIE', 'licentie' );
 }
 
-if (!defined('GC_TAX_ORGANISATIE')) {
-    define('GC_TAX_ORGANISATIE', 'organisatie');
+if ( ! defined( 'GC_TAX_ORGANISATIE' ) ) {
+	define( 'GC_TAX_ORGANISATIE', 'organisatie' );
 }
 
-define('ICTU_GC_BEELDBANK_CSS', 'ictu-gc-plugin-beeldbank-css');
-define('ICTU_GC_BEELDBANK_BASE_URL', trailingslashit(plugin_dir_url(__FILE__)));
-define('ICTU_GC_BEELDBANK_IMAGES', esc_url(ICTU_GC_BEELDBANK_BASE_URL . 'images/'));
-define('ICTU_GC_BEELDBANK_VERSION', '2.0.4');
-define('ICTU_GC_BEELDBANK_DESC', 'Start samenwerking met Tamara op beeldbank.');
+define( 'ICTU_GC_BEELDBANK_CSS', 'ictu-gc-plugin-beeldbank-css' );
+define( 'ICTU_GC_BEELDBANK_BASE_URL', trailingslashit( plugin_dir_url( __FILE__ ) ) );
+define( 'ICTU_GC_BEELDBANK_IMAGES', esc_url( ICTU_GC_BEELDBANK_BASE_URL . 'images/' ) );
+define( 'ICTU_GC_BEELDBANK_VERSION', '2.0.5' );
+define( 'ICTU_GC_BEELDBANK_DESC', 'Start samenwerking met Tamara op beeldbank.' );
 
 
 // nieuwe CPTs
-if (!defined('ICTU_GC_CPT_STAP')) {
-    define('ICTU_GC_CPT_STAP', 'stap');   // slug for custom taxonomy 'stap'
+if ( ! defined( 'ICTU_GC_CPT_STAP' ) ) {
+	define( 'ICTU_GC_CPT_STAP', 'stap' );   // slug for custom taxonomy 'stap'
 }
 
 // Vertaalbaar maken van de 'niet-zo, maar-zo' labels
-define('ICTU_GC_BEELDBANK_LABELS', [
-  "nietzo" => _x("Niet zo", 'labels', "ictu-gc-posttypes-brieven-beelden"),
-  "maarzo" => _x("Maar zo", 'labels', "ictu-gc-posttypes-brieven-beelden"),
-]);
+define( 'ICTU_GC_BEELDBANK_LABELS', array(
+	"nietzo" => _x( "Niet zo", 'labels', "ictu-gc-posttypes-brieven-beelden" ),
+	"maarzo" => _x( "Maar zo", 'labels', "ictu-gc-posttypes-brieven-beelden" )
+) );
+
 
 //========================================================================================================
+
 // constants for rewrite rules
 
 
@@ -204,36 +204,28 @@ if (!class_exists('ICTU_GC_Register_posttypes_brieven_beelden')) :
 
             if ($this->template_home == $page_template) {
 
-                remove_filter('genesis_post_title_output', 'gc_wbvb_sharebuttons_for_page_top', 15);
+	            remove_filter( 'genesis_post_title_output', 'gc_wbvb_sharebuttons_for_page_top', 15 );
 
-                //* Remove standard header
-                remove_action('genesis_entry_header', 'genesis_entry_header_markup_open', 5);
-                remove_action('genesis_entry_header', 'genesis_entry_header_markup_close', 15);
-                remove_action('genesis_entry_header', 'genesis_do_post_title');
+	            //* Remove standard header
+	            remove_action( 'genesis_entry_header', 'genesis_entry_header_markup_open', 5 );
+	            remove_action( 'genesis_entry_header', 'genesis_entry_header_markup_close', 15 );
+	            remove_action( 'genesis_entry_header', 'genesis_do_post_title' );
 
-                //* Remove the post content (requires HTML5 theme support)
-                remove_action('genesis_entry_content', 'genesis_do_post_content');
+	            //* Remove the post content (requires HTML5 theme support)
+	            remove_action( 'genesis_entry_content', 'genesis_do_post_content' );
 
-                // append content
-                add_action('genesis_entry_content', [
-                  $this,
-                  'ictu_gc_frontend_home_before_content',
-                ], 8);
+	            // dit zijn de stappen in de cirkel
+	            add_action( 'genesis_entry_content', array( $this, 'ictu_gc_frontend_home_before_content' ), 8 );
 
-                // append content
-                add_action('genesis_after_content', 'ictu_gctheme_home_template_teasers', 12);
+	            // teasers toevoegen (paarse blokken)
+	            add_action( 'genesis_loop', 'ictu_gctheme_home_template_teasers', 12 );
 
+				// action voor het toevoegen van berichten
+	            add_action( 'genesis_loop', array( $this, 'ictu_beeldbank_home_add_posts' ), 12 );
 
-                add_action('genesis_after_content', [
-                  $this,
-                  'ictu_gc_frontend_home_after_content_posts',
-                ], 14);
+				// in page.php wordt de gerelateerde content toegevoegd via
+				// add_action( 'genesis_loop', 'ictu_gctheme_frontend_general_get_related_content', 12 );
 
-                // gerelateerde content
-                add_action('genesis_after_content', [
-                  $this,
-                  'ictu_gc_frontend_stap_get_related_content',
-                ], 16);
 
             }
             elseif (GC_BEELDBANK_BEELD_CPT == get_post_type()) {
@@ -242,28 +234,13 @@ if (!class_exists('ICTU_GC_Register_posttypes_brieven_beelden')) :
 
                 remove_action('genesis_entry_content', 'genesis_do_post_content');
 
-                add_action('genesis_entry_content', [
-                  $this,
-                  'ictu_gc_frontend_brief_append_container_start',
-                ], 6);
-                add_action('genesis_entry_content', [
-                  $this,
-                  'ictu_gc_frontend_append_afbeelding',
-                ], 8);
+                add_action('genesis_entry_content', array( $this, 'ictu_gc_frontend_brief_append_container_start' ), 6 );
+                add_action('genesis_entry_content', array( $this, 'ictu_gc_frontend_brief_append_afbeelding' ), 12 );
+                add_action('genesis_entry_content', array( $this, 'ictu_gc_frontend_beeld_append_downloadinfo' ), 12 );
+                
+                add_action('genesis_entry_content', array( $this, 'ictu_gc_frontend_brief_append_container_end' ), 14 );
 
-                add_action('genesis_entry_content', [
-                  $this,
-                  'ictu_gc_frontend_beeld_append_downloadinfo',
-                ], 12);
-                add_action('genesis_entry_content', [
-                  $this,
-                  'ictu_gc_frontend_brief_append_container_end',
-                ], 14);
-
-                add_action('genesis_entry_content', [
-                  $this,
-                  'ictu_gc_frontend_brief_append_related_content',
-                ], 16);
+                add_action('genesis_loop', array( $this, 'ictu_gc_frontend_brief_append_related_content' ), 16 );
 
             }
             elseif (GC_BEELDBANK_BRIEF_CPT == get_post_type()) {
@@ -273,29 +250,15 @@ if (!class_exists('ICTU_GC_Register_posttypes_brieven_beelden')) :
                 // remove the content
                 remove_action('genesis_entry_content', 'genesis_do_post_content');
 
-                add_action('genesis_entry_content', [
-                  $this,
-                  'ictu_gc_frontend_brief_append_container_start',
-                ], 6);
-                add_action('genesis_entry_content', [
-                  $this,
-                  'ictu_gc_frontend_brief_append_afbeelding',
-                ], 8);
+                add_action('genesis_entry_content', array( $this, 'ictu_gc_frontend_brief_append_container_start' ), 6 );
+
+                add_action('genesis_entry_content', array( $this, 'ictu_gc_frontend_brief_append_afbeelding' ), 12 );
 
                 // the content is here
-                add_action('genesis_entry_content', [
-                  $this,
-                  'ictu_gc_frontend_brief_append_downloadinfo',
-                ], 12);
-                add_action('genesis_entry_content', [
-                  $this,
-                  'ictu_gc_frontend_brief_append_container_end',
-                ], 14);
+                add_action('genesis_entry_content', array( $this, 'ictu_gc_frontend_brief_append_downloadinfo' ), 12 );
+                add_action('genesis_entry_content', array( $this, 'ictu_gc_frontend_brief_append_container_end' ), 14 );
 
-                add_action('genesis_entry_content', [
-                  $this,
-                  'ictu_gc_frontend_brief_append_related_content',
-                ], 16);
+                add_action('genesis_loop', array( $this, 'ictu_gc_frontend_brief_append_related_content' ), 16 );
 
             }
             elseif (ICTU_GC_CPT_STAP == get_post_type()) {
@@ -705,46 +668,55 @@ if (!class_exists('ICTU_GC_Register_posttypes_brieven_beelden')) :
 
 
         /**
-         * Handles the front-end display.
+         * Voeg berichten toe aan de homepage. Alle berichten of gefilterd op een bepaalde categorie
+         *
+         * @since 2.0.5
          *
          * @return void
          */
-        public function ictu_gc_frontend_home_after_content_posts() {
-
-
+        public function ictu_beeldbank_home_add_posts() {
             global $post;
 
             if (function_exists('get_field')) {
 
                 $home_template_posts = get_field('home_template_posts', $post->ID);
 
-
                 if ('home_template_posts_ja' == $home_template_posts) {
 
                     $posts_number = get_field('home_template_posts_number', $post->ID);
                     $posts_category_filter = get_field('home_template_posts_category_filter', $post->ID);
+                    $posts_title = get_field('home_template_posts_titel', $post->ID);
+                    $home_template_posts_leesmeer_linktekst = get_field('home_template_posts_leesmeer_linktekst', $post->ID);
+                    $home_template_posts_leesmeer_link = get_field('home_template_posts_leesmeer_link', $post->ID);
+                    
+                    if ( ! $posts_title ) {
+	                    $posts_title = _x( 'Laatste nieuws en blogs', "titel boven berichten op home", 'ictu-gc-posttypes-brieven-beelden' );
+                    }
+                    
                     $posts_categories = [];
 
                     if (!($posts_number > 0 && $posts_number < 99)) {
                         $posts_number = 3;
                     }
 
-                    $args = [
-                      'post_type' => 'post',
-                      'posts_per_page' => $posts_number,
-                      'post_status' => 'publish',
-                    ];
+                    $args = array(
+						'post_type' => 'post',
+						'posts_per_page' => $posts_number,
+						'post_status' => 'publish',
+						'orderby' => 'publish_date',
+						'order'   => 'DESC',
+                    );
 
                     if ('home_template_posts_category_filter_ja' == $posts_category_filter) {
                         $args['cat'] = get_field('home_template_posts_category_filter_catid', $post->ID);
                     }
 
-                    $alledoelgroepen = new WP_query($args);
+                    $posts_home = new WP_query($args);
 
-                    if ($alledoelgroepen->have_posts()) {
+                    if ($posts_home->have_posts()) {
 
                         $columncounter = 'grid--col-2';
-                        $countcount = $alledoelgroepen->found_posts;
+                        $countcount = $posts_home->found_posts;
 
                         if ($countcount < 2) {
                             $columncounter = 'grid--col-1';
@@ -752,39 +724,61 @@ if (!class_exists('ICTU_GC_Register_posttypes_brieven_beelden')) :
                         elseif ($countcount === 4) {
                             $columncounter = 'grid--col-2';
                         }
-                        elseif ($alledoelgroepen->found_posts > 2) {
+                        elseif ($posts_home->found_posts > 2) {
                             $columncounter = 'grid--col-3';
                         }
 
-
+						echo '<section class="section section--overview"><div class="l-section-top"><h2 class="section__title">' . $posts_title. '</h2></div>';
+                        echo '<div class="l-section-content">';
                         echo '<div class="grid ' . $columncounter . '">';
 
                         $postcounter = 0;
 
-                        while ($alledoelgroepen->have_posts()) : $alledoelgroepen->the_post();
+                        while ($posts_home->have_posts()) : $posts_home->the_post();
 
-                            $postcounter++;
-                            $title_id = sanitize_title(get_the_title($post) . '-' . $post->ID);
-                            $section_id = sanitize_title('post-' . $post->ID);
-
-                            echo '<section aria-labelledby="' . $title_id . '" class="card" id="' . $section_id . '">';
-                            echo '<div class="card__image"></div>';
-                            echo '<div class="card__content">';
-                            echo
-                              '<h2 class="card__title" id="' . $title_id . '">' .
-                              '<a href="' . get_permalink($post->ID) . '" class="arrow-link">' .
-                              '<span>' . _x('Ontwerpen voor', 'Home section doelgroep', 'ictu-gc-posttypes-inclusie') . ' </span>' .
-                              '<span class="arrow-link__text">' . get_the_title($post) . '</span>' .
-                              '<span class="arrow-link__icon"></span>' .
-                              '</a></h2>';
-                            echo '<p>' . get_the_excerpt($post->ID) . '</p>';
-                            echo '</div>';
-                            echo '</section>';
+							$postcounter++;
+							$title_id = sanitize_title(get_the_title($post) . '-' . $post->ID);
+							$section_id = sanitize_title('post-' . $post->ID);
+							
+							echo '<div class="card card--with-image" id="' . $title_id . '" itemid="' . get_permalink( $post->ID) . '" itemscope itemtype="http://schema.org/SocialMediaPosting">';
+							
+							if ( has_post_thumbnail( $post )  ) {
+							
+							    echo '  <div class="card__image">';
+							    the_post_thumbnail();
+							    echo '  </div>';
+							
+							}
+							
 
 
+							echo '	<div class="card__content">';
+							echo '		<h2 class="card__title" itemprop="headline">';
+							echo '			<a class="arrow-link" href="' . get_permalink( $post->ID) . '" itemprop="url">';
+							echo '				<span class="arrow-link__text">' . get_the_title( $post ) . '</span>';
+							echo '				<span class="arrow-link__icon"></span>';
+							echo '      	</a>';
+							echo ' 		</h2>';
+							echo '		<p class="card__description">' . get_the_excerpt( $post->ID) . '</p>';
+							echo '		<div class="meta-data">';
+							echo '			<span class="meta-data__item" itemprop="datePublished" content="' . get_the_date('Y-m-d') . '">' . get_the_date() . '</span>';
+							echo '			<span class="meta-data__item" itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">' . get_the_author_meta( 'nicename' ) . '</span></span>';
+							echo '  	</div>';							
+							echo '	</div>'; // .card__content
+							echo '</div>'; // .card card--with-image
+								
                         endwhile;
 
-                        echo '</div>';
+                        echo '</div>'; // .grid columncounter
+
+						// algemene link naar de berichtenpagina
+						if ( $home_template_posts_leesmeer_link ) {
+
+							echo '<p><a href="' . $home_template_posts_leesmeer_link['url'] . '" class="btn btn--secondary">' . $home_template_posts_leesmeer_link['title'] . '</a></p>';
+						}
+
+                        echo '</div>'; // .l-section-content
+                        echo '</section>'; // .section section--overview
 
                         wp_reset_query();
 
@@ -957,7 +951,77 @@ if (!class_exists('ICTU_GC_Register_posttypes_brieven_beelden')) :
          */
         public function ictu_gc_frontend_brief_append_downloadinfo() {
 
-            echo '<div class="entry-content-inner"> <p>Brief downloaden</p>';
+			global $post;
+
+            echo '<div class="entry-content-inner"> ';
+
+            $beeldbrief_file	= get_field('beeldbrief_file', $post->ID);
+			$imageid 			= '';            
+			$filesize 			= '';            
+			$file 				= '';            
+			$titel 				= '';
+			$downloadlink 		= '';
+
+			if ( $beeldbrief_file ) {
+				
+				// gebruik de metagegevens van het bijgevoegde bestand
+
+				$titel 			= $beeldbrief_file['title'];	
+				$file 			= get_attached_file( $beeldbrief_file['id'] );
+				$downloadlink 	= $beeldbrief_file['url'];
+				$filesize 		= gc_wbvb_get_human_filesize(filesize($file));
+
+			    $mimetypestring	= mime_content_type($file);
+			    $mimetypearray	= explode('/', $mimetypestring);
+			    $mimetype		= $mimetypearray[1];
+			
+				if ( strpos( $mimetype, 'wordprocessingml' ) ) {
+					$mimetype = _x('Word-document', 'Mime type', "ictu-gc-posttypes-brieven-beelden");
+				}
+			
+			}
+			else {
+				// er is geen apart bestand toegevoegd, dus we gebruiken de uitgelichte afbeelding
+				
+				$imageid 		= get_post_thumbnail_id(get_the_id());
+				$image			= wp_get_attachment_image_src($imageid, 'full');
+			    $file 			= get_attached_file($imageid);
+			    $filesize 		= gc_wbvb_get_human_filesize(filesize($file));
+				$titel 			= get_the_title($image_id);
+				
+				$downloadlink 	= $image[0];
+			    $mimetypestring	= mime_content_type($file);
+			    $mimetypearray	= explode('/', $mimetypestring);
+			    $mimetype		= $mimetypearray[1];
+				
+			}
+
+
+            if ( $file && $downloadlink ) {
+
+                $arialabel	= sprintf(_x('Download %s', 'download image met titel', 'ictu-gc-posttypes-inclusie'), $titel);
+
+                echo '<section class="download-box">';
+                echo '<strong>' . $titel . '</strong>';
+                echo '<a href="' . $downloadlink . '" class="btn btn--download" download aria-label="' . $arialabel . '">' . _x('Download', 'download image', "ictu-gc-posttypes-brieven-beelden") . '</a>';
+                
+                if  ( $filesize || $mimetype ) {
+
+	                echo '<dl>';
+	                if ( $filesize ) {
+		                echo '<dt class="visuallyhidden">' . _x('File size', 'download image', "ictu-gc-posttypes-brieven-beelden") . '</dt><dd>' . $filesize . '</<dd>';
+	                }
+	                if ( $mimetype ) {
+		                echo '<dt class="visuallyhidden">' . _x('File type', 'download image', "ictu-gc-posttypes-brieven-beelden") . '</dt><dd>' . strtoupper( $mimetype ) . '</<dd>';
+	                }
+	                echo '</dl>';
+
+                }
+
+                echo '</section>'; // .download-box
+            }
+
+
             echo genesis_do_post_content();
             echo '</div>'; // .myflex
 
@@ -981,22 +1045,21 @@ if (!class_exists('ICTU_GC_Register_posttypes_brieven_beelden')) :
 
             echo '<div class="entry-content-inner">';
 
-            $imageid = get_post_thumbnail_id(get_the_id());
-            $image = wp_get_attachment_image_src($imageid, 'full');
+            $imageid 	= get_post_thumbnail_id(get_the_id());
+            $image		= wp_get_attachment_image_src($imageid, 'full');
 
             if ($image) {
 
-                $imagemeta = wp_get_attachment_metadata($imageid);
-                $file = get_attached_file($imageid);
-                $filesize = gc_wbvb_get_human_filesize(filesize($file));
-                $mimetype = mime_content_type($file);
-                $mimes = explode('/', $mimetype);
-                $titel = get_the_title($image_id);
-                $arialabel = sprintf(_x('Download %s', 'download image met titel', 'ictu-gc-posttypes-inclusie'), $titel);
+                $file 		= get_attached_file($imageid);
+                $filesize 	= gc_wbvb_get_human_filesize(filesize($file));
+                $mimetype 	= mime_content_type($file);
+                $mimes 		= explode('/', $mimetype);
+                $titel 		= get_the_title($image_id);
+                $arialabel	= sprintf(_x('Download %s', 'download image met titel', 'ictu-gc-posttypes-inclusie'), $titel);
 
                 echo '<section class="download-box">';
                 echo '<header>'; // .download-box
-                echo '<h4>' . $titel . '</h4>';
+                echo '<h2>' . $titel . '</h2>';
                 echo '<a href="' . $image[0] . '" class="btn btn--download" download aria-label="' . $arialabel . '">' . _x('Download', 'download image', "ictu-gc-posttypes-brieven-beelden") . '</a>';
                 echo '</header>'; // .download-box
 
@@ -1058,7 +1121,7 @@ if (!class_exists('ICTU_GC_Register_posttypes_brieven_beelden')) :
             // defaults
             $menuarray = [];
             $return = '';
-            //		$return     = '<h1>ictu_gc_frontend_briefbeeld_append_related_content</h1>';
+
             $defaults = [
               'ID' => 0,
               'titletag' => 'h2',
@@ -1090,6 +1153,9 @@ if (!class_exists('ICTU_GC_Register_posttypes_brieven_beelden')) :
                         $columncounter = 'col-3';
                     }
 
+
+
+
                     if (GC_BEELDBANK_BEELD_CPT === get_post_type()) {
                         // titel voor een beeld en bijbehorende brieven
                         $section_title = sprintf(_n('Dit beeld wordt gebruikt in de volgende brief', 'Dit beeld wordt gebruikt in de volgende brieven', $countcount, 'gebruikercentraal'), number_format_i18n($countcount));
@@ -1101,17 +1167,12 @@ if (!class_exists('ICTU_GC_Register_posttypes_brieven_beelden')) :
 
                     $title_id = sanitize_title($section_title . '-title');
 
-                    $return .= '<section aria-labelledby="' . $title_id . '" class="section section--related section--related-content ' . $columncounter . '">';
+//                    $return .= '<section aria-labelledby="' . $title_id . '" class="section section--related section--related-content ' . $columncounter . '">';
 
-                    $return .= '<div class="wrap">';
-                    $return .= '<h2 id="' . $title_id . '" class="section__title">' . $section_title . '</h2>';
-                    $return .= '</div>'; // class="wrap";
+                    $return .= '<section class="section section--overview">';
+                    $return .= '<div class="l-section-top"><h2 id="' . $title_id . '" class="section__title">' . $section_title . '</h2></div>';
 
-
-                    $return .= '<div class="wrap-outer">';
-                    $return .= '</div>'; // class="wrap-outer";
-
-                    $return .= '<div class="grid grid--' . $columncounter . '">';
+                    $return .= '<div class="l-section-content"><div class="grid grid--' . $columncounter . '">';
 
 
                     // loop through the rows of data
@@ -1140,6 +1201,7 @@ if (!class_exists('ICTU_GC_Register_posttypes_brieven_beelden')) :
                     if (!$args['getmenu']) {
 
                         $return .= '</div>'; // class="grid ' . $columncounter . '">';
+                        $return .= '</div>'; // .l-section-content;
                         $return .= '</section>';
 
                     }
