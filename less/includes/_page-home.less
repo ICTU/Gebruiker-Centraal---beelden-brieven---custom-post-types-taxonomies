@@ -1,10 +1,20 @@
-.home {
+.page-template-home-inclusie.full-width-content {
+  .stepchart_page(@brand_color);
+
+  .region--intro {
+    z-index: auto;
+  }
+
   #home_template_teasers {
-    .gc-padding;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
     background: @gc_pantybrown;
+    position: relative;
+    z-index: +1;
     padding-top: .1rem;
     padding-bottom: 3rem;
     max-width: none;
+    margin-top: 0;
 
     .text-block {
       .gc-box-shadow;
@@ -22,7 +32,7 @@
         margin-right: auto;
 
         section {
-          margin-top: -4rem;
+          margin-top: -7rem;
         }
       }
     }
@@ -36,4 +46,19 @@
     }
   }
 
+  .section--overview {
+    .gc-padding;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+
+    &:not(.l-item-count-2):not(.l-item-count-1) {
+      .l-section-top {
+        max-width: @max-width-container;
+      }
+    }
+
+    .section__title {
+      border: none;
+    }
+  }
 }
