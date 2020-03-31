@@ -734,7 +734,7 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 							$columncounter = 'grid--col-3';
 						}
 
-						echo '<section class="section section--overview"><div class="l-section-top"><h2 class="section__title">' . $posts_title . '</h2></div>';
+						echo '<section class="section section--overview l-item-count-' . $countcount . '"><div class="l-section-top"><h2 class="section__title">' . $posts_title . '</h2></div>';
 						echo '<div class="l-section-content">';
 						echo '<div class="grid ' . $columncounter . '">';
 
@@ -745,17 +745,19 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 							$postcounter ++;
 							$title_id   = sanitize_title( get_the_title( $post ) . '-' . $post->ID );
 							$section_id = sanitize_title( 'post-' . $post->ID );
-
-							echo '<div class="card card--with-image" id="' . $title_id . '" itemid="' . get_permalink( $post->ID ) . '" itemscope itemtype="http://schema.org/SocialMediaPosting">';
+							$image      = false;
 
 							if ( has_post_thumbnail( $post ) ) {
+								$image = true;
+							}
 
+							echo '<div class="card' . ( $image ? ' card--featured-image' : '' ) . '" id="' . $title_id . '" itemid="' . get_permalink( $post->ID ) . '" itemscope itemtype="http://schema.org/SocialMediaPosting">';
+
+							if ( $image ):
 								echo '  <div class="card__image">';
 								the_post_thumbnail();
 								echo '  </div>';
-
-							}
-
+							endif;
 
 							echo '	<div class="card__content">';
 							echo '		<h2 class="card__title" itemprop="headline">';
