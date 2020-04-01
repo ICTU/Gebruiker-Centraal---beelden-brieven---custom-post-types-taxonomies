@@ -110,59 +110,6 @@ body {
 			border: 1px solid @gc_cardbordergrey;
 		    .gc-box-shadow();
 		}
-
-		.download-box {
-			padding-top: 2rem;
-			padding-bottom: 1rem;
-			border-top: 2px solid @gc_cardbordergrey;
-			border-bottom: 2px solid @gc_cardbordergrey;
-
-			header {
-				display: flex;
-				padding: 0;
-				margin: 0;
-				align-content: stretch;
-				justify-content: space-between;
-			}
-
-			h2 {
-				padding: 0;
-				font-family: @bodyfont_bold;
-				.font-size( 18 );
-			}
-
-			h2,
-			.btn--download {
-				margin-top: 0;
-				flex-grow: 0;
-				flex-shrink: 0;
-				flex-basis: auto;
-				padding-top: 10px;
-			}
-		}
-	}
-}
-
-dl {
-	display: flex;
-	flex-direction: row;
-	margin-bottom: 0;
-	color: #52757E;
-
-	dt, dd {
-		flex: 1 0 content;
-		margin: 0;
-		padding: 0 1rem 0 0;
-		line-height: 2;
-	}
-	dd + dt + dd {
-		&:before {
-			content: '▪';
-			display: inline-block;
-			speak: none;
-			margin-right: 1rem;
-			color: #D1DFE3;
-		}
 	}
 }
 
