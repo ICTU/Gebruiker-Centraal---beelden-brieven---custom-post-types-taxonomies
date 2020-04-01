@@ -781,7 +781,7 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 						// algemene link naar de berichtenpagina
 						if ( $home_template_posts_leesmeer_link ) {
 
-							echo '<p><a href="' . $home_template_posts_leesmeer_link['url'] . '" class="btn btn--secondary">' . $home_template_posts_leesmeer_link['title'] . '</a></p>';
+							echo '<p><a href="' . $home_template_posts_leesmeer_link['url'] . '" class="btn btn--primary">' . $home_template_posts_leesmeer_link['title'] . '</a></p>';
 						}
 
 						echo '</div>'; // .l-section-content
@@ -1007,12 +1007,12 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 				$arialabel = sprintf( _x( 'Download %s', 'download image met titel', 'ictu-gc-posttypes-inclusie' ), $titel );
 
 				echo '<section class="download-box">';
-				echo '<strong>' . $titel . '</strong>';
+				echo '<h3>' . $titel . '</h3>';
 				echo '<a href="' . $downloadlink . '" class="btn btn--download" download aria-label="' . $arialabel . '">' . _x( 'Download', 'download image', "ictu-gc-posttypes-brieven-beelden" ) . '</a>';
 
 				if ( $filesize || $mimetype ) {
 
-					echo '<dl>';
+					echo '<dl class="meta-data">';
 					if ( $filesize ) {
 						echo '<dt class="visuallyhidden">' . _x( 'File size', 'download image', "ictu-gc-posttypes-brieven-beelden" ) . '</dt><dd>' . $filesize . '</<dd>';
 					}
@@ -1063,12 +1063,10 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 				$arialabel = sprintf( _x( 'Download %s', 'download image met titel', 'ictu-gc-posttypes-inclusie' ), $titel );
 
 				echo '<section class="download-box">';
-				echo '<header>'; // .download-box
-				echo '<h2>' . $titel . '</h2>';
+				echo '<h3>' . $titel . '</h3>';
 				echo '<a href="' . $image[0] . '" class="btn btn--download" download aria-label="' . $arialabel . '">' . _x( 'Download', 'download image', "ictu-gc-posttypes-brieven-beelden" ) . '</a>';
-				echo '</header>'; // .download-box
 
-				echo '<dl>';
+				echo '<dl class="meta-data">';
 				echo '<dt class="visuallyhidden">' . _x( 'File size', 'download image', "ictu-gc-posttypes-brieven-beelden" ) . '</dt><dd>' . $filesize . '</<dd>';
 				echo '<dt class="visuallyhidden">' . _x( 'File type', 'download image', "ictu-gc-posttypes-brieven-beelden" ) . '</dt><dd>' . strtoupper( $mimes[1] ) . '</<dd>';
 				echo '</dl>';
@@ -1169,7 +1167,7 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 
 //                    $return .= '<section aria-labelledby="' . $title_id . '" class="section section--related section--related-content ' . $columncounter . '">';
 
-					$return .= '<section class="section section--overview">';
+					$return .= '<section class="section section--overview l-item-count-' . $countcount . '">';
 					$return .= '<div class="l-section-top"><h2 id="' . $title_id . '" class="section__title">' . $section_title . '</h2></div>';
 
 					$return .= '<div class="l-section-content"><div class="grid grid--' . $columncounter . '">';
@@ -1378,7 +1376,7 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 					$columncounter = 'grid--col-2';
 				}
 
-				echo '<div class="section section--page-children">' .
+				echo '<div class="section section--page-children l-item-count-' . $countcount . '">' .
 				     '<span class="bg"></span>' .
 				     '<div class="l-section-top">' .
 				     '<h2 class="section__title"> ' . $title . '</h2>' .
@@ -1402,7 +1400,7 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 
 					$card = ':D';
 
-					$card = '<div aria-labelledby="' . $title_id . '" class="card card--featured-image" id="' . $section_id . '">';
+					$card = '<div aria-labelledby="' . $title_id . '" class="card" id="' . $section_id . '">';
 					$card .= '<div class="card__content">';
 					$card .= '<h2 class="card__title" id="' . $title_id . '">' .
 					         '<a class="arrow-link" href="' . get_permalink( $page->ID ) . '">' .

@@ -46,6 +46,44 @@
         position: relative;
         z-index: +1;
         background: @white;
+        padding-top: 5rem;
+      }
+    }
+
+    &--page-children {
+      .gc-padding;
+      position: relative;
+      margin: 3rem -1.5rem -3rem;
+      padding-bottom: 3rem;
+      box-shadow: none;
+      z-index: 5;
+
+      .bg {
+        .gc-rotated-bg(@gc_pantybrown_xlight);
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0rem;
+        overflow: hidden;
+        z-index: -1;
+      }
+
+      @media @tablet {
+        margin-right: -3rem;
+        margin-left: -3rem;
+      }
+
+      @media @desktop {
+        margin-top: 5rem;
+        padding-bottom: 5rem;
+      }
+
+      @media @desktop-xl {
+        .grid {
+          margin-left: -14rem;
+          margin-right: -14rem;
+        }
       }
     }
 
