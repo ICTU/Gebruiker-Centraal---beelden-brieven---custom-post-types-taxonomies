@@ -2,8 +2,10 @@
 .single-brief {
   .content {
     .gc-content-container;
+    .gc-box-shadow;
     background: @white;
     padding-top: 3rem;
+    overflow: hidden;
 
     @media @desktop {
       padding-top: 5rem;
@@ -11,8 +13,11 @@
   }
 
   .entry-content {
+    padding-bottom: 2rem;
+
     @media @tablet {
       display: flex;
+      align-items: flex-start;
 
       .lightbox {
         width: 34rem;
@@ -25,9 +30,43 @@
     }
 
     @media @desktop {
+      padding-bottom: 5rem;
+
       .entry-content-inner {
         padding-left: 5.5rem;
       }
+    }
+  }
+
+  .lightbox {
+    img {
+      border: .1rem solid @border_color;
+      .gc-box-shadow;
+    }
+
+    .tobi-zoom__icon {
+      margin-bottom: -.3rem;
+    }
+  }
+  
+  .section--overview {
+    .gc-rotated-bg(@gc_pantybrown_xlight);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3rem;
+    padding-bottom: 5rem;
+
+
+    &:not(.l-item-count-3){
+      max-width: @max-width-inner;
+    }
+
+    &.l-item-count-3 {
+      .gc-padding;
+    }
+
+    @media @desktop {
+      padding-bottom: 8rem;
     }
   }
 
@@ -42,8 +81,4 @@
   }
 }
 
-.lightbox.tobi-zoom {
-  .gc-box-shadow;
-  padding: 1.5rem;
-  border: .1rem solid @border_color;
-}
+

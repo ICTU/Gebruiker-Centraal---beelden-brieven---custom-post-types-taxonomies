@@ -30,7 +30,7 @@
   }
 }
 
-.gc-beeldbank-card(){
+.gc-beeldbank-card() {
   position: relative;
   overflow: hidden;
 
@@ -73,10 +73,46 @@
   }
 }
 
+.single .page-intro ul {
+  .gc-fancy-list(@color: @white);
+}
+
+
 .card--featured-image.brief {
   .gc-beeldbank-card;
 }
 
 .card--featured-image.beeld {
-  .gc-beeldbank-card;
+  .card__content {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .card__title {
+    .font-size(20);
+    line-height: 2.8rem;
+    border-top: .1rem solid @border_color;
+
+    a {
+      padding-top: 1.2rem;
+
+      &:hover,
+      &:focus {
+        .arrow-link__icon {
+          border-color: transparent;
+          box-shadow: none;
+        }
+      }
+    }
+  }
+
+  .card__image {
+    height: 12em;
+    background-size: 60% auto;
+
+    &:before {
+      display: none;
+    }
+  }
 }
+
