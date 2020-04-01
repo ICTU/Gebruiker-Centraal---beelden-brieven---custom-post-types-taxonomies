@@ -116,3 +116,21 @@
   }
 }
 
+
+body .btn--primary {
+  background: @gc_pink;
+
+  &:after {
+    background-color: darken(@gc_pink, 10%);
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: darken(@gc_pink, 10%);
+
+    &:after {
+      background-color: darken(@gc_pink, 20%);
+    }
+  }
+}
