@@ -8,8 +8,8 @@
  * Plugin Name:       ICTU / Gebruiker Centraal / Beelden en Brieven post types and taxonomies (v2)
  * Plugin URI:        https://github.com/ICTU/ICTU-Gebruiker-Centraal-Beelden-en-Brieven-CPTs-and-taxonomies
  * Description:       Eerste versie voor gebruikercentraal.nl en beeldbank.gebruikercentraal.nl voor het registeren van CPTs voor beelden en brieven
- * Version:           2.0.5
- * Version descr:     Start samenwerking met Tamara op beeldbank.
+ * Version:           2.0.6
+ * Version descr:     Widget met berichten voorzien van images in juiste uitsnede, tabs voor richtlijnen toegevoegd.
  * Author:            Paul van Buuren & Tamara de Haas
  * Author URI:        https://wbvb.nl/
  * License:           GPL-2.0+
@@ -56,8 +56,8 @@ if ( ! defined( 'GC_TAX_ORGANISATIE' ) ) {
 define( 'ICTU_GC_BEELDBANK_CSS', 'ictu-gc-plugin-beeldbank-css' );
 define( 'ICTU_GC_BEELDBANK_BASE_URL', trailingslashit( plugin_dir_url( __FILE__ ) ) );
 define( 'ICTU_GC_BEELDBANK_IMAGES', esc_url( ICTU_GC_BEELDBANK_BASE_URL . 'images/' ) );
-define( 'ICTU_GC_BEELDBANK_VERSION', '2.0.5' );
-define( 'ICTU_GC_BEELDBANK_DESC', 'Start samenwerking met Tamara op beeldbank.' );
+define( 'ICTU_GC_BEELDBANK_VERSION', '2.0.6' );
+define( 'ICTU_GC_BEELDBANK_DESC', 'Widget met berichten voorzien van images in juiste uitsnede, tabs voor richtlijnen toegevoegd.' );
 
 
 // nieuwe CPTs
@@ -233,17 +233,10 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 
 				remove_action( 'genesis_entry_content', 'genesis_do_post_content' );
 
-				add_action( 'genesis_entry_content', array(
-					$this,
-					'ictu_gc_frontend_brief_append_container_start'
-				), 6 );
+				add_action( 'genesis_entry_content', array( $this, 'ictu_gc_frontend_brief_append_container_start' ), 6 );
 				add_action( 'genesis_entry_content', array( $this, 'ictu_gc_frontend_brief_append_afbeelding' ), 12 );
 				add_action( 'genesis_entry_content', array( $this, 'ictu_gc_frontend_beeld_append_downloadinfo' ), 12 );
-
-				add_action( 'genesis_entry_content', array(
-					$this,
-					'ictu_gc_frontend_brief_append_container_end'
-				), 14 );
+				add_action( 'genesis_entry_content', array( $this, 'ictu_gc_frontend_brief_append_container_end' ), 14 );
 
 				add_action( 'genesis_loop', array( $this, 'ictu_gc_frontend_brief_append_related_content' ), 16 );
 
@@ -254,19 +247,13 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 				// remove the content
 				remove_action( 'genesis_entry_content', 'genesis_do_post_content' );
 
-				add_action( 'genesis_entry_content', array(
-					$this,
-					'ictu_gc_frontend_brief_append_container_start'
-				), 6 );
+				add_action( 'genesis_entry_content', array( $this, 'ictu_gc_frontend_brief_append_container_start' ), 6 );
 
 				add_action( 'genesis_entry_content', array( $this, 'ictu_gc_frontend_brief_append_afbeelding' ), 12 );
 
 				// the content is here
 				add_action( 'genesis_entry_content', array( $this, 'ictu_gc_frontend_brief_append_downloadinfo' ), 12 );
-				add_action( 'genesis_entry_content', array(
-					$this,
-					'ictu_gc_frontend_brief_append_container_end'
-				), 14 );
+				add_action( 'genesis_entry_content', array( $this, 'ictu_gc_frontend_brief_append_container_end' ), 14 );
 
 				add_action( 'genesis_loop', array( $this, 'ictu_gc_frontend_brief_append_related_content' ), 16 );
 
@@ -278,34 +265,19 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 				remove_action( 'genesis_entry_header', 'genesis_do_post_title' );
 
 				// voeg pijlenschema toe
-				add_action( 'genesis_entry_header', [
-					$this,
-					'ictu_gc_frontend_stap_append_title',
-				], 10 );
+				add_action( 'genesis_entry_header', array( $this, 'ictu_gc_frontend_stap_append_title' ), 10 );
 
 				// gerelateerde myflex
-				add_action( 'genesis_before_loop', [
-					$this,
-					'ictu_gc_frontend_stap_before_content',
-				], 8 );
+				add_action( 'genesis_before_loop', array( $this, 'ictu_gc_frontend_stap_before_content' ), 8 );
 
 				// bij een richtlijn: toon de resultaatblokken
-				add_action( 'genesis_after_entry_content', [
-					$this,
-					'ictu_gc_frontend_richtlijn_get_resultaatblokken',
-				], 12 );
+				add_action( 'genesis_after_entry_content', array( $this, 'ictu_gc_frontend_richtlijn_get_resultaatblokken' ), 12 );
 
 				// bij een stap of richtlijn: toon de juiste andere richtlijnen
-				add_action( 'genesis_after_entry_content', [
-					$this,
-					'ictu_gc_frontend_stap_get_richtlijnen',
-				], 14 );
+				add_action( 'genesis_after_entry_content', array( $this, 'ictu_gc_frontend_stap_get_richtlijnen' ), 14 );
 
 				// gerelateerde content
-				add_action( 'genesis_after_loop', [
-					$this,
-					'ictu_gc_frontend_stap_get_related_content',
-				], 16 );
+				add_action( 'genesis_after_loop', array( $this, 'ictu_gc_frontend_stap_get_related_content' ), 16 );
 
 			}
 
@@ -410,14 +382,14 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 				"query_var"           => true,
 				"menu_position"       => 6,
 				"menu_icon"           => "dashicons-media-text",
-				"supports"            => [
+				"supports"            => array(
 					"title",
 					"editor",
 					"excerpt",
 					"revisions",
 					"thumbnail",
 					"author",
-				],
+				),
 			];
 			register_post_type( GC_BEELDBANK_BRIEF_CPT, $args );
 
@@ -464,14 +436,7 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 				"query_var"           => true,
 				"menu_position"       => 7,
 				"menu_icon"           => "dashicons-format-image",
-				"supports"            => [
-					"title",
-					"editor",
-					"excerpt",
-					"revisions",
-					"thumbnail",
-					"author",
-				],
+				"supports"            => array( "title", "editor", "excerpt", "revisions", "thumbnail", "author" ),
 			];
 			register_post_type( GC_BEELDBANK_BEELD_CPT, $args );
 
@@ -707,24 +672,24 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 						$posts_number = 3;
 					}
 
-					$args = array(
+					$argsquery = array(
 						'post_type'      => 'post',
-						'posts_per_page' => $posts_number,
+						'posts_per_page' => intval( $posts_number ),
 						'post_status'    => 'publish',
 						'orderby'        => 'publish_date',
 						'order'          => 'DESC',
 					);
 
 					if ( 'home_template_posts_category_filter_ja' == $posts_category_filter ) {
-						$args['cat'] = get_field( 'home_template_posts_category_filter_catid', $post->ID );
+						$argsquery['cat'] = get_field( 'home_template_posts_category_filter_catid', $post->ID );
 					}
 
-					$posts_home = new WP_query( $args );
+					$posts_home = new WP_Query( $argsquery );
 
 					if ( $posts_home->have_posts() ) {
 
 						$columncounter = 'grid--col-2';
-						$countcount    = $posts_home->found_posts;
+						$countcount    = $posts_home->post_count;
 
 						if ( $countcount < 2 ) {
 							$columncounter = 'grid--col-1';
@@ -734,7 +699,7 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 							$columncounter = 'grid--col-3';
 						}
 
-						echo '<section class="section section--overview l-item-count-' . $countcount . '"><div class="l-section-top"><h2 class="section__title">' . $posts_title . '</h2></div>';
+						echo '<section class="section section--overview"><div class="l-section-top"><h2 class="section__title">' . $posts_title . '</h2></div>';
 						echo '<div class="l-section-content">';
 						echo '<div class="grid ' . $columncounter . '">';
 
@@ -743,21 +708,23 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 						while ( $posts_home->have_posts() ) : $posts_home->the_post();
 
 							$postcounter ++;
-							$title_id   = sanitize_title( get_the_title( $post ) . '-' . $post->ID );
-							$section_id = sanitize_title( 'post-' . $post->ID );
-							$image      = false;
+							$title_id      = sanitize_title( get_the_title( $post ) . '-' . $post->ID );
+							$section_id    = sanitize_title( 'post-' . $post->ID );
+							$classforimage = '';
 
 							if ( has_post_thumbnail( $post ) ) {
-								$image = true;
+								$classforimage = " card--with-image featured-image";
 							}
 
-							echo '<div class="card' . ( $image ? ' card--featured-image' : '' ) . '" id="' . $title_id . '" itemid="' . get_permalink( $post->ID ) . '" itemscope itemtype="http://schema.org/SocialMediaPosting">';
+							echo '<div class="card' . $classforimage . '" id="' . $title_id . '" itemid="' . get_permalink( $post->ID ) . '" itemscope itemtype="http://schema.org/SocialMediaPosting">';
 
-							if ( $image ):
+							if ( has_post_thumbnail( $post ) ) {
+
 								echo '  <div class="card__image">';
-								the_post_thumbnail();
+								the_post_thumbnail( 'thumb-cardv3' );
 								echo '  </div>';
-							endif;
+
+							}
 
 							echo '	<div class="card__content">';
 							echo '		<h2 class="card__title" itemprop="headline">';
@@ -787,7 +754,7 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 						echo '</div>'; // .l-section-content
 						echo '</section>'; // .section section--overview
 
-						wp_reset_query();
+						wp_reset_postdata();
 
 					}
 
@@ -896,11 +863,56 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 			}
 
 			$stap_inleiding = get_field( 'stap_inleiding', $post->ID );
+			$nav_richtlijn  = '';
+			$postparentid   = wp_get_post_parent_id( $post );
+
+
+			if ( $postparentid ) {
+				// this is a child ('richtlijn')
+				// get the siblings
+
+				$args = array(
+					'post_type'    => ICTU_GC_CPT_STAP,
+					'hierarchical' => true,
+					'parent'       => $postparentid,
+				);
+
+				$children = get_pages( $args );
+
+				if ( $children ) :
+
+					$nav_richtlijn = '<nav><ul>';
+
+					$countcount = count( $children );
+
+					$postcounter = 0;
+
+					foreach ( $children as $page ) {
+
+						$postcounter ++;
+
+						$currentclass = '';
+
+						if ( $page->ID === $post->ID ) {
+							$currentclass = ' aria-current="page"';
+						}
+
+						$nav_richtlijn .= '<li' . $currentclass . '><a href="' . get_permalink( $page->ID ) . '">';
+						$nav_richtlijn .= get_the_title( $page ) . '</a>';
+						$nav_richtlijn .= '</li>';
+
+					}
+
+					$nav_richtlijn .= '</ul></nav>';
+
+				endif; // if ($children) :
+
+			}
 
 
 			// Make reusable Intro region as a data container
 			echo '<div class="region region--content-top">' .
-			     '<div class="page-intro inleiding">' .
+			     '<div class="page-intro inleiding">' . $nav_richtlijn .
 			     '<header class="entry-header"><h1 class="entry-title">' . get_the_title() . '</h1>' . '</header>';
 
 			if ( $stap_inleiding ) {
@@ -1063,8 +1075,10 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 				$arialabel = sprintf( _x( 'Download %s', 'download image met titel', 'ictu-gc-posttypes-inclusie' ), $titel );
 
 				echo '<section class="download-box">';
-				echo '<h3>' . $titel . '</h3>';
+				echo '<header>'; // .download-box
+				echo '<h2>' . $titel . '</h2>';
 				echo '<a href="' . $image[0] . '" class="btn btn--download" download aria-label="' . $arialabel . '">' . _x( 'Download', 'download image', "ictu-gc-posttypes-brieven-beelden" ) . '</a>';
+				echo '</header>'; // .download-box
 
 				echo '<dl class="meta-data">';
 				echo '<dt class="visuallyhidden">' . _x( 'File size', 'download image', "ictu-gc-posttypes-brieven-beelden" ) . '</dt><dd>' . $filesize . '</<dd>';
@@ -1333,17 +1347,17 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 		 *
 		 * @return void
 		 */
-		public function ictu_gc_frontend_stap_get_richtlijnen( $args = [] ) {
+		public function ictu_gc_frontend_stap_get_richtlijnen( $args = array() ) {
 
 			global $post;
-			$return = '';
 
+			$return       = '';
 			$postparentid = wp_get_post_parent_id( $post );
 
-			$args = [
+			$args = array(
 				'post_type'    => ICTU_GC_CPT_STAP,
 				'hierarchical' => true,
-			];
+			);
 
 			if ( $postparentid ) {
 				// this is a child ('richtlijn')
@@ -1376,7 +1390,7 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 					$columncounter = 'grid--col-2';
 				}
 
-				echo '<div class="section section--page-children l-item-count-' . $countcount . '">' .
+				echo '<div class="section section--page-children">' .
 				     '<span class="bg"></span>' .
 				     '<div class="l-section-top">' .
 				     '<h2 class="section__title"> ' . $title . '</h2>' .
@@ -1398,8 +1412,6 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 					$title_id   = sanitize_title( get_the_title( $page ) . '-' . $page->ID );
 					$section_id = sanitize_title( 'post-' . $page->ID );
 
-					$card = ':D';
-
 					$card = '<div aria-labelledby="' . $title_id . '" class="card" id="' . $section_id . '">';
 					$card .= '<div class="card__content">';
 					$card .= '<h2 class="card__title" id="' . $title_id . '">' .
@@ -1415,7 +1427,7 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 
 				echo '</div></div></div>';
 
-			endif;
+			endif; // if ($children) :
 
 		}
 
@@ -1519,12 +1531,21 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 						echo '</div>'; // .resultaten_block_image
 					}
 
-					echo '<div class="resultaten_block_text">';
-					echo '<' . $args['titletag'] . ' id="' . $title_id . '">' . $titel . '</' . $args['titletag'] . '>';
-					echo '<p>';
-					echo strip_tags( $text, '<br>' );
-					echo '</p>';
-					echo '</div>';
+					if ( $titel || $text ) {
+		
+						echo '<div class="resultaten_block_text">';
+						if ( $titel ) {
+							echo '<' . $args['titletag'] . ' id="' . $title_id . '">' . $titel . '</' . $args['titletag'] . '>';
+						}
+						if ( $text ) {
+							echo '<p>';
+							echo strip_tags( $text, '<br>' );
+							echo '</p>';
+						}
+						echo '</div>';
+					
+					}
+					
 					echo '</div>'; // .resultaten_block_text
 
 				endforeach;
@@ -1583,4 +1604,3 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 endif;
 
 //========================================================================================================
-
