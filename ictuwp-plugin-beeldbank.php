@@ -132,18 +132,9 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 			//		add_action( 'init', array( $this, 'add_rewrite_rules' ) );
 
 
-			add_filter( 'genesis_single_crumb', [
-				$this,
-				'filter_breadcrumb',
-			], 10, 2 );
-			add_filter( 'genesis_page_crumb', [
-				$this,
-				'filter_breadcrumb',
-			], 10, 2 );
-			add_filter( 'genesis_archive_crumb', [
-				$this,
-				'filter_breadcrumb',
-			], 10, 2 );
+			add_filter( 'genesis_single_crumb',		array( $this, 'filter_breadcrumb' ), 10, 2 );
+			add_filter( 'genesis_page_crumb',		array( $this, 'filter_breadcrumb' ), 10, 2 );
+			add_filter( 'genesis_archive_crumb',	array( $this, 'filter_breadcrumb' ), 10, 2 );
 
 			//  bidirectional relations beeld & brief
 			add_filter( 'acf/update_value/name=relation_beeldbrief_beeld', 'bidirectional_acf_update_value', 10, 3 );
@@ -156,22 +147,13 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 			$this->template_home = 'home-inclusie.php';
 
 			// add styling and scripts
-			add_action( 'wp_enqueue_scripts', [
-				$this,
-				'ictu_gc_register_frontend_style_script',
-			] );
+			add_action( 'wp_enqueue_scripts', array( $this, 'ictu_gc_register_frontend_style_script' ) );
 
 			// add the page template to the templates list
-			add_filter( 'theme_page_templates', [
-				$this,
-				'ictu_gc_add_page_templates',
-			] );
+			add_action( 'theme_page_templates', array( $this, 'ictu_gc_add_page_templates' ) );
 
 			// activate the page filters
-			add_filter( 'template_redirect', [
-				$this,
-				'ictu_gc_frontend_use_page_template',
-			] );
+			add_action( 'template_redirect', array( $this, 'ictu_gc_frontend_use_page_template' ) );
 
 			// disable the author pages
 			add_action( 'template_redirect', 'ictu_gctheme_disable_author_pages' );
@@ -223,8 +205,8 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 				// action voor het toevoegen van berichten
 				add_action( 'genesis_loop', array( $this, 'ictu_beeldbank_home_add_posts' ), 12 );
 
-				// in page.php wordt de gerelateerde content toegevoegd via
-				// add_action( 'genesis_loop', 'ictu_gctheme_frontend_general_get_related_content', 12 );
+				// action voor toevoegen van tekstblokken op homepage
+				add_action( 'genesis_loop', 'ictu_gctheme_frontend_general_get_textblocks', 14 );
 
 
 			} elseif ( GC_BEELDBANK_BEELD_CPT == get_post_type() ) {
