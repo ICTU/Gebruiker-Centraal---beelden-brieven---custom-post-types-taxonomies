@@ -298,7 +298,9 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 			global $post;
 			$infooter = true;
 
-			wp_enqueue_style( ICTU_GC_BEELDBANK_CSS, trailingslashit( plugin_dir_url( __FILE__ ) ) . 'css/frontend-beeldbank.css', [], ICTU_GC_BEELDBANK_VERSION, 'all' );
+			// stylesheet pas inladen na de CSS van gc-theme
+			$dependencies = array( ID_SKIPLINKS );
+			wp_enqueue_style( ICTU_GC_BEELDBANK_CSS, trailingslashit( plugin_dir_url( __FILE__ ) ) . 'css/frontend-beeldbank.css', $dependencies, ICTU_GC_BEELDBANK_VERSION, 'all' );
 
 
 			//		if (WP_DEBUG) {
@@ -690,38 +692,13 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 						while ( $posts_home->have_posts() ) : $posts_home->the_post();
 
 							$postcounter ++;
-							$title_id      = sanitize_title( get_the_title( $post ) . '-' . $post->ID );
-							$section_id    = sanitize_title( 'post-' . $post->ID );
-							$classforimage = '';
 
-							if ( has_post_thumbnail( $post ) ) {
-								$classforimage = " card--with-image featured-image";
-							}
-
-							echo '<div class="card' . $classforimage . '" id="' . $title_id . '" itemid="' . get_permalink( $post->ID ) . '" itemscope itemtype="http://schema.org/SocialMediaPosting">';
-
-							if ( has_post_thumbnail( $post ) ) {
-
-								echo '  <div class="card__image">';
-								the_post_thumbnail( 'thumb-cardv3' );
-								echo '  </div>';
-
-							}
-
-							echo '	<div class="card__content">';
-							echo '		<h2 class="card__title" itemprop="headline">';
-							echo '			<a class="arrow-link" href="' . get_permalink( $post->ID ) . '" itemprop="url">';
-							echo '				<span class="arrow-link__text">' . get_the_title( $post ) . '</span>';
-							echo '				<span class="arrow-link__icon"></span>';
-							echo '      	</a>';
-							echo ' 		</h2>';
-							echo '		<p class="card__description">' . get_the_excerpt( $post->ID ) . '</p>';
-							echo '		<div class="meta-data">';
-							echo '			<span class="meta-data__item" itemprop="datePublished" content="' . get_the_date( 'Y-m-d' ) . '">' . get_the_date() . '</span>';
-							echo '			<span class="meta-data__item" itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">' . get_the_author_meta( 'nicename' ) . '</span></span>';
-							echo '  	</div>';
-							echo '	</div>'; // .card__content
-							echo '</div>'; // .card card--with-image
+							$args = array(
+								'titletag'  => 'h2',
+								'echo'      => false,
+							);
+							// gebruik functie uit theme (/includes/components/cards.php)
+							echo ictu_gctheme_card_featuredimage( $posts_home, $args );
 
 						endwhile;
 
