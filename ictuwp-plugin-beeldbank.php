@@ -7,7 +7,7 @@
  * @wordpress-plugin
  * Plugin Name:       ICTU / Gebruiker Centraal / Beelden en Brieven post types and taxonomies (v2)
  * Plugin URI:        https://github.com/ICTU/ICTU-Gebruiker-Centraal-Beelden-en-Brieven-CPTs-and-taxonomies
- * Description:       Eerste versie voor gebruikercentraal.nl en beeldbank.gebruikercentraal.nl voor het registeren van CPTs voor beelden en brieven
+ * Description:       Plugin voor beeldbank.gebruikercentraal.nl: registeren van CPTs voor beelden en brieven
  * Version:           2.0.6
  * Version descr:     Widget met berichten voorzien van images in juiste uitsnede, tabs voor richtlijnen toegevoegd.
  * Author:            Paul van Buuren & Tamara de Haas
