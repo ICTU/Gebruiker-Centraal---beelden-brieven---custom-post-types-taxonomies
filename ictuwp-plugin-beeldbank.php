@@ -8,8 +8,8 @@
  * Plugin Name:       ICTU / Gebruiker Centraal / Beelden en Brieven post types and taxonomies (v2)
  * Plugin URI:        https://github.com/ICTU/ICTU-Gebruiker-Centraal-Beelden-en-Brieven-CPTs-and-taxonomies
  * Description:       Plugin voor beeldbank.gebruikercentraal.nl: registeren van CPTs voor beelden en brieven
- * Version:           2.0.6
- * Version descr:     Widget met berichten voorzien van images in juiste uitsnede, tabs voor richtlijnen toegevoegd.
+ * Version:           2.0.7
+ * Version descr:     Taxonomie brief-type toegevoegd.
  * Author:            Paul van Buuren & Tamara de Haas
  * Author URI:        https://wbvb.nl/
  * License:           GPL-2.0+
@@ -53,11 +53,16 @@ if ( ! defined( 'GC_TAX_ORGANISATIE' ) ) {
 	define( 'GC_TAX_ORGANISATIE', 'organisatie' );
 }
 
+if ( ! defined( 'GC_TAX_BRIEFTYPE' ) ) {
+	// @since 2.0.7
+	define( 'GC_TAX_BRIEFTYPE', 'brieftype' );
+}
+
 define( 'ICTU_GC_BEELDBANK_CSS', 'ictu-gc-plugin-beeldbank-css' );
 define( 'ICTU_GC_BEELDBANK_BASE_URL', trailingslashit( plugin_dir_url( __FILE__ ) ) );
 define( 'ICTU_GC_BEELDBANK_IMAGES', esc_url( ICTU_GC_BEELDBANK_BASE_URL . 'images/' ) );
-define( 'ICTU_GC_BEELDBANK_VERSION', '2.0.6' );
-define( 'ICTU_GC_BEELDBANK_DESC', 'Widget met berichten voorzien van images in juiste uitsnede, tabs voor richtlijnen toegevoegd.' );
+define( 'ICTU_GC_BEELDBANK_VERSION', '2.0.7' );
+define( 'ICTU_GC_BEELDBANK_DESC', 'Taxonomie brief-type toegevoegd.' );
 
 
 // nieuwe CPTs
@@ -132,9 +137,9 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 			//		add_action( 'init', array( $this, 'add_rewrite_rules' ) );
 
 
-			add_filter( 'genesis_single_crumb',		array( $this, 'filter_breadcrumb' ), 10, 2 );
-			add_filter( 'genesis_page_crumb',		array( $this, 'filter_breadcrumb' ), 10, 2 );
-			add_filter( 'genesis_archive_crumb',	array( $this, 'filter_breadcrumb' ), 10, 2 );
+			add_filter( 'genesis_single_crumb', array( $this, 'filter_breadcrumb' ), 10, 2 );
+			add_filter( 'genesis_page_crumb', array( $this, 'filter_breadcrumb' ), 10, 2 );
+			add_filter( 'genesis_archive_crumb', array( $this, 'filter_breadcrumb' ), 10, 2 );
 
 			//  bidirectional relations beeld & brief
 			add_filter( 'acf/update_value/name=relation_beeldbrief_beeld', 'bidirectional_acf_update_value', 10, 3 );
@@ -219,7 +224,6 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 				add_action( 'genesis_entry_content', array( $this, 'ictu_gc_frontend_brief_append_afbeelding' ), 12 );
 				add_action( 'genesis_entry_content', array( $this, 'ictu_gc_frontend_beeld_append_downloadinfo' ), 12 );
 				add_action( 'genesis_entry_content', array( $this, 'ictu_gc_frontend_brief_append_container_end' ), 14 );
-
 				add_action( 'genesis_loop', array( $this, 'ictu_gc_frontend_brief_append_related_content' ), 16 );
 
 			} elseif ( GC_BEELDBANK_BRIEF_CPT == get_post_type() ) {
@@ -230,7 +234,6 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 				remove_action( 'genesis_entry_content', 'genesis_do_post_content' );
 
 				add_action( 'genesis_entry_content', array( $this, 'ictu_gc_frontend_brief_append_container_start' ), 6 );
-
 				add_action( 'genesis_entry_content', array( $this, 'ictu_gc_frontend_brief_append_afbeelding' ), 12 );
 
 				// the content is here
@@ -351,7 +354,7 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 				$theslug = str_replace( home_url() . '/', '', get_permalink( $currentpageID ) ) . GC_BRIEVENCONTEXT;
 			}
 
-			$args = [
+			$args = array(
 				"labels"              => $labels,
 				"description"         => "Hier voer je de brieven in.",
 				"public"              => true,
@@ -374,7 +377,7 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 					"thumbnail",
 					"author",
 				),
-			];
+			);
 			register_post_type( GC_BEELDBANK_BRIEF_CPT, $args );
 
 			// ------------------------------------------------------
@@ -405,7 +408,7 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 				$theslug = str_replace( home_url() . '/', '', get_permalink( $currentpageID ) ) . GC_BEELDENCONTEXT;
 			}
 
-			$args = [
+			$args = array(
 				"labels"              => $labels,
 				"description"         => "Hier voer je de beelden in.",
 				"public"              => true,
@@ -421,10 +424,13 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 				"menu_position"       => 7,
 				"menu_icon"           => "dashicons-format-image",
 				"supports"            => array( "title", "editor", "excerpt", "revisions", "thumbnail", "author" ),
-			];
+			);
+
 			register_post_type( GC_BEELDBANK_BEELD_CPT, $args );
 
 
+			// ---------------------------------------------------------------------------------------------------
+			// custom taxonomie voor 'licente',  voor beelden
 			$labels = [
 				"name"                       => _x( "Licentie", 'stap type', "ictu-gc-posttypes-brieven-beelden" ),
 				"label"                      => _x( "Licentie", 'stap type', "ictu-gc-posttypes-brieven-beelden" ),
@@ -443,7 +449,7 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 				"not_found"                  => _x( "Niet gevonden", 'stap type', "ictu-gc-posttypes-brieven-beelden" ),
 			];
 
-			$args = [
+			$args = array(
 				"labels"            => $labels,
 				"hierarchical"      => true,
 				"label"             => _x( "Licentie", 'stap type', "ictu-gc-posttypes-brieven-beelden" ),
@@ -451,10 +457,13 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 				"query_var"         => true,
 				"rewrite"           => [ 'slug' => GC_TAX_LICENTIE, 'with_front' => true ],
 				"show_admin_column" => false,
-			];
-			register_taxonomy( GC_TAX_LICENTIE, [ GC_BEELDBANK_BEELD_CPT ], $args );
+			);
+
+			register_taxonomy( GC_TAX_LICENTIE, array( GC_BEELDBANK_BEELD_CPT ), $args );
 
 
+			// ---------------------------------------------------------------------------------------------------
+			// custom taxonomie voor 'organsatie',  voor brieven en beelden
 			$labels = [
 				"name"                       => _x( 'Organisatie', 'stap type', "ictu-gc-posttypes-brieven-beelden" ),
 				"label"                      => _x( 'Organisatie', 'stap type', "ictu-gc-posttypes-brieven-beelden" ),
@@ -473,7 +482,7 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 				"not_found"                  => _x( 'Niet gevonden', 'stap type', "ictu-gc-posttypes-brieven-beelden" ),
 			];
 
-			$args = [
+			$args = array(
 				"labels"            => $labels,
 				"hierarchical"      => true,
 				"label"             => _x( 'Organisatie', 'stap type', "ictu-gc-posttypes-brieven-beelden" ),
@@ -481,11 +490,42 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 				"query_var"         => true,
 				"rewrite"           => [ 'slug' => GC_TAX_ORGANISATIE, 'with_front' => true ],
 				"show_admin_column" => false,
+			);
+
+			register_taxonomy( GC_TAX_ORGANISATIE, array( GC_BEELDBANK_BEELD_CPT, GC_BEELDBANK_BRIEF_CPT ), $args );
+
+
+			// ---------------------------------------------------------------------------------------------------
+			// custom taxonomie voor 'type brief', alleen voor brieven
+			$labels = [
+				"name"                       => _x( 'Type brief', 'stap type', "ictu-gc-posttypes-brieven-beelden" ),
+				"label"                      => _x( 'Type brief', 'stap type', "ictu-gc-posttypes-brieven-beelden" ),
+				"menu_name"                  => _x( 'Type brief', 'stap type', "ictu-gc-posttypes-brieven-beelden" ),
+				"all_items"                  => _x( 'Alle brieftypes', 'stap type', "ictu-gc-posttypes-brieven-beelden" ),
+				"edit_item"                  => _x( 'Bewerk brieftype', 'stap type', "ictu-gc-posttypes-brieven-beelden" ),
+				"view_item"                  => _x( 'Bekijk brieftype', 'stap type', "ictu-gc-posttypes-brieven-beelden" ),
+				"update_item"                => _x( 'Type brief bijwerken', 'stap type', "ictu-gc-posttypes-brieven-beelden" ),
+				"add_new_item"               => _x( 'Type brief toevoegen', 'stap type', "ictu-gc-posttypes-brieven-beelden" ),
+				"new_item_name"              => _x( 'Nieuwe brieftype', 'stap type', "ictu-gc-posttypes-brieven-beelden" ),
+				"search_items"               => _x( 'Zoek brieftype', 'stap type', "ictu-gc-posttypes-brieven-beelden" ),
+				"popular_items"              => _x( 'Meest gebruikte brieftypes', 'stap type', "ictu-gc-posttypes-brieven-beelden" ),
+				"separate_items_with_commas" => _x( "Scheid met komma's", 'stap type', "ictu-gc-posttypes-brieven-beelden" ),
+				"add_or_remove_items"        => _x( 'Type brief toevoegen of verwijderen', 'stap type', "ictu-gc-posttypes-brieven-beelden" ),
+				"choose_from_most_used"      => _x( 'Kies uit de meest gebruikte', 'stap type', "ictu-gc-posttypes-brieven-beelden" ),
+				"not_found"                  => _x( 'Niet gevonden', 'stap type', "ictu-gc-posttypes-brieven-beelden" ),
 			];
-			register_taxonomy( GC_TAX_ORGANISATIE, [
-				GC_BEELDBANK_BEELD_CPT,
-				GC_BEELDBANK_BRIEF_CPT,
-			], $args );
+
+			$args = array(
+				"labels"            => $labels,
+				"hierarchical"      => true,
+				"label"             => _x( 'Type brief', 'stap type', "ictu-gc-posttypes-brieven-beelden" ),
+				"show_ui"           => true,
+				"query_var"         => true,
+				"rewrite"           => array( 'slug' => GC_TAX_BRIEFTYPE, 'with_front' => true ),
+				"show_admin_column" => false,
+			);
+
+			register_taxonomy( GC_TAX_BRIEFTYPE, array( GC_BEELDBANK_BRIEF_CPT ), $args );
 
 
 			// ---------------------------------------------------------------------------------------------------
@@ -508,7 +548,7 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 				"uploaded_to_this_item" => __( 'Uploaded media', "ictu-gc-posttypes-brieven-beelden" ),
 			];
 
-			$args = [
+			$args = array(
 				"label"               => _x( 'Stappen en richtlijnen', 'Stappen label', "ictu-gc-posttypes-brieven-beelden" ),
 				"labels"              => $labels,
 				"menu_icon"           => "dashicons-editor-ol",
@@ -527,7 +567,8 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 				"rewrite"             => [ "slug" => ICTU_GC_CPT_STAP, "with_front" => true ],
 				"query_var"           => true,
 				"supports"            => [ "title", "editor", "excerpt", "page-attributes" ],
-			];
+			);
+
 			register_post_type( ICTU_GC_CPT_STAP, $args );
 
 
@@ -694,8 +735,8 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 							$postcounter ++;
 
 							$args = array(
-								'titletag'  => 'h2',
-								'echo'      => false,
+								'titletag' => 'h2',
+								'echo'     => false,
 							);
 							// gebruik functie uit theme (/includes/components/cards.php)
 							echo ictu_gctheme_card_featuredimage( $posts_home, $args );
@@ -1030,7 +1071,7 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 				$filesize  = gc_wbvb_get_human_filesize( filesize( $file ) );
 				$mimetype  = mime_content_type( $file );
 				$mimes     = explode( '/', $mimetype );
-				$titel     = get_the_title( $image_id );
+				$titel     = get_the_title( $imageid );
 				$arialabel = sprintf( _x( 'Download %s', 'download image met titel', 'ictu-gc-posttypes-inclusie' ), $titel );
 
 				echo '<section class="download-box">';
@@ -1491,7 +1532,7 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 					}
 
 					if ( $titel || $text ) {
-		
+
 						echo '<div class="resultaten_block_text">';
 						if ( $titel ) {
 							echo '<' . $args['titletag'] . ' id="' . $title_id . '">' . $titel . '</' . $args['titletag'] . '>';
@@ -1502,9 +1543,9 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 							echo '</p>';
 						}
 						echo '</div>';
-					
+
 					}
-					
+
 					echo '</div>'; // .resultaten_block_text
 
 				endforeach;
