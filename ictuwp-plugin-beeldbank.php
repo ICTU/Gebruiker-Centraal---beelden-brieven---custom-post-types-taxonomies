@@ -1461,7 +1461,8 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 
 			$resultaatblokken = get_field( 'richtlijn_resultaatblokken', $homepageID );
 
-			if ( $resultaatblokken ):
+			if ( $resultaatblokken && $resultaatblokken[0]['richtlijn_resultaatblok_titel'] ):
+				// er is 1 of meer resultaatblok gevonden en de titel is gevuld
 
 				$stepcounter = 0;
 
