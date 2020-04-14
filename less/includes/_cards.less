@@ -4,30 +4,20 @@
     position: relative;
     overflow: hidden;
 
-    &:before {
-      content: " ";
-      position: absolute;
-      display: block;
-      background: @gc_pantybrown_xlight;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 35rem;
-    }
-
     .card__image {
-      .gc-box-shadow;
-      width: 18rem;
-      height: 24rem;
-      margin: 3rem auto 5rem;
-      overflow: inherit;
-      background: @white;
-      background-size: 80% auto;
-      background-repeat: no-repeat;
-      background-position: center center;
+      background: @gc_pantybrown_xlight;
+      padding: 3rem 0 4rem;
+      text-align: center;
+      height: 34rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-      &:before {
-        display: none;
+      img {
+        width: 18rem;
+        height: auto;
+        object-fit: unset;
+        .gc-box-shadow;
       }
     }
 
@@ -67,7 +57,8 @@
       padding: 0 2rem 1.5rem;
     }
 
-    h2 {
+    h2,
+    h3 {
       border-top: .1rem solid @border_color;
       font-size: 2rem;
       line-height: 2.8rem;
