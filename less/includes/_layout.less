@@ -30,49 +30,6 @@
   }
 }
 
-.gc-beeldbank-card() {
-  position: relative;
-  overflow: hidden;
-
-  &:before {
-    content: " ";
-    position: absolute;
-    display: block;
-    background: @gc_pantybrown_xlight;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 35rem;
-  }
-
-  .card__image {
-    .gc-box-shadow;
-    width: 18rem;
-    height: 24rem;
-    margin: 3rem auto 5rem;
-    overflow: inherit;
-    background: @white;
-    background-size: 80% auto;
-    background-repeat: no-repeat;
-    background-position: center center;
-
-    &:before {
-      display: none;
-    }
-  }
-
-  .card__content {
-    .gc-rotated-thing;
-    overflow: visible;
-    z-index: 5;
-
-    &:before {
-      z-index: -1;
-      margin-top: -1rem;
-    }
-  }
-}
-
 .single .page-intro ul {
   .gc-fancy-list(@color: @white);
 }
