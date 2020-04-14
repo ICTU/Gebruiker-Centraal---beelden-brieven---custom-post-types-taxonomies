@@ -220,10 +220,16 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 
 				remove_action( 'genesis_entry_content', 'genesis_do_post_content' );
 
-				add_action( 'genesis_entry_content', array( $this, 'ictu_gc_frontend_brief_append_container_start' ), 6 );
+				add_action( 'genesis_entry_content', array(
+					$this,
+					'ictu_gc_frontend_brief_append_container_start'
+				), 6 );
 				add_action( 'genesis_entry_content', array( $this, 'ictu_gc_frontend_brief_append_afbeelding' ), 12 );
 				add_action( 'genesis_entry_content', array( $this, 'ictu_gc_frontend_beeld_append_downloadinfo' ), 12 );
-				add_action( 'genesis_entry_content', array( $this, 'ictu_gc_frontend_brief_append_container_end' ), 14 );
+				add_action( 'genesis_entry_content', array(
+					$this,
+					'ictu_gc_frontend_brief_append_container_end'
+				), 14 );
 				add_action( 'genesis_loop', array( $this, 'ictu_gc_frontend_brief_append_related_content' ), 16 );
 
 			} elseif ( GC_BEELDBANK_BRIEF_CPT == get_post_type() ) {
@@ -233,12 +239,18 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 				// remove the content
 				remove_action( 'genesis_entry_content', 'genesis_do_post_content' );
 
-				add_action( 'genesis_entry_content', array( $this, 'ictu_gc_frontend_brief_append_container_start' ), 6 );
+				add_action( 'genesis_entry_content', array(
+					$this,
+					'ictu_gc_frontend_brief_append_container_start'
+				), 6 );
 				add_action( 'genesis_entry_content', array( $this, 'ictu_gc_frontend_brief_append_afbeelding' ), 12 );
 
 				// the content is here
 				add_action( 'genesis_entry_content', array( $this, 'ictu_gc_frontend_brief_append_downloadinfo' ), 12 );
-				add_action( 'genesis_entry_content', array( $this, 'ictu_gc_frontend_brief_append_container_end' ), 14 );
+				add_action( 'genesis_entry_content', array(
+					$this,
+					'ictu_gc_frontend_brief_append_container_end'
+				), 14 );
 
 				add_action( 'genesis_loop', array( $this, 'ictu_gc_frontend_brief_append_related_content' ), 16 );
 
@@ -256,10 +268,16 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 				add_action( 'genesis_before_loop', array( $this, 'ictu_gc_frontend_stap_before_content' ), 8 );
 
 				// bij een richtlijn: toon de resultaatblokken
-				add_action( 'genesis_after_entry_content', array( $this, 'ictu_gc_frontend_richtlijn_get_resultaatblokken' ), 12 );
+				add_action( 'genesis_after_entry_content', array(
+					$this,
+					'ictu_gc_frontend_richtlijn_get_resultaatblokken'
+				), 12 );
 
 				// bij een stap of richtlijn: toon de juiste andere richtlijnen
-				add_action( 'genesis_after_entry_content', array( $this, 'ictu_gc_frontend_stap_get_richtlijnen' ), 14 );
+				add_action( 'genesis_after_entry_content', array(
+					$this,
+					'ictu_gc_frontend_stap_get_richtlijnen'
+				), 14 );
 
 				// gerelateerde content
 				add_action( 'genesis_after_loop', array( $this, 'ictu_gc_frontend_stap_get_related_content' ), 16 );
@@ -733,13 +751,9 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 						while ( $posts_home->have_posts() ) : $posts_home->the_post();
 
 							$postcounter ++;
-							$title_id      = sanitize_title( get_the_title( $post ) . '-' . $post->ID );
-							$section_id    = sanitize_title( 'post-' . $post->ID );
-							$classforimage = '';
+							$title_id   = sanitize_title( get_the_title( $post ) . '-' . $post->ID );
+							$section_id = sanitize_title( 'post-' . $post->ID );
 
-							if ( has_post_thumbnail( $post ) ) {
-								$classforimage = " card--with-image featured-image";
-							}
 
 							$args = array(
 								'titletag' => 'h2',
@@ -1011,7 +1025,7 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 				$image    = wp_get_attachment_image_src( $imageid, 'full' );
 				$file     = get_attached_file( $imageid );
 				$filesize = gc_wbvb_get_human_filesize( filesize( $file ) );
-				$titel    = get_the_title( $image_id );
+				$titel    = get_the_title( $imageid );
 
 				$downloadlink   = $image[0];
 				$mimetypestring = mime_content_type( $file );
@@ -1161,18 +1175,12 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 				$related_items = get_field( 'relation_beeldbrief_beeld', $post->ID );
 
 				if ( $related_items ) {
+					$countcount = count( $related_items );
+					$grid_class = 'grid--col-3';
 
-					$columncounter = 'col-2';
-					$countcount    = count( $related_items );
-
-					if ( $countcount < 2 ) {
-						$columncounter = 'col-1';
-					} elseif ( $countcount === 4 ) {
-						$columncounter = 'col-2';
-					} elseif ( $countcount > 2 ) {
-						$columncounter = 'col-3';
+					if ( $countcount < 4 ) {
+						$grid_class = 'grid--col-' . $countcount;
 					}
-
 
 					if ( GC_BEELDBANK_BEELD_CPT === get_post_type() ) {
 						// titel voor een beeld en bijbehorende brieven
@@ -1184,46 +1192,37 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 
 					$title_id = sanitize_title( $section_title . '-title' );
 
-//                    $return .= '<section aria-labelledby="' . $title_id . '" class="section section--related section--related-content ' . $columncounter . '">';
+					$return .= '<section aria-labelledby="' . $title_id . '" class="section section--related section--related-content l-item-count-' . $countcount . '">';
 
-					$return .= '<section class="section section--overview l-item-count-' . $countcount . '">';
-					$return .= '<div class="l-section-top"><h2 id="' . $title_id . '" class="section__title">' . $section_title . '</h2></div>';
+					$return .= '<div class="l-section-top">' .
+					           '<h2 id="' . $title_id . '" class="section__title">' . $section_title . '</h2>'
+					           . '</div>';
 
-					$return .= '<div class="l-section-content"><div class="grid grid--' . $columncounter . '">';
+					$return .= '<div class="l-section-content">' .
+					           '<div class="grid '. $grid_class . '">';
 
+					$args = array(
+						'titletag' => 'h3',
+						'echo'     => false,
+					);
 
 					// loop through the rows of data
 					foreach ( $related_items as $post ):
 
 						setup_postdata( $post );
 
-						//					$theid          = $post->ID;
-						$section_title = get_the_title( $post->ID );
-						//					$section_text   = get_the_excerpt( $theid );
-						//					$section_link   = get_sub_field( 'home_template_teaser_link' );
-						$title_id = sanitize_title( $section_title );
-						//					$block_id       = sanitize_title( 'related_' . $theid );
+						$return .= ictu_gctheme_card_featuredimage( $post, $args );
 
-						if ( $args['getmenu'] ) {
-							$menuarray[ $title_id ] = $section_title;
-						} else {
-							$return .= ictu_gctheme_card_featuredimage( $post );
-						}
 
 					endforeach;
 
 					wp_reset_postdata();
 
-					if ( ! $args['getmenu'] ) {
+					$return .= '</div></div>'; // section content, grid
 
-						$return .= '</div>'; // class="grid ' . $columncounter . '">';
-						$return .= '</div>'; // .l-section-content;
-						$return .= '</section>';
+					$return .= '</section>';
 
-					}
 
-				} else {
-					// nothing
 				}
 
 				// externe links
