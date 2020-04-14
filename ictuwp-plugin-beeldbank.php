@@ -132,9 +132,9 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 			//		add_action( 'init', array( $this, 'add_rewrite_rules' ) );
 
 
-			add_filter( 'genesis_single_crumb',		array( $this, 'filter_breadcrumb' ), 10, 2 );
-			add_filter( 'genesis_page_crumb',		array( $this, 'filter_breadcrumb' ), 10, 2 );
-			add_filter( 'genesis_archive_crumb',	array( $this, 'filter_breadcrumb' ), 10, 2 );
+			add_filter( 'genesis_single_crumb', array( $this, 'filter_breadcrumb' ), 10, 2 );
+			add_filter( 'genesis_page_crumb', array( $this, 'filter_breadcrumb' ), 10, 2 );
+			add_filter( 'genesis_archive_crumb', array( $this, 'filter_breadcrumb' ), 10, 2 );
 
 			//  bidirectional relations beeld & brief
 			add_filter( 'acf/update_value/name=relation_beeldbrief_beeld', 'bidirectional_acf_update_value', 10, 3 );
@@ -215,10 +215,16 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 
 				remove_action( 'genesis_entry_content', 'genesis_do_post_content' );
 
-				add_action( 'genesis_entry_content', array( $this, 'ictu_gc_frontend_brief_append_container_start' ), 6 );
+				add_action( 'genesis_entry_content', array(
+					$this,
+					'ictu_gc_frontend_brief_append_container_start'
+				), 6 );
 				add_action( 'genesis_entry_content', array( $this, 'ictu_gc_frontend_brief_append_afbeelding' ), 12 );
 				add_action( 'genesis_entry_content', array( $this, 'ictu_gc_frontend_beeld_append_downloadinfo' ), 12 );
-				add_action( 'genesis_entry_content', array( $this, 'ictu_gc_frontend_brief_append_container_end' ), 14 );
+				add_action( 'genesis_entry_content', array(
+					$this,
+					'ictu_gc_frontend_brief_append_container_end'
+				), 14 );
 
 				add_action( 'genesis_loop', array( $this, 'ictu_gc_frontend_brief_append_related_content' ), 16 );
 
@@ -229,13 +235,19 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 				// remove the content
 				remove_action( 'genesis_entry_content', 'genesis_do_post_content' );
 
-				add_action( 'genesis_entry_content', array( $this, 'ictu_gc_frontend_brief_append_container_start' ), 6 );
+				add_action( 'genesis_entry_content', array(
+					$this,
+					'ictu_gc_frontend_brief_append_container_start'
+				), 6 );
 
 				add_action( 'genesis_entry_content', array( $this, 'ictu_gc_frontend_brief_append_afbeelding' ), 12 );
 
 				// the content is here
 				add_action( 'genesis_entry_content', array( $this, 'ictu_gc_frontend_brief_append_downloadinfo' ), 12 );
-				add_action( 'genesis_entry_content', array( $this, 'ictu_gc_frontend_brief_append_container_end' ), 14 );
+				add_action( 'genesis_entry_content', array(
+					$this,
+					'ictu_gc_frontend_brief_append_container_end'
+				), 14 );
 
 				add_action( 'genesis_loop', array( $this, 'ictu_gc_frontend_brief_append_related_content' ), 16 );
 
@@ -253,10 +265,16 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 				add_action( 'genesis_before_loop', array( $this, 'ictu_gc_frontend_stap_before_content' ), 8 );
 
 				// bij een richtlijn: toon de resultaatblokken
-				add_action( 'genesis_after_entry_content', array( $this, 'ictu_gc_frontend_richtlijn_get_resultaatblokken' ), 12 );
+				add_action( 'genesis_after_entry_content', array(
+					$this,
+					'ictu_gc_frontend_richtlijn_get_resultaatblokken'
+				), 12 );
 
 				// bij een stap of richtlijn: toon de juiste andere richtlijnen
-				add_action( 'genesis_after_entry_content', array( $this, 'ictu_gc_frontend_stap_get_richtlijnen' ), 14 );
+				add_action( 'genesis_after_entry_content', array(
+					$this,
+					'ictu_gc_frontend_stap_get_richtlijnen'
+				), 14 );
 
 				// gerelateerde content
 				add_action( 'genesis_after_loop', array( $this, 'ictu_gc_frontend_stap_get_related_content' ), 16 );
@@ -1056,18 +1074,16 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 				$titel     = get_the_title( $image_id );
 				$arialabel = sprintf( _x( 'Download %s', 'download image met titel', 'ictu-gc-posttypes-inclusie' ), $titel );
 
-				echo '<section class="download-box">';
-				echo '<header>'; // .download-box
-				echo '<h2>' . $titel . '</h2>';
-				echo '<a href="' . $image[0] . '" class="btn btn--download" download aria-label="' . $arialabel . '">' . _x( 'Download', 'download image', "ictu-gc-posttypes-brieven-beelden" ) . '</a>';
-				echo '</header>'; // .download-box
+				$download_box = '<section class="download-box">';
+				$download_box .= '<h3>' . $titel . '</h3>';
+				$download_box .= '<a href="' . $image[0] . '" class="btn btn--download" download aria-label="' . $arialabel . '">' . _x( 'Download', 'download image', "ictu-gc-posttypes-brieven-beelden" ) . '</a>';
+				$download_box .= '<dl class="meta-data">';
+				$download_box .= '<dt class="visuallyhidden">' . _x( 'File size', 'download image', "ictu-gc-posttypes-brieven-beelden" ) . '</dt><dd>' . $filesize . '</<dd>';
+				$download_box .= '<dt class="visuallyhidden">' . _x( 'File type', 'download image', "ictu-gc-posttypes-brieven-beelden" ) . '</dt><dd>' . strtoupper( $mimes[1] ) . '</<dd>';
+				$download_box .= '</dl>';
+				$download_box .= '</section>';
 
-				echo '<dl class="meta-data">';
-				echo '<dt class="visuallyhidden">' . _x( 'File size', 'download image', "ictu-gc-posttypes-brieven-beelden" ) . '</dt><dd>' . $filesize . '</<dd>';
-				echo '<dt class="visuallyhidden">' . _x( 'File type', 'download image', "ictu-gc-posttypes-brieven-beelden" ) . '</dt><dd>' . strtoupper( $mimes[1] ) . '</<dd>';
-				echo '</dl>';
-
-				echo '</section>'; // .download-box
+				echo $download_box;
 			}
 
 
@@ -1514,7 +1530,7 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 					}
 
 					if ( $titel || $text ) {
-		
+
 						echo '<div class="resultaten_block_text">';
 						if ( $titel ) {
 							echo '<' . $args['titletag'] . ' id="' . $title_id . '">' . $titel . '</' . $args['titletag'] . '>';
@@ -1525,9 +1541,9 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 							echo '</p>';
 						}
 						echo '</div>';
-					
+
 					}
-					
+
 					echo '</div>'; // .resultaten_block_text
 
 				endforeach;

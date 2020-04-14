@@ -3,13 +3,25 @@
   .content {
     .gc-content-container;
     .gc-box-shadow;
+    padding-left: 2rem;
+    padding-right: 2rem;
     background: @white;
     padding-top: 3rem;
     overflow: hidden;
 
+    @media @tablet {
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+
     @media @desktop {
       padding-top: 5rem;
     }
+  }
+
+  .entry-header,
+  .entry-content {
+    padding-left: 0;
   }
 
   .entry-content {
@@ -20,20 +32,30 @@
       align-items: flex-start;
 
       .lightbox {
-        width: 34rem;
+        width: 45%;
       }
 
       .entry-content-inner {
-        width: calc(100% - 34rem);
+        width: 55%;
         padding-left: @gutter;
       }
     }
 
     @media @desktop {
       padding-bottom: 5rem;
+      padding-top: 2rem;
 
       .entry-content-inner {
         padding-left: 5.5rem;
+      }
+
+      .lightbox {
+        width: 34rem;
+      }
+
+      .entry-content-inner {
+        width: calc(100% - 34rem);
+        padding-left: @gutter;
       }
     }
   }
@@ -62,7 +84,11 @@
     }
 
     &.l-item-count-3 {
-      .gc-padding;
+      @media @tablet {
+        // on top of .content padding
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
     }
 
     @media @desktop {
@@ -78,6 +104,14 @@
     width: auto;
     right: 0;
     font-family: @font_primary_semi;
+  }
+
+  .download-box {
+    margin-top: 3rem;
+
+    @media @tablet {
+      margin-top: 0;
+    }
   }
 }
 
