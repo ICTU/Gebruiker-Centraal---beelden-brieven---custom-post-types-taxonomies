@@ -220,16 +220,12 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 
 				remove_action( 'genesis_entry_content', 'genesis_do_post_content' );
 
-				add_action( 'genesis_entry_content', array(
-					$this,
-					'ictu_gc_frontend_brief_append_container_start'
-				), 6 );
+//				add_action( 'genesis_entry_content', array( $this, 'ictu_gc_frontend_brief_append_container_start' ), 6 );
 				add_action( 'genesis_entry_content', array( $this, 'ictu_gc_frontend_brief_append_afbeelding' ), 12 );
 				add_action( 'genesis_entry_content', array( $this, 'ictu_gc_frontend_beeld_append_downloadinfo' ), 12 );
-				add_action( 'genesis_entry_content', array(
-					$this,
-					'ictu_gc_frontend_brief_append_container_end'
-				), 14 );
+
+//				add_action( 'genesis_entry_content', array( $this, 'ictu_gc_frontend_brief_append_container_end' ), 14 );
+				
 				add_action( 'genesis_loop', array( $this, 'ictu_gc_frontend_brief_append_related_content' ), 16 );
 
 			} elseif ( GC_BEELDBANK_BRIEF_CPT == get_post_type() ) {
@@ -239,18 +235,12 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 				// remove the content
 				remove_action( 'genesis_entry_content', 'genesis_do_post_content' );
 
-				add_action( 'genesis_entry_content', array(
-					$this,
-					'ictu_gc_frontend_brief_append_container_start'
-				), 6 );
+//				add_action( 'genesis_entry_content', array( $this, 'ictu_gc_frontend_brief_append_container_start' ), 6 );
 				add_action( 'genesis_entry_content', array( $this, 'ictu_gc_frontend_brief_append_afbeelding' ), 12 );
 
 				// the content is here
 				add_action( 'genesis_entry_content', array( $this, 'ictu_gc_frontend_brief_append_downloadinfo' ), 12 );
-				add_action( 'genesis_entry_content', array(
-					$this,
-					'ictu_gc_frontend_brief_append_container_end'
-				), 14 );
+//				add_action( 'genesis_entry_content', array( $this, 'ictu_gc_frontend_brief_append_container_end' ), 14 );
 
 				add_action( 'genesis_loop', array( $this, 'ictu_gc_frontend_brief_append_related_content' ), 16 );
 
@@ -1233,7 +1223,7 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 					$section_title = get_field( 'links_block_title', $post->ID );
 					$title_id      = sanitize_title( $section_title . '-title' );
 
-					if ( $args['getmenu'] ) {
+					if ( isset( $args['getmenu'] ) ) {
 						$menuarray[ $title_id ] = $section_title;
 					} else {
 						$return .= '<section  aria-labelledby="' . $title_id . '" class="section section--related section--related-links">';
@@ -1277,7 +1267,7 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 				$return = 'Activeer ACF plugin';
 			}
 
-			if ( $args['getmenu'] ) {
+			if ( isset( $args['getmenu'] ) ) {
 				return $menuarray;
 			} elseif ( $args['echo'] ) {
 				echo $return;
@@ -1589,7 +1579,7 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 			// @since	1.1.3
 			$return = ictu_gctheme_frontend_general_get_related_content( $args );
 
-			if ( $args['getmenu'] ) {
+			if ( isset( $args['getmenu'] ) ) {
 				return $return;
 			} elseif ( $args['echo'] ) {
 				echo $return;
