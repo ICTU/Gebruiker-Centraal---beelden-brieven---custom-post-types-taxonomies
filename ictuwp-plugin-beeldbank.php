@@ -8,8 +8,8 @@
  * Plugin Name:       ICTU / Gebruiker Centraal / Beelden en Brieven post types and taxonomies (v2)
  * Plugin URI:        https://github.com/ICTU/ICTU-Gebruiker-Centraal-Beelden-en-Brieven-CPTs-and-taxonomies
  * Description:       Plugin voor beeldbank.gebruikercentraal.nl: registeren van CPTs voor beelden en brieven
- * Version:           2.0.7
- * Version descr:     Taxonomie brief-type toegevoegd.
+ * Version:           2.0.8
+ * Version descr:     Layout op overzichtpagina. Check op resultaat.
  * Author:            Paul van Buuren & Tamara de Haas
  * Author URI:        https://wbvb.nl/
  * License:           GPL-2.0+
@@ -54,15 +54,15 @@ if ( ! defined( 'GC_TAX_ORGANISATIE' ) ) {
 }
 
 if ( ! defined( 'GC_TAX_BRIEFTYPE' ) ) {
-	// @since 2.0.7
+	// @since 2.0.8
 	define( 'GC_TAX_BRIEFTYPE', 'brieftype' );
 }
 
 define( 'ICTU_GC_BEELDBANK_CSS', 'ictu-gc-plugin-beeldbank-css' );
 define( 'ICTU_GC_BEELDBANK_BASE_URL', trailingslashit( plugin_dir_url( __FILE__ ) ) );
 define( 'ICTU_GC_BEELDBANK_IMAGES', esc_url( ICTU_GC_BEELDBANK_BASE_URL . 'images/' ) );
-define( 'ICTU_GC_BEELDBANK_VERSION', '2.0.7' );
-define( 'ICTU_GC_BEELDBANK_DESC', 'Taxonomie brief-type toegevoegd.' );
+define( 'ICTU_GC_BEELDBANK_VERSION', '2.0.8' );
+define( 'ICTU_GC_BEELDBANK_DESC', 'Layout op overzichtpagina. Check op resultaat.' );
 
 
 // nieuwe CPTs
