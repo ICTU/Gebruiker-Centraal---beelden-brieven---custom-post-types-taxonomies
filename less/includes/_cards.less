@@ -31,6 +31,23 @@
         margin-top: -1rem;
       }
     }
+
+    .grid--col-1 & {
+      flex-direction: row;
+
+      .card__image:before {
+        left: auto;
+        right: 0;
+        top: 0;
+        height: 100%;
+        width: 5rem;
+        margin-right: -2rem;
+      }
+
+      .card__content {
+        padding-top: 2rem;
+      }
+    }
   }
 
 

@@ -1377,7 +1377,7 @@ body .btn--primary:active:after {
   }
 }
 @media only screen and (min-width: 1200px) {
-  .single-stap .section--page-children .grid {
+  .single-stap .section--page-children .grid--col-3 {
     margin-left: -14rem;
     margin-right: -14rem;
   }
@@ -1783,6 +1783,23 @@ body .btn--primary:active:after {
 .card--type-brief .card__content:before {
   z-index: -1;
   margin-top: -1rem;
+}
+.grid--col-1 .card--type-brief {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+.grid--col-1 .card--type-brief .card__image:before {
+  left: auto;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 5rem;
+  margin-right: -2rem;
+}
+.grid--col-1 .card--type-brief .card__content {
+  padding-top: 2rem;
 }
 .card--type-beeld .card__image {
   display: -webkit-box;
