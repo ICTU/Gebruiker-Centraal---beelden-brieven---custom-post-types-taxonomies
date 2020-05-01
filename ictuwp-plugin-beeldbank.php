@@ -225,7 +225,7 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 				add_action( 'genesis_entry_content', array( $this, 'ictu_gc_frontend_beeld_append_downloadinfo' ), 12 );
 
 //				add_action( 'genesis_entry_content', array( $this, 'ictu_gc_frontend_brief_append_container_end' ), 14 );
-				
+
 				add_action( 'genesis_loop', array( $this, 'ictu_gc_frontend_brief_append_related_content' ), 16 );
 
 			} elseif ( GC_BEELDBANK_BRIEF_CPT == get_post_type() ) {
@@ -1114,9 +1114,11 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 		 */
 		public function ictu_gc_frontend_brief_append_related_content() {
 
-			$args = [
-			];
-			echo $this->ictu_gc_frontend_briefbeeld_append_related_content( $args );
+			$args = [];
+
+			if($this->ictu_gc_frontend_briefbeeld_append_related_content( $args )) {
+				print $this->ictu_gc_frontend_briefbeeld_append_related_content( $args );
+			}
 
 		}
 
@@ -1164,7 +1166,7 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 				// interne links
 				$related_items = get_field( 'relation_beeldbrief_beeld', $post->ID );
 
-				if ( $related_items ) {
+				if ( $related_items && ! is_archive() ) {
 					$countcount = count( $related_items );
 					$grid_class = 'grid--col-3';
 
@@ -1189,7 +1191,7 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 					           . '</div>';
 
 					$return .= '<div class="l-section-content">' .
-					           '<div class="grid '. $grid_class . '">';
+					           '<div class="grid ' . $grid_class . '">';
 
 					$args = array(
 						'titletag' => 'h3',

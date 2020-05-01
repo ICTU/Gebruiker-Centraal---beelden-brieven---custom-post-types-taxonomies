@@ -92,8 +92,18 @@ body .btn--primary {
   }
 }
 
-.archive.category {
+.archive {
   .gc-overview-intro(@intro_bg);
+
+  &.tax-organisatie,
+  &.tax-brieftype {
+    position: relative;
+
+    .archive-list {
+      margin-top: 0;
+      z-index: +1;
+    }
+  }
 }
 
 .page-template .section--spotlight {
