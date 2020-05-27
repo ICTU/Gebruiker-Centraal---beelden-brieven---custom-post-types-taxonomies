@@ -14,6 +14,10 @@
 
   .content .entry {
     .gc-box-shadow;
+
+    @media @desktop {
+      padding-top: 7rem;
+    }
   }
 
   .section__title {
@@ -33,6 +37,12 @@
         padding-top: 10rem;
       }
     }
+
+    &--related-links,
+    &--related-content {
+      .gc-padding;
+    }
+
 
     &--related-content {
       .gc-rotated-bg(@bg: @gc_pantybrown_xlight);
@@ -78,7 +88,7 @@
 
       @media @desktop {
         margin-top: 5rem;
-        padding-bottom: 5rem;
+        padding-bottom: 8rem;
       }
 
       @media @desktop-xl {
