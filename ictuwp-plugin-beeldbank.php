@@ -1086,7 +1086,7 @@ if ( ! class_exists( 'ICTU_GC_Register_posttypes_brieven_beelden' ) ) :
 				$arialabel = sprintf( _x( 'Download %s', 'download image met titel', 'ictu-gc-posttypes-inclusie' ), $titel );
 
 				$download_box = '<section class="download-box">';
-				$download_box .= '<h3>' . $titel . '</h3>';
+				$download_box .= '<h2>' . $titel . '</h2>';
 				$download_box .= '<a href="' . $image[0] . '" class="btn btn--download" download aria-label="' . $arialabel . '">' . _x( 'Download', 'download image', "ictu-gc-posttypes-brieven-beelden" ) . '</a>';
 				$download_box .= '<dl class="meta-data">';
 				$download_box .= '<dt class="visuallyhidden">' . _x( 'File size', 'download image', "ictu-gc-posttypes-brieven-beelden" ) . '</dt><dd>' . $filesize . '</<dd>';
