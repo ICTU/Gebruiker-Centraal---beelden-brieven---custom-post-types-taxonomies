@@ -25,3 +25,4 @@ css/frontend.css.map
 *.codekit3
 *.txt
 ictuwp-plugin-beeldbank-vpvb.php
+yarn.lock
